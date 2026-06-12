@@ -1,16 +1,21 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { WHATSAPP } from "./constants";
+import { NAV_LINKS } from "./nav-links";
 import { fadeDown } from "./motion";
+import { ServicesMegaMenuDesktop, ServicesMobileAccordion } from "./ServicesMegaMenu";
 const logo = "/assets/logo_n.png";
 const logo_text = "/assets/logo_text.png";
 export function Header() {
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -19,14 +24,11 @@ export function Header() {
     };
   }, [open]);
 
-  const links = [
-    { label: "Home", href: "#" },
-    { label: "About Dr. Deepali", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "FAQs", href: "#faqs" },
-    { label: "Contact", href: "#contact" },
-  ];
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const links = NAV_LINKS;
 
   return (
     <motion.header
@@ -50,8 +52,8 @@ export function Header() {
             aria-hidden
           />
 
-<a
-      href="#"
+<Link
+      href="/"
       className="group flex min-w-0 max-md:max-w-[calc(100%-3.5rem)] items-center gap-2 sm:gap-4"
     >
       <span className="relative mr-2 flex shrink-0 items-center justify-center sm:mr-7">
@@ -70,7 +72,7 @@ export function Header() {
           className="relative h-12 w-auto max-w-[7rem] object-contain sm:h-20 sm:max-w-none lg:h-32 lg:w-32"
         />
       </span>
-    </a>
+    </Link>
           <nav
             className="relative hidden lg:flex"
             aria-label="Primary"
@@ -81,16 +83,28 @@ export function Header() {
                 "backdrop-blur-md",
               )}
             >
-              {links.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  className="group relative rounded-full px-3.5 py-2.5 font-sans-brand text-[11px] font-bold uppercase tracking-[0.11em] text-[var(--brand-dark)]/72 transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-4"
-                >
-                  {l.label}
-                  <span className="absolute inset-x-3.5 bottom-2 h-px origin-left scale-x-0 bg-[var(--brand-pink)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 xl:inset-x-4" />
-                </a>
-              ))}
+              {links.map((l) =>
+                l.label === "Services" ? (
+                  <ServicesMegaMenuDesktop
+                    key={l.label}
+                    isActive={pathname === l.href || pathname.startsWith("/services/")}
+                  />
+                ) : (
+                  <Link
+                    key={l.label}
+                    href={l.href}
+                    className={cn(
+                      "group relative rounded-full px-3.5 py-2.5 font-sans-brand text-[11px] font-bold uppercase tracking-[0.11em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-4",
+                      pathname === l.href
+                        ? "bg-white text-[var(--brand-pink)] shadow-[0_2px_12px_rgba(176,64,96,0.12)]"
+                        : "text-[var(--brand-dark)]/72",
+                    )}
+                  >
+                    {l.label}
+                    <span className="absolute inset-x-3.5 bottom-2 h-px origin-left scale-x-0 bg-[var(--brand-pink)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100 xl:inset-x-4" />
+                  </Link>
+                ),
+              )}
             </div>
           </nav>
 
@@ -138,20 +152,33 @@ export function Header() {
                 <p className="pb-2 font-sans-brand text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--brand-teal)]">
                   Navigate
                 </p>
-                {links.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="group flex items-center justify-between gap-3 rounded-xl border border-transparent bg-white/55 px-4 py-3.5 font-sans-brand text-[15px] font-semibold text-[var(--brand-dark)] shadow-sm ring-1 ring-[var(--border)]/80 transition-[border-color,background-color,box-shadow] active:bg-white"
-                  >
-                    <span className="text-[var(--brand-dark)]">{l.label}</span>
-                    <span
-                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)] opacity-60 motion-safe:transition-opacity group-hover:opacity-100"
-                      aria-hidden
+                {links.map((l) =>
+                  l.label === "Services" ? (
+                    <ServicesMobileAccordion
+                      key={l.label}
+                      isActive={pathname === l.href}
+                      onNavigate={() => setOpen(false)}
                     />
-                  </a>
-                ))}
+                  ) : (
+                    <Link
+                      key={l.label}
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        "group flex items-center justify-between gap-3 rounded-xl border border-transparent bg-white/55 px-4 py-3.5 font-sans-brand text-[15px] font-semibold shadow-sm ring-1 ring-[var(--border)]/80 transition-[border-color,background-color,box-shadow] active:bg-white",
+                        pathname === l.href
+                          ? "border-[var(--brand-pink)]/25 bg-white text-[var(--brand-pink-deep)]"
+                          : "text-[var(--brand-dark)]",
+                      )}
+                    >
+                      <span className="text-[var(--brand-dark)]">{l.label}</span>
+                      <span
+                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-teal)] opacity-60 motion-safe:transition-opacity group-hover:opacity-100"
+                        aria-hidden
+                      />
+                    </Link>
+                  ),
+                )}
               </div>
               <a
                 href={WHATSAPP}

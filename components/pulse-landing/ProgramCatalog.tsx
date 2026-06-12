@@ -1,5 +1,7 @@
-import { Check, Clock } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { ProgramSlug } from "./constants";
 import {
   programCategories,
   type ProgramCategoryLayout,
@@ -10,11 +12,34 @@ type Program = (typeof programCategories)[number]["programs"][number];
 type Category = (typeof programCategories)[number];
 
 export function categorySlug(cat: string) {
-  return cat.toLowerCase() as "cardiac" | "pulmonary" | "metabolic";
+  return cat.toLowerCase() as ProgramSlug;
 }
 
 export function getCategoryBySlug(slug: string) {
   return programCategories.find((c) => categorySlug(c.cat) === slug);
+}
+
+export function getProgramHref(categorySlug: ProgramSlug, programSlug: string) {
+  return `/services/${categorySlug}/${programSlug}`;
+}
+
+export function getProgramBySlugs(categorySlug: string, programSlug: string) {
+  const category = getCategoryBySlug(categorySlug);
+  if (!category) return null;
+  const program = category.programs.find((p) => p.slug === programSlug);
+  if (!program) return null;
+  return { category, program };
+}
+
+export function getAllCategoryParams() {
+  return programCategories.map((c) => ({ category: categorySlug(c.cat) }));
+}
+
+export function getAllProgramParams() {
+  return programCategories.flatMap((c) => {
+    const cat = categorySlug(c.cat);
+    return c.programs.map((p) => ({ category: cat, program: p.slug }));
+  });
 }
 
 const toneUi: Record<
@@ -65,16 +90,19 @@ const toneUi: Record<
 function ProgramCard({
   program,
   tone,
+  categorySlug: catSlug,
 }: {
   program: Program;
   tone: ProgramCategoryTone;
+  categorySlug: ProgramSlug;
 }) {
   const PIcon = program.i;
   const t = toneUi[tone];
   return (
-    <article
+    <Link
+      href={getProgramHref(catSlug, program.slug)}
       className={cn(
-        "group flex h-full flex-col rounded-xl border border-navy/[0.08] border-l-[3px] bg-white p-5 shadow-[0_8px_32px_-16px_rgba(30,46,61,0.18)] transition-[box-shadow,border-color] motion-safe:hover:shadow-[0_16px_40px_-14px_rgba(30,46,61,0.22)] sm:p-6",
+        "group flex h-full flex-col rounded-xl border border-navy/[0.08] border-l-[3px] bg-white p-5 shadow-[0_8px_32px_-16px_rgba(30,46,61,0.18)] transition-[box-shadow,border-color,transform] motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[0_16px_40px_-14px_rgba(30,46,61,0.22)] sm:p-6",
         t.border,
       )}
     >
@@ -97,22 +125,22 @@ function ProgramCard({
           </p>
         </div>
       </div>
-      <div className="mt-3.5 flex items-center gap-2 font-sans-brand text-[12px] font-medium text-navy/65">
-        <Clock className={cn("h-3.5 w-3.5 shrink-0", t.clockIcon)} />
-        <span>{program.dur}</span>
+      <div className="mt-4 flex items-center justify-between gap-3 border-t border-navy/[0.06] pt-4">
+        <div className="flex items-center gap-2 font-sans-brand text-[12px] font-medium text-navy/65">
+          <Clock className={cn("h-3.5 w-3.5 shrink-0", t.clockIcon)} />
+          <span>{program.dur}</span>
+        </div>
+        <span
+          className={cn(
+            "inline-flex items-center gap-1 font-sans-brand text-[11px] font-bold uppercase tracking-[0.12em]",
+            t.label,
+          )}
+        >
+          View program
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+        </span>
       </div>
-      <ul className="mt-4 flex-1 space-y-2 border-t border-navy/[0.06] pt-4">
-        {program.benefits.map((b) => (
-          <li
-            key={b}
-            className="flex items-start gap-2 font-sans-brand text-[13px] leading-relaxed text-navy/82"
-          >
-            <Check className={cn("mt-0.5 h-3.5 w-3.5 shrink-0", t.benefitIcon)} />
-            <span>{b}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
+    </Link>
   );
 }
 
@@ -120,10 +148,12 @@ function ProgramGrid({
   programs,
   tone,
   layout,
+  categorySlug: catSlug,
 }: {
   programs: Program[];
   tone: ProgramCategoryTone;
   layout: ProgramCategoryLayout;
+  categorySlug: ProgramSlug;
 }) {
   const gridPad = "gap-4 p-5 sm:gap-5 sm:p-8";
 
@@ -131,7 +161,7 @@ function ProgramGrid({
     return (
       <div className={cn("grid sm:grid-cols-2", gridPad)}>
         {programs.map((p) => (
-          <ProgramCard key={p.t} program={p} tone={tone} />
+          <ProgramCard key={p.t} program={p} tone={tone} categorySlug={catSlug} />
         ))}
       </div>
     );
@@ -142,7 +172,7 @@ function ProgramGrid({
       <div className={cn("grid sm:grid-cols-2 lg:grid-cols-6", gridPad)}>
         {programs.map((p, i) => (
           <div key={p.t} className={cn(i < 3 ? "lg:col-span-2" : "lg:col-span-3")}>
-            <ProgramCard program={p} tone={tone} />
+            <ProgramCard program={p} tone={tone} categorySlug={catSlug} />
           </div>
         ))}
       </div>
@@ -158,7 +188,7 @@ function ProgramGrid({
       )}
     >
       {programs.map((p) => (
-        <ProgramCard key={p.t} program={p} tone={tone} />
+        <ProgramCard key={p.t} program={p} tone={tone} categorySlug={catSlug} />
       ))}
     </div>
   );
@@ -215,7 +245,12 @@ export function CategoryChapter({
         </div>
       </header>
 
-      <ProgramGrid programs={cat.programs} tone={cat.tone} layout={cat.layout} />
+      <ProgramGrid
+        programs={cat.programs}
+        tone={cat.tone}
+        layout={cat.layout}
+        categorySlug={categorySlug(cat.cat)}
+      />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 const logoIcon = "/assets/logo_n.png";
 const logoText = "/assets/logo_text.png";
 import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "./constants";
+import { FOOTER_ABOUT_LINKS, FOOTER_PROGRAM_LINKS } from "./nav-links";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -56,8 +57,8 @@ export function Footer() {
         {/* MIDDLE -  info grid */}
         <StaggerReveal className="py-16 grid lg:grid-cols-12 gap-12" itemVariant="fadeUp" amount={0.1}>
           <StaggerItem className="lg:col-span-4 space-y-6">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="inline-flex w-full max-w-md items-center gap-4 rounded-2xl border border-white/15 bg-white px-5 py-4 shadow-[0_12px_32px_-14px_rgba(0,0,0,0.4)] sm:gap-5 sm:px-6 sm:py-5"
             >
               <img
@@ -74,7 +75,7 @@ export function Footer() {
                 height={138}
                 className="h-16 w-auto min-w-0 flex-1 object-contain object-left sm:h-20"
               />
-            </a>
+            </Link>
 
             <p className="text-sm text-white/65 leading-relaxed max-w-sm">
               Specialist cardiac, pulmonary and metabolic rehabilitation -
@@ -94,12 +95,12 @@ export function Footer() {
           <StaggerItem className="lg:col-span-2">
             <p className="section-label !text-white/40 mb-5">Programs</p>
             <ul className="space-y-3 text-sm text-white/75">
-              {["Cardiac Rehab", "Pulmonary Rehab", "Metabolic Programs", "Tele-Rehab"].map(l => (
-                <li key={l}>
-                  <a href="#programs" className="inline-flex items-center gap-1.5 py-2 -my-1 hover:text-brand transition-colors group">
+              {FOOTER_PROGRAM_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="inline-flex items-center gap-1.5 py-2 -my-1 hover:text-brand transition-colors group">
                     <span className="h-px w-3 bg-white/20 group-hover:w-5 group-hover:bg-brand transition-all" />
-                    {l}
-                  </a>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -108,18 +109,12 @@ export function Footer() {
           <StaggerItem className="lg:col-span-2">
             <p className="section-label !text-white/40 mb-5">About</p>
             <ul className="space-y-3 text-sm text-white/75">
-              {[
-                { l: "Dr. Deepali Shah", h: "#about" },
-                { l: "Programs", h: "#programs" },
-                { l: "All Services", h: "#services" },
-                { l: "How It Works", h: "#how-it-works" },
-                { l: "FAQs", h: "#faqs" },
-              ].map((i) => (
-                <li key={i.l}>
-                  <a href={i.h} className="inline-flex items-center gap-1.5 py-2 -my-1 hover:text-brand transition-colors group">
+              {FOOTER_ABOUT_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <Link href={href} className="inline-flex items-center gap-1.5 py-2 -my-1 hover:text-brand transition-colors group">
                     <span className="h-px w-3 bg-white/20 group-hover:w-5 group-hover:bg-brand transition-all" />
-                    {i.l}
-                  </a>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>

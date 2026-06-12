@@ -17,8 +17,8 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { PROGRAM_ROUTES, type ProgramSlug } from "./constants";
-import { categorySlug } from "./ProgramCatalog";
+import { type ProgramSlug } from "./constants";
+import { categorySlug, getProgramHref } from "./ProgramCatalog";
 import {
   programCategories,
   type ProgramCategoryLayout,
@@ -256,7 +256,7 @@ function ServiceCard({
 
   return (
     <a
-      href={PROGRAM_ROUTES[slug]}
+      href={getProgramHref(slug, program.slug)}
       className={cn(
         "group motion-card relative flex h-full min-h-[148px] flex-col rounded-xl border border-navy/[0.08] border-l-[3px] bg-white p-5 pr-12 shadow-[0_4px_20px_-10px_rgba(30,46,61,0.12)] transition-[box-shadow,transform,border-color] hover:-translate-y-0.5 hover:border-navy/15 hover:shadow-[0_16px_40px_-14px_rgba(30,46,61,0.2)] sm:p-6 sm:pr-14",
         tone.cardBorder,

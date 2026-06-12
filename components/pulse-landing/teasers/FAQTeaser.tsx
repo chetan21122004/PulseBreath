@@ -24,7 +24,7 @@ export function FAQTeaser() {
             </ul>
           </div>
           <Link
-            href="/faq"
+            href="/faqs"
             className="group inline-flex min-h-[54px] shrink-0 items-center gap-2 self-start rounded-md border border-brand/25 bg-soft px-6 py-3.5 text-[15px] font-semibold text-brand transition-colors hover:bg-brand hover:text-white lg:mt-10"
           >
             See all FAQs
