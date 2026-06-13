@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { DR_DEEPALI_PORTRAIT } from "./dr-deepali-assets";
 
 type DrDeepaliVideoProps = {
   src: string;
@@ -30,7 +31,7 @@ export function DrDeepaliVideo({
     return (
       <figure className={cn("overflow-hidden rounded-2xl", className)}>
         <img
-          src={poster ?? "/assets/team-doctor.jpg"}
+          src={poster ?? DR_DEEPALI_PORTRAIT}
           alt={alt}
           className={cn("aspect-[4/3] w-full object-cover", videoClassName)}
         />

@@ -10,11 +10,14 @@ import {
   HeartPulse,
   Phone,
 } from "lucide-react";
-const heroDoctor = "/assets/hero-doctor.jpg";
-const bgHero = "/assets/bg_hero.jpeg";
+import {
+  DR_DEEPALI_HERO_PORTRAIT,
+} from "./dr-deepali-assets";
 import { HERO_BG_CLIPS, HERO_BG_PLAYBACK_RATE, PHONE, WHATSAPP } from "./constants";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { heroItem } from "./motion";
+
+const bgHero = "/assets/bg_hero.jpeg";
 
 const credentials = [
   { icon: Award, title: "MPT Gold Medalist", sub: "Cardiopulmonary Sciences" },
@@ -259,7 +262,7 @@ export function Hero() {
 
                 <div className="relative z-[1] overflow-hidden rounded-2xl ring-2 ring-white/25 ring-offset-2 ring-offset-transparent lg:translate-x-1">
                   <img
-                    src={heroDoctor}
+                    src={DR_DEEPALI_HERO_PORTRAIT}
                     alt="Dr. Deepali Shah, Cardiopulmonary Physiotherapist"
                     width={800}
                     height={900}

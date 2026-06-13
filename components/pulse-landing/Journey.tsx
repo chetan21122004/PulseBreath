@@ -5,7 +5,11 @@ import { ChevronRight, HeartPulse, ShieldCheck, Video, X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { BackgroundBlob } from "./BackgroundBlob";
-import { JOURNEY_SAFETY_FALLBACK_IMAGE } from "./constants";
+import {
+  DR_DEEPALI_JOURNEY_BG,
+} from "./dr-deepali-assets";
+import { DrDeepaliVideo } from "./DrDeepaliVideo";
+import { JOURNEY_SAFETY_FALLBACK_IMAGE, JOURNEY_SAFETY_VIDEO } from "./constants";
 import { SectionIllustration } from "./SectionIllustration";
 import { ILLUSTRATIONS } from "./visual-assets";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
@@ -241,17 +245,13 @@ function Chevrons({ delay = 0 }: { delay?: number }) {
 
 function SafetyMedia() {
   return (
-    <div className="relative overflow-hidden">
-      <img
-        src={JOURNEY_SAFETY_FALLBACK_IMAGE}
-        alt="Small group exercising at home under live specialist supervision"
-        loading="eager"
-        fetchPriority="high"
-        width={960}
-        height={720}
-        className="aspect-[4/3] h-full w-full object-cover object-[center_35%]"
-      />
-    </div>
+    <DrDeepaliVideo
+      src={JOURNEY_SAFETY_VIDEO}
+      poster={JOURNEY_SAFETY_FALLBACK_IMAGE}
+      alt="Dr. Deepali Shah supervising a live rehabilitation session"
+      videoClassName="aspect-[4/3] h-full w-full object-cover object-[center_35%]"
+      preload="metadata"
+    />
   );
 }
 
@@ -344,7 +344,7 @@ export function Journey() {
       <div className="relative overflow-hidden py-5">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <img
-            src={JOURNEY_SAFETY_FALLBACK_IMAGE}
+            src={DR_DEEPALI_JOURNEY_BG}
             alt=""
             className="h-full w-full object-cover object-[42%_40%]"
           />

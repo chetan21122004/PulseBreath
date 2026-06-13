@@ -258,51 +258,52 @@ function ServiceCard({
     <a
       href={getProgramHref(slug, program.slug)}
       className={cn(
-        "group motion-card relative flex h-full min-h-[148px] flex-col rounded-xl border border-navy/[0.08] border-l-[3px] bg-white p-5 pr-12 shadow-[0_4px_20px_-10px_rgba(30,46,61,0.12)] transition-[box-shadow,transform,border-color] hover:-translate-y-0.5 hover:border-navy/15 hover:shadow-[0_16px_40px_-14px_rgba(30,46,61,0.2)] sm:p-6 sm:pr-14",
+        "group motion-card flex h-full flex-col rounded-xl border border-navy/[0.08] border-l-[3px] bg-white p-5 shadow-[0_4px_20px_-10px_rgba(30,46,61,0.12)] transition-[box-shadow,transform,border-color] hover:-translate-y-0.5 hover:border-navy/15 hover:shadow-[0_16px_40px_-14px_rgba(30,46,61,0.2)] sm:p-6",
         tone.cardBorder,
       )}
     >
-      <span
-        className={cn(
-          "absolute right-4 top-4 rounded-full px-2 py-1 font-sans-brand text-[10px] font-bold leading-none tracking-[0.14em] transition-colors group-hover:bg-brand group-hover:text-white",
-          tone.numberBg,
-        )}
-      >
-        {String(number).padStart(2, "0")}
-      </span>
-
-      <div className="flex items-start gap-3.5">
+      <div className="flex items-center justify-between gap-3">
         <div
           className={cn(
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors",
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors sm:h-11 sm:w-11",
             tone.iconTile,
             tone.iconHover,
           )}
         >
-          <ProgramIcon className="h-[18px] w-[18px]" strokeWidth={1.65} />
-        </div>
-        <div className="min-w-0 flex-1">
-          <h4 className="font-display text-[1.05rem] font-bold leading-snug text-navy sm:text-lg">
-            {program.t}
-          </h4>
-          <p className="mt-1.5 font-sans-brand text-[13px] leading-relaxed text-navy/70">
-            {program.for}
-          </p>
-        </div>
-      </div>
-      <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-        <div className="flex items-center gap-2 font-sans-brand text-[12px] font-medium text-navy/60">
-          <Clock className="h-3.5 w-3.5 shrink-0" />
-          <span>{program.dur}</span>
+          <ProgramIcon className="h-[18px] w-[18px] sm:h-5 sm:w-5" strokeWidth={1.65} />
         </div>
         <span
           className={cn(
-            "inline-flex items-center gap-1 font-sans-brand text-[11px] font-bold uppercase tracking-[0.12em] opacity-0 transition-all group-hover:gap-1.5 group-hover:opacity-100",
+            "rounded-full px-2.5 py-1 font-sans-brand text-[10px] font-bold leading-none tracking-[0.14em] transition-colors group-hover:bg-brand group-hover:text-white",
+            tone.numberBg,
+          )}
+        >
+          {String(number).padStart(2, "0")}
+        </span>
+      </div>
+
+      <div className="mt-4 flex min-h-0 flex-1 flex-col">
+        <h4 className="font-display text-base font-bold leading-snug text-navy sm:text-[1.05rem]">
+          {program.t}
+        </h4>
+        <p className="mt-2 line-clamp-2 flex-1 font-sans-brand text-[13px] leading-relaxed text-navy/65">
+          {program.for}
+        </p>
+      </div>
+
+      <div className="mt-5 flex items-center justify-between gap-3 border-t border-navy/[0.06] pt-4">
+        <div className="flex min-w-0 items-center gap-1.5 font-sans-brand text-[11px] font-medium text-navy/55 sm:text-[12px]">
+          <Clock className="h-3.5 w-3.5 shrink-0 opacity-70" />
+          <span className="truncate">{program.dur}</span>
+        </div>
+        <span
+          className={cn(
+            "inline-flex shrink-0 items-center gap-1 font-sans-brand text-[10px] font-bold uppercase tracking-[0.12em] transition-all group-hover:gap-1.5 sm:text-[11px]",
             tone.link,
           )}
         >
           Details
-          <ArrowRight className="h-3 w-3" />
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
     </a>

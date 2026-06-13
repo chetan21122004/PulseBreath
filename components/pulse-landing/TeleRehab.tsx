@@ -8,11 +8,14 @@ import {
   Phone,
 } from "lucide-react";
 import { PHONE, WHATSAPP } from "./constants";
+import {
+  DR_DEEPALI_FEATURED_VIDEO,
+  DR_DEEPALI_SESSION_POSTER,
+} from "./dr-deepali-assets";
 import { BackgroundBlob } from "./BackgroundBlob";
-import { SectionIllustration } from "./SectionIllustration";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
+import { TeleRehabSessionClip } from "./TeleRehabSessionClip";
 import { WhatsAppIcon } from "./WhatsAppIcon";
-import { ILLUSTRATIONS } from "./visual-assets";
 
 export function TeleRehab() {
   const features = [
@@ -144,17 +147,16 @@ export function TeleRehab() {
               </div>
 
               <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-                <div className="w-full max-w-[16rem] rounded-[28px] border border-white/80 bg-gradient-to-br from-white/90 via-white/70 to-[var(--primary-soft)]/50 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_20px_48px_-20px_rgba(44,62,80,0.22)] sm:max-w-[18rem] sm:p-6 lg:max-w-[20rem] xl:max-w-[22rem]">
-                  <SectionIllustration
-                    src={ILLUSTRATIONS.onlineDoctor}
-                    alt="Online doctor providing telemedicine consultation"
-                    className="w-full"
-                    imgClassName="drop-shadow-[0_16px_32px_-12px_rgba(44,62,80,0.25)]"
-                    animateOnScroll={false}
-                  />
-                  <p className="mt-4 text-center font-sans-brand text-[13px] font-medium leading-snug text-navy/70">
-                    Supervised sessions from anywhere in India
-                  </p>
+                <div className="w-full max-w-[16rem] overflow-hidden rounded-[28px] border border-white/80 bg-gradient-to-br from-white/90 via-white/70 to-[var(--primary-soft)]/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_20px_48px_-20px_rgba(44,62,80,0.22)] sm:max-w-[18rem] lg:max-w-[20rem] xl:max-w-[22rem]">
+                  <div className="relative p-4 sm:p-5">
+                    <TeleRehabSessionClip
+                      src={DR_DEEPALI_FEATURED_VIDEO}
+                      poster={DR_DEEPALI_SESSION_POSTER}
+                    />
+                    <p className="mt-4 text-center font-sans-brand text-[13px] font-medium leading-snug text-navy/70">
+                      Supervised sessions from anywhere in India
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

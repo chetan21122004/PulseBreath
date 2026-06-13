@@ -1,10 +1,10 @@
 'use client';
 
-import { Award, BadgeCheck } from "lucide-react";
-const teamDoctor = "/assets/team-doctor.jpg";
-import { DOCTOR_CREDENTIALS, DOCTOR_HIGHLIGHTS, DOCTOR_OVERVIEW } from "./doctor-content";
+import Link from "next/link";
+import { ArrowRight, Award, BadgeCheck } from "lucide-react";
+import { DOCTOR_CREDENTIALS, DOCTOR_HIGHLIGHTS, DOCTOR_OVERVIEW_BRIEF } from "./doctor-content";
+import { DR_DEEPALI_ABOUT_PORTRAIT } from "./dr-deepali-assets";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
-
 export function Doctor() {
   return (
     <section
@@ -69,8 +69,8 @@ export function Doctor() {
 
                 <div className="relative overflow-hidden bg-[var(--brand-deeper)]/5">
                   <img
-                    src={teamDoctor}
-                    alt="Dr. Deepali Shah (PT) -  Founder, PulseBreath Physiotherapy"
+                    src={DR_DEEPALI_ABOUT_PORTRAIT}
+                    alt="Dr. Deepali Shah (PT) — Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
                     className="aspect-[3/4] w-full object-cover object-top"
@@ -122,8 +122,15 @@ export function Doctor() {
 
             <StaggerItem>
               <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-[var(--body-text)] sm:text-[16px]">
-                {DOCTOR_OVERVIEW}
+                {DOCTOR_OVERVIEW_BRIEF}
               </p>
+              <Link
+                href="/about"
+                className="group mt-4 inline-flex items-center gap-1.5 font-sans-brand text-sm font-semibold text-brand transition-colors hover:text-[var(--brand-pink-deep)]"
+              >
+                Read full profile
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </StaggerItem>
 
             <StaggerItem>

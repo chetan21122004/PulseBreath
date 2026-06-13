@@ -14,11 +14,21 @@ export const DR_DEEPALI_VIDEOS = [
   `${BASE}/dr-deepali-session-04.mp4`,
 ] as const;
 
-/** Primary portrait for About page and step 1 on How It Works */
-export const DR_DEEPALI_PORTRAIT = DR_DEEPALI_PHOTOS[0];
+/** Primary portrait — hero and default fallback */
+export const DR_DEEPALI_HERO_PORTRAIT = DR_DEEPALI_PHOTOS[0];
 
-/** Featured session clip for About page and safety section */
+/** About section — alternate portrait so hero and about feel distinct */
+export const DR_DEEPALI_ABOUT_PORTRAIT = DR_DEEPALI_PHOTOS[1];
+
+/** Poster for supervised session clips */
+export const DR_DEEPALI_SESSION_POSTER = DR_DEEPALI_PHOTOS[2];
+
+/** Soft background for journey safety band */
+export const DR_DEEPALI_JOURNEY_BG = DR_DEEPALI_PHOTOS[3];
+
+/** Backward-compatible aliases used on About / How It Works */
+export const DR_DEEPALI_PORTRAIT = DR_DEEPALI_HERO_PORTRAIT;
 export const DR_DEEPALI_FEATURED_VIDEO = DR_DEEPALI_VIDEOS[0];
 
-/** Gallery photos (all except portrait) */
+/** Gallery photos (all except hero portrait) — About page */
 export const DR_DEEPALI_GALLERY_PHOTOS = DR_DEEPALI_PHOTOS.slice(1);
