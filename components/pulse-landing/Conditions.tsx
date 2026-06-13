@@ -6,6 +6,7 @@ const careAwareness = "/assets/care-awareness.jpg";
 import { PROGRAM_ROUTES } from "./constants";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
+import { SectionPageLink } from "./SectionPageLink";
 import { SectionWaveBg } from "./SectionWaveBg";
 import { ILLUSTRATIONS } from "./visual-assets";
 
@@ -70,6 +71,9 @@ export function Conditions() {
               personally guided by Dr. Deepali, ensuring expert care beyond a conventional exercise
               program.
             </p>
+            <SectionPageLink href="/services" className="mt-5">
+              View all services
+            </SectionPageLink>
           </Reveal>
           <SectionIllustration
             src={ILLUSTRATIONS.cardiologistBro}

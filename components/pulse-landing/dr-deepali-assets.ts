@@ -30,5 +30,8 @@ export const DR_DEEPALI_JOURNEY_BG = DR_DEEPALI_PHOTOS[3];
 export const DR_DEEPALI_PORTRAIT = DR_DEEPALI_HERO_PORTRAIT;
 export const DR_DEEPALI_FEATURED_VIDEO = DR_DEEPALI_VIDEOS[0];
 
+/** Journey safety section — supervised session clip */
+export const DR_DEEPALI_JOURNEY_VIDEO = DR_DEEPALI_VIDEOS[2];
+
 /** Gallery photos (all except hero portrait) — About page */
 export const DR_DEEPALI_GALLERY_PHOTOS = DR_DEEPALI_PHOTOS.slice(1);

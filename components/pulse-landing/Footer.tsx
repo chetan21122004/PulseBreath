@@ -9,7 +9,10 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden text-white" style={{ background: "var(--brand-dark)" }}>
+    <footer
+      className="relative overflow-hidden text-white max-lg:pb-[calc(var(--bottom-nav-height)+env(safe-area-inset-bottom,0px))]"
+      style={{ background: "var(--brand-dark)" }}
+    >
       {/* Ambient blobs */}
       <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-[0.18]" style={{ background: "var(--brand-pink)" }} />
       <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-24 h-[24rem] w-[24rem] rounded-full blur-3xl opacity-[0.14]" style={{ background: "var(--brand-teal)" }} />

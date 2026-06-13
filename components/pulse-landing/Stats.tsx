@@ -1,5 +1,6 @@
 import { BackgroundBlob } from "./BackgroundBlob";
 import { StaggerItem, StaggerReveal } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 
 const stats = [
   { v: "200+", l: "Patients guided", tone: "brand" as const },
@@ -64,6 +65,10 @@ export function Stats() {
               </StaggerItem>
             ))}
           </StaggerReveal>
+
+          <div className="border-t border-border/70 px-4 py-4 text-center sm:px-6">
+            <SectionPageLink href="/about">About PulseBreath</SectionPageLink>
+          </div>
         </div>
       </div>
     </section>

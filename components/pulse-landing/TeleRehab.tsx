@@ -14,6 +14,7 @@ import {
 } from "./dr-deepali-assets";
 import { BackgroundBlob } from "./BackgroundBlob";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 import { TeleRehabSessionClip } from "./TeleRehabSessionClip";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -127,6 +128,10 @@ export function TeleRehab() {
                   Live, supervised group sessions with Dr. Deepali -   secure, interactive, and just as effective.
                 </p>
 
+                <SectionPageLink href="/how-it-works" className="mt-6 justify-center lg:justify-start">
+                  Learn how tele-rehab works
+                </SectionPageLink>
+
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                   <a
                     href={WHATSAPP}
@@ -165,7 +170,7 @@ export function TeleRehab() {
           <div className="border-t border-white/60 px-6 py-5 sm:px-10 lg:px-12 lg:pb-14 ">
             <StaggerReveal
               as="ul"
-              className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5"
+              className="mx-auto grid max-w-6xl grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-5"
               itemVariant="scaleIn"
               amount={0.15}
             >
@@ -173,15 +178,19 @@ export function TeleRehab() {
                 <StaggerItem
                   key={t}
                   as="li"
-                  className="group motion-card rounded-2xl border border-navy/10 bg-white/80 p-4 text-left backdrop-blur-sm hover:border-[#C0516A]/40 hover:shadow-[0_8px_24px_-12px_rgba(192,81,106,.35)]"
+                  className="group motion-card rounded-xl border border-navy/10 bg-white/80 p-3 text-left backdrop-blur-sm sm:rounded-2xl sm:p-4 hover:border-[#C0516A]/40 hover:shadow-[0_8px_24px_-12px_rgba(192,81,106,.35)]"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#C0516A]/10 transition-colors group-hover:bg-[#C0516A]">
-                      <Icon className="h-4 w-4 text-[#C0516A] transition-colors group-hover:text-white" />
+                  <div className="flex items-center gap-2 sm:gap-2.5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#C0516A]/10 transition-colors group-hover:bg-[#C0516A] sm:h-9 sm:w-9 sm:rounded-xl">
+                      <Icon className="h-3.5 w-3.5 text-[#C0516A] transition-colors group-hover:text-white sm:h-4 sm:w-4" />
                     </span>
-                    <h4 className="font-display text-[13px] font-bold leading-tight text-navy break-words">{t}</h4>
+                    <h4 className="font-display text-[12px] font-bold leading-snug text-navy sm:text-[13px] sm:leading-tight">
+                      {t}
+                    </h4>
                   </div>
-                  <p className="mt-2.5 text-[12px] leading-relaxed text-[var(--body-text)]">{d}</p>
+                  <p className="mt-2.5 hidden text-[12px] leading-relaxed text-[var(--body-text)] md:block">
+                    {d}
+                  </p>
                 </StaggerItem>
               ))}
             </StaggerReveal>

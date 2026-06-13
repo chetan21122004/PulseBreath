@@ -1,5 +1,6 @@
 import {
   DR_DEEPALI_FEATURED_VIDEO,
+  DR_DEEPALI_JOURNEY_VIDEO,
   DR_DEEPALI_PORTRAIT,
   DR_DEEPALI_SESSION_POSTER,
 } from "./dr-deepali-assets";
@@ -30,7 +31,7 @@ export const HERO_BG_CLIPS = [heroBgClip1, heroBgClip2, heroBgClip3, heroBgClip4
 export const HERO_BG_PLAYBACK_RATE = 1.25;
 
 /** Safety callout in Journey — supervised session clip from Dr. Deepali assets. */
-export const JOURNEY_SAFETY_VIDEO = DR_DEEPALI_FEATURED_VIDEO;
+export const JOURNEY_SAFETY_VIDEO = DR_DEEPALI_JOURNEY_VIDEO;
 
 /** Static image shown when the safety video cannot load (slow or offline connection). */
 export const JOURNEY_SAFETY_FALLBACK_IMAGE = DR_DEEPALI_SESSION_POSTER;

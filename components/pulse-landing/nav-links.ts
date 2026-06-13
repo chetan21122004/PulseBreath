@@ -3,6 +3,7 @@ export const NAV_LINKS = [
   { label: "About Dr. Deepali", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Articles", href: "/blog" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -11,6 +12,7 @@ export const FOOTER_ABOUT_LINKS = [
   { label: "Dr. Deepali Shah", href: "/about" },
   { label: "All Services", href: "/services" },
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Articles", href: "/blog" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ] as const;

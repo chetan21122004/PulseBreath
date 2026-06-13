@@ -6,6 +6,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { BackgroundBlob } from "./BackgroundBlob";
 import { StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
+import { SectionPageLink } from "./SectionPageLink";
 import { ILLUSTRATIONS } from "./visual-assets";
 
 const PREVIEW_LENGTH = 150;
@@ -301,6 +302,12 @@ export function Testimonials({ mode = "teaser" }: TestimonialsProps) {
             </StaggerItem>
           ))}
         </StaggerReveal>
+
+        <div className="mt-10 text-center">
+          <SectionPageLink href="/contact" className="justify-center">
+            Start your recovery journey
+          </SectionPageLink>
+        </div>
       </div>
     </section>
   );

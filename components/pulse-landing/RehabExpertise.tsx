@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { TAGLINES, taglineClass } from "./marketing-taglines";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 
 const checklist = [
   "Heart-rate monitoring",
@@ -32,6 +33,9 @@ export function RehabExpertise() {
               generic workout, regular physiotherapy routine, or yoga class.
             </p>
             <p className={`mx-auto mt-5 lg:mx-0 ${taglineClass}`}>{TAGLINES.rehabExpertise}</p>
+            <SectionPageLink href="/services" className="mt-6 justify-center lg:justify-start">
+              Explore specialist programs
+            </SectionPageLink>
           </Reveal>
 
           <StaggerReveal

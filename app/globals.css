@@ -124,11 +124,13 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --header-height: 5rem;
+  --bottom-nav-height: 0px;
 }
 
 @media (max-width: 767px) {
   :root {
-    --header-height: 4rem;
+    --header-height: 3.5rem;
+    --bottom-nav-height: 3.75rem;
   }
 }
 

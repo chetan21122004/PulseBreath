@@ -7,6 +7,7 @@ import { ServicesOverview } from "./ServicesOverview";
 import { Testimonials } from "./Testimonials";
 import { TeleRehab } from "./TeleRehab";
 import { RehabExpertise } from "./RehabExpertise";
+import { BlogTeaser } from "./BlogTeaser";
 import { FAQ } from "./FAQ";
 import { CTASection } from "./CTASection";
 
@@ -22,6 +23,7 @@ export function PulseLandingPage() {
       <Doctor />
       <Journey />
       <Testimonials />
+      <BlogTeaser />
       <FAQ />
       <CTASection />
     </div>

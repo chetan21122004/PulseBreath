@@ -16,6 +16,7 @@ import {
 import { HERO_BG_CLIPS, HERO_BG_PLAYBACK_RATE, PHONE, WHATSAPP } from "./constants";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { heroItem } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 
 const bgHero = "/assets/bg_hero.jpeg";
 
@@ -99,6 +100,12 @@ export function Hero() {
         />
       </div>
 
+      {/* Mobile/tablet: scrim so headline copy stays legible over the video */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[min(62%,520px)] bg-gradient-to-b from-[var(--brand-deeper)]/96 via-[var(--brand-deeper)]/88 to-transparent lg:hidden"
+        aria-hidden
+      />
+
       {/* Desktop: scrim behind copy column only -right side stays close to raw video */}
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-[54%] bg-gradient-to-r from-[var(--brand-deeper)]/90 via-[var(--brand-deeper)]/55 to-transparent lg:block"
@@ -115,13 +122,13 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex max-md:h-auto h-full max-w-7xl flex-col justify-center px-4 py-5 sm:px-6 sm:py-8">
         <div className="grid min-h-0 flex-1 grid-cols-1 items-center gap-4 max-md:gap-4 lg:grid-cols-12 lg:items-stretch lg:gap-8 xl:gap-10">
-          <motion.div className="flex min-h-0 flex-col gap-3 lg:col-span-7 lg:gap-4 lg:self-center lg:pb-1">
+          <motion.div className="relative z-[2] flex min-h-0 flex-col gap-3 lg:col-span-7 lg:gap-4 lg:self-center lg:pb-1">
             <motion.h1
               custom={0}
               variants={heroItem}
               initial={reduceMotion ? "visible" : "hidden"}
               animate="visible"
-              className="font-display max-md:text-[clamp(1.5rem,6.5vw,1.85rem)] max-md:leading-[1.15] text-[clamp(1.85rem,3.8vw,3.25rem)] font-bold pt-2 leading-[1.1] tracking-[-0.02em] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.85)]"
+              className="font-display max-md:text-[clamp(1.5rem,6.5vw,1.85rem)] max-md:leading-[1.15] text-[clamp(1.85rem,3.8vw,3.25rem)] font-bold pt-2 leading-[1.1] tracking-[-0.02em] text-white max-lg:[text-shadow:0_2px_28px_rgba(0,0,0,0.95),0_1px_4px_rgba(0,0,0,1)] lg:[text-shadow:0_2px_20px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.85)]"
             >
               Breathlessness is not the end of your recovery.
             </motion.h1>
@@ -131,12 +138,29 @@ export function Hero() {
               variants={heroItem}
               initial={reduceMotion ? "visible" : "hidden"}
               animate="visible"
-              className="max-w-xl max-md:text-base font-display text-lg italic leading-snug text-white [text-shadow:0_1px_14px_rgba(0,0,0,0.5)] lg:text-xl"
+              className="max-w-xl max-md:text-base font-display text-lg italic leading-snug text-white max-lg:[text-shadow:0_1px_20px_rgba(0,0,0,0.9),0_1px_3px_rgba(0,0,0,0.85)] lg:text-xl lg:[text-shadow:0_1px_14px_rgba(0,0,0,0.5)]"
             >
               Rehabilitation that helps you{" "}
-              <span className="text-[var(--brand-teal-soft)]">reclaim life</span>
-              {" "}-not just manage disease.
+              <span className="text-[var(--brand-teal-soft)] max-lg:[text-shadow:0_1px_16px_rgba(0,0,0,0.95)]">
+                reclaim life
+              </span>
+              {" "}— not just manage disease.
             </motion.p>
+
+            <motion.div
+              custom={1.5}
+              variants={heroItem}
+              initial={reduceMotion ? "visible" : "hidden"}
+              animate="visible"
+              className="mt-3 flex flex-wrap items-center gap-2 sm:gap-2.5"
+            >
+              <SectionPageLink href="/services" variant="hero">
+                Explore services
+              </SectionPageLink>
+              <SectionPageLink href="/how-it-works" variant="hero">
+                How it works
+              </SectionPageLink>
+            </motion.div>
 
             <motion.div
               custom={2}

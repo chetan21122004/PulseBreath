@@ -7,6 +7,7 @@ import { PHONE, WHATSAPP } from "./constants";
 import { HOMEPAGE_FAQS, FAQ_REASSURANCE } from "./faq-data";
 import { FaqAccordionItem } from "@/components/pages/FaqAccordion";
 import { Reveal, StaggerReveal } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function FAQ() {
@@ -76,6 +77,10 @@ export function FAQ() {
                 </a>
               </div>
             </div>
+
+            <SectionPageLink href="/faqs" className="mt-6">
+              See all FAQs
+            </SectionPageLink>
           </Reveal>
 
           <Reveal variant="fadeUp" delay={0.12}>

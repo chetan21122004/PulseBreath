@@ -8,11 +8,12 @@ import { BackgroundBlob } from "./BackgroundBlob";
 import {
   DR_DEEPALI_JOURNEY_BG,
 } from "./dr-deepali-assets";
-import { DrDeepaliVideo } from "./DrDeepaliVideo";
+import { DrDeepaliAutoplayVideo } from "./DrDeepaliAutoplayVideo";
 import { JOURNEY_SAFETY_FALLBACK_IMAGE, JOURNEY_SAFETY_VIDEO } from "./constants";
 import { SectionIllustration } from "./SectionIllustration";
 import { ILLUSTRATIONS } from "./visual-assets";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
+import { SectionPageLink } from "./SectionPageLink";
 
 const safetyPoints: { icon: LucideIcon; text: string }[] = [
   {
@@ -245,12 +246,12 @@ function Chevrons({ delay = 0 }: { delay?: number }) {
 
 function SafetyMedia() {
   return (
-    <DrDeepaliVideo
+    <DrDeepaliAutoplayVideo
       src={JOURNEY_SAFETY_VIDEO}
       poster={JOURNEY_SAFETY_FALLBACK_IMAGE}
       alt="Dr. Deepali Shah supervising a live rehabilitation session"
-      videoClassName="aspect-[4/3] h-full w-full object-cover object-[center_35%]"
-      preload="metadata"
+      className="rounded-2xl"
+      videoClassName="aspect-[4/3] h-full w-full object-[center_35%]"
     />
   );
 }
@@ -298,6 +299,9 @@ export function Journey() {
               Whether you are recovering after surgery or rebuilding strength in later life, every step
               is guided.
             </p>
+            <SectionPageLink href="/how-it-works" className="mt-5 justify-center lg:justify-start">
+              See the full process
+            </SectionPageLink>
           </Reveal>
           <SectionIllustration
             src={ILLUSTRATIONS.elderlyAmico}

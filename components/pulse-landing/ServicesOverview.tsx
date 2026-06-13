@@ -27,6 +27,7 @@ import {
 import { BackgroundBlob } from "./BackgroundBlob";
 import { Reveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
+import { SectionPageLink } from "./SectionPageLink";
 import { ILLUSTRATIONS } from "./visual-assets";
 
 type Program = (typeof programCategories)[number]["programs"][number];
@@ -592,6 +593,9 @@ export function ServicesOverview() {
               Specialist rehabilitation pathways for heart, lung, and metabolic health - designed
               with clinical precision, personalized to your goals, and supervised throughout.
             </p>
+            <SectionPageLink href="/services" className="mt-5">
+              Browse full catalogue
+            </SectionPageLink>
           </Reveal>
 
           <SectionIllustration
@@ -630,11 +634,14 @@ export function ServicesOverview() {
         <StackedCategoryCards />
 
         <Reveal variant="fadeUp" delay={0.1}>
-          <div className="relative z-10 mt-5 rounded-2xl border border-navy/10 bg-white/90 px-6 py-5 text-center sm:text-left lg:mt-5">
+          <div className="relative z-10 mt-5 flex flex-col gap-4 rounded-2xl border border-navy/10 bg-white/90 px-6 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left lg:mt-5">
             <p className="font-sans-brand text-sm text-navy/75">
               Unsure which service applies to you? Dr. Deepali will guide you during your free
               assessment - no obligation to enrol.
             </p>
+            <SectionPageLink href="/contact" className="shrink-0 justify-center sm:justify-start">
+              Book free assessment
+            </SectionPageLink>
           </div>
         </Reveal>
       </div>

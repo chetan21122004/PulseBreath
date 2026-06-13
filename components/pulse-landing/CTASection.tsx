@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "./constants";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
+import { SectionPageLink } from "./SectionPageLink";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { ILLUSTRATIONS } from "./visual-assets";
 
@@ -33,6 +34,9 @@ export function CTASection() {
                 <Phone className="mr-2 h-4 w-4" /> Call {PHONE}
               </a>
             </div>
+            <SectionPageLink href="/contact" className="mt-5">
+              View contact details
+            </SectionPageLink>
           </StaggerItem>
           <StaggerItem>
             <p className="mt-6 border-l-2 border-brand pl-4 italic text-navy/80">

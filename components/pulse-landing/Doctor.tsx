@@ -1,11 +1,10 @@
 'use client';
 
-import Link from "next/link";
-import { ArrowRight, Award, BadgeCheck } from "lucide-react";
+import { Award, BadgeCheck } from "lucide-react";
 import { DOCTOR_CREDENTIALS, DOCTOR_HIGHLIGHTS, DOCTOR_OVERVIEW_BRIEF } from "./doctor-content";
 import { DR_DEEPALI_ABOUT_PORTRAIT } from "./dr-deepali-assets";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
-export function Doctor() {
+import { SectionPageLink } from "./SectionPageLink";export function Doctor() {
   return (
     <section
       id="about"
@@ -124,15 +123,10 @@ export function Doctor() {
               <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-[var(--body-text)] sm:text-[16px]">
                 {DOCTOR_OVERVIEW_BRIEF}
               </p>
-              <Link
-                href="/about"
-                className="group mt-4 inline-flex items-center gap-1.5 font-sans-brand text-sm font-semibold text-brand transition-colors hover:text-[var(--brand-pink-deep)]"
-              >
+              <SectionPageLink href="/about" className="mt-4">
                 Read full profile
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
+              </SectionPageLink>
             </StaggerItem>
-
             <StaggerItem>
               <ul className="mt-6 space-y-2.5">
                 {DOCTOR_HIGHLIGHTS.map((item) => (
