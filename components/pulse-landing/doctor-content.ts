@@ -102,8 +102,7 @@ export const DOCTOR_HIGHLIGHTS = [
 ];
 
 export const DOCTOR_OVERVIEW =
-  "PulseBreath was founded by Dr. Deepali Shah, a cardiopulmonary physiotherapist with extensive experience in cardiac and pulmonary rehabilitation, clinical training, and evidence-based patient care. Through years of working with individuals across different stages of recovery and chronic disease management, she recognized the need for rehabilitation that goes beyond treatment and focuses on restoring confidence, independence, and quality of life. Today, PulseBreath reflects that vision - delivering personalized rehabilitation programs that are scientifically grounded, closely supervised, and designed to help patients breathe better, move better, and live better.";
-
+"PulseBreath was founded by Dr. Deepali Shah, a cardiopulmonary physiotherapist with extensive experience in cardiac and pulmonary rehabilitation, clinical training, and evidence-based patient care. Through years of working with individuals across different stages of recovery and chronic disease management, she recognized the need for rehabilitation that goes beyond treatment and focuses on restoring confidence, independence, and quality of life.Today, PulseBreath reflects that vision—delivering personalized rehabilitation programs that are scientifically grounded, closely supervised, and designed to help patients breathe better, move better, and live better."
 export const DOCTOR_OVERVIEW_BRIEF =
   "Dr. Deepali Shah (PT), MPT Cardiopulmonary Sciences Gold Medalist, founded PulseBreath to deliver specialist cardiac and pulmonary rehabilitation — closely supervised, evidence-based, and tailored to each patient's recovery.";
 

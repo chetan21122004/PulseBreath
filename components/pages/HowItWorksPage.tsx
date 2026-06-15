@@ -1,20 +1,15 @@
 'use client';
 
 import Link from "next/link";
-import { ArrowRight, User, Stethoscope } from "lucide-react";
+import { ArrowRight, Stethoscope, User } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import {
   JOURNEY_STEPS,
-  JOURNEY_SAFETY_POINTS,
-  JOURNEY_SAFETY_EXTRA,
   JOURNEY_TELE_REHAB,
 } from "@/components/pulse-landing/journey-content";
-import { DR_DEEPALI_FEATURED_VIDEO, DR_DEEPALI_PORTRAIT } from "@/components/pulse-landing/constants";
 import { DR_DEEPALI_PHOTOS } from "@/components/pulse-landing/dr-deepali-assets";
 import { DrDeepaliGallery } from "@/components/pulse-landing/DrDeepaliGallery";
-import { DrDeepaliVideo } from "@/components/pulse-landing/DrDeepaliVideo";
-import { BackgroundBlob } from "@/components/pulse-landing/BackgroundBlob";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { cn } from "@/lib/utils";
 
@@ -40,7 +35,7 @@ export function HowItWorksPage() {
         withBlob
       />
 
-      <PageSection variant="background">
+      <PageSection variant="section">
         <StaggerReveal className="space-y-20" itemVariant="fadeUp">
           {JOURNEY_STEPS.map((step, index) => (
             <StaggerItem key={step.n}>
@@ -117,56 +112,6 @@ export function HowItWorksPage() {
             </StaggerItem>
           ))}
         </StaggerReveal>
-      </PageSection>
-
-      <PageSection variant="section" className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <BackgroundBlob variant={2} cover opacity={0.1} />
-        </div>
-        <div className="relative grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal variant="fadeUp">
-            <DrDeepaliVideo
-              src={DR_DEEPALI_FEATURED_VIDEO}
-              poster={DR_DEEPALI_PORTRAIT}
-              preload="metadata"
-              className="border-2 border-white/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.35)]"
-            />
-          </Reveal>
-          <Reveal variant="fadeUp" delay={0.1}>
-            <span className="pill">Safety First</span>
-            <h2 className="heading-display mt-4 text-2xl sm:text-3xl">
-              Is it safe to exercise with{" "}
-              <span className="italic text-brand">my condition?</span>
-            </h2>
-            <div className="mt-5 rounded-xl bg-white/88 px-4 py-4 ring-1 ring-border/60">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                A common concern
-              </p>
-              <p className="mt-2 font-display text-lg font-semibold text-navy">
-                &ldquo;Will exercising put my heart or lungs at risk?&rdquo;
-              </p>
-            </div>
-            <StaggerReveal className="mt-6 space-y-3" itemVariant="fadeUp">
-              {JOURNEY_SAFETY_POINTS.map(({ icon: Icon, text }) => (
-                <StaggerItem key={text}>
-                  <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-background p-4">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--primary-soft)]">
-                      <Icon className="h-4 w-4 text-brand" strokeWidth={2.25} />
-                    </span>
-                    <span className="pt-1.5 text-sm font-medium leading-relaxed text-navy">{text}</span>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerReveal>
-            <div className="mt-6 space-y-3">
-              {JOURNEY_SAFETY_EXTRA.map((para) => (
-                <p key={para.slice(0, 40)} className="text-sm leading-relaxed text-[var(--body-text)]">
-                  {para}
-                </p>
-              ))}
-            </div>
-          </Reveal>
-        </div>
       </PageSection>
 
       <PageSection variant="background">

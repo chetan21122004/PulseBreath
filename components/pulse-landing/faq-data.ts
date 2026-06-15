@@ -114,6 +114,54 @@ export const FAQS: FaqItem[] = [
     q: "What happens in the free assessment?",
     a: "Dr. Deepali will ask about your diagnosis, current symptoms, medications, and daily activity level. She will explain what supervised rehabilitation could look like for your condition, answer your questions, and recommend a program if appropriate. The call is completely free with no obligation to enrol.",
   },
+  {
+    id: "who-is-dr-deepali",
+    category: "general",
+    q: "Who is Dr. Deepali Shah?",
+    a: "Dr. Deepali Shah (PT) is a cardiopulmonary physiotherapist and founder of PulseBreath. She is an MPT Gold Medalist in Cardiopulmonary Sciences, former faculty with Cipla's Pulmonary Rehabilitation Program, and former lead physiotherapist at India's first cardiac medical gym. She specialises exclusively in cardiac and pulmonary rehabilitation.",
+  },
+  {
+    id: "referral-needed",
+    category: "general",
+    q: "Do I need a doctor's referral before joining?",
+    a: "A formal referral is not required to book your free assessment. However, Dr. Deepali strongly recommends that you consult your cardiologist or pulmonologist before starting any rehabilitation program — and she is happy to coordinate with your treating doctor if needed.",
+  },
+  {
+    id: "doctor-coordination",
+    category: "safety",
+    q: "Will Dr. Deepali coordinate with my cardiologist or pulmonologist?",
+    a: "Yes. Dr. Deepali works alongside your treating specialists, not in place of them. She can share progress updates and exercise parameters with your doctor when you request it, ensuring your rehabilitation plan aligns with your medical treatment.",
+  },
+  {
+    id: "multiple-conditions",
+    category: "safety",
+    q: "Can I join if I have more than one condition?",
+    a: "Many patients have overlapping cardiac and pulmonary conditions. During your free assessment, Dr. Deepali will review your full medical history and design a program that accounts for all active diagnoses — adjusting intensity, monitoring, and progression accordingly.",
+  },
+  {
+    id: "one-on-one-or-group",
+    category: "sessions",
+    q: "Are sessions one-on-one or in a group?",
+    a: "Both formats are available. Small group sessions (typically 5–8 patients grouped by condition) offer focused supervision with peer support. One-on-one sessions are recommended when your goals or medical complexity need closer individual attention. Dr. Deepali will recommend the right format during your assessment.",
+  },
+  {
+    id: "missed-sessions",
+    category: "sessions",
+    q: "What if I miss several sessions in a row?",
+    a: "Life and health setbacks happen. Message Dr. Deepali on WhatsApp as soon as you can — she will help you reschedule and may adjust your program intensity when you return. Consistency matters, but the plan is designed to be flexible around genuine interruptions.",
+  },
+  {
+    id: "really-free",
+    category: "cost",
+    q: "Is the free assessment really free with no hidden fees?",
+    a: "Yes. The initial assessment call with Dr. Deepali is completely free. There is no signup fee, no credit card required, and no obligation to enrol in a program afterward. Program pricing is discussed openly only if a rehabilitation plan is recommended and you choose to proceed.",
+  },
+  {
+    id: "pause-extend",
+    category: "cost",
+    q: "Can I pause or extend my program if needed?",
+    a: "Yes. If you need to pause due to travel, illness, or personal circumstances, Dr. Deepali will work with you to adjust your schedule. Programs can also be extended when your recovery goals require more time — discussed transparently during your rehabilitation journey.",
+  },
 ];
 
 /** Homepage shows the original 8 FAQs */

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { DR_DEEPALI_PORTRAIT } from "./dr-deepali-assets";
@@ -13,6 +13,7 @@ type DrDeepaliVideoProps = {
   videoClassName?: string;
   preload?: "none" | "metadata" | "auto";
   caption?: string;
+  maxDurationSeconds?: number;
 };
 
 export function DrDeepaliVideo({
@@ -23,9 +24,38 @@ export function DrDeepaliVideo({
   videoClassName,
   preload = "metadata",
   caption,
+  maxDurationSeconds,
 }: DrDeepaliVideoProps) {
   const reduceMotion = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    if (reduceMotion || failed || !maxDurationSeconds) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onTimeUpdate = () => {
+      if (video.currentTime >= maxDurationSeconds) {
+        video.currentTime = 0;
+      }
+    };
+
+    const onSeeked = () => {
+      if (video.currentTime > maxDurationSeconds) {
+        video.currentTime = maxDurationSeconds;
+      }
+    };
+
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("seeked", onSeeked);
+
+    return () => {
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("seeked", onSeeked);
+    };
+  }, [reduceMotion, failed, maxDurationSeconds, src]);
 
   if (reduceMotion || failed) {
     return (
@@ -45,6 +75,7 @@ export function DrDeepaliVideo({
   return (
     <figure className={cn("overflow-hidden rounded-2xl", className)}>
       <video
+        ref={videoRef}
         src={src}
         poster={poster}
         controls

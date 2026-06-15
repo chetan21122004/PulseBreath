@@ -12,7 +12,6 @@ import {
   type FaqCategory,
 } from "@/components/pulse-landing/faq-data";
 import { PHONE, WHATSAPP } from "@/components/pulse-landing/constants";
-import { BackgroundBlob } from "@/components/pulse-landing/BackgroundBlob";
 import { Reveal } from "@/components/pulse-landing/motion";
 import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 import { cn } from "@/lib/utils";
@@ -34,22 +33,10 @@ export function FaqsPage() {
         }
         description="Clear answers about cost, safety, family involvement, and how supervised tele-rehab works with PulseBreath."
       >
-        <ul className="mt-8 space-y-3">
-          {FAQ_REASSURANCE.map((point) => (
-            <li key={point} className="flex items-start gap-3 text-sm text-navy/85">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-              {point}
-            </li>
-          ))}
-        </ul>
       </PageHero>
 
-      <PageSection variant="section" className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
-          <BackgroundBlob variant={1} cover opacity={0.08} />
-        </div>
-
-        <div className="relative z-10 grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:gap-14">
+      <PageSection variant="section">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:gap-14">
           <Reveal variant="fadeUp" className="lg:sticky lg:top-[calc(var(--header-height)+2rem)] lg:self-start">
             <p className="section-label mb-4">Browse by topic</p>
             <div className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">

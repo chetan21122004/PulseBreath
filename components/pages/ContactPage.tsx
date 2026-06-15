@@ -4,10 +4,7 @@ import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { CONTACT_FLOW } from "@/components/pulse-landing/journey-content";
 import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "@/components/pulse-landing/constants";
-import { SectionIllustration } from "@/components/pulse-landing/SectionIllustration";
-import { ILLUSTRATIONS } from "@/components/pulse-landing/visual-assets";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
-import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 
 const contactMethods = [
   {
@@ -73,11 +70,10 @@ export function ContactPage() {
             const Icon = method.icon;
             const content = (
               <div
-                className={`motion-card h-full rounded-xl border p-6 ${
-                  method.primary
+                className={`motion-card h-full rounded-xl border p-6 ${method.primary
                     ? "border-brand/30 bg-[var(--primary-soft)]/30"
                     : "border-border/80 bg-white/90"
-                }`}
+                  }`}
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-background ring-1 ring-border/80">
                   <Icon className="h-5 w-5 text-brand" strokeWidth={2.25} />
@@ -139,45 +135,6 @@ export function ContactPage() {
             </StaggerItem>
           ))}
         </StaggerReveal>
-      </PageSection>
-
-      <PageSection variant="section">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Reveal variant="fadeUp">
-            <blockquote className="border-l-2 border-brand pl-5 font-display text-xl italic text-navy sm:text-2xl">
-              &ldquo;We will never recommend a program that isn&apos;t right for you.&rdquo;
-            </blockquote>
-            <p className="mt-6 text-[var(--body-text)]">
-              Whether you join a program or not, the free assessment is designed to give you clarity
-              — about your condition, your options, and what supervised rehabilitation could mean
-              for your daily life.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp motion-btn">
-                <WhatsAppIcon className="h-5 w-5" /> Book on WhatsApp
-              </a>
-              <a href={`tel:${PHONE}`} className="btn-secondary motion-btn">
-                <Phone className="mr-2 h-4 w-4" /> Call {PHONE}
-              </a>
-            </div>
-          </Reveal>
-          <Reveal variant="fadeLeft">
-            <div className="relative p-6 sm:p-10">
-              <div className="absolute inset-0 m-auto h-[88%] w-[88%] rounded-3xl bg-soft" aria-hidden />
-              <div className="motion-card relative overflow-hidden rounded-2xl border border-white/70 bg-white/60 p-8 shadow-[0_24px_64px_-24px_rgba(30,46,61,0.25)] backdrop-blur-sm sm:p-10">
-                <SectionIllustration
-                  src={ILLUSTRATIONS.onlineDoctor}
-                  alt="Book a virtual consultation with a specialist"
-                  className="mx-auto max-w-sm"
-                  animateOnScroll={false}
-                />
-                <p className="mt-6 text-center font-sans-brand text-sm font-medium text-navy/75">
-                  Book your free virtual assessment — from anywhere in India.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
       </PageSection>
 
       <PageSection variant="background" className="border-t border-border/60 py-10">

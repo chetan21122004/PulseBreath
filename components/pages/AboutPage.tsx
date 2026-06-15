@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Award, BadgeCheck, Sparkles } from "lucide-react";
+import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import {
   DOCTOR_CREDENTIALS,
@@ -10,6 +11,7 @@ import {
   DOCTOR_OVERVIEW,
 } from "@/components/pulse-landing/doctor-content";
 import {
+  DR_DEEPALI_ABOUT_PORTRAIT,
   DR_DEEPALI_FEATURED_VIDEO,
   DR_DEEPALI_GALLERY_PHOTOS,
   DR_DEEPALI_PORTRAIT,
@@ -63,39 +65,6 @@ const hoverLiftSubtle = {
   y: -3,
   transition: { duration: 0.3, ease: EASE_SMOOTH },
 };
-
-/* ─────────────────── floating blob (CSS keyframe in motion) ─────────────────── */
-
-function FloatingBlob({
-  className,
-  delay = 0,
-}: {
-  className?: string;
-  delay?: number;
-}) {
-  const reduceMotion = useReducedMotion();
-  return (
-    <motion.div
-      className={className}
-      aria-hidden
-      initial={{ x: 0, y: 0 }}
-      animate={
-        reduceMotion
-          ? {}
-          : {
-              x: [0, 30, -20, 10, 0],
-              y: [0, -25, 15, -10, 0],
-            }
-      }
-      transition={{
-        duration: 22,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
-    />
-  );
-}
 
 /* ─────────────────── counter component ─────────────────── */
 
@@ -173,72 +142,20 @@ export function AboutPage() {
 
   return (
     <>
-      {/* ── Hero ────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-border/60 bg-background pt-10 pb-14 lg:pt-14 lg:pb-20">
-        {/* Animated background blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          <FloatingBlob
-            className="absolute -left-32 -top-20 h-[420px] w-[420px] rounded-full bg-[var(--brand-teal)]/[0.06] blur-[80px]"
-            delay={0}
-          />
-          <FloatingBlob
-            className="absolute -right-24 top-1/3 h-[350px] w-[350px] rounded-full bg-[var(--brand-pink)]/[0.05] blur-[90px]"
-            delay={4}
-          />
-          <FloatingBlob
-            className="absolute bottom-0 left-1/3 h-[300px] w-[300px] rounded-full bg-[var(--brand-gold)]/[0.04] blur-[70px]"
-            delay={8}
-          />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-          <motion.div
-            initial={reduceMotion ? {} : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.1 }}
-          >
-            <span className="pill">About Dr. Deepali</span>
-            <h1 className="heading-display mt-5 max-w-4xl text-[2rem] sm:text-4xl lg:text-[2.75rem]">
-              The specialist behind{" "}
-              <span className="font-display italic text-brand">PulseBreath.</span>
-            </h1>
-            <motion.p
-              className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--body-text)] sm:text-lg"
-              initial={reduceMotion ? {} : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-            >
-              Expert care, compassionate touch — supervised cardiopulmonary rehabilitation across India.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        pill="About Dr. Deepali"
+        title={
+          <>
+            The specialist behind{" "}
+            <span className="font-display italic text-brand">PulseBreath.</span>
+          </>
+        }
+        description="Expert care, compassionate touch — supervised cardiopulmonary rehabilitation across India."
+      />
 
       {/* ── Doctor Profile ──────────────────────── */}
-      <PageSection variant="section" className="relative overflow-hidden">
-        {/* Animated floating blobs for this section */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <FloatingBlob
-            className="absolute -left-16 top-[10%] h-[280px] w-[280px] rounded-full bg-[var(--brand-teal)]/[0.05] blur-[70px]"
-            delay={2}
-          />
-          <FloatingBlob
-            className="absolute -right-20 bottom-[15%] h-[320px] w-[320px] rounded-full bg-[var(--brand-pink)]/[0.04] blur-[80px]"
-            delay={6}
-          />
-        </div>
-
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(50% 40% at 8% 15%, rgba(46,139,139,0.06), transparent 60%), radial-gradient(45% 38% at 92% 85%, rgba(176,64,96,0.05), transparent 65%)",
-            }}
-          />
-        </div>
-
-        <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
+      <PageSection variant="section">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
           <Reveal variant="fadeRight" className="lg:col-span-5">
             <motion.div
               className="relative mx-auto max-w-[min(100%,320px)] lg:mx-0 lg:max-w-none"
@@ -280,7 +197,7 @@ export function AboutPage() {
 
                 <div className="relative overflow-hidden bg-[var(--brand-deeper)]/5">
                   <img
-                    src={DR_DEEPALI_PORTRAIT}
+                    src={DR_DEEPALI_ABOUT_PORTRAIT}
                     alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
@@ -378,162 +295,125 @@ export function AboutPage() {
       </PageSection>
 
       {/* ── Dr. Deepali in Action (Enhanced) ──── */}
-      <section className="relative overflow-hidden bg-background py-14 lg:py-20">
-        {/* Animated background blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <FloatingBlob
-            className="absolute -left-28 top-[20%] h-[380px] w-[380px] rounded-full bg-[var(--brand-pink)]/[0.05] blur-[90px]"
-            delay={1}
-          />
-          <FloatingBlob
-            className="absolute -right-16 top-[10%] h-[300px] w-[300px] rounded-full bg-[var(--brand-teal)]/[0.06] blur-[80px]"
-            delay={5}
-          />
-          <FloatingBlob
-            className="absolute bottom-[5%] left-1/2 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-[var(--brand-gold)]/[0.04] blur-[70px]"
-            delay={9}
-          />
-        </div>
+      <PageSection variant="background">
+        <motion.div
+          variants={sectionFadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="text-center"
+        >
+          <motion.span
+            className="section-label inline-flex items-center gap-2"
+            initial={reduceMotion ? {} : { opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH }}
+          >
+            <Sparkles className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
+            In practice
+          </motion.span>
 
-        {/* Decorative top border gradient */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--brand-pink)]/30 to-transparent"
-        />
+          <h2 className="heading-display mt-4 text-3xl sm:text-4xl">
+            Dr. Deepali <span className="italic text-brand">in action</span>
+          </h2>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-          {/* Section header with enhanced styling */}
+          <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
+            Supervised rehabilitation sessions — live guidance, real patients, clinical rigour.
+          </p>
+
+          <motion.div
+            className="mx-auto mt-6 h-[2px] w-16 rounded-full bg-gradient-to-r from-[var(--brand-teal)] to-[var(--brand-pink)]"
+            initial={reduceMotion ? {} : { scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.3 }}
+          />
+        </motion.div>
+
+        <motion.div
+          className="mx-auto mt-10 flex max-w-xl flex-wrap items-center justify-center gap-6 sm:gap-10"
+          variants={sectionFadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {[
+            { num: 500, suffix: "+", label: "Patients Treated" },
+            { num: 8, suffix: "+", label: "Years Experience" },
+            { num: 100, suffix: "%", label: "Supervised Sessions" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center text-center">
+              <span className="font-display text-2xl font-bold text-brand sm:text-3xl">
+                <CountUp target={stat.num} suffix={stat.suffix} />
+              </span>
+              <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div
             variants={sectionFadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="text-center"
+            viewport={{ once: true, amount: 0.15 }}
+            whileHover={reduceMotion ? {} : hoverLiftSubtle}
+            className="group relative"
           >
-            <motion.span
-              className="section-label inline-flex items-center gap-2"
-              initial={reduceMotion ? {} : { opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: EASE_SMOOTH }}
-            >
-              <Sparkles className="h-3.5 w-3.5 text-brand" strokeWidth={2} />
-              In practice
-            </motion.span>
-
-            <h2 className="heading-display mt-4 text-3xl sm:text-4xl">
-              Dr. Deepali <span className="italic text-brand">in action</span>
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
-              Supervised rehabilitation sessions — live guidance, real patients, clinical rigour.
-            </p>
-
-            {/* Decorative line under heading */}
-            <motion.div
-              className="mx-auto mt-6 h-[2px] w-16 rounded-full bg-gradient-to-r from-[var(--brand-teal)] to-[var(--brand-pink)]"
-              initial={reduceMotion ? {} : { scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.3 }}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-3 z-0 rounded-3xl bg-gradient-to-br from-[var(--brand-teal)]/8 to-[var(--brand-pink)]/6 opacity-0 blur-xl transition-opacity duration-700 group-hover:opacity-100"
             />
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div
-            className="mx-auto mt-10 flex max-w-xl flex-wrap items-center justify-center gap-6 sm:gap-10"
-            variants={sectionFadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {[
-              { num: 500, suffix: "+", label: "Patients Treated" },
-              { num: 8, suffix: "+", label: "Years Experience" },
-              { num: 100, suffix: "%", label: "Supervised Sessions" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center">
-                <span className="font-display text-2xl font-bold text-brand sm:text-3xl">
-                  <CountUp target={stat.num} suffix={stat.suffix} />
-                </span>
-                <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.1em] text-muted-foreground">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Video + Gallery grid */}
-          <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
-            {/* Video card with enhanced container */}
-            <motion.div
-              variants={sectionFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-              whileHover={reduceMotion ? {} : hoverLiftSubtle}
-              className="group relative"
-            >
-              {/* Decorative glow behind video */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -inset-3 z-0 rounded-3xl bg-gradient-to-br from-[var(--brand-teal)]/8 to-[var(--brand-pink)]/6 opacity-0 blur-xl transition-opacity duration-700 group-hover:opacity-100"
+            <div className="relative z-[1]">
+              <DrDeepaliVideo
+                src={DR_DEEPALI_FEATURED_VIDEO}
+                poster={DR_DEEPALI_PORTRAIT}
+                preload="metadata"
+                maxDurationSeconds={6}
+                caption="Live supervised session with Dr. Deepali Shah"
+                className="border border-border/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.28)]"
               />
-              <div className="relative z-[1]">
-                <DrDeepaliVideo
-                  src={DR_DEEPALI_FEATURED_VIDEO}
-                  poster={DR_DEEPALI_PORTRAIT}
-                  preload="metadata"
-                  caption="Live supervised session with Dr. Deepali Shah"
-                  className="border border-border/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.28)]"
-                />
-              </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Gallery with fade-in */}
-            <motion.div
-              variants={sectionFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ delay: 0.15 }}
-            >
-              <DrDeepaliGallery photos={DR_DEEPALI_GALLERY_PHOTOS} />
-            </motion.div>
-          </div>
-
-          {/* Bottom quote accent */}
           <motion.div
-            className="mt-12 flex items-center justify-center"
             variants={sectionFadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ delay: 0.15 }}
           >
-            <blockquote className="relative max-w-xl text-center">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-4 -top-2 font-display text-5xl leading-none text-brand/15 select-none"
-              >
-                &ldquo;
-              </div>
-              <p className="font-display text-[clamp(1rem,2vw,1.2rem)] italic leading-relaxed text-navy/90">
-                Healing is not only about lung function, heart rate, or stamina. It is also about
-                feeling heard, supported, and capable again.
-              </p>
-              <footer className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground">
-                — Dr. Deepali Shah
-              </footer>
-            </blockquote>
+            <DrDeepaliGallery photos={DR_DEEPALI_GALLERY_PHOTOS} />
           </motion.div>
         </div>
 
-        {/* Decorative bottom border gradient */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--brand-teal)]/25 to-transparent"
-        />
-      </section>
+        <motion.div
+          className="mt-12 flex items-center justify-center"
+          variants={sectionFadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <blockquote className="relative max-w-xl text-center">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -left-4 -top-2 font-display text-5xl leading-none text-brand/15 select-none"
+            >
+              &ldquo;
+            </div>
+            <p className="font-display text-[clamp(1rem,2vw,1.2rem)] italic leading-relaxed text-navy/90">
+              Healing is not only about lung function, heart rate, or stamina. It is also about
+              feeling heard, supported, and capable again.
+            </p>
+            <footer className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground">
+              — Dr. Deepali Shah
+            </footer>
+          </blockquote>
+        </motion.div>
+      </PageSection>
     </>
   );
 }

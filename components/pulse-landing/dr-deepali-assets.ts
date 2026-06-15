@@ -1,10 +1,10 @@
 const BASE = "/assets/dr_deepali";
 
 export const DR_DEEPALI_PHOTOS = [
-  `${BASE}/dr-deepali-01.jpeg`,
-  `${BASE}/dr-deepali-02.jpeg`,
-  `${BASE}/dr-deepali-03.jpeg`,
-  `${BASE}/dr-deepali-04.jpeg`,
+  `${BASE}/dr-deepali-01.webp`,
+  `${BASE}/dr-deepali-02.webp`,
+  `${BASE}/dr-deepali-03.webp`,
+  `${BASE}/dr-deepali-04.webp`,
 ] as const;
 
 export const DR_DEEPALI_VIDEOS = [

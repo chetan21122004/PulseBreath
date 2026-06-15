@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Check, Clock, Shield } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
@@ -42,6 +43,8 @@ export function ServiceProgramPage({
   programSlug: string;
 }) {
   const result = getProgramBySlugs(catSlug, programSlug);
+  const reduceMotion = useReducedMotion();
+  
   if (!result) return null;
 
   const { category, program } = result;
@@ -50,7 +53,12 @@ export function ServiceProgramPage({
 
   return (
     <>
-      <PageHero pill={category.tag} title={program.t} description={program.intro}>
+      <PageHero
+        pill={category.tag}
+        title={program.t}
+        description={program.intro}
+        animateOnLoad={true}
+      >
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <span
             className={cn(
@@ -95,9 +103,11 @@ export function ServiceProgramPage({
           </Reveal>
 
           <Reveal variant="fadeUp" delay={0.08} className="lg:col-span-2">
-            <div
+            <motion.div
+              whileHover={reduceMotion ? {} : { y: -4, boxShadow: "0 12px 30px -10px rgba(30,46,61,0.12)" }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "rounded-xl border border-border/80 border-l-4 bg-white/90 p-5 sm:p-6",
+                "rounded-xl border border-border/80 border-l-4 bg-white/90 p-5 sm:p-6 transition-all duration-300",
                 styles.border,
               )}
             >
@@ -112,56 +122,81 @@ export function ServiceProgramPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </Reveal>
         </div>
       </PageSection>
 
       <PageSection variant="background">
-        <StaggerReveal className="grid gap-4 sm:grid-cols-3" itemVariant="fadeUp">
-          <StaggerItem>
-            <div className="rounded-xl border border-border/70 bg-white/80 p-5">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Clock className={cn("h-4 w-4", styles.accent)} strokeWidth={2.25} />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Duration</span>
-              </div>
-              <p className="mt-2 text-sm font-medium leading-relaxed text-navy">{program.dur}</p>
+        <StaggerReveal className="grid gap-4 sm:grid-cols-3" itemVariant="scaleIn">
+          <StaggerItem
+            whileHover={reduceMotion ? {} : { y: -4, boxShadow: "0 12px 30px -10px rgba(30,46,61,0.12)" }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-border/70 bg-white/80 p-5 cursor-default transition-all duration-300"
+          >
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Clock className={cn("h-4 w-4", styles.accent)} strokeWidth={2.25} />
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Duration</span>
             </div>
+            <p className="mt-2 text-sm font-medium leading-relaxed text-navy">{program.dur}</p>
           </StaggerItem>
-          <StaggerItem>
-            <div className="rounded-xl border border-border/70 bg-white/80 p-5">
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                First session
-              </span>
-              <p className="mt-2 text-sm leading-relaxed text-navy/85">{program.firstSession}</p>
-            </div>
+          
+          <StaggerItem
+            whileHover={reduceMotion ? {} : { y: -4, boxShadow: "0 12px 30px -10px rgba(30,46,61,0.12)" }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-border/70 bg-white/80 p-5 cursor-default transition-all duration-300"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+              First session
+            </span>
+            <p className="mt-2 text-sm leading-relaxed text-navy/85">{program.firstSession}</p>
           </StaggerItem>
-          <StaggerItem>
-            <div className="rounded-xl border border-border/70 bg-white/80 p-5">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Shield className={cn("h-4 w-4", styles.accent)} strokeWidth={2.25} />
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Safety</span>
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-navy/85">{program.safetyNotes[0]}</p>
+          
+          <StaggerItem
+            whileHover={reduceMotion ? {} : { y: -4, boxShadow: "0 12px 30px -10px rgba(30,46,61,0.12)" }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-border/70 bg-white/80 p-5 cursor-default transition-all duration-300"
+          >
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Shield className={cn("h-4 w-4", styles.accent)} strokeWidth={2.25} />
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Safety</span>
             </div>
+            <p className="mt-2 text-sm leading-relaxed text-navy/85">{program.safetyNotes[0]}</p>
           </StaggerItem>
         </StaggerReveal>
       </PageSection>
 
       <PageSection variant="section">
-        <div className="rounded-2xl border border-border/70 bg-background/80 p-6 text-center sm:p-10">
-          <p className="text-[var(--body-text)]">
-            Ready to start {program.t}? Book a free assessment — no obligation to enrol.
-          </p>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary motion-btn mt-6 inline-flex items-center gap-2"
-          >
-            Book Free Assessment
-          </a>
-        </div>
+        <Reveal variant="fadeUp" className="relative overflow-hidden rounded-2xl border border-border/70 bg-background/80 p-6 text-center sm:p-10">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[var(--brand-teal)]/[0.03] blur-[40px]"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-[var(--brand-pink)]/[0.03] blur-[40px]"
+          />
+
+          <div className="relative z-10">
+            <p className="text-[var(--body-text)]">
+              Ready to start {program.t}? Book a free assessment — no obligation to enrol.
+            </p>
+            <motion.div
+              className="mt-6 inline-block"
+              whileHover={reduceMotion ? {} : { y: -2, scale: 1.02, transition: { duration: 0.25 } }}
+              whileTap={reduceMotion ? {} : { scale: 0.98 }}
+            >
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary motion-btn inline-flex items-center gap-2"
+              >
+                Book Free Assessment
+              </a>
+            </motion.div>
+          </div>
+        </Reveal>
       </PageSection>
     </>
   );

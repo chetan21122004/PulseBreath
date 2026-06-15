@@ -9,7 +9,6 @@ import {
   getAllPosts,
   type BlogPost,
 } from "@/components/pulse-landing/blog-data";
-import { BackgroundBlob } from "@/components/pulse-landing/BackgroundBlob";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { SectionPageLink } from "@/components/pulse-landing/SectionPageLink";
 
@@ -29,42 +28,36 @@ export function BlogsPage() {
         description={BLOG_OVERVIEW}
       />
 
-      <PageSection variant="section" className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
-          <BackgroundBlob variant={2} cover opacity={0.08} />
-        </div>
+      <PageSection variant="section">
+        <Reveal variant="fadeUp">
+          <p className="section-label mb-2">Latest articles</p>
+          <p className="max-w-2xl font-sans-brand text-[15px] leading-relaxed text-navy/80">
+            Practical guidance on cardiac and pulmonary recovery, breathlessness, and supervised
+            tele-rehabilitation — grounded in clinical practice, not trends.
+          </p>
+        </Reveal>
 
-        <div className="relative z-10">
-          <Reveal variant="fadeUp">
-            <p className="section-label mb-2">Latest articles</p>
-            <p className="max-w-2xl font-sans-brand text-[15px] leading-relaxed text-navy/80">
-              Practical guidance on cardiac and pulmonary recovery, breathlessness, and supervised
-              tele-rehabilitation — grounded in clinical practice, not trends.
-            </p>
-          </Reveal>
+        <StaggerReveal
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          itemVariant="fadeUp"
+          amount={0.1}
+        >
+          {posts.map((post) => (
+            <StaggerItem key={post.slug} className="h-full">
+              <BlogCard post={post} />
+            </StaggerItem>
+          ))}
+        </StaggerReveal>
 
-          <StaggerReveal
-            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            itemVariant="fadeUp"
-            amount={0.1}
-          >
-            {posts.map((post) => (
-              <StaggerItem key={post.slug} className="h-full">
-                <BlogCard post={post} />
-              </StaggerItem>
-            ))}
-          </StaggerReveal>
-
-          <Reveal variant="fadeUp" className="mt-12 rounded-2xl border border-border/80 bg-background/90 px-6 py-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
-            <p className="font-sans-brand text-sm leading-relaxed text-navy/80">
-              Want personalised guidance for your condition? Dr. Deepali offers a free assessment —
-              no obligation.
-            </p>
-            <SectionPageLink href="/contact" className="mt-4 shrink-0 sm:mt-0">
-              Book free assessment
-            </SectionPageLink>
-          </Reveal>
-        </div>
+        <Reveal variant="fadeUp" className="mt-12 rounded-2xl border border-border/80 bg-background/90 px-6 py-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
+          <p className="font-sans-brand text-sm leading-relaxed text-navy/80">
+            Want personalised guidance for your condition? Dr. Deepali offers a free assessment —
+            no obligation.
+          </p>
+          <SectionPageLink href="/contact" className="mt-4 shrink-0 sm:mt-0">
+            Book free assessment
+          </SectionPageLink>
+        </Reveal>
       </PageSection>
     </>
   );

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Clock, ArrowRight, Sparkles } from "lucide-react";
+import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { programCategories, type ProgramCategoryTone } from "@/components/pulse-landing/conditions-data";
@@ -55,39 +56,6 @@ const hoverLiftSubtle = {
   y: -3,
   transition: { duration: 0.3, ease: EASE_SMOOTH },
 };
-
-/* ─────────────────── floating blob ─────────────────── */
-
-function FloatingBlob({
-  className,
-  delay = 0,
-}: {
-  className?: string;
-  delay?: number;
-}) {
-  const reduceMotion = useReducedMotion();
-  return (
-    <motion.div
-      className={className}
-      aria-hidden
-      initial={{ x: 0, y: 0 }}
-      animate={
-        reduceMotion
-          ? {}
-          : {
-              x: [0, 30, -20, 10, 0],
-              y: [0, -25, 15, -10, 0],
-            }
-      }
-      transition={{
-        duration: 22,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
-    />
-  );
-}
 
 /* ─────────────────── count-up component ─────────────────── */
 
@@ -270,96 +238,41 @@ export function ServicesPage() {
 
   return (
     <>
-      {/* ── Hero ────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-border/60 bg-background pt-10 pb-14 lg:pt-14 lg:pb-20">
-        {/* Animated background blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          <FloatingBlob
-            className="absolute -left-28 -top-16 h-[400px] w-[400px] rounded-full bg-[var(--brand-teal)]/[0.06] blur-[80px]"
-            delay={0}
-          />
-          <FloatingBlob
-            className="absolute -right-20 top-1/4 h-[350px] w-[350px] rounded-full bg-[var(--brand-pink)]/[0.05] blur-[90px]"
-            delay={4}
-          />
-          <FloatingBlob
-            className="absolute bottom-0 left-1/3 h-[280px] w-[280px] rounded-full bg-[var(--brand-gold)]/[0.04] blur-[70px]"
-            delay={8}
-          />
+      <PageHero
+        pill={
+          <span className="inline-flex items-center gap-2">
+            {/* <Sparkles className="h-3 w-3" strokeWidth={2} /> */}
+            Services
+          </span>
+        }
+        title={
+          <>
+            Complete Service <span className="font-display italic text-brand">Catalogue</span>
+          </>
+        }
+        description="Specialist rehabilitation pathways for heart, lung, and metabolic health — supervised throughout. Start with a free assessment with Dr. Deepali."
+      >
+        <div className="flex flex-wrap items-center gap-8 sm:gap-12 mt-10">
+          {[
+            { num: programCategories.length, suffix: "", label: "Specialisations" },
+            { num: totalPrograms, suffix: "+", label: "Programs" },
+            { num: 100, suffix: "%", label: "Supervised" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col">
+              <span className="font-display text-2xl font-bold text-brand sm:text-3xl">
+                <CountUp value={stat.num} suffix={stat.suffix} />
+              </span>
+              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-          <motion.div
-            initial={reduceMotion ? {} : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.1 }}
-          >
-            <motion.span
-              className="pill inline-flex items-center gap-2"
-              initial={reduceMotion ? {} : { opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.15 }}
-            >
-              <Sparkles className="h-3 w-3" strokeWidth={2} />
-              Services
-            </motion.span>
-            <h1 className="heading-display mt-5 max-w-4xl text-[2rem] sm:text-4xl lg:text-[2.75rem]">
-              Complete Service <span className="font-display italic text-brand">Catalogue</span>
-            </h1>
-            <motion.p
-              className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--body-text)] sm:text-lg"
-              initial={reduceMotion ? {} : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-            >
-              Specialist rehabilitation pathways for heart, lung, and metabolic health — supervised throughout.
-            </motion.p>
-          </motion.div>
-
-          {/* Hero stats strip */}
-          <motion.div
-            className="mt-8 flex flex-wrap items-center gap-8 sm:gap-12"
-            initial={reduceMotion ? {} : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.45 }}
-          >
-            {[
-              { num: programCategories.length, suffix: "", label: "Specialisations" },
-              { num: totalPrograms, suffix: "+", label: "Programs" },
-              { num: 100, suffix: "%", label: "Supervised" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col">
-                <span className="font-display text-2xl font-bold text-brand sm:text-3xl">
-                  <CountUp value={stat.num} suffix={stat.suffix} />
-                </span>
-                <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* ── Services Catalog ────────────────────── */}
-      <PageSection variant="section" className="relative overflow-hidden">
-        {/* Animated floating blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <FloatingBlob
-            className="absolute -left-20 top-[15%] h-[320px] w-[320px] rounded-full bg-[var(--brand-pink)]/[0.04] blur-[80px]"
-            delay={2}
-          />
-          <FloatingBlob
-            className="absolute -right-16 top-[60%] h-[300px] w-[300px] rounded-full bg-[var(--brand-teal)]/[0.05] blur-[75px]"
-            delay={6}
-          />
-          <FloatingBlob
-            className="absolute bottom-[10%] left-1/2 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-[var(--brand-gold)]/[0.03] blur-[65px]"
-            delay={10}
-          />
-        </div>
-
-        <div className="relative z-[1]">
+      <PageSection variant="section">
+        <div className="w-full">
           <Tabs defaultValue="Cardiac" className="w-full">
             {/* Tabs bar with fade-up */}
             <motion.div
