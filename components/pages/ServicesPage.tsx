@@ -364,7 +364,7 @@ export function ServicesPage() {
             Complete Service <span className="font-display italic text-brand">Catalogue</span>
           </>
         }
-        description="Specialist rehabilitation pathways for heart, lung, and metabolic health — supervised throughout. Start with a free assessment with Dr. Deepali."
+        description="Specialist rehabilitation pathways for heart, lung, and metabolic health - supervised throughout. Start with a free assessment with Dr. Deepali."
       >
         <div className="flex flex-wrap items-center gap-8 sm:gap-12 mt-10">
           {[
@@ -442,7 +442,7 @@ export function ServicesPage() {
               <div className="relative z-[1]">
                 <p className="text-[var(--body-text)]">
                   Unsure which service applies to you? Dr. Deepali will guide you during your free
-                  assessment — no obligation to enrol.
+                  assessment - no obligation to enrol.
                 </p>
                 <motion.div
                   className="mt-5 inline-block"

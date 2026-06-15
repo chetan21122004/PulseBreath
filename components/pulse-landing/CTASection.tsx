@@ -74,7 +74,7 @@ export function CTASection() {
                 animateOnScroll={false}
               />
               <p className="mt-6 text-center font-sans-brand text-sm font-medium text-navy/75">
-                Book your free virtual assessment — from anywhere in India.
+                Book your free virtual assessment - from anywhere in India.
               </p>
             </div>
           </div>

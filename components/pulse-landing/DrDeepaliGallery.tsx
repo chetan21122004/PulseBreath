@@ -43,7 +43,7 @@ export function DrDeepaliGallery({
             >
               <img
                 src={src}
-                alt={`${altPrefix} — photo ${index + 1}`}
+                alt={`${altPrefix} - photo ${index + 1}`}
                 loading="lazy"
                 className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -72,7 +72,7 @@ export function DrDeepaliGallery({
           <Reveal variant="scaleIn" className="max-h-[90vh] max-w-4xl">
             <img
               src={lightbox}
-              alt={`${altPrefix} — enlarged`}
+              alt={`${altPrefix} - enlarged`}
               className="max-h-[85vh] w-auto rounded-2xl object-contain shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />

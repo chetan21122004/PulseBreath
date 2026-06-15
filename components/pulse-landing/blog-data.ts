@@ -18,7 +18,7 @@ export type BlogPost = {
 };
 
 export const BLOG_OVERVIEW =
-  "Evidence-led articles on cardiac and pulmonary rehabilitation — written by Dr. Deepali Shah to help patients and families understand supervised exercise, breathlessness, and recovery at home.";
+  "Evidence-led articles on cardiac and pulmonary rehabilitation - written by Dr. Deepali Shah to help patients and families understand supervised exercise, breathlessness, and recovery at home.";
 
 export const BLOG_POSTS = [
   {
@@ -35,7 +35,7 @@ export const BLOG_POSTS = [
     blocks: [
       {
         type: "p",
-        text: "Many patients leave hospital feeling fragile — unsure whether walking, climbing stairs, or returning to daily routines is safe. That uncertainty is valid. After cardiac surgery or a major cardiac event, your heart and body need a structured, monitored return to activity — not silence, and not guesswork.",
+        text: "Many patients leave hospital feeling fragile - unsure whether walking, climbing stairs, or returning to daily routines is safe. That uncertainty is valid. After cardiac surgery or a major cardiac event, your heart and body need a structured, monitored return to activity - not silence, and not guesswork.",
       },
       {
         type: "h2",
@@ -50,7 +50,7 @@ export const BLOG_POSTS = [
         items: [
           "Paced aerobic work within your surgeon's and cardiologist's guidelines",
           "Resistance training introduced only when clinically appropriate",
-          "Early recognition of warning signs — chest discomfort, unusual breathlessness, dizziness",
+          "Early recognition of warning signs - chest discomfort, unusual breathlessness, dizziness",
           "Education for family members who support daily activity",
         ],
       },
@@ -60,11 +60,11 @@ export const BLOG_POSTS = [
       },
       {
         type: "p",
-        text: "Cardiopulmonary physiotherapists are trained to prescribe exercise for heart failure, post-surgical recovery, and arrhythmia risk — not just musculoskeletal injury. At PulseBreath, every session is live and supervised, so intensity adjusts the moment you report a symptom.",
+        text: "Cardiopulmonary physiotherapists are trained to prescribe exercise for heart failure, post-surgical recovery, and arrhythmia risk - not just musculoskeletal injury. At PulseBreath, every session is live and supervised, so intensity adjusts the moment you report a symptom.",
       },
       {
         type: "p",
-        text: "If you are recovering after bypass, angioplasty, valve replacement, or a recent cardiac diagnosis, a free assessment can clarify whether structured rehab is right for you — with no obligation to enrol.",
+        text: "If you are recovering after bypass, angioplasty, valve replacement, or a recent cardiac diagnosis, a free assessment can clarify whether structured rehab is right for you - with no obligation to enrol.",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const BLOG_POSTS = [
     blocks: [
       {
         type: "p",
-        text: "People with COPD, asthma, bronchiectasis, or interstitial lung disease are often told to \"take it easy.\" Rest has its place — but prolonged inactivity weakens breathing muscles, reduces stamina, and can worsen breathlessness over time.",
+        text: "People with COPD, asthma, bronchiectasis, or interstitial lung disease are often told to \"take it easy.\" Rest has its place - but prolonged inactivity weakens breathing muscles, reduces stamina, and can worsen breathlessness over time.",
       },
       {
         type: "h2",
@@ -98,7 +98,7 @@ export const BLOG_POSTS = [
           "SpO₂ and symptom checks before and during sessions",
           "Stop rules if wheeze, chest tightness, or desaturation occurs",
           "Airway clearance before exertion when productive cough is present",
-          "Gradual progression tracked week to week — never rushed",
+          "Gradual progression tracked week to week - never rushed",
         ],
       },
       {
@@ -107,7 +107,7 @@ export const BLOG_POSTS = [
       },
       {
         type: "p",
-        text: "Progress is measured in daily function: walking to the market, climbing one more flight of stairs, needing less rescue inhaler use, or recovering faster after mild exertion. Pulmonary rehab targets those outcomes — not gym aesthetics.",
+        text: "Progress is measured in daily function: walking to the market, climbing one more flight of stairs, needing less rescue inhaler use, or recovering faster after mild exertion. Pulmonary rehab targets those outcomes - not gym aesthetics.",
       },
       {
         type: "p",
@@ -119,7 +119,7 @@ export const BLOG_POSTS = [
     slug: "first-tele-rehab-session",
     title: "What to Expect in Your First Tele-Rehabilitation Session",
     excerpt:
-      "No travel, no crowded waiting rooms — but the same specialist supervision. Here is how a live online rehab session with Dr. Deepali works.",
+      "No travel, no crowded waiting rooms - but the same specialist supervision. Here is how a live online rehab session with Dr. Deepali works.",
     overview:
       "Equipment, space, vitals, and how live video sessions differ from pre-recorded exercise videos.",
     publishedAt: "2025-09-15",
@@ -129,7 +129,7 @@ export const BLOG_POSTS = [
     blocks: [
       {
         type: "p",
-        text: "Tele-rehabilitation at PulseBreath is not a library of recorded workouts. Every session is live, interactive, and led by Dr. Deepali — with real-time feedback on technique, pacing, and how you feel.",
+        text: "Tele-rehabilitation at PulseBreath is not a library of recorded workouts. Every session is live, interactive, and led by Dr. Deepali - with real-time feedback on technique, pacing, and how you feel.",
       },
       {
         type: "h2",
@@ -138,7 +138,7 @@ export const BLOG_POSTS = [
       {
         type: "ul",
         items: [
-          "A quiet space roughly 2 × 2 metres — living room or bedroom is fine",
+          "A quiet space roughly 2 × 2 metres - living room or bedroom is fine",
           "Stable internet and a phone, tablet, or laptop propped at chest height",
           "Comfortable clothing, water nearby, and prescribed medications accessible",
           "Optional: pulse oximeter or home BP monitor if you already use one",
@@ -158,7 +158,7 @@ export const BLOG_POSTS = [
       },
       {
         type: "p",
-        text: "You receive clear guidance on what to do between sessions — not overwhelming homework, but practical habits that build capacity. A free assessment call comes first, with no obligation to join a program.",
+        text: "You receive clear guidance on what to do between sessions - not overwhelming homework, but practical habits that build capacity. A free assessment call comes first, with no obligation to join a program.",
       },
     ],
   },

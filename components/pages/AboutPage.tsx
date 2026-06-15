@@ -150,7 +150,7 @@ export function AboutPage() {
             <span className="font-display italic text-brand">PulseBreath.</span>
           </>
         }
-        description="Expert care, compassionate touch — supervised cardiopulmonary rehabilitation across India."
+        description="Expert care, compassionate touch - supervised cardiopulmonary rehabilitation across India."
       />
 
       {/* ── Doctor Profile ──────────────────────── */}
@@ -319,7 +319,7 @@ export function AboutPage() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
-            Supervised rehabilitation sessions — live guidance, real patients, clinical rigour.
+            Supervised rehabilitation sessions - live guidance, real patients, clinical rigour.
           </p>
 
           <motion.div
@@ -409,7 +409,7 @@ export function AboutPage() {
               feeling heard, supported, and capable again.
             </p>
             <footer className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground">
-              — Dr. Deepali Shah
+              - Dr. Deepali Shah
             </footer>
           </blockquote>
         </motion.div>

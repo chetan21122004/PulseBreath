@@ -71,7 +71,7 @@ export function Doctor() {
                 <div className="relative overflow-hidden bg-[var(--brand-deeper)]/5">
                   <img
                     src={DR_DEEPALI_ABOUT_PORTRAIT}
-                    alt="Dr. Deepali Shah (PT) — Founder, PulseBreath Physiotherapy"
+                    alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
                     className="aspect-[3/4] max-h-[min(58vw,280px)] w-full object-cover object-top sm:max-h-none"

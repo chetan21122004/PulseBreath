@@ -144,7 +144,7 @@ export function Hero() {
               <span className="text-[var(--brand-teal-soft)] max-lg:[text-shadow:0_1px_16px_rgba(0,0,0,0.95)]">
                 reclaim life
               </span>
-              {" "}— not just manage disease.
+              {" "}- not just manage disease.
             </motion.p>
 
             <motion.div

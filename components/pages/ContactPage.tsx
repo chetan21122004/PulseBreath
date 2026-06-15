@@ -235,7 +235,7 @@ export function ContactPage() {
             After you <span className="italic text-brand">reach out</span>
           </h2>
           <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[var(--body-text)] sm:mt-4 sm:text-base">
-            <span className="md:hidden">No forms or call centres — just Dr. Deepali, personally.</span>
+            <span className="md:hidden">No forms or call centres - just Dr. Deepali, personally.</span>
             <span className="hidden md:inline">
               No forms, no call centres, no sales scripts. Just a direct line to Dr. Deepali.
             </span>
@@ -257,7 +257,7 @@ export function ContactPage() {
             <span className="hidden italic text-brand md:inline">connect</span>
           </h2>
           <p className="mt-2 text-[14px] text-muted-foreground sm:mt-3 sm:text-base md:hidden">
-            WhatsApp and call are in the banner above — use these for email or clinic details.
+            WhatsApp and call are in the banner above - use these for email or clinic details.
           </p>
         </Reveal>
         <div className="mt-5 sm:mt-10">

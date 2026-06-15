@@ -40,7 +40,7 @@ export const programCategories = [
         slug: "post-cabg-rehabilitation",
         t: "Post CABG (Bypass) Rehabilitation",
         intro:
-          "Structured, sternal-precaution-safe recovery after bypass surgery — rebuilding endurance and daily function with live specialist supervision.",
+          "Structured, sternal-precaution-safe recovery after bypass surgery - rebuilding endurance and daily function with live specialist supervision.",
         for: "Patients 2-12 weeks post bypass surgery",
         dur: "10-12 weeks · 3 sessions/week",
         involves:
@@ -66,7 +66,7 @@ export const programCategories = [
         slug: "post-ptca-angioplasty",
         t: "Post PTCA / Angioplasty Rehab",
         intro:
-          "Graded exercise and lifestyle coaching after stent placement — reducing re-event risk while restoring confidence in movement.",
+          "Graded exercise and lifestyle coaching after stent placement - reducing re-event risk while restoring confidence in movement.",
         for: "Patients post-stent, post-PCI",
         dur: "8-10 weeks · 3 sessions/week",
         involves:
@@ -92,18 +92,18 @@ export const programCategories = [
         slug: "heart-failure-management",
         t: "Heart Failure Management",
         intro:
-          "Low-intensity, closely monitored conditioning for heart failure — building tolerance safely within NYHA guidelines.",
+          "Low-intensity, closely monitored conditioning for heart failure - building tolerance safely within NYHA guidelines.",
         for: "NYHA Class I-III, EF-reduced patients",
         dur: "12 weeks · 3 sessions/week",
         involves:
           "Low-intensity interval training, fluid and weight monitoring education, and breathlessness desensitisation within NYHA guidelines.",
         expect:
-          "Gentle, closely monitored sessions that build tolerance without overload — with clear rules for when to rest and when to report symptoms.",
+          "Gentle, closely monitored sessions that build tolerance without overload - with clear rules for when to rest and when to report symptoms.",
         firstSession:
           "Weight and symptom review, fluid-status education, resting vitals and SpO₂; gentle seated or supported standing activity; personalised exertion scale and daily self-monitoring checklist.",
         safetyNotes: [
           "Daily weight and fluid guidelines reinforced each session",
-          "Low-intensity intervals only — no high-exertion spikes",
+          "Low-intensity intervals only - no high-exertion spikes",
           "Stop rules for rapid weight gain or worsening breathlessness",
           "Coordination with your cardiologist for medication timing",
         ],
@@ -118,7 +118,7 @@ export const programCategories = [
         slug: "post-valve-replacement",
         t: "Post Valve Replacement",
         intro:
-          "Anticoagulation-aware rehab after valve surgery — restoring endurance and breathing capacity at a pace matched to your recovery.",
+          "Anticoagulation-aware rehab after valve surgery - restoring endurance and breathing capacity at a pace matched to your recovery.",
         for: "Mechanical/tissue valve recovery",
         dur: "10-12 weeks · 3 sessions/week",
         involves:
@@ -128,7 +128,7 @@ export const programCategories = [
         firstSession:
           "Surgical and anticoagulation history review; wound check; resting heart rate and rhythm observation; gentle mobility and inspiratory muscle assessment; valve-specific activity precautions explained.",
         safetyNotes: [
-          "Anticoagulation timing respected — avoid trauma-risk activities",
+          "Anticoagulation timing respected - avoid trauma-risk activities",
           "Mechanical vs tissue valve protocols followed strictly",
           "INR or anticoagulant plan coordinated with your physician",
           "Stop for bleeding, unusual bruising, or new cardiac symptoms",
@@ -156,7 +156,7 @@ export const programCategories = [
         slug: "copd-management",
         t: "COPD Management Program",
         intro:
-          "Evidence-led COPD rehab — breathing retraining, airway clearance, and paced exercise to reduce flare-ups and rebuild walking tolerance.",
+          "Evidence-led COPD rehab - breathing retraining, airway clearance, and paced exercise to reduce flare-ups and rebuild walking tolerance.",
         for: "GOLD A-D, frequent exacerbators",
         dur: "8-12 weeks · 3 sessions/week",
         involves:
@@ -166,7 +166,7 @@ export const programCategories = [
         firstSession:
           "COPD history and inhaler technique review; resting SpO₂ and breathlessness scale; pursed-lip breathing practice; short paced walk or cycle at comfortable intensity; flare-up action plan discussed.",
         safetyNotes: [
-          "SpO₂ monitored — supplemental oxygen used as prescribed",
+          "SpO₂ monitored - supplemental oxygen used as prescribed",
           "Exacerbation warning signs reviewed every session",
           "Paced activity within your breathlessness comfort zone",
           "Inhaler technique corrected before exercise progression",
@@ -182,7 +182,7 @@ export const programCategories = [
         slug: "asthma-rehabilitation",
         t: "Asthma Rehabilitation",
         intro:
-          "Trigger-aware conditioning for asthma — rebuilding aerobic capacity without provoking flares, with breath-control you can use daily.",
+          "Trigger-aware conditioning for asthma - rebuilding aerobic capacity without provoking flares, with breath-control you can use daily.",
         for: "Children and adults diagnosed with varied ranges and patterns of asthma",
         dur: "6-8 weeks · 2-3 sessions/week",
         involves:
@@ -208,7 +208,7 @@ export const programCategories = [
         slug: "bronchiectasis-rehabilitation",
         t: "Bronchiectasis Rehabilitation",
         intro:
-          "Airway clearance and endurance training for bronchiectasis — reducing infections and fatigue through supervised daily routines.",
+          "Airway clearance and endurance training for bronchiectasis - reducing infections and fatigue through supervised daily routines.",
         for: "Chronic productive cough, recurrent infections",
         dur: "8-10 weeks · 3 sessions/week",
         involves:
@@ -219,7 +219,7 @@ export const programCategories = [
           "Sputum pattern and infection history review; airway clearance technique demonstration; postural drainage positioning; gentle endurance baseline; home clearance schedule established.",
         safetyNotes: [
           "Clearance performed before exercise when productive",
-          "Infection or fever — session modified or deferred",
+          "Infection or fever - session modified or deferred",
           "Hydration and technique emphasised to avoid airway trauma",
           "SpO₂ monitored during exertion",
         ],
@@ -234,7 +234,7 @@ export const programCategories = [
         slug: "ild-rehabilitation",
         t: "ILD (Interstitial Lung Disease)",
         intro:
-          "SpO₂-paced rehab for restrictive lung disease — building function within oxygen limits while managing breathlessness realistically.",
+          "SpO₂-paced rehab for restrictive lung disease - building function within oxygen limits while managing breathlessness realistically.",
         for: "IPF, sarcoid, post-COVID fibrosis",
         dur: "12 weeks · 2-3 sessions/week",
         involves:
@@ -244,7 +244,7 @@ export const programCategories = [
         firstSession:
           "ILD diagnosis and oxygen prescription review; resting and exertional SpO₂; low-intensity interval trial; dyspnoea coping strategies; realistic goal-setting for functional gains.",
         safetyNotes: [
-          "Strict SpO₂ targets — oxygen titrated as prescribed",
+          "Strict SpO₂ targets - oxygen titrated as prescribed",
           "Low intensity only; no high-exertion intervals",
           "Pulmonary hypertension symptoms screened each visit",
           "Fatigue and desaturation stop rules enforced",
@@ -260,7 +260,7 @@ export const programCategories = [
         slug: "post-lobectomy-rehabilitation",
         t: "Post Lobectomy Rehabilitation",
         intro:
-          "Post-thoracic surgery recovery — chest mobility, lung re-expansion, and graded return to daily capacity with scar-aware care.",
+          "Post-thoracic surgery recovery - chest mobility, lung re-expansion, and graded return to daily capacity with scar-aware care.",
         for: "Post-thoracic surgery recovery",
         dur: "10 weeks · 3 sessions/week",
         involves:
@@ -271,7 +271,7 @@ export const programCategories = [
           "Surgical clearance and pain level review; scar and shoulder range-of-motion assessment; deep breathing and lung expansion techniques; gentle walking per surgeon guidelines.",
         safetyNotes: [
           "Surgeon clearance required before arm overhead or heavy loading",
-          "Pain-guided progression — no pushing through sharp pain",
+          "Pain-guided progression - no pushing through sharp pain",
           "Incision and drain sites monitored visually each session",
           "Breathlessness and SpO₂ tracked during exertion",
         ],
@@ -286,19 +286,19 @@ export const programCategories = [
         slug: "pulmonary-hypertension-rehabilitation",
         t: "Pulmonary Hypertension Rehabilitation",
         intro:
-          "Conservative, monitored conditioning for pulmonary hypertension — building movement confidence without provoking symptoms.",
+          "Conservative, monitored conditioning for pulmonary hypertension - building movement confidence without provoking symptoms.",
         for: "Patients with pulmonary hypertension needing monitored conditioning",
         dur: "8-12 weeks · 2-3 sessions/week",
         involves:
           "Heart-rate and SpO₂ guided activity pacing, breathlessness-safe strength work, and symptom monitoring for safer daily movement.",
         expect:
-          "Conservative, closely supervised sessions with strict pacing rules — building confidence in movement without provoking symptoms.",
+          "Conservative, closely supervised sessions with strict pacing rules - building confidence in movement without provoking symptoms.",
         firstSession:
           "PH medication and symptom baseline; resting vitals and SpO₂; very low-intensity activity trial with continuous monitoring; symptom diary and strict stop rules established.",
         safetyNotes: [
           "Heart rate and SpO₂ monitored throughout",
           "No Valsalva or heavy straining exercises",
-          "Presyncope or severe breathlessness — immediate stop",
+          "Presyncope or severe breathlessness - immediate stop",
           "Coordination with PH specialist for activity clearance",
         ],
         benefits: [
@@ -312,7 +312,7 @@ export const programCategories = [
         slug: "occupational-lung-disease-rehabilitation",
         t: "Occupational Lung Disease Rehabilitation",
         intro:
-          "Practical rehab for work-related lung conditions — breathing strategies and paced conditioning for daily and occupational demands.",
+          "Practical rehab for work-related lung conditions - breathing strategies and paced conditioning for daily and occupational demands.",
         for: "Work-related lung conditions and reduced breathing capacity",
         dur: "8-12 weeks · 2-3 sessions/week",
         involves:
@@ -350,7 +350,7 @@ export const programCategories = [
         slug: "diabetes-exercise-program",
         t: "Diabetes Exercise Program",
         intro:
-          "Glucose-aware exercise dosing for diabetes — resistance and aerobic work timed to stabilise sugars, not spike them.",
+          "Glucose-aware exercise dosing for diabetes - resistance and aerobic work timed to stabilise sugars, not spike them.",
         for: "Type 2 diabetes, pre-diabetes",
         dur: "12 weeks · 3 sessions/week",
         involves:
@@ -376,13 +376,13 @@ export const programCategories = [
         slug: "obesity-management",
         t: "Obesity Management",
         intro:
-          "Joint-safe, sustainable conditioning for obesity with comorbidities — capacity and metabolic markers over crash dieting.",
+          "Joint-safe, sustainable conditioning for obesity with comorbidities - capacity and metabolic markers over crash dieting.",
         for: "BMI 30+ with comorbidities",
         dur: "16 weeks · 3 sessions/week",
         involves:
           "Joint-safe progressive conditioning, behavioural pacing, habit anchors, and body-composition tracking beyond weight alone.",
         expect:
-          "Sustainable, non-punishing exercise progression with live supervision — focused on capacity, mobility, and metabolic markers.",
+          "Sustainable, non-punishing exercise progression with live supervision - focused on capacity, mobility, and metabolic markers.",
         firstSession:
           "Comorbidity and joint history review; baseline mobility and pain assessment; low-impact aerobic introduction; habit anchor goal; body-composition tracking explained.",
         safetyNotes: [
@@ -402,18 +402,18 @@ export const programCategories = [
         slug: "thyroid-exercise-program",
         t: "Thyroid Exercise Program",
         intro:
-          "Fatigue-paced rehab for hypothyroidism — rebuilding strength and energy without the crash of unsupervised overexertion.",
+          "Fatigue-paced rehab for hypothyroidism - rebuilding strength and energy without the crash of unsupervised overexertion.",
         for: "Hypothyroidism, post-treatment fatigue",
         dur: "8-10 weeks · 2-3 sessions/week",
         involves:
           "Fatigue-paced gentle conditioning, strength rebuild without overload, and energy and sleep-quality coaching.",
         expect:
-          "Sessions adapted to your energy on each day — building strength gradually without the crash that unsupervised exercise can cause.",
+          "Sessions adapted to your energy on each day - building strength gradually without the crash that unsupervised exercise can cause.",
         firstSession:
           "Thyroid medication and fatigue pattern review; energy and sleep baseline; gentle strength and mobility assessment; daily pacing rules; session intensity scaled to today's energy.",
         safetyNotes: [
           "Intensity adjusted daily based on fatigue level",
-          "Avoid overtraining — recovery days built into plan",
+          "Avoid overtraining - recovery days built into plan",
           "Heart rate monitored for autonomic effects",
           "Coordination with endocrinologist if symptoms change",
         ],

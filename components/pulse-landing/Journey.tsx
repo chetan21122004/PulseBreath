@@ -317,14 +317,14 @@ export function Journey() {
               <span className="hidden h-px w-10 bg-brand/40 sm:block" />
             </div>
             <h2 className="heading-display mt-4 text-[1.65rem] sm:mt-5 sm:text-4xl">
-              How it works — <span className="italic text-brand">four simple steps</span>
+              How it works - <span className="italic text-brand">four simple steps</span>
             </h2>
             <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--body-text)] sm:mt-4 lg:max-w-none">
               <span className="md:hidden">
                 Four supervised steps from your first call to long-term recovery.
               </span>
               <span className="hidden md:inline">
-                A calm, supervised path — four deliberate steps from first call to long-term capacity.
+                A calm, supervised path - four deliberate steps from first call to long-term capacity.
                 Whether you are recovering after surgery or rebuilding strength in later life, every step
                 is guided.
               </span>

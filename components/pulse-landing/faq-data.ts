@@ -70,7 +70,7 @@ export const FAQS: FaqItem[] = [
     id: "symptoms-worsen",
     category: "safety",
     q: "What if I feel unwell during a session?",
-    a: "Every session has clear stop rules. If you feel chest pain, severe breathlessness, dizziness, or unusual fatigue, Dr. Deepali will pause immediately and guide you through recovery breathing. Sessions are paced to your symptoms — you are never pushed beyond safe limits. If something feels wrong between sessions, you can message Dr. Deepali directly.",
+    a: "Every session has clear stop rules. If you feel chest pain, severe breathlessness, dizziness, or unusual fatigue, Dr. Deepali will pause immediately and guide you through recovery breathing. Sessions are paced to your symptoms - you are never pushed beyond safe limits. If something feels wrong between sessions, you can message Dr. Deepali directly.",
   },
   {
     id: "emergency",
@@ -82,19 +82,19 @@ export const FAQS: FaqItem[] = [
     id: "session-length",
     category: "sessions",
     q: "How long is each session?",
-    a: "Most live sessions run 45-60 minutes, including warm-up, supervised exercise, breathing work, and cool-down. Dr. Deepali adjusts the length based on your condition and tolerance — shorter sessions are common in early recovery.",
+    a: "Most live sessions run 45-60 minutes, including warm-up, supervised exercise, breathing work, and cool-down. Dr. Deepali adjusts the length based on your condition and tolerance - shorter sessions are common in early recovery.",
   },
   {
     id: "tele-rehab-setup",
     category: "sessions",
     q: "What do I need for tele-rehab sessions?",
-    a: "A smartphone, tablet, or laptop with a camera and stable internet connection. A quiet space with room to move safely is ideal. Dr. Deepali will walk you through the video setup on your first call — no special apps beyond WhatsApp or a video link are required.",
+    a: "A smartphone, tablet, or laptop with a camera and stable internet connection. A quiet space with room to move safely is ideal. Dr. Deepali will walk you through the video setup on your first call - no special apps beyond WhatsApp or a video link are required.",
   },
   {
     id: "reschedule",
     category: "sessions",
     q: "Can I reschedule a session?",
-    a: "Yes. Life happens — especially during recovery. Message Dr. Deepali on WhatsApp to reschedule. Consistency matters for rehabilitation, but the program is designed to be flexible around your schedule.",
+    a: "Yes. Life happens - especially during recovery. Message Dr. Deepali on WhatsApp to reschedule. Consistency matters for rehabilitation, but the program is designed to be flexible around your schedule.",
   },
   {
     id: "language",
@@ -106,7 +106,7 @@ export const FAQS: FaqItem[] = [
     id: "payment",
     category: "cost",
     q: "What payment options are available?",
-    a: "Payment details are discussed during your free assessment once a program is recommended. Dr. Deepali will explain the structure clearly — there are no hidden fees and no pressure to commit on the first call.",
+    a: "Payment details are discussed during your free assessment once a program is recommended. Dr. Deepali will explain the structure clearly - there are no hidden fees and no pressure to commit on the first call.",
   },
   {
     id: "free-assessment",
@@ -124,7 +124,7 @@ export const FAQS: FaqItem[] = [
     id: "referral-needed",
     category: "general",
     q: "Do I need a doctor's referral before joining?",
-    a: "A formal referral is not required to book your free assessment. However, Dr. Deepali strongly recommends that you consult your cardiologist or pulmonologist before starting any rehabilitation program — and she is happy to coordinate with your treating doctor if needed.",
+    a: "A formal referral is not required to book your free assessment. However, Dr. Deepali strongly recommends that you consult your cardiologist or pulmonologist before starting any rehabilitation program - and she is happy to coordinate with your treating doctor if needed.",
   },
   {
     id: "doctor-coordination",
@@ -136,7 +136,7 @@ export const FAQS: FaqItem[] = [
     id: "multiple-conditions",
     category: "safety",
     q: "Can I join if I have more than one condition?",
-    a: "Many patients have overlapping cardiac and pulmonary conditions. During your free assessment, Dr. Deepali will review your full medical history and design a program that accounts for all active diagnoses — adjusting intensity, monitoring, and progression accordingly.",
+    a: "Many patients have overlapping cardiac and pulmonary conditions. During your free assessment, Dr. Deepali will review your full medical history and design a program that accounts for all active diagnoses - adjusting intensity, monitoring, and progression accordingly.",
   },
   {
     id: "one-on-one-or-group",
@@ -148,7 +148,7 @@ export const FAQS: FaqItem[] = [
     id: "missed-sessions",
     category: "sessions",
     q: "What if I miss several sessions in a row?",
-    a: "Life and health setbacks happen. Message Dr. Deepali on WhatsApp as soon as you can — she will help you reschedule and may adjust your program intensity when you return. Consistency matters, but the plan is designed to be flexible around genuine interruptions.",
+    a: "Life and health setbacks happen. Message Dr. Deepali on WhatsApp as soon as you can - she will help you reschedule and may adjust your program intensity when you return. Consistency matters, but the plan is designed to be flexible around genuine interruptions.",
   },
   {
     id: "really-free",
@@ -160,7 +160,7 @@ export const FAQS: FaqItem[] = [
     id: "pause-extend",
     category: "cost",
     q: "Can I pause or extend my program if needed?",
-    a: "Yes. If you need to pause due to travel, illness, or personal circumstances, Dr. Deepali will work with you to adjust your schedule. Programs can also be extended when your recovery goals require more time — discussed transparently during your rehabilitation journey.",
+    a: "Yes. If you need to pause due to travel, illness, or personal circumstances, Dr. Deepali will work with you to adjust your schedule. Programs can also be extended when your recovery goals require more time - discussed transparently during your rehabilitation journey.",
   },
 ];
 

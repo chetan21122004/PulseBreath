@@ -26,12 +26,12 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     patientDoes: [
       "Share your diagnosis, recent reports, and current symptoms honestly",
       "Describe your daily routine, mobility, and what you hope to achieve",
-      "Ask every question you have — there is no wrong question",
+      "Ask every question you have - there is no wrong question",
     ],
     drDeepaliDoes: [
       "Reviews your clinical history and functional capacity",
       "Explains whether supervised rehabilitation is appropriate for you",
-      "Outlines what a program could look like — without any pressure to enrol",
+      "Outlines what a program could look like - without any pressure to enrol",
     ],
     tone: "teal",
   },
@@ -70,7 +70,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
       "Follow pacing cues and speak up if anything feels wrong",
     ],
     drDeepaliDoes: [
-      "Leads every session live on screen — correcting form in real time",
+      "Leads every session live on screen - correcting form in real time",
       "Monitors heart rate, breathing, and symptom response throughout",
       "Adjusts intensity, rest periods, and exercises based on your response",
     ],
@@ -84,7 +84,7 @@ export const JOURNEY_STEPS: JourneyStep[] = [
     more: ["Changes based on how you respond each week", "Focused on long-term strength and confidence"],
     patientDoes: [
       "Track how you feel between sessions and share updates honestly",
-      "Celebrate milestones — stairs, walks, daily tasks — as they return",
+      "Celebrate milestones - stairs, walks, daily tasks - as they return",
       "Stay consistent with session attendance for best outcomes",
     ],
     drDeepaliDoes: [
@@ -112,15 +112,15 @@ export const JOURNEY_SAFETY_POINTS: { icon: LucideIcon; text: string }[] = [
 ];
 
 export const JOURNEY_SAFETY_EXTRA = [
-  "Structured exercise under specialist supervision is one of the most evidence-backed interventions for cardiac and pulmonary recovery. The risk is not in moving — it is in moving without guidance.",
+  "Structured exercise under specialist supervision is one of the most evidence-backed interventions for cardiac and pulmonary recovery. The risk is not in moving - it is in moving without guidance.",
   "Dr. Deepali follows published cardiac and pulmonary rehabilitation guidelines, with defined stop rules for chest pain, severe breathlessness, dizziness, and unusual fatigue.",
-  "If you are unsure whether exercise is safe for your specific condition, that is exactly what the free assessment is for — a honest, clinical conversation before any commitment.",
+  "If you are unsure whether exercise is safe for your specific condition, that is exactly what the free assessment is for - a honest, clinical conversation before any commitment.",
 ];
 
 export const JOURNEY_TELE_REHAB = [
   { title: "Live video, never recorded", detail: "Real-time guidance from Dr. Deepali every session." },
   { title: "Vitals tracked together", detail: "Heart-rate and SpO₂ monitoring guidance through the session." },
-  { title: "Available across India", detail: "From Noida to anywhere — wherever you have a screen and stable internet." },
+  { title: "Available across India", detail: "From Noida to anywhere - wherever you have a screen and stable internet." },
   { title: "Small groups or 1:1", detail: "Intimate cohorts by condition, or individual sessions when closer attention is needed." },
 ];
 
@@ -128,7 +128,7 @@ export const CONTACT_FLOW = [
   {
     step: 1,
     title: "You reach out",
-    detail: "Send a WhatsApp message, call, or email. Share your condition in a sentence — that is enough to start.",
+    detail: "Send a WhatsApp message, call, or email. Share your condition in a sentence - that is enough to start.",
   },
   {
     step: 2,
@@ -143,6 +143,6 @@ export const CONTACT_FLOW = [
   {
     step: 4,
     title: "You decide together",
-    detail: "If a program is right for you, Dr. Deepali explains options and pricing. If not, you leave with clarity — no pressure.",
+    detail: "If a program is right for you, Dr. Deepali explains options and pricing. If not, you leave with clarity - no pressure.",
   },
 ];

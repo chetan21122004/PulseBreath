@@ -179,7 +179,7 @@ export function ServiceProgramPage({
 
           <div className="relative z-10">
             <p className="text-[var(--body-text)]">
-              Ready to start {program.t}? Book a free assessment — no obligation to enrol.
+              Ready to start {program.t}? Book a free assessment - no obligation to enrol.
             </p>
             <motion.div
               className="mt-6 inline-block"

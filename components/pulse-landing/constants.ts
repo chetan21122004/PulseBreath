@@ -30,11 +30,11 @@ export type ProgramSlug = keyof typeof PROGRAM_ROUTES;
 export const HERO_BG_CLIPS = [heroBgClip1, heroBgClip2, heroBgClip3, heroBgClip4] as const;
 export const HERO_BG_PLAYBACK_RATE = 1.25;
 
-/** Safety callout in Journey — supervised session clip from Dr. Deepali assets. */
+/** Safety callout in Journey - supervised session clip from Dr. Deepali assets. */
 export const JOURNEY_SAFETY_VIDEO = DR_DEEPALI_JOURNEY_VIDEO;
 
 /** Static image shown when the safety video cannot load (slow or offline connection). */
 export const JOURNEY_SAFETY_FALLBACK_IMAGE = DR_DEEPALI_SESSION_POSTER;
 
-/** Dr. Deepali portrait and featured session clip — re-exported for convenience. */
+/** Dr. Deepali portrait and featured session clip - re-exported for convenience. */
 export { DR_DEEPALI_PORTRAIT, DR_DEEPALI_FEATURED_VIDEO };

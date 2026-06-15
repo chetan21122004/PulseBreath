@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "PulseBreath Physiotherapy - Adding Life to your Years",
   description:
-    "Specialist cardiac and pulmonary rehabilitation by Dr. Deepali Shah (PT), MPT Cardiopulmonary Sciences (Gold Medalist). Personalised, supervised programs — online and in-person across India.",
+    "Specialist cardiac and pulmonary rehabilitation by Dr. Deepali Shah (PT), MPT Cardiopulmonary Sciences (Gold Medalist). Personalised, supervised programs - online and in-person across India.",
   openGraph: {
     title: "PulseBreath Physiotherapy - Adding Life to your Years",
     description:

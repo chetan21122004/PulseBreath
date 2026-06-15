@@ -106,7 +106,7 @@ export function Footer() {
               />
               <img
                 src={logoText}
-                alt="PulseBreath Physiotherapy — Adding life to your years"
+                alt="PulseBreath Physiotherapy - Adding life to your years"
                 width={480}
                 height={138}
                 className="h-14 w-auto min-w-0 flex-1 object-contain object-left sm:h-20"

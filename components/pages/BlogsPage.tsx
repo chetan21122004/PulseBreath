@@ -33,7 +33,7 @@ export function BlogsPage() {
           <p className="section-label mb-2">Latest articles</p>
           <p className="max-w-2xl font-sans-brand text-[15px] leading-relaxed text-navy/80">
             Practical guidance on cardiac and pulmonary recovery, breathlessness, and supervised
-            tele-rehabilitation — grounded in clinical practice, not trends.
+            tele-rehabilitation - grounded in clinical practice, not trends.
           </p>
         </Reveal>
 
