@@ -167,10 +167,28 @@ export function TeleRehab() {
             </div>
           </Reveal>
 
-          <div className="border-t border-white/60 px-6 py-5 sm:px-10 lg:px-12 lg:pb-14 ">
+          <div className="border-t border-white/60 px-4 py-4 sm:px-10 sm:py-5 lg:px-12 lg:pb-14">
+            {/* Mobile: compact title-only list */}
+            <ul className="mx-auto flex max-w-6xl flex-col gap-1.5 md:hidden">
+              {features.map(({ Icon, t }) => (
+                <li
+                  key={t}
+                  className="flex items-center gap-3 rounded-xl border border-navy/[0.06] bg-white/70 px-3 py-2.5"
+                >
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#C0516A]/10">
+                    <Icon className="h-3.5 w-3.5 text-[#C0516A]" strokeWidth={2} />
+                  </span>
+                  <span className="font-sans-brand text-[13px] font-semibold leading-snug text-navy">
+                    {t}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Tablet+: full feature cards */}
             <StaggerReveal
               as="ul"
-              className="mx-auto grid max-w-6xl grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-5"
+              className="mx-auto hidden max-w-6xl grid-cols-2 gap-3 md:grid lg:grid-cols-5"
               itemVariant="scaleIn"
               amount={0.15}
             >

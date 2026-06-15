@@ -567,6 +567,45 @@ function StackedCategoryCards() {
   );
 }
 
+function MobileCategoryNav() {
+  return (
+    <nav
+      className="grid grid-cols-3 gap-2 border-b border-navy/10 pb-5 sm:hidden"
+      aria-label="Service categories"
+    >
+      {programCategories.map((c) => {
+        const Icon = c.icon;
+        const anchor = slugFromCategory(c.cat);
+        const tone = toneUi[c.tone];
+
+        return (
+          <a
+            key={c.cat}
+            href={`#service-${anchor}`}
+            className={cn(
+              "flex min-h-[4.25rem] flex-col items-center justify-center gap-1 rounded-xl border border-navy/10 bg-white px-1.5 py-2.5 text-center shadow-sm ring-1 transition-colors active:bg-soft/70",
+              tone.chapterRing,
+            )}
+          >
+            <span
+              className={cn(
+                "flex h-7 w-7 items-center justify-center rounded-lg",
+                tone.iconTile,
+              )}
+            >
+              <Icon className="h-3.5 w-3.5" strokeWidth={1.85} aria-hidden />
+            </span>
+            <span className="font-sans-brand text-[11px] font-bold leading-none text-navy">{c.cat}</span>
+            <span className="text-[9px] font-semibold uppercase tracking-[0.08em] text-navy/45">
+              {c.programs.length} programs
+            </span>
+          </a>
+        );
+      })}
+    </nav>
+  );
+}
+
 export function ServicesOverview() {
   return (
     <section id="services" className="relative overflow-x-clip bg-background pb-5">
@@ -608,28 +647,7 @@ export function ServicesOverview() {
           />
         </div>
 
-        <nav
-          className="flex flex-wrap items-center justify-start gap-2 border-b border-navy/10 pb-8 sm:hidden"
-          aria-label="Service categories"
-        >
-          {programCategories.map((c) => {
-            const Icon = c.icon;
-            const anchor = slugFromCategory(c.cat);
-            return (
-              <a
-                key={c.cat}
-                href={`#service-${anchor}`}
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-navy/10 bg-white px-3.5 py-2.5 font-sans-brand text-[13px] font-semibold text-navy shadow-sm transition-colors hover:border-brand/30 hover:text-brand"
-              >
-                <Icon className="h-3.5 w-3.5 opacity-70" aria-hidden />
-                {c.cat}
-                <span className="rounded-full bg-navy/[0.06] px-1.5 py-px text-[10px] font-bold text-navy/55">
-                  {c.programs.length}
-                </span>
-              </a>
-            );
-          })}
-        </nav>
+        <MobileCategoryNav />
 
         <StackedCategoryCards />
 

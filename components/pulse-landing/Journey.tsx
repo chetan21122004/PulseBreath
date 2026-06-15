@@ -219,6 +219,31 @@ function Orb({ n, tone }: { n: number; tone: "teal" | "pink" }) {
   );
 }
 
+function MobileStepList() {
+  return (
+    <ul className="flex flex-col gap-2 md:hidden">
+      {steps.map((s) => (
+        <li
+          key={s.n}
+          className="flex items-start gap-3 rounded-xl border border-border/80 bg-background/95 px-3 py-3 shadow-sm ring-1 ring-white/80"
+        >
+          <span
+            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold text-white ${
+              s.tone === "teal" ? "bg-teal" : "bg-brand"
+            }`}
+          >
+            {s.n}
+          </span>
+          <div className="min-w-0 pt-0.5">
+            <h3 className="font-display text-[15px] font-bold leading-snug text-navy">{s.t}</h3>
+            <p className="mt-0.5 text-[13px] leading-snug text-navy/70">{s.lead}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function Chevrons({ delay = 0 }: { delay?: number }) {
   return (
     <div className="hidden md:flex items-center gap-1 text-brand/40 pt-10">
@@ -251,7 +276,7 @@ function SafetyMedia() {
       poster={JOURNEY_SAFETY_FALLBACK_IMAGE}
       alt="Dr. Deepali Shah supervising a live rehabilitation session"
       className="rounded-2xl"
-      videoClassName="aspect-[4/3] h-full w-full object-[center_35%]"
+      videoClassName="aspect-[16/10] h-full w-full object-[center_35%] sm:aspect-[4/3]"
     />
   );
 }
@@ -259,7 +284,7 @@ function SafetyMedia() {
 export function Journey() {
   return (
     <section id="how-it-works" className="relative overflow-hidden bg-background">
-      <div className="relative py-6">
+      <div className="relative py-5 sm:py-6">
         <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
           <BackgroundBlob variant={2} cover opacity={0.12} className="object-[40%_45%]" />
           <div
@@ -282,40 +307,47 @@ export function Journey() {
           }
         `}</style>
 
-        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_minmax(240px,320px)] lg:gap-12">
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-6 px-4 sm:gap-10 sm:px-6 lg:grid-cols-[1fr_minmax(240px,320px)] lg:gap-12">
           <Reveal variant="fadeUp" className="text-center lg:text-left">
             <div className="flex items-center justify-center gap-3 lg:justify-start">
-              <span className="h-px w-10 bg-brand/40" />
-              <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-brand">
+              <span className="hidden h-px w-10 bg-brand/40 sm:block" />
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand sm:text-[12px]">
                 How It Works
               </span>
-              <span className="h-px w-10 bg-brand/40" />
+              <span className="hidden h-px w-10 bg-brand/40 sm:block" />
             </div>
-            <h2 className="heading-display mt-5 text-[2rem] sm:text-4xl">
-              How it works - <span className="italic text-brand">four simple steps</span>
+            <h2 className="heading-display mt-4 text-[1.65rem] sm:mt-5 sm:text-4xl">
+              How it works — <span className="italic text-brand">four simple steps</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-[var(--body-text)] lg:max-w-none">
-              A calm, supervised path - four deliberate steps from first call to long-term capacity.
-              Whether you are recovering after surgery or rebuilding strength in later life, every step
-              is guided.
+            <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[var(--body-text)] sm:mt-4 lg:max-w-none">
+              <span className="md:hidden">
+                Four supervised steps from your first call to long-term recovery.
+              </span>
+              <span className="hidden md:inline">
+                A calm, supervised path — four deliberate steps from first call to long-term capacity.
+                Whether you are recovering after surgery or rebuilding strength in later life, every step
+                is guided.
+              </span>
             </p>
-            <SectionPageLink href="/how-it-works" className="mt-5 justify-center lg:justify-start">
+            <SectionPageLink href="/how-it-works" className="mt-4 justify-center sm:mt-5 lg:justify-start">
               See the full process
             </SectionPageLink>
           </Reveal>
           <SectionIllustration
             src={ILLUSTRATIONS.elderlyAmico}
             alt="Active elderly people enjoying wellness and rehabilitation"
-            className="mx-auto max-w-[280px] sm:max-w-xs lg:max-w-none"
+            className="mx-auto hidden max-w-[280px] md:block sm:max-w-xs lg:max-w-none"
             variant="fadeLeft"
           />
         </div>
 
-        <div className="relative z-10 mx-auto mt-5 max-w-6xl px-4 sm:px-6">
+        <div className="relative z-10 mx-auto mt-4 max-w-6xl px-4 sm:mt-5 sm:px-6">
+          <MobileStepList />
+
           <div className="hidden md:block absolute left-[8%] right-[8%] top-[calc(2.5rem+3.5rem)] h-px bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
 
           <StaggerReveal
-            className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-start lg:gap-y-12"
+            className="hidden grid-cols-1 gap-y-8 md:grid sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-start lg:gap-y-12"
             amount={0.15}
           >
             {steps.map((s, i) => (
@@ -328,7 +360,7 @@ export function Journey() {
                   >
                     <Orb n={s.n} tone={s.tone} />
                   </div>
-                  <h3 className="mt-7 font-display text-xl font-bold tracking-tight text-navy md:text-[22px]">
+                  <h3 className="mt-5 font-display text-xl font-bold tracking-tight text-navy md:mt-7 md:text-[22px]">
                     {s.t}
                   </h3>
                   <StepDetails {...s} />
@@ -345,7 +377,7 @@ export function Journey() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden py-5">
+      <div className="relative overflow-hidden py-4 sm:py-5">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <img
             src={DR_DEEPALI_JOURNEY_BG}
@@ -356,25 +388,25 @@ export function Journey() {
         </div>
 
         <Reveal variant="fadeUp" className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-            <div className="relative flex items-center pt-5 sm:pt-6">
+          <div className="grid items-center gap-5 sm:gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+            <div className="relative flex items-center pt-2 sm:pt-6">
               <div className="relative w-full">
                 <div
                   aria-hidden
-                  className="absolute -top-3 left-4 z-20 rounded-xl border border-white/80 bg-white px-3 py-2 shadow-[0_10px_28px_-14px_rgba(30,46,61,0.3)] sm:-top-4 sm:left-5 sm:px-3.5 sm:py-2.5"
+                  className="absolute -top-2 left-3 z-20 rounded-lg border border-white/80 bg-white px-2.5 py-1.5 shadow-[0_10px_28px_-14px_rgba(30,46,61,0.3)] sm:-top-4 sm:left-5 sm:rounded-xl sm:px-3.5 sm:py-2.5"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-brand sm:text-[10px] sm:tracking-[0.14em]">
                     Every session
                   </p>
-                  <p className="mt-0.5 font-display text-sm font-bold text-navy">
+                  <p className="mt-0.5 font-display text-xs font-bold text-navy sm:text-sm">
                     Dr. Deepali on screen
                   </p>
                 </div>
 
-                <div className="relative w-full overflow-hidden rounded-[1.5rem] border-2 border-white/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.45)]">
+                <div className="relative w-full overflow-hidden rounded-2xl border-2 border-white/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.45)] sm:rounded-[1.5rem]">
                   <SafetyMedia />
 
-                  <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-wrap gap-2 bg-gradient-to-t from-navy/70 via-navy/35 to-transparent p-4 sm:p-5">
+                  <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-wrap gap-1.5 bg-gradient-to-t from-navy/70 via-navy/35 to-transparent p-3 sm:gap-2 sm:p-5">
                     {[
                       { icon: Video, label: "Live guided" },
                       { icon: HeartPulse, label: "Vitals tracked" },
@@ -382,7 +414,7 @@ export function Journey() {
                     ].map(({ icon: Icon, label }) => (
                       <span
                         key={label}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm sm:text-[11px]"
+                        className="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/15 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-white backdrop-blur-sm sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[11px] sm:tracking-[0.12em]"
                       >
                         <Icon className="h-3.5 w-3.5" strokeWidth={2.25} />
                         {label}
@@ -393,24 +425,24 @@ export function Journey() {
               </div>
             </div>
 
-            <div className="relative flex flex-col justify-center rounded-[1.5rem] border border-white/50 bg-white/68 p-5 shadow-[0_20px_56px_-28px_rgba(30,46,61,0.28)] backdrop-blur-[6px] sm:p-6 lg:p-7">
+            <div className="relative flex flex-col justify-center rounded-2xl border border-white/50 bg-white/68 p-4 shadow-[0_20px_56px_-28px_rgba(30,46,61,0.28)] backdrop-blur-[6px] sm:rounded-[1.5rem] sm:p-6 lg:p-7">
               <div
                 aria-hidden
-                className="absolute -left-px top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-teal via-brand to-teal opacity-70"
+                className="absolute -left-px top-5 bottom-5 w-1 rounded-full bg-gradient-to-b from-teal via-brand to-teal opacity-70 sm:top-6 sm:bottom-6"
               />
               <span className="pill w-fit">Safety First</span>
-              <div className="mt-4 rounded-xl bg-white/88 px-4 py-3.5 ring-1 ring-white/90 sm:px-5 sm:py-4">
-                <h3 className="heading-display text-[1.5rem] font-semibold text-navy sm:text-[2rem]">
+              <div className="mt-3 rounded-xl bg-white/88 px-3.5 py-3 ring-1 ring-white/90 sm:mt-4 sm:px-5 sm:py-4">
+                <h3 className="heading-display text-xl font-semibold text-navy sm:text-[2rem]">
                   Is it safe to exercise with{" "}
                   <span className="font-display italic text-brand">my condition?</span>
                 </h3>
-                <p className="mt-3 text-[15px] font-medium leading-relaxed text-navy sm:text-base">
-                  Many patients worry exercise will make things worse. With live specialist
-                  supervision, structured movement becomes one of the safest tools for recovery.
+                <p className="mt-2 text-[14px] font-medium leading-relaxed text-navy sm:mt-3 sm:text-base">
+                  With live specialist supervision, structured movement becomes one of the safest
+                  tools for recovery.
                 </p>
               </div>
 
-              <div className="mt-5 rounded-2xl border border-white/70 bg-white/75 p-3.5 backdrop-blur-[4px] sm:p-4">
+              <div className="mt-4 hidden rounded-2xl border border-white/70 bg-white/75 p-3.5 backdrop-blur-[4px] sm:block sm:p-4">
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
                   A common concern
                 </p>
@@ -419,16 +451,16 @@ export function Journey() {
                 </p>
               </div>
 
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
                 {safetyPoints.map(({ icon: Icon, text }) => (
                   <li
                     key={text}
-                    className="flex items-start gap-3 rounded-xl bg-white/65 px-3 py-2.5 ring-1 ring-white/80"
+                    className="flex items-start gap-2.5 rounded-lg bg-white/65 px-2.5 py-2 ring-1 ring-white/80 sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-[0_4px_14px_-6px_rgba(192,81,106,0.3)] ring-1 ring-brand/15 sm:h-11 sm:w-11">
-                      <Icon className="h-4 w-4 text-brand sm:h-5 sm:w-5" strokeWidth={2.25} />
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white shadow-[0_4px_14px_-6px_rgba(192,81,106,0.3)] ring-1 ring-brand/15 sm:h-11 sm:w-11 sm:rounded-xl">
+                      <Icon className="h-3.5 w-3.5 text-brand sm:h-5 sm:w-5" strokeWidth={2.25} />
                     </span>
-                    <span className="pt-1.5 text-sm font-medium leading-relaxed text-navy sm:pt-2 sm:text-[15px]">
+                    <span className="pt-1 text-[13px] font-medium leading-snug text-navy sm:pt-2 sm:text-[15px] sm:leading-relaxed">
                       {text}
                     </span>
                   </li>

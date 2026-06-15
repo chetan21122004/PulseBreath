@@ -30,7 +30,7 @@ export function Header() {
         aria-hidden
       />
       <div className="border-b border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_88%,transparent)] shadow-[0_18px_48px_-24px_rgba(30,46,61,0.22)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[color-mix(in_oklch,var(--background)_72%,transparent)]">
-        <div className="relative mx-auto flex h-[var(--header-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 sm:gap-4 sm:px-6 lg:h-16">
+        <div className="relative mx-auto flex h-[var(--header-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-4 sm:px-6 lg:h-16">
           <div
             className="pointer-events-none absolute right-[12%] top-1/2 hidden h-40 w-[min(52vw,28rem)] -translate-y-1/2 rounded-full bg-gradient-to-l from-[var(--brand-teal-soft)]/45 via-[var(--primary-soft)]/25 to-transparent blur-2xl lg:block"
             aria-hidden
@@ -38,21 +38,34 @@ export function Header() {
 
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-1.5 sm:gap-4"
+            className="group flex min-w-0 items-center gap-1.5 justify-self-start sm:gap-4"
             aria-label="PulseBreath home"
           >
             <span className="relative flex shrink-0 items-center justify-center sm:mr-3 lg:mr-7">
               <img
                 src={logo}
                 alt=""
-                className="relative h-8 w-8 object-contain sm:h-16 sm:w-16 lg:h-24 lg:w-24"
+                className="relative h-8 w-8 origin-center object-contain max-sm:scale-[1.7] sm:h-16 sm:w-16 sm:scale-100 lg:h-24 lg:w-24"
               />
               <img
                 src={logo_text}
                 alt="PulseBreath"
-                className="relative h-9 w-auto max-w-[6.5rem] object-contain sm:h-20 sm:max-w-none lg:h-32 lg:w-32"
+                className="relative hidden h-9 w-auto max-w-[6.5rem] object-contain sm:block sm:h-20 sm:max-w-none lg:h-32 lg:w-32"
               />
             </span>
+          </Link>
+
+          <Link
+            href="/"
+            className="justify-self-center max-sm:col-start-2 max-sm:row-start-1 sm:hidden"
+            aria-hidden
+            tabIndex={-1}
+          >
+            <img
+              src={logo_text}
+              alt=""
+              className="h-9 w-auto max-w-[7.5rem] object-contain"
+            />
           </Link>
 
           <nav className="relative hidden lg:flex" aria-label="Primary">
@@ -88,7 +101,7 @@ export function Header() {
             </div>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center justify-self-end gap-2 max-sm:col-start-3 max-sm:row-start-1 sm:gap-3">
             <a
               href={WHATSAPP}
               target="_blank"

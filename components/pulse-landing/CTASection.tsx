@@ -8,43 +8,51 @@ import { ILLUSTRATIONS } from "./visual-assets";
 
 export function CTASection() {
   return (
-    <section id="contact" className="bg-section py-12 lg:py-16">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2">
+    <section id="contact" className="bg-section py-8 sm:py-12 lg:py-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 sm:gap-10 sm:px-6 lg:grid-cols-2 lg:gap-12">
         <StaggerReveal itemVariant="fadeUp">
           <StaggerItem>
             <span className="pill">Take the First Step</span>
           </StaggerItem>
           <StaggerItem>
-            <h2 className="heading-display mt-6">
+            <h2 className="heading-display mt-4 text-[1.65rem] sm:mt-6 sm:text-[inherit]">
               Start with a <span className="text-brand">free </span> assessment.
             </h2>
           </StaggerItem>
           <StaggerItem>
-            <p className="mt-5 max-w-lg text-[var(--body-text)]">
-              A genuine conversation with Dr. Deepali about your condition, your challenges, and what
-              a program could look like for you. No cost. No obligation.
+            <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-[var(--body-text)] sm:mt-5">
+              A genuine conversation with Dr. Deepali about your condition and what a program could
+              look like for you. No cost. No obligation.
             </p>
           </StaggerItem>
           <StaggerItem>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp motion-btn">
+            <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener"
+                className="btn-whatsapp motion-btn w-full justify-center sm:w-auto"
+              >
                 <WhatsAppIcon className="h-5 w-5" /> Book on WhatsApp
               </a>
-              <a href={`tel:${PHONE}`} className="btn-secondary motion-btn">
+              <a
+                href={`tel:${PHONE}`}
+                className="btn-secondary motion-btn w-full justify-center sm:w-auto"
+              >
                 <Phone className="mr-2 h-4 w-4" /> Call {PHONE}
               </a>
             </div>
-            <SectionPageLink href="/contact" className="mt-5">
+            <SectionPageLink href="/contact" className="mt-4 sm:mt-5">
               View contact details
             </SectionPageLink>
           </StaggerItem>
           <StaggerItem>
-            <p className="mt-6 border-l-2 border-brand pl-4 italic text-navy/80">
+            <p className="mt-4 hidden border-l-2 border-brand pl-4 text-[15px] italic text-navy/80 sm:mt-6 sm:block">
               &ldquo;We will never recommend a program that isn&apos;t right for you.&rdquo;
             </p>
           </StaggerItem>
           <StaggerItem>
-            <div className="mt-8 space-y-2 text-[15px] text-navy/80">
+            <div className="mt-6 hidden space-y-2 text-[15px] text-navy/80 sm:block sm:mt-8">
               <p className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-brand" /> {EMAIL}
               </p>
@@ -55,7 +63,7 @@ export function CTASection() {
           </StaggerItem>
         </StaggerReveal>
 
-        <Reveal variant="fadeLeft">
+        <Reveal variant="fadeLeft" className="hidden lg:block">
           <div className="relative p-6 sm:p-10">
             <div className="absolute inset-0 m-auto h-[88%] w-[88%] rounded-3xl bg-soft" aria-hidden />
             <div className="motion-card relative overflow-hidden rounded-2xl border border-white/70 bg-white/60 p-8 shadow-[0_24px_64px_-24px_rgba(30,46,61,0.25)] backdrop-blur-sm sm:p-10">
@@ -66,7 +74,7 @@ export function CTASection() {
                 animateOnScroll={false}
               />
               <p className="mt-6 text-center font-sans-brand text-sm font-medium text-navy/75">
-                Book your free virtual assessment - from anywhere in India.
+                Book your free virtual assessment — from anywhere in India.
               </p>
             </div>
           </div>

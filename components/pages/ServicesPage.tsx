@@ -3,12 +3,11 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { Clock, ArrowRight, Sparkles } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { programCategories, type ProgramCategoryTone } from "@/components/pulse-landing/conditions-data";
-import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { categorySlug, getProgramHref } from "@/components/pulse-landing/ProgramCatalog";
 import type { ProgramSlug } from "@/components/pulse-landing/constants";
 import { cn } from "@/lib/utils";
@@ -165,11 +164,13 @@ function ServiceCard({
   index,
   tone,
   categorySlug: catSlug,
+  compact = false,
 }: {
   program: (typeof programCategories)[number]["programs"][number];
   index: number;
   tone: ProgramCategoryTone;
   categorySlug: ProgramSlug;
+  compact?: boolean;
 }) {
   const Icon = program.i;
   const styles = toneStyles[tone];
@@ -184,47 +185,160 @@ function ServiceCard({
       <Link
         href={getProgramHref(catSlug, program.slug)}
         className={cn(
-          "group block h-full rounded-xl border border-border/80 border-l-4 bg-white/90 p-5 shadow-[0_12px_40px_-20px_rgba(30,46,61,0.18)] backdrop-blur-sm sm:p-6",
+          "group block h-full rounded-xl border border-border/80 border-l-4 bg-white/90 shadow-[0_12px_40px_-20px_rgba(30,46,61,0.18)] backdrop-blur-sm",
+          compact ? "p-3.5" : "p-5 sm:p-6",
           styles.border,
         )}
       >
-        <div className="flex items-start gap-4">
+        <div className="flex items-start gap-3 sm:gap-4">
           <motion.div
-            className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-xl", styles.icon)}
+            className={cn(
+              "flex shrink-0 items-center justify-center rounded-xl",
+              compact ? "h-9 w-9" : "h-11 w-11",
+              styles.icon,
+            )}
             whileHover={reduceMotion ? {} : { scale: 1.1, transition: { duration: 0.25 } }}
           >
-            <Icon className="h-5 w-5" strokeWidth={2.25} />
+            <Icon className={cn(compact ? "h-4 w-4" : "h-5 w-5")} strokeWidth={2.25} />
           </motion.div>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em]", styles.badge)}>
-                Specialist supervised
-              </span>
-            </div>
-            <h3 className="mt-2 font-display text-lg font-bold leading-snug text-navy sm:text-xl">
+            {!compact ? (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em]", styles.badge)}>
+                  Specialist supervised
+                </span>
+              </div>
+            ) : null}
+            <h3
+              className={cn(
+                "font-display font-bold leading-snug text-navy",
+                compact ? "text-[15px]" : "mt-2 text-lg sm:text-xl",
+              )}
+            >
               {program.t}
             </h3>
-            <p className="mt-2 text-sm font-medium text-navy/80">
+            <p className={cn("font-medium text-navy/80", compact ? "mt-1 text-[13px] leading-snug" : "mt-2 text-sm")}>
               <span className="text-muted-foreground">For: </span>
               {program.for}
             </p>
           </div>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-4 border-t border-border/60 pt-5">
-          <div className="flex items-center gap-2 text-sm font-medium text-navy/75">
-            <Clock className="h-4 w-4 text-brand" strokeWidth={2.25} />
+        <div
+          className={cn(
+            "flex items-center justify-between gap-3 border-t border-border/60",
+            compact ? "mt-3 pt-3" : "mt-5 gap-4 pt-5",
+          )}
+        >
+          <div className={cn("flex items-center gap-1.5 font-medium text-navy/75", compact ? "text-[12px]" : "gap-2 text-sm")}>
+            <Clock className={cn("text-brand", compact ? "h-3.5 w-3.5" : "h-4 w-4")} strokeWidth={2.25} />
             {program.dur}
           </div>
-          <span className="inline-flex items-center gap-1 text-sm font-bold text-brand">
-            View program <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <span className={cn("inline-flex shrink-0 items-center gap-1 font-bold text-brand", compact ? "text-[12px]" : "text-sm")}>
+            View program <ArrowRight className={cn(compact ? "h-3.5 w-3.5" : "h-4 w-4", "transition-transform group-hover:translate-x-0.5")} />
           </span>
         </div>
       </Link>
     </motion.div>
+  );
+}
+
+function CategorySection({
+  category,
+  compact = false,
+}: {
+  category: (typeof programCategories)[number];
+  compact?: boolean;
+}) {
+  const CatIcon = category.icon;
+  const styles = toneStyles[category.tone];
+  const parsedStat = parseStatValue(category.stat.v);
+  const reduceMotion = useReducedMotion();
+  const slug = categorySlug(category.cat);
+
+  return (
+    <>
+      <motion.div
+        variants={sectionFadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        whileHover={reduceMotion ? {} : hoverLiftSubtle}
+        className={cn(
+          "motion-card rounded-2xl border border-border/80 border-l-4",
+          compact ? "p-4" : "p-6 sm:p-8",
+          styles.border,
+        )}
+      >
+        <div className="flex items-start gap-3 sm:gap-4">
+          <motion.div
+            className={cn(
+              "flex shrink-0 items-center justify-center rounded-xl",
+              compact ? "h-10 w-10" : "h-12 w-12",
+              styles.icon,
+            )}
+            whileHover={reduceMotion ? {} : { scale: 1.08, rotate: 3, transition: { duration: 0.3 } }}
+          >
+            <CatIcon className={cn(compact ? "h-5 w-5" : "h-6 w-6")} strokeWidth={2.25} />
+          </motion.div>
+          <div className="min-w-0">
+            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground sm:text-[11px] sm:tracking-[0.16em]">
+              {category.tag}
+            </span>
+            <h2 className={cn("mt-0.5 font-display font-bold text-navy", compact ? "text-xl" : "mt-1 text-2xl sm:text-3xl")}>
+              {category.cat} Programs
+            </h2>
+            <p
+              className={cn(
+                "text-[var(--body-text)]",
+                compact ? "mt-2 line-clamp-2 text-[13px] leading-snug" : "mt-3 max-w-2xl",
+              )}
+            >
+              {category.desc}
+            </p>
+            {!compact ? (
+              <p className="mt-3 text-sm font-bold text-brand">
+                <CountUp value={parsedStat.number} suffix={parsedStat.suffix} /> {category.stat.l}
+              </p>
+            ) : null}
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className={cn("grid gap-3 sm:gap-6", compact ? "mt-4" : "mt-8 lg:grid-cols-2")}
+        variants={staggerContainerCards}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.08 }}
+      >
+        {category.programs.map((program, index) => (
+          <ServiceCard
+            key={program.t}
+            program={program}
+            index={index}
+            tone={category.tone}
+            categorySlug={slug}
+            compact={compact}
+          />
+        ))}
+      </motion.div>
+    </>
+  );
+}
+
+function MobileServicesList() {
+  return (
+    <div className="space-y-10 md:hidden">
+      {programCategories.map((category) => (
+        <section key={category.cat} id={`services-${categorySlug(category.cat)}`}>
+          <CategorySection category={category} compact />
+        </section>
+      ))}
+    </div>
   );
 }
 
@@ -271,9 +385,11 @@ export function ServicesPage() {
       </PageHero>
 
       {/* ── Services Catalog ────────────────────── */}
-      <PageSection variant="section">
+      <PageSection variant="section" className="py-8 sm:py-12 lg:py-20">
         <div className="w-full">
-          <Tabs defaultValue="Cardiac" className="w-full">
+          <MobileServicesList />
+
+          <Tabs defaultValue="Cardiac" className="hidden w-full md:block">
             {/* Tabs bar with fade-up */}
             <motion.div
               variants={sectionFadeUp}
@@ -297,66 +413,11 @@ export function ServicesPage() {
               </TabsList>
             </motion.div>
 
-            {programCategories.map((category) => {
-              const CatIcon = category.icon;
-              const styles = toneStyles[category.tone];
-              const parsedStat = parseStatValue(category.stat.v);
-
-              return (
-                <TabsContent key={category.cat} value={category.cat}>
-                  {/* Category header card */}
-                  <motion.div
-                    variants={sectionFadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.15 }}
-                    whileHover={reduceMotion ? {} : hoverLiftSubtle}
-                    className={cn("motion-card rounded-2xl border border-border/80 p-6 sm:p-8", styles.border, "border-l-4")}
-                  >
-                    <div className="flex flex-wrap items-start gap-4">
-                      <motion.div
-                        className={cn("flex h-12 w-12 items-center justify-center rounded-xl", styles.icon)}
-                        whileHover={reduceMotion ? {} : { scale: 1.08, rotate: 3, transition: { duration: 0.3 } }}
-                      >
-                        <CatIcon className="h-6 w-6" strokeWidth={2.25} />
-                      </motion.div>
-                      <div>
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
-                          {category.tag}
-                        </span>
-                        <h2 className="mt-1 font-display text-2xl font-bold text-navy sm:text-3xl">
-                          {category.cat} Programs
-                        </h2>
-                        <p className="mt-3 max-w-2xl text-[var(--body-text)]">{category.desc}</p>
-                        <p className="mt-3 text-sm font-bold text-brand">
-                          <CountUp value={parsedStat.number} suffix={parsedStat.suffix} />{" "}
-                          {category.stat.l}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Program cards with staggered scale-in */}
-                  <motion.div
-                    className="mt-8 grid gap-6 lg:grid-cols-2"
-                    variants={staggerContainerCards}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.08 }}
-                  >
-                    {category.programs.map((program, index) => (
-                      <ServiceCard
-                        key={program.t}
-                        program={program}
-                        index={index}
-                        tone={category.tone}
-                        categorySlug={categorySlug(category.cat)}
-                      />
-                    ))}
-                  </motion.div>
-                </TabsContent>
-              );
-            })}
+            {programCategories.map((category) => (
+              <TabsContent key={category.cat} value={category.cat}>
+                <CategorySection category={category} />
+              </TabsContent>
+            ))}
           </Tabs>
 
           {/* CTA block */}
@@ -365,7 +426,7 @@ export function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12"
+            className="mt-8 sm:mt-12"
           >
             <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-background/80 p-6 text-center sm:p-8">
               {/* Decorative gradient accents */}
