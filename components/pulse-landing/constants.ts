@@ -18,6 +18,11 @@ export const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
 
 export const CLINIC_ADDRESS = "PulseBreath Physiotherapy, Noida, Uttar Pradesh, India";
 
+/** Absolute site origin used for canonical URLs and structured data (no trailing slash). */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pulsebreath.in"
+).replace(/\/$/, "");
+
 export const PROGRAM_ROUTES = {
   cardiac: "/services/cardiac",
   pulmonary: "/services/pulmonary",

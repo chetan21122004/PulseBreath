@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PROGRAM_ROUTES } from "./constants";
 import { programCategories, type ProgramCategoryTone } from "./conditions-data";
@@ -15,22 +15,38 @@ const navLinkClass =
 
 const toneRail: Record<
   ProgramCategoryTone,
-  { active: string; icon: string; accent: string }
+  {
+    active: string;
+    icon: string;
+    accent: string;
+    pill: string;
+    panelRing: string;
+    panelBg: string;
+  }
 > = {
   rose: {
     active: "bg-white text-[var(--brand-pink-deep)] shadow-sm ring-1 ring-brand/15",
     icon: "bg-[var(--primary-soft)] text-[var(--brand-pink)]",
     accent: "text-[var(--brand-pink)]",
+    pill: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)] ring-1 ring-brand/20",
+    panelRing: "ring-[color-mix(in_oklch,var(--brand-pink)_18%,var(--border))]",
+    panelBg: "bg-[color-mix(in_oklch,white_76%,var(--primary-soft))]",
   },
   teal: {
     active: "bg-white text-teal shadow-sm ring-1 ring-teal/20",
     icon: "bg-[var(--brand-teal-soft)] text-teal",
     accent: "text-teal",
+    pill: "bg-[var(--brand-teal-soft)] text-teal ring-1 ring-teal/20",
+    panelRing: "ring-[color-mix(in_oklch,var(--brand-teal)_22%,var(--border))]",
+    panelBg: "bg-[color-mix(in_oklch,white_82%,var(--brand-teal-soft))]",
   },
   burgundy: {
     active: "bg-white text-[var(--brand-pink-deep)] shadow-sm ring-1 ring-brand/15",
     icon: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)]",
     accent: "text-[var(--brand-pink-deep)]",
+    pill: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)] ring-1 ring-brand/15",
+    panelRing: "ring-[color-mix(in_oklch,var(--brand-pink-deep)_16%,var(--border))]",
+    panelBg: "bg-[color-mix(in_oklch,white_90%,var(--section-grey))]",
   },
 };
 
@@ -215,6 +231,198 @@ export function ServicesMegaMenuDesktop({ isActive }: ServicesMegaMenuDesktopPro
   );
 }
 
+export function ServicesMobileSheetContent({ onNavigate }: { onNavigate: () => void }) {
+  const [activeCat, setActiveCat] = useState(programCategories[0].cat);
+  const activeCategory =
+    programCategories.find((category) => category.cat === activeCat) ?? programCategories[0];
+  const activeSlug = categorySlug(activeCategory.cat);
+  const tone = toneRail[activeCategory.tone];
+
+  return (
+    <div className="flex min-h-0 flex-1 flex-col">
+      <Link
+        href="/services"
+        onClick={onNavigate}
+        className="mx-4 mb-3 flex items-center justify-between gap-3 rounded-xl border border-border/70 bg-white px-4 py-3 shadow-[0_2px_10px_-4px_rgba(30,46,61,0.1)] active:scale-[0.99]"
+      >
+        <span className="min-w-0">
+          <span className="block font-display text-[15px] font-bold text-navy">Full catalogue</span>
+          <span className="mt-0.5 block text-[12px] text-navy/55">Browse all programmes in one place</span>
+        </span>
+        <ArrowRight className="h-4 w-4 shrink-0 text-brand" strokeWidth={2.25} />
+      </Link>
+
+      <div
+        className="shrink-0 border-y border-border/50 bg-[color-mix(in_oklch,var(--section-grey)_30%,white)] px-4 py-3"
+        role="tablist"
+        aria-label="Service categories"
+      >
+        <div className="flex gap-2 overflow-x-auto pb-0.5 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {programCategories.map((category) => {
+            const Icon = category.icon;
+            const selected = category.cat === activeCat;
+            const catTone = toneRail[category.tone];
+
+            return (
+              <button
+                key={category.cat}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                onClick={() => setActiveCat(category.cat)}
+                className={cn(
+                  "inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2 font-sans-brand text-[12px] font-semibold transition-colors",
+                  selected
+                    ? catTone.pill
+                    : "bg-white/80 text-navy/65 ring-1 ring-border/60",
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex h-6 w-6 items-center justify-center rounded-md",
+                    selected ? "bg-white/80" : catTone.icon,
+                  )}
+                >
+                  <Icon className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+                {category.cat}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 [-webkit-overflow-scrolling:touch]"
+        role="tabpanel"
+      >
+        <div className={cn("rounded-2xl p-4 ring-1", tone.panelRing, tone.panelBg)}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                {activeCategory.tag}
+              </p>
+              <h3 className="mt-1 font-display text-base font-bold leading-snug text-navy">
+                {categoryProgramsHeading(activeCategory.cat, activeCategory.tag)}
+              </h3>
+              <p className="mt-1.5 line-clamp-2 text-[12px] leading-relaxed text-navy/60">
+                {activeCategory.desc}
+              </p>
+            </div>
+            <Link
+              href={PROGRAM_ROUTES[activeSlug]}
+              onClick={onNavigate}
+              className={cn(
+                "inline-flex shrink-0 items-center gap-1 rounded-full border border-border/70 bg-white px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.08em]",
+                tone.accent,
+              )}
+            >
+              View all
+              <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+            </Link>
+          </div>
+
+          <ul className="mt-4 space-y-2">
+            {activeCategory.programs.map((program) => {
+              const PIcon = program.i;
+              return (
+                <li key={program.slug}>
+                  <Link
+                    href={getProgramHref(activeSlug, program.slug)}
+                    onClick={onNavigate}
+                    className="group flex items-start gap-3 rounded-xl border border-border/60 bg-white/90 p-3.5 shadow-[0_2px_8px_-4px_rgba(30,46,61,0.08)] transition-[transform,box-shadow] active:scale-[0.99] active:shadow-none"
+                  >
+                    <span
+                      className={cn(
+                        "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg",
+                        tone.icon,
+                      )}
+                    >
+                      <PIcon className="h-4 w-4" strokeWidth={1.85} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-sans-brand text-[13px] font-semibold leading-snug text-navy group-hover:text-brand">
+                        {program.t}
+                      </span>
+                      <span className="mt-0.5 block line-clamp-1 text-[11px] leading-snug text-navy/50">
+                        {program.for}
+                      </span>
+                    </span>
+                    <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/70" strokeWidth={2.25} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+
+      <div className="shrink-0 border-t border-border/60 bg-[color-mix(in_oklch,var(--brand-teal-soft)_16%,white)] px-4 py-3">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-[11px] leading-snug text-navy/65">
+            Live-supervised by Dr. Deepali Shah (PT)
+          </p>
+          <Link
+            href="/contact"
+            onClick={onNavigate}
+            className="inline-flex shrink-0 items-center gap-1 font-sans-brand text-[10px] font-bold uppercase tracking-[0.08em] text-brand"
+          >
+            Book assessment
+            <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ServicesMobileMenuList({
+  onNavigate,
+  className,
+}: {
+  onNavigate: () => void;
+  className?: string;
+}) {
+  return (
+    <div className={cn("space-y-4", className)}>
+      <Link
+        href="/services"
+        onClick={onNavigate}
+        className="block font-sans-brand text-sm font-semibold text-brand hover:underline"
+      >
+        All Services
+      </Link>
+      {programCategories.map((cat) => {
+        const slug = categorySlug(cat.cat);
+        return (
+          <div key={cat.cat}>
+            <Link
+              href={PROGRAM_ROUTES[slug]}
+              onClick={onNavigate}
+              className="font-display text-sm font-bold text-navy"
+            >
+              {categoryProgramsHeading(cat.cat, cat.tag)}
+            </Link>
+            <ul className="mt-2 space-y-1.5 pl-2">
+              {cat.programs.map((program) => (
+                <li key={program.slug}>
+                  <Link
+                    href={getProgramHref(slug, program.slug)}
+                    onClick={onNavigate}
+                    className="block font-sans-brand text-[13px] leading-snug text-[var(--brand-dark)]/80 hover:text-[var(--brand-pink)]"
+                  >
+                    {program.t}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 type ServicesMobileAccordionProps = {
   isActive: boolean;
   onNavigate: () => void;
@@ -256,42 +464,10 @@ export function ServicesMobileAccordion({ isActive, onNavigate }: ServicesMobile
         )}
       >
         <div className="overflow-hidden">
-          <div className="space-y-4 border-t border-[var(--border)]/80 px-4 py-4">
-            <Link
-              href="/services"
-              onClick={onNavigate}
-              className="block font-sans-brand text-sm font-semibold text-brand hover:underline"
-            >
-              All Services
-            </Link>
-            {programCategories.map((cat) => {
-              const slug = categorySlug(cat.cat);
-              return (
-                <div key={cat.cat}>
-                  <Link
-                    href={PROGRAM_ROUTES[slug]}
-                    onClick={onNavigate}
-                    className="font-display text-sm font-bold text-navy"
-                  >
-                    {categoryProgramsHeading(cat.cat, cat.tag)}
-                  </Link>
-                  <ul className="mt-2 space-y-1.5 pl-2">
-                    {cat.programs.map((program) => (
-                      <li key={program.slug}>
-                        <Link
-                          href={getProgramHref(slug, program.slug)}
-                          onClick={onNavigate}
-                          className="block font-sans-brand text-[13px] leading-snug text-[var(--brand-dark)]/80 hover:text-[var(--brand-pink)]"
-                        >
-                          {program.t}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
+          <ServicesMobileMenuList
+            onNavigate={onNavigate}
+            className="border-t border-[var(--border)]/80 px-4 py-4"
+          />
         </div>
       </div>
     </div>

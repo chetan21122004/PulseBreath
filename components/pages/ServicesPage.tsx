@@ -165,84 +165,78 @@ function ServiceCard({
   index,
   tone,
   categorySlug: catSlug,
-  compact = false,
 }: {
   program: (typeof programCategories)[number]["programs"][number];
   index: number;
   tone: ProgramCategoryTone;
   categorySlug: ProgramSlug;
-  compact?: boolean;
 }) {
   const Icon = program.i;
   const styles = toneStyles[tone];
   const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      variants={cardScaleIn}
-      whileHover={reduceMotion ? {} : hoverLift}
-      className="h-full"
-    >
+    <motion.div variants={cardScaleIn} whileHover={reduceMotion ? {} : hoverLift} className="h-full">
       <Link
         href={getProgramHref(catSlug, program.slug)}
         className={cn(
-          "group block h-full rounded-xl border border-border/80 border-l-4 bg-white/90 shadow-[0_12px_40px_-20px_rgba(30,46,61,0.18)] backdrop-blur-sm",
-          compact ? "p-3.5" : "p-5 sm:p-6",
+          "group block h-full rounded-xl border border-border/80 border-l-4 bg-white/90 p-3.5 shadow-[0_8px_28px_-18px_rgba(30,46,61,0.16)] backdrop-blur-sm active:scale-[0.99] lg:p-6 lg:shadow-[0_12px_40px_-20px_rgba(30,46,61,0.18)] lg:active:scale-100",
           styles.border,
         )}
       >
-        <div className="flex items-start gap-3 sm:gap-4">
+        <div className="flex items-center gap-3 lg:items-start lg:gap-4">
           <motion.div
             className={cn(
               "flex shrink-0 items-center justify-center rounded-xl",
-              compact ? "h-9 w-9" : "h-11 w-11",
+              "h-10 w-10 lg:h-11 lg:w-11",
               styles.icon,
             )}
             whileHover={reduceMotion ? {} : { scale: 1.1, transition: { duration: 0.25 } }}
           >
-            <Icon className={cn(compact ? "h-4 w-4" : "h-5 w-5")} strokeWidth={2.25} />
+            <Icon className="h-4 w-4 lg:h-5 lg:w-5" strokeWidth={2.25} />
           </motion.div>
+
           <div className="min-w-0 flex-1">
-            {!compact ? (
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em]", styles.badge)}>
-                  Specialist supervised
-                </span>
-              </div>
-            ) : null}
-            <h3
-              className={cn(
-                "font-display font-bold leading-snug text-navy",
-                compact ? "text-[15px]" : "mt-2 text-lg sm:text-xl",
-              )}
-            >
+            <div className="hidden flex-wrap items-center gap-2 lg:flex">
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span
+                className={cn(
+                  "rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em]",
+                  styles.badge,
+                )}
+              >
+                Specialist supervised
+              </span>
+            </div>
+            <h3 className="font-display text-[15px] font-bold leading-snug text-navy lg:mt-2 lg:text-xl">
               {program.t}
             </h3>
-            {compact ? (
-              <p className={cn("font-medium text-navy/80", "mt-1 text-[13px] leading-snug")}>
-                {program.for}
-              </p>
-            ) : (
-              <ProgramPreview program={program} className="mt-2" />
-            )}
+            <p className="mt-0.5 line-clamp-1 text-[12px] leading-snug text-navy/60 lg:hidden">
+              {program.for}
+            </p>
+            <div className="mt-1.5 flex items-center gap-1.5 text-[11px] font-medium text-navy/55 lg:hidden">
+              <Clock className="h-3.5 w-3.5 text-brand" strokeWidth={2.25} />
+              {program.dur}
+            </div>
+            <ProgramPreview program={program} className="mt-2 hidden lg:block" />
           </div>
+
+          <ArrowRight
+            className="h-4 w-4 shrink-0 text-brand/70 transition-transform group-hover:translate-x-0.5 lg:hidden"
+            strokeWidth={2.25}
+          />
         </div>
 
-        <div
-          className={cn(
-            "flex items-center justify-between gap-3 border-t border-border/60",
-            compact ? "mt-3 pt-3" : "mt-5 gap-4 pt-5",
-          )}
-        >
-          <div className={cn("flex items-center gap-1.5 font-medium text-navy/75", compact ? "text-[12px]" : "gap-2 text-sm")}>
-            <Clock className={cn("text-brand", compact ? "h-3.5 w-3.5" : "h-4 w-4")} strokeWidth={2.25} />
+        <div className="mt-5 hidden items-center justify-between gap-4 border-t border-border/60 pt-5 lg:flex">
+          <div className="flex items-center gap-2 text-sm font-medium text-navy/75">
+            <Clock className="h-4 w-4 text-brand" strokeWidth={2.25} />
             {program.dur}
           </div>
-          <span className={cn("inline-flex shrink-0 items-center gap-1 font-bold text-brand", compact ? "text-[12px]" : "text-sm")}>
-            View program <ArrowRight className={cn(compact ? "h-3.5 w-3.5" : "h-4 w-4", "transition-transform group-hover:translate-x-0.5")} />
+          <span className="inline-flex shrink-0 items-center gap-1 text-sm font-bold text-brand">
+            View program{" "}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </span>
         </div>
       </Link>
@@ -252,10 +246,8 @@ function ServiceCard({
 
 function CategorySection({
   category,
-  compact = false,
 }: {
   category: (typeof programCategories)[number];
-  compact?: boolean;
 }) {
   const CatIcon = category.icon;
   const styles = toneStyles[category.tone];
@@ -272,69 +264,66 @@ function CategorySection({
         viewport={{ once: true, amount: 0.15 }}
         whileHover={reduceMotion ? {} : hoverLiftSubtle}
         className={cn(
-          "motion-card rounded-2xl border border-border/80 border-l-4",
-          compact ? "p-4" : "p-6 sm:p-8",
+          "motion-card rounded-xl border border-border/80 border-l-4 p-4 sm:p-6 lg:rounded-2xl lg:p-8",
           styles.border,
         )}
       >
-        <div className="flex items-start gap-3 sm:gap-4">
+        <div className="flex items-start gap-3 lg:gap-4">
           <motion.div
             className={cn(
               "flex shrink-0 items-center justify-center rounded-xl",
-              compact ? "h-10 w-10" : "h-12 w-12",
+              "h-10 w-10 lg:h-12 lg:w-12",
               styles.icon,
             )}
             whileHover={reduceMotion ? {} : { scale: 1.08, rotate: 3, transition: { duration: 0.3 } }}
           >
-            <CatIcon className={cn(compact ? "h-5 w-5" : "h-6 w-6")} strokeWidth={2.25} />
+            <CatIcon className="h-5 w-5 lg:h-6 lg:w-6" strokeWidth={2.25} />
           </motion.div>
-          <div className="min-w-0">
-            <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground sm:text-[11px] sm:tracking-[0.16em]">
-              {category.tag}
-            </span>
-            <h2 className={cn("mt-0.5 font-display font-bold text-navy", compact ? "text-xl" : "mt-1 text-2xl sm:text-3xl")}>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                {category.tag}
+              </span>
+              <span
+                className={cn(
+                  "rounded-full px-2 py-0.5 text-[10px] font-bold lg:hidden",
+                  styles.badge,
+                )}
+              >
+                {category.programs.length} programs
+              </span>
+            </div>
+            <h2 className="mt-0.5 font-display text-lg font-bold leading-snug text-navy sm:text-2xl lg:mt-1 lg:text-3xl">
               {categoryProgramsHeading(category.cat, category.tag)}
             </h2>
-            <p
-              className={cn(
-                "text-[var(--body-text)]",
-                compact ? "mt-2 line-clamp-2 text-[13px] leading-snug" : "mt-3 max-w-2xl",
-              )}
-            >
+            <p className="mt-1.5 line-clamp-2 text-[13px] leading-snug text-[var(--body-text)] lg:mt-3 lg:line-clamp-none lg:max-w-2xl lg:text-base">
               {category.desc}
             </p>
-            {!compact ? (
-              <p className="mt-3 text-sm font-bold text-brand">
-                <CountUp value={parsedStat.number} suffix={parsedStat.suffix} /> {category.stat.l}
-              </p>
-            ) : null}
+            <p className="mt-2 text-[12px] font-bold text-brand lg:mt-3 lg:text-sm">
+              <CountUp value={parsedStat.number} suffix={parsedStat.suffix} /> {category.stat.l}
+            </p>
           </div>
         </div>
       </motion.div>
 
-      <motion.div
-        className={cn(
-          "mt-6 grid gap-4 sm:mt-8 sm:gap-6",
-          category.programs.length === 3
-            ? "md:grid-cols-2 xl:grid-cols-3"
-            : "md:grid-cols-2 xl:grid-cols-3",
-        )}
+      <motion.ul
+        className="mt-4 grid list-none gap-2.5 lg:mt-8 lg:gap-6 md:grid-cols-2 xl:grid-cols-3"
         variants={staggerContainerCards}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.08 }}
       >
         {category.programs.map((program, index) => (
-          <ServiceCard
-            key={program.t}
-            program={program}
-            index={index}
-            tone={category.tone}
-            categorySlug={slug}
-            compact={compact}
-          />
+          <li key={program.t}>
+            <ServiceCard
+              program={program}
+              index={index}
+              tone={category.tone}
+              categorySlug={slug}
+            />
+          </li>
         ))}
-      </motion.div>
+      </motion.ul>
     </>
   );
 }
@@ -347,30 +336,36 @@ function ServicesCatalogNav() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       aria-label="Jump to service category"
-      className="mb-8 flex flex-wrap gap-2 rounded-2xl border border-border/80 bg-background/90 p-2 sm:mb-10 lg:sticky lg:top-[calc(var(--header-height)+0.75rem)] lg:z-20 lg:backdrop-blur-md"
+      className={cn(
+        "z-20 mb-6 lg:mb-10",
+        "sticky top-[var(--header-height)] -mx-4 border-b border-border/50 bg-[color-mix(in_oklch,var(--section-grey)_55%,white)]/95 px-4 py-2.5 backdrop-blur-md",
+        "lg:static lg:mx-0 lg:rounded-2xl lg:border lg:border-border/80 lg:bg-background/90 lg:px-0 lg:py-0 lg:backdrop-blur-md",
+      )}
     >
-      {programCategories.map((category) => {
-        const Icon = category.icon;
-        const slug = categorySlug(category.cat);
-        const styles = toneStyles[category.tone];
+      <div className="flex gap-2 overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:none] lg:flex-wrap lg:overflow-visible lg:p-2 [&::-webkit-scrollbar]:hidden">
+        {programCategories.map((category) => {
+          const Icon = category.icon;
+          const slug = categorySlug(category.cat);
+          const styles = toneStyles[category.tone];
 
-        return (
-          <a
-            key={category.cat}
-            href={`#services-${slug}`}
-            className={cn(
-              "inline-flex min-h-10 items-center gap-2 rounded-xl border px-3.5 py-2 font-sans-brand text-[11px] font-bold uppercase tracking-[0.08em] transition-colors sm:px-4 sm:text-xs",
-              styles.chip,
-            )}
-          >
-            <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
-            {category.cat}
-            <span className="rounded-full bg-white/70 px-1.5 py-px text-[10px] font-bold opacity-70">
-              {category.programs.length}
-            </span>
-          </a>
-        );
-      })}
+          return (
+            <a
+              key={category.cat}
+              href={`#services-${slug}`}
+              className={cn(
+                "inline-flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-2 font-sans-brand text-[11px] font-bold uppercase tracking-[0.08em] transition-colors active:scale-[0.98] lg:min-h-10 lg:rounded-xl lg:px-4 lg:text-xs",
+                styles.chip,
+              )}
+            >
+              <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+              {category.cat}
+              <span className="rounded-full bg-white/70 px-1.5 py-px text-[10px] font-bold opacity-70">
+                {category.programs.length}
+              </span>
+            </a>
+          );
+        })}
+      </div>
     </motion.nav>
   );
 }
@@ -379,7 +374,7 @@ function ServicesCatalog() {
   return (
     <div>
       <ServicesCatalogNav />
-      <div className="space-y-14 sm:space-y-16 lg:space-y-20">
+      <div className="space-y-10 sm:space-y-14 lg:space-y-20">
         {programCategories.map((category, index) => {
           const slug = categorySlug(category.cat);
           const isLast = index === programCategories.length - 1;
@@ -388,7 +383,10 @@ function ServicesCatalog() {
             <section
               key={category.cat}
               id={`services-${slug}`}
-              className={cn("scroll-mt-[calc(var(--header-height)+5rem)]", !isLast && "border-b border-border/60 pb-14 sm:pb-16 lg:pb-20")}
+              className={cn(
+                "scroll-mt-[calc(var(--header-height)+3.75rem)] lg:scroll-mt-[calc(var(--header-height)+5rem)]",
+                !isLast && "border-b border-border/50 pb-10 sm:pb-14 lg:border-border/60 lg:pb-20",
+              )}
             >
               <CategorySection category={category} />
             </section>
@@ -475,17 +473,20 @@ export function ServicesPage() {
         description="Specialist rehabilitation pathways for heart, lung, and metabolic health - supervised throughout. Start with a free assessment with Dr. Deepali."
         aside={<ServicesHeroAside />}
       >
-        <div className="flex flex-wrap items-center gap-8 sm:gap-12 mt-10">
+        <div className="mt-6 grid grid-cols-3 gap-3 sm:mt-10 sm:flex sm:flex-wrap sm:items-center sm:gap-8 lg:gap-12">
           {[
             { num: programCategories.length, suffix: "", label: "Specialisations" },
             { num: totalPrograms, suffix: "+", label: "Programs" },
             { num: 100, suffix: "%", label: "Supervised" },
           ].map((stat) => (
-            <div key={stat.label} className="flex flex-col">
-              <span className="font-display text-2xl font-bold text-brand sm:text-3xl">
+            <div
+              key={stat.label}
+              className="flex flex-col rounded-xl border border-border/60 bg-white/60 px-3 py-2.5 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0"
+            >
+              <span className="font-display text-xl font-bold text-brand sm:text-2xl lg:text-3xl">
                 <CountUp value={stat.num} suffix={stat.suffix} />
               </span>
-              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.1em] text-muted-foreground sm:text-[10px] sm:tracking-[0.12em]">
                 {stat.label}
               </span>
             </div>
@@ -494,7 +495,7 @@ export function ServicesPage() {
       </PageHero>
 
       {/* ── Services Catalog ────────────────────── */}
-      <PageSection variant="section" className="py-8 sm:py-12 lg:py-20">
+      <PageSection variant="section" className="overflow-visible py-6 sm:py-12 lg:py-20">
         <div className="w-full">
           <ServicesCatalog />
 
@@ -506,7 +507,7 @@ export function ServicesPage() {
             viewport={{ once: true, amount: 0.2 }}
             className="mt-8 sm:mt-12"
           >
-            <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-background/80 p-6 text-center sm:p-8">
+            <div className="relative overflow-hidden rounded-xl border border-border/70 bg-background/80 p-5 text-center sm:rounded-2xl sm:p-8">
               {/* Decorative gradient accents */}
               <div
                 aria-hidden

@@ -154,11 +154,11 @@ export function AboutPage() {
       />
 
       {/* ── Doctor Profile ──────────────────────── */}
-      <PageSection variant="section">
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
-          <Reveal variant="fadeRight" className="lg:col-span-5">
+      <PageSection variant="section" className="overflow-visible py-10 sm:py-14 lg:py-20">
+        <div className="grid items-start gap-8 sm:gap-10 lg:grid-cols-12 lg:items-center lg:gap-14 xl:gap-16">
+          <Reveal variant="fadeUp" className="lg:col-span-5">
             <motion.div
-              className="relative mx-auto max-w-[min(100%,320px)] lg:mx-0 lg:max-w-none"
+              className="relative mx-auto w-full max-w-[min(100%,340px)] sm:max-w-[360px] lg:mx-0 lg:max-w-none"
               whileHover={reduceMotion ? {} : hoverLiftSubtle}
             >
               <div
@@ -223,34 +223,36 @@ export function AboutPage() {
             </motion.div>
           </Reveal>
 
-          <StaggerReveal className="lg:col-span-7" itemVariant="fadeUp">
+          <StaggerReveal className="min-w-0 lg:col-span-7" itemVariant="fadeUp">
             <StaggerItem>
-              <p className="font-display text-[clamp(1.2rem,2.2vw,1.55rem)] font-medium italic leading-snug text-navy">
+              <p className="text-center font-display text-[1.2rem] font-medium italic leading-snug text-navy sm:text-left sm:text-[clamp(1.2rem,2.2vw,1.55rem)]">
                 Expert care,{" "}
                 <span className="italic text-brand">compassionate</span> touch.
               </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-2 border-b border-border pb-5">
-                <span className="font-display text-xl italic text-brand sm:text-2xl">BPT · MPT</span>
-                <span className="text-sm font-medium text-navy/85">Cardiopulmonary Sciences</span>
-                <span className="w-full font-sans text-xs font-medium text-muted-foreground sm:ml-auto sm:w-auto">
+              <div className="mt-5 rounded-xl border border-border/70 bg-white/85 p-4 sm:mt-6 sm:rounded-none sm:border-0 sm:border-b sm:bg-transparent sm:p-0 sm:pb-5">
+                <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4 sm:gap-y-2">
+                  <span className="font-display text-lg italic text-brand sm:text-2xl">BPT · MPT</span>
+                  <span className="text-sm font-medium text-navy/85">Cardiopulmonary Sciences</span>
+                </div>
+                <p className="mt-2 text-[11px] font-medium text-muted-foreground sm:mt-0 sm:text-xs">
                   MP Paramedical Reg No. 54685/2023
-                </span>
+                </p>
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-[var(--body-text)] sm:text-[16px]">
+              <p className="mt-5 text-[15px] leading-[1.8] text-[var(--body-text)] sm:mt-6 sm:max-w-xl sm:text-[16px] sm:leading-[1.85]">
                 {DOCTOR_OVERVIEW}
               </p>
             </StaggerItem>
 
             <StaggerItem>
-              <ul className="mt-6 space-y-2.5">
+              <ul className="mt-5 space-y-2 sm:mt-6 sm:space-y-2.5">
                 {DOCTOR_HIGHLIGHTS.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="flex items-start gap-3 rounded-lg bg-white/60 px-3 py-2.5 ring-1 ring-border/50 sm:bg-transparent sm:px-0 sm:py-0 sm:ring-0">
                     <span
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
                       aria-hidden
@@ -265,27 +267,31 @@ export function AboutPage() {
 
             <StaggerItem>
               <motion.div
-                className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3"
+                className="mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-3"
                 variants={staggerContainerCards}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
               >
-                {DOCTOR_CREDENTIALS.map(({ icon: Icon, t, d }, index) => (
+                {DOCTOR_CREDENTIALS.map(({ icon: Icon, t, d }) => (
                   <motion.div
                     key={t}
                     variants={cardScaleIn}
                     whileHover={reduceMotion ? {} : hoverLift}
-                    className="motion-card flex flex-col rounded-xl border border-border/80 bg-white/90 p-4 shadow-[0_12px_40px_-20px_rgba(30,46,61,0.2)] ring-1 ring-white/80 backdrop-blur-sm cursor-default"
+                    className="motion-card flex flex-col items-center rounded-xl border border-border/80 bg-white/90 p-2.5 text-center shadow-[0_8px_28px_-18px_rgba(30,46,61,0.16)] ring-1 ring-white/80 backdrop-blur-sm sm:items-start sm:p-4 sm:text-left sm:shadow-[0_12px_40px_-20px_rgba(30,46,61,0.2)] cursor-default"
                   >
                     <motion.div
-                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15"
+                      className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15 sm:h-10 sm:w-10"
                       whileHover={reduceMotion ? {} : { scale: 1.08, transition: { duration: 0.25 } }}
                     >
-                      <Icon className="h-4 w-4 text-brand" strokeWidth={2.25} />
+                      <Icon className="h-3.5 w-3.5 text-brand sm:h-4 sm:w-4" strokeWidth={2.25} />
                     </motion.div>
-                    <p className="mt-3 font-display text-base font-bold leading-snug text-navy">{t}</p>
-                    <p className="mt-1 text-xs leading-snug text-muted-foreground">{d}</p>
+                    <p className="mt-2 font-display text-[11px] font-bold leading-snug text-navy sm:mt-3 sm:text-base">
+                      {t}
+                    </p>
+                    <p className="mt-0.5 hidden text-xs leading-snug text-muted-foreground sm:block">
+                      {d}
+                    </p>
                   </motion.div>
                 ))}
               </motion.div>

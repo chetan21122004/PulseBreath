@@ -420,3 +420,34 @@ export const programCategories = [
     ] satisfies Program[],
   },
 ];
+
+/** Split a `dur` string like "8-12 weeks · 3 sessions/week" into its parts. */
+export function programDurationParts(dur: string) {
+  const [length, frequency] = dur.split("·").map((part) => part.trim());
+  return { length: length || dur, frequency: frequency || "" };
+}
+
+/**
+ * Build a consistent FAQ set from a program's structured content.
+ * Shared by the rendered accordion and the FAQPage JSON-LD so the two never drift.
+ */
+export function buildProgramFaqs(program: Program): { q: string; a: string }[] {
+  return [
+    { q: `What is the ${program.t} program?`, a: program.intro },
+    { q: "Who is this program for?", a: program.for },
+    {
+      q: "How long does the program run?",
+      a: `The program typically runs ${program.dur}. The exact length and frequency are tailored to your diagnosis, current capacity, and recovery goals.`,
+    },
+    { q: "What happens in the first session?", a: program.firstSession },
+    { q: "What does the program involve?", a: program.involves },
+    {
+      q: "How is my safety protected during the program?",
+      a: program.safetyNotes.join(" "),
+    },
+    {
+      q: "Who supervises the sessions?",
+      a: "Every session is live-supervised by Dr. Deepali Shah (PT), a Gold Medalist in Cardiopulmonary Sciences, with real-time monitoring of your heart rate, breathing, and symptoms.",
+    },
+  ];
+}

@@ -22,6 +22,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { ServicesMobileSheetContent } from "@/components/pulse-landing/ServicesMegaMenu";
 import { cn } from "@/lib/utils";
 
 type MobileNavItem = {
@@ -32,18 +33,12 @@ type MobileNavItem = {
   isActive: (pathname: string) => boolean;
 };
 
-const MOBILE_NAV_ITEMS: MobileNavItem[] = [
+const MOBILE_LINK_ITEMS: MobileNavItem[] = [
   {
     label: "Home",
     href: "/",
     icon: Home,
     isActive: (pathname) => pathname === "/",
-  },
-  {
-    label: "Services",
-    href: "/services",
-    icon: Layers,
-    isActive: (pathname) => pathname === "/services" || pathname.startsWith("/services/"),
   },
   {
     label: "About",
@@ -83,6 +78,10 @@ const MOBILE_MORE_ITEMS: MobileNavItem[] = [
   },
 ];
 
+function isServicesActive(pathname: string) {
+  return pathname === "/services" || pathname.startsWith("/services/");
+}
+
 function tabClassName(active: boolean) {
   return cn(
     "relative flex min-h-11 w-full touch-manipulation cursor-pointer flex-col items-center justify-center gap-0.5 px-1 py-1.5 font-sans-brand text-[10px] font-semibold leading-none transition-colors",
@@ -108,33 +107,51 @@ function TabContent({ label, icon: Icon, active }: { label: string; icon: Lucide
   );
 }
 
-const MoreTabButton = forwardRef<
+const SheetTabButton = forwardRef<
   HTMLButtonElement,
-  { active: boolean; onClick: () => void; "aria-expanded"?: boolean }
->(function MoreTabButton({ active, onClick, "aria-expanded": ariaExpanded }, ref) {
+  {
+    label: string;
+    icon: LucideIcon;
+    active: boolean;
+    open: boolean;
+    onClick: () => void;
+    ariaLabel: string;
+  }
+>(function SheetTabButton(
+  { label, icon, active, open, onClick, ariaLabel },
+  ref,
+) {
   return (
     <button
       ref={ref}
       type="button"
       onClick={onClick}
-      aria-expanded={ariaExpanded}
+      aria-expanded={open}
       aria-haspopup="dialog"
-      aria-label="More pages"
-      className={tabClassName(active || !!ariaExpanded)}
+      aria-label={ariaLabel}
+      className={tabClassName(active || open)}
     >
-      <TabContent label="More" icon={LayoutGrid} active={active || !!ariaExpanded} />
+      <TabContent label={label} icon={icon} active={active || open} />
     </button>
   );
 });
 
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const servicesActive = isServicesActive(pathname);
   const moreActive = MOBILE_MORE_ITEMS.some((item) => item.isActive(pathname));
 
   useEffect(() => {
+    setServicesOpen(false);
     setMoreOpen(false);
   }, [pathname]);
+
+  const closeSheets = () => {
+    setServicesOpen(false);
+    setMoreOpen(false);
+  };
 
   return (
     <>
@@ -144,7 +161,31 @@ export function MobileBottomNav() {
         style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
       >
         <div className="mx-auto grid h-[var(--bottom-nav-height)] max-w-lg grid-cols-5">
-          {MOBILE_NAV_ITEMS.map(({ label, href, icon, isActive }) => {
+          <Link
+            href="/"
+            aria-current={MOBILE_LINK_ITEMS[0].isActive(pathname) ? "page" : undefined}
+            className={tabClassName(MOBILE_LINK_ITEMS[0].isActive(pathname))}
+          >
+            <TabContent
+              label="Home"
+              icon={Home}
+              active={MOBILE_LINK_ITEMS[0].isActive(pathname)}
+            />
+          </Link>
+
+          <SheetTabButton
+            label="Services"
+            icon={Layers}
+            active={servicesActive}
+            open={servicesOpen}
+            ariaLabel="Browse services"
+            onClick={() => {
+              setMoreOpen(false);
+              setServicesOpen(true);
+            }}
+          />
+
+          {MOBILE_LINK_ITEMS.slice(1).map(({ label, href, icon, isActive }) => {
             const active = isActive(pathname);
             const Icon = icon;
 
@@ -160,13 +201,45 @@ export function MobileBottomNav() {
             );
           })}
 
-          <MoreTabButton
+          <SheetTabButton
+            label="More"
+            icon={LayoutGrid}
             active={moreActive}
-            aria-expanded={moreOpen}
-            onClick={() => setMoreOpen(true)}
+            open={moreOpen}
+            ariaLabel="More pages"
+            onClick={() => {
+              setServicesOpen(false);
+              setMoreOpen(true);
+            }}
           />
         </div>
       </nav>
+
+      <Sheet open={servicesOpen} onOpenChange={setServicesOpen}>
+        <SheetContent
+          side="bottom"
+          className="bottom-[calc(var(--bottom-nav-height)+env(safe-area-inset-bottom,0px))] flex h-[min(85vh,36rem)] max-h-[min(85vh,36rem)] flex-col gap-0 overflow-hidden rounded-t-[1.35rem] border-t border-border/70 bg-[color-mix(in_oklch,var(--section-grey)_22%,white)] p-0 shadow-[0_-24px_64px_-20px_rgba(30,46,61,0.28)] [&>button]:right-3 [&>button]:top-3.5 [&>button]:rounded-full [&>button]:bg-white/90 [&>button]:p-2 [&>button]:opacity-100 [&>button]:shadow-sm [&>button]:ring-1 [&>button]:ring-border/60"
+        >
+          <div className="shrink-0 px-4 pb-3 pt-3">
+            <div
+              className="mx-auto mb-4 h-1 w-10 rounded-full bg-border/80"
+              aria-hidden
+            />
+            <SheetHeader className="space-y-1 pr-10 text-left">
+              <SheetTitle className="font-display text-xl font-bold text-navy">
+                Our Services
+              </SheetTitle>
+              <SheetDescription className="text-[13px] leading-relaxed text-navy/55">
+                Specialist cardiac, pulmonary &amp; metabolic rehabilitation
+              </SheetDescription>
+            </SheetHeader>
+          </div>
+
+          {servicesOpen ? (
+            <ServicesMobileSheetContent key="services-sheet" onNavigate={closeSheets} />
+          ) : null}
+        </SheetContent>
+      </Sheet>
 
       <Sheet open={moreOpen} onOpenChange={setMoreOpen}>
         <SheetContent
@@ -188,7 +261,7 @@ export function MobileBottomNav() {
                 <li key={href}>
                   <Link
                     href={href}
-                    onClick={() => setMoreOpen(false)}
+                    onClick={closeSheets}
                     className={cn(
                       "flex min-h-[3.25rem] items-center gap-3 rounded-xl px-3 py-2.5 transition-colors active:scale-[0.99]",
                       active

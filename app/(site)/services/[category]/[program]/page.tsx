@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServiceProgramPage } from "@/components/pages/ServiceProgramPage";
-import { PROGRAM_ROUTES, type ProgramSlug } from "@/components/pulse-landing/constants";
+import {
+  PROGRAM_ROUTES,
+  SITE_URL,
+  type ProgramSlug,
+} from "@/components/pulse-landing/constants";
+import { buildProgramFaqs } from "@/components/pulse-landing/conditions-data";
 import { getAllProgramParams, getProgramBySlugs } from "@/components/pulse-landing/ProgramCatalog";
 
 type PageProps = {
@@ -17,9 +22,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const result = getProgramBySlugs(category, program);
   if (!result) return { title: "Program Not Found" };
 
+  const canonical = `/services/${category}/${program}`;
+  const title = `${result.program.t} | PulseBreath Physiotherapy`;
+
   return {
-    title: `${result.program.t} | PulseBreath Physiotherapy`,
+    title,
     description: result.program.intro,
+    keywords: [
+      result.program.t,
+      result.category.tag,
+      `${result.category.cat} rehabilitation`,
+      ...(result.program.includes ?? []),
+      "physiotherapy",
+      "tele-rehabilitation",
+      "Dr. Deepali Shah",
+    ],
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description: result.program.intro,
+      type: "article",
+      url: canonical,
+      siteName: "PulseBreath Physiotherapy",
+    },
   };
 }
 
@@ -36,5 +61,66 @@ export default async function ServiceProgramRoute({ params }: PageProps) {
     notFound();
   }
 
-  return <ServiceProgramPage categorySlug={catSlug} programSlug={program} />;
+  const url = `${SITE_URL}/services/${catSlug}/${program}`;
+  const faqs = buildProgramFaqs(result.program);
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: result.category.cat,
+        item: `${SITE_URL}/services/${catSlug}`,
+      },
+      { "@type": "ListItem", position: 4, name: result.program.t, item: url },
+    ],
+  };
+
+  const therapyLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalTherapy",
+    name: result.program.t,
+    url,
+    description: result.program.intro,
+    howPerformed: result.program.involves,
+    medicineSystem: "https://schema.org/WesternConventional",
+    relevantSpecialty: "Physiotherapy",
+    provider: {
+      "@type": "MedicalBusiness",
+      name: "PulseBreath Physiotherapy",
+      url: SITE_URL,
+    },
+  };
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(therapyLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
+      <ServiceProgramPage categorySlug={catSlug} programSlug={program} />
+    </>
+  );
 }
