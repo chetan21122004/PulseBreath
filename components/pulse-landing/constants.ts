@@ -20,7 +20,7 @@ export const CLINIC_ADDRESS = "PulseBreath Physiotherapy, Noida, Uttar Pradesh, 
 
 /** Absolute site origin used for canonical URLs and structured data (no trailing slash). */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pulsebreath.in"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pulsebreathphysiotherapy.in"
 ).replace(/\/$/, "");
 
 export const PROGRAM_ROUTES = {
