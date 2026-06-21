@@ -28,6 +28,7 @@ import { BackgroundBlob } from "./BackgroundBlob";
 import { Reveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
 import { SectionPageLink } from "./SectionPageLink";
+import { ProgramPreview, categoryServicesHeading } from "./ProgramPreview";
 import { ILLUSTRATIONS } from "./visual-assets";
 
 type Program = (typeof programCategories)[number]["programs"][number];
@@ -287,9 +288,7 @@ function ServiceCard({
         <h4 className="font-display text-base font-bold leading-snug text-navy sm:text-[1.05rem]">
           {program.t}
         </h4>
-        <p className="mt-2 line-clamp-2 flex-1 font-sans-brand text-[13px] leading-relaxed text-navy/65">
-          {program.for}
-        </p>
+        <ProgramPreview program={program} />
       </div>
 
       <div className="mt-5 flex items-center justify-between gap-3 border-t border-navy/[0.06] pt-4">
@@ -441,7 +440,7 @@ function CategoryChapterCard({
               {category.tag}
             </p>
             <h3 className="font-display text-xl font-bold leading-tight text-navy sm:text-2xl">
-              {category.cat} Services
+              {categoryServicesHeading(category.cat, category.tag)}
             </h3>
             <p
               className={cn(

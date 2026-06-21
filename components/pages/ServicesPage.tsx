@@ -3,13 +3,14 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight, HeartPulse, Wind, Droplet } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { programCategories, type ProgramCategoryTone } from "@/components/pulse-landing/conditions-data";
+import { categoryProgramsHeading, ProgramPreview } from "@/components/pulse-landing/ProgramPreview";
 import { categorySlug, getProgramHref } from "@/components/pulse-landing/ProgramCatalog";
 import type { ProgramSlug } from "@/components/pulse-landing/constants";
+import { ILLUSTRATIONS } from "@/components/pulse-landing/visual-assets";
 import { cn } from "@/lib/utils";
 
 /* ─────────────────── animation presets ─────────────────── */
@@ -135,25 +136,25 @@ function parseStatValue(v: string): { number: number; suffix: string } {
 
 const toneStyles: Record<
   ProgramCategoryTone,
-  { border: string; icon: string; badge: string; tab: string }
+  { border: string; icon: string; badge: string; chip: string }
 > = {
   rose: {
     border: "border-l-[var(--brand-pink)]",
     icon: "bg-[var(--primary-soft)] text-[var(--brand-pink)]",
     badge: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)]",
-    tab: "data-[state=active]:bg-[var(--primary-soft)] data-[state=active]:text-[var(--brand-pink-deep)]",
+    chip: "border-brand/20 bg-[var(--primary-soft)]/50 text-[var(--brand-pink-deep)] hover:bg-[var(--primary-soft)]",
   },
   teal: {
     border: "border-l-teal",
     icon: "bg-[var(--brand-teal-soft)] text-teal",
     badge: "bg-[var(--brand-teal-soft)] text-teal",
-    tab: "data-[state=active]:bg-[var(--brand-teal-soft)] data-[state=active]:text-teal",
+    chip: "border-teal/20 bg-[var(--brand-teal-soft)]/50 text-teal hover:bg-[var(--brand-teal-soft)]",
   },
   burgundy: {
     border: "border-l-[var(--brand-pink-deep)]",
     icon: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)]",
     badge: "bg-[var(--primary-soft)] text-[var(--brand-pink-deep)]",
-    tab: "data-[state=active]:bg-[var(--primary-soft)] data-[state=active]:text-[var(--brand-pink-deep)]",
+    chip: "border-[var(--brand-pink-deep)]/20 bg-[var(--primary-soft)]/50 text-[var(--brand-pink-deep)] hover:bg-[var(--primary-soft)]",
   },
 };
 
@@ -220,10 +221,13 @@ function ServiceCard({
             >
               {program.t}
             </h3>
-            <p className={cn("font-medium text-navy/80", compact ? "mt-1 text-[13px] leading-snug" : "mt-2 text-sm")}>
-              <span className="text-muted-foreground">For: </span>
-              {program.for}
-            </p>
+            {compact ? (
+              <p className={cn("font-medium text-navy/80", "mt-1 text-[13px] leading-snug")}>
+                {program.for}
+              </p>
+            ) : (
+              <ProgramPreview program={program} className="mt-2" />
+            )}
           </div>
         </div>
 
@@ -289,7 +293,7 @@ function CategorySection({
               {category.tag}
             </span>
             <h2 className={cn("mt-0.5 font-display font-bold text-navy", compact ? "text-xl" : "mt-1 text-2xl sm:text-3xl")}>
-              {category.cat} Programs
+              {categoryProgramsHeading(category.cat, category.tag)}
             </h2>
             <p
               className={cn(
@@ -309,7 +313,12 @@ function CategorySection({
       </motion.div>
 
       <motion.div
-        className={cn("grid gap-3 sm:gap-6", compact ? "mt-4" : "mt-8 lg:grid-cols-2")}
+        className={cn(
+          "mt-6 grid gap-4 sm:mt-8 sm:gap-6",
+          category.programs.length === 3
+            ? "md:grid-cols-2 xl:grid-cols-3"
+            : "md:grid-cols-2 xl:grid-cols-3",
+        )}
         variants={staggerContainerCards}
         initial="hidden"
         whileInView="visible"
@@ -330,14 +339,114 @@ function CategorySection({
   );
 }
 
-function MobileServicesList() {
+function ServicesCatalogNav() {
   return (
-    <div className="space-y-10 md:hidden">
-      {programCategories.map((category) => (
-        <section key={category.cat} id={`services-${categorySlug(category.cat)}`}>
-          <CategorySection category={category} compact />
-        </section>
-      ))}
+    <motion.nav
+      variants={sectionFadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      aria-label="Jump to service category"
+      className="mb-8 flex flex-wrap gap-2 rounded-2xl border border-border/80 bg-background/90 p-2 sm:mb-10 lg:sticky lg:top-[calc(var(--header-height)+0.75rem)] lg:z-20 lg:backdrop-blur-md"
+    >
+      {programCategories.map((category) => {
+        const Icon = category.icon;
+        const slug = categorySlug(category.cat);
+        const styles = toneStyles[category.tone];
+
+        return (
+          <a
+            key={category.cat}
+            href={`#services-${slug}`}
+            className={cn(
+              "inline-flex min-h-10 items-center gap-2 rounded-xl border px-3.5 py-2 font-sans-brand text-[11px] font-bold uppercase tracking-[0.08em] transition-colors sm:px-4 sm:text-xs",
+              styles.chip,
+            )}
+          >
+            <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+            {category.cat}
+            <span className="rounded-full bg-white/70 px-1.5 py-px text-[10px] font-bold opacity-70">
+              {category.programs.length}
+            </span>
+          </a>
+        );
+      })}
+    </motion.nav>
+  );
+}
+
+function ServicesCatalog() {
+  return (
+    <div>
+      <ServicesCatalogNav />
+      <div className="space-y-14 sm:space-y-16 lg:space-y-20">
+        {programCategories.map((category, index) => {
+          const slug = categorySlug(category.cat);
+          const isLast = index === programCategories.length - 1;
+
+          return (
+            <section
+              key={category.cat}
+              id={`services-${slug}`}
+              className={cn("scroll-mt-[calc(var(--header-height)+5rem)]", !isLast && "border-b border-border/60 pb-14 sm:pb-16 lg:pb-20")}
+            >
+              <CategorySection category={category} />
+            </section>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────── hero illustration ─────────────────── */
+
+const heroCategoryChips = [
+  { icon: HeartPulse, label: "Cardiovascular", tone: "text-[var(--brand-pink-deep)] bg-[var(--primary-soft)]" },
+  { icon: Wind, label: "Pulmonary", tone: "text-[var(--brand-teal-deep)] bg-[var(--brand-teal-soft)]" },
+  { icon: Droplet, label: "Metabolic", tone: "text-[var(--brand-pink-deep)] bg-[var(--primary-soft)]" },
+] as const;
+
+function ServicesHeroAside() {
+  return (
+    <div className="relative">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 m-auto h-[85%] w-[90%] rounded-[1.75rem] bg-soft/80"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-2 top-[6%] h-28 w-28 rounded-full bg-[var(--brand-teal)]/14 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-3 bottom-[8%] h-24 w-24 rounded-full bg-[var(--brand-pink)]/12 blur-3xl"
+      />
+
+      <div className="relative overflow-hidden rounded-2xl border border-white/75 bg-white/60 p-5 shadow-[0_28px_70px_-32px_rgba(30,46,61,0.28)] backdrop-blur-sm sm:p-6">
+        <img
+          src={ILLUSTRATIONS.cardiologistRafiki}
+          alt="Specialist guiding personalised rehabilitation services"
+          className="mx-auto max-h-[min(32vh,260px)] w-full object-contain xl:max-h-[280px]"
+        />
+        <p className="mt-3 text-center font-sans-brand text-[12px] font-medium leading-snug text-navy/65">
+          Heart, lung & metabolic pathways - all supervised live by Dr. Deepali.
+        </p>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          {heroCategoryChips.map(({ icon: Icon, label, tone }) => (
+            <span
+              key={label}
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ring-1 ring-black/[0.04]",
+                tone,
+              )}
+            >
+              <Icon className="h-3 w-3" strokeWidth={2} aria-hidden />
+              {label}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -355,7 +464,6 @@ export function ServicesPage() {
       <PageHero
         pill={
           <span className="inline-flex items-center gap-2">
-            {/* <Sparkles className="h-3 w-3" strokeWidth={2} /> */}
             Services
           </span>
         }
@@ -365,6 +473,7 @@ export function ServicesPage() {
           </>
         }
         description="Specialist rehabilitation pathways for heart, lung, and metabolic health - supervised throughout. Start with a free assessment with Dr. Deepali."
+        aside={<ServicesHeroAside />}
       >
         <div className="flex flex-wrap items-center gap-8 sm:gap-12 mt-10">
           {[
@@ -387,38 +496,7 @@ export function ServicesPage() {
       {/* ── Services Catalog ────────────────────── */}
       <PageSection variant="section" className="py-8 sm:py-12 lg:py-20">
         <div className="w-full">
-          <MobileServicesList />
-
-          <Tabs defaultValue="Cardiac" className="hidden w-full md:block">
-            {/* Tabs bar with fade-up */}
-            <motion.div
-              variants={sectionFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <TabsList className="mb-10 flex h-auto w-full flex-wrap justify-start gap-2 rounded-2xl border border-border/80 bg-background p-2">
-                {programCategories.map((cat) => (
-                  <TabsTrigger
-                    key={cat.cat}
-                    value={cat.cat}
-                    className={cn(
-                      "rounded-xl px-5 py-2.5 text-sm font-bold uppercase tracking-[0.08em] transition-all duration-300",
-                      toneStyles[cat.tone].tab,
-                    )}
-                  >
-                    {cat.cat}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </motion.div>
-
-            {programCategories.map((category) => (
-              <TabsContent key={category.cat} value={category.cat}>
-                <CategorySection category={category} />
-              </TabsContent>
-            ))}
-          </Tabs>
+          <ServicesCatalog />
 
           {/* CTA block */}
           <motion.div

@@ -8,6 +8,7 @@ import { PageSection } from "@/components/pages/PageSection";
 import { WHATSAPP, PROGRAM_ROUTES, type ProgramSlug } from "@/components/pulse-landing/constants";
 import type { ProgramCategoryTone } from "@/components/pulse-landing/conditions-data";
 import { getProgramBySlugs } from "@/components/pulse-landing/ProgramCatalog";
+import { ProgramPreview, categoryProgramsHeading } from "@/components/pulse-landing/ProgramPreview";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { cn } from "@/lib/utils";
 
@@ -73,16 +74,20 @@ export function ServiceProgramPage({
             {program.dur}
           </div>
         </div>
-        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--body-text)]">
-          <span className="font-semibold text-navy">For: </span>
-          {program.for}
-        </p>
+        {program.includes?.length ? (
+          <ProgramPreview program={program} className="mt-4 max-w-2xl" />
+        ) : (
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--body-text)]">
+            <span className="font-semibold text-navy">For: </span>
+            {program.for}
+          </p>
+        )}
         <Link
           href={PROGRAM_ROUTES[catSlug]}
           className="mt-5 inline-flex items-center gap-2 font-sans-brand text-sm font-semibold text-brand hover:underline"
         >
           <ArrowLeft className="h-4 w-4" />
-          All {category.cat} programs
+          All {categoryProgramsHeading(category.cat, category.tag).toLowerCase()}
         </Link>
       </PageHero>
 
@@ -112,10 +117,10 @@ export function ServiceProgramPage({
               )}
             >
               <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                Key outcomes
+                {program.includes?.length ? "Focus" : "Key outcomes"}
               </span>
               <ul className="mt-4 space-y-2.5">
-                {program.benefits.slice(0, 4).map((benefit) => (
+                {program.benefits.map((benefit) => (
                   <li key={benefit} className="flex items-start gap-2.5 text-sm leading-relaxed text-navy/85">
                     <Check className={cn("mt-0.5 h-4 w-4 shrink-0", styles.accent)} strokeWidth={2.5} />
                     {benefit}

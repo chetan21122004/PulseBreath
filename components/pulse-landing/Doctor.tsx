@@ -74,7 +74,7 @@ export function Doctor() {
                     alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
-                    className="aspect-[3/4] max-h-[min(58vw,280px)] w-full object-cover object-top sm:max-h-none"
+                    className="aspect-[3/4] max-h-[min(58vw,280px)] w-full bg-white object-contain object-center sm:max-h-none"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--brand-deeper)]/55 via-[var(--brand-deeper)]/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--brand-deeper)]/92 via-[var(--brand-deeper)]/72 to-transparent px-3 pb-3 pt-10 sm:px-5 sm:pb-5 sm:pt-16">

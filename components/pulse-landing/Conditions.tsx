@@ -14,10 +14,11 @@ const pillars = [
   {
     slug: "cardiac" as const,
     icon: HeartPulse,
-    title: "Cardiac Rehabilitation",
-    conditions: "After bypass · Angioplasty · Heart failure · Valve replacement",
+    title: "Cardiovascular Rehabilitation",
+    conditions:
+      "After MI & procedures · Heart failure · Stable coronary disease · Reduced exercise capacity",
     image: careMonitoring,
-    cta: "View Cardiac Programs",
+    cta: "View Cardiovascular Programs",
   },
   {
     slug: "pulmonary" as const,

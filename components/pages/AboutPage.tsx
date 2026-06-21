@@ -201,7 +201,7 @@ export function AboutPage() {
                     alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
-                    className="aspect-[3/4] w-full object-cover object-top"
+                    className="aspect-[3/4] w-full bg-white object-contain object-center"
                     onError={(e) => {
                       e.currentTarget.src = teamDoctorFallback;
                     }}

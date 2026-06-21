@@ -16,6 +16,8 @@ export type Program = {
   t: string;
   intro: string;
   for: string;
+  includesLabel?: string;
+  includes?: string[];
   dur: string;
   involves: string;
   expect: string;
@@ -29,76 +31,60 @@ export const programCategories = [
     k: "01",
     cat: "Cardiac",
     tone: "rose" as const satisfies ProgramCategoryTone,
-    layout: "quad" as const satisfies ProgramCategoryLayout,
+    layout: "trio" as const satisfies ProgramCategoryLayout,
     icon: HeartPulse,
-    tag: "Heart Rehabilitation",
-    desc: "Post-surgical and chronic cardiac recovery programs supervised by a cardiopulmonary specialist - restoring functional capacity, confidence and quality of life.",
+    tag: "Cardiovascular Rehabilitation",
+    desc: "Structured cardiovascular rehabilitation supervised by a cardiopulmonary specialist - from post-event recovery to heart failure and stable cardiac disease.",
     stat: { v: "120+", l: "Cardiac patients guided" },
     programs: [
       {
         i: HeartPulse,
-        slug: "post-cabg-rehabilitation",
-        t: "Post CABG (Bypass) Rehabilitation",
+        slug: "after-cardiac-events-procedures",
+        t: "Cardiac Rehabilitation After Cardiac Events & Procedures",
         intro:
-          "Structured, sternal-precaution-safe recovery after bypass surgery - rebuilding endurance and daily function with live specialist supervision.",
-        for: "Patients 2-12 weeks post bypass surgery",
-        dur: "10-12 weeks · 3 sessions/week",
+          "Supervised recovery after heart attack, angioplasty, bypass, valve surgery, and other cardiac procedures - rebuilding stamina, confidence, and daily function safely.",
+        for: "After MI, angioplasty, CABG, valve surgery, and other cardiac procedures",
+        includes: [
+          "Heart attack (MI)",
+          "Angioplasty (PTCA) & stent placement",
+          "Coronary artery bypass graft surgery (CABG)",
+          "Valve surgeries & interventions",
+          "Other cardiac surgeries",
+        ],
+        dur: "8-12 weeks · 3 sessions/week",
         involves:
-          "Progressive aerobic conditioning with sternal-precaution protocols, inspiratory muscle training, and functional milestones for daily living.",
+          "Gradual exercise progression within cardiologist-guided heart-rate zones, sternal-precaution protocols when needed, risk-factor modification, and functional milestones for daily living.",
         expect:
-          "Week-by-week loading within safe heart-rate zones, live supervision of every movement, and gradual return to stairs, driving, and household tasks.",
+          "Week-by-week loading with live supervision, safe return to stairs, driving, and household tasks, and confidence rebuilding after your cardiac event or procedure.",
         firstSession:
-          "Clinical review of your surgical clearance, sternal precautions, and current symptoms; baseline heart-rate and blood-pressure check; gentle mobility and breathing assessment; personalised week-one plan with clear stop rules.",
+          "Review of your diagnosis, procedure, surgical clearance, and current symptoms; baseline heart rate and blood pressure; gentle mobility and breathing assessment; personalised week-one plan with clear stop rules.",
         safetyNotes: [
-          "No pushing, pulling, or lifting >5 kg until sternal clearance",
+          "Procedure-specific precautions followed (sternal, access site, anticoagulation)",
           "Heart-rate zones set from your cardiologist's guidance",
           "Stop immediately for chest pain, dizziness, or unusual breathlessness",
-          "Wound and sternal stability checked before each progression",
+          "Progression only after wound, sternal, or access-site clearance when applicable",
         ],
         benefits: [
-          "Sternal-precaution-safe progressive loading",
-          "Heart-rate-zone monitored aerobic conditioning",
-          "Return-to-stairs, return-to-driving milestones",
-        ],
-      },
-      {
-        i: Activity,
-        slug: "post-ptca-angioplasty",
-        t: "Post PTCA / Angioplasty Rehab",
-        intro:
-          "Graded exercise and lifestyle coaching after stent placement - reducing re-event risk while restoring confidence in movement.",
-        for: "Patients post-stent, post-PCI",
-        dur: "8-10 weeks · 3 sessions/week",
-        involves:
-          "Symptom-limited graded exercise, cardiovascular risk-factor management, and lifestyle coaching to prevent re-events after stent placement.",
-        expect:
-          "Structured sessions building endurance safely, with heart-rate monitoring and progressive intensity as your cardiologist clears you.",
-        firstSession:
-          "Review of discharge instructions, medications, and groin/wrist access site healing; resting vitals; short walk test if cleared; education on symptom recognition and session pacing.",
-        safetyNotes: [
-          "Groin or wrist access site must be fully healed before higher exertion",
-          "Exercise stays symptom-limited until cardiologist clearance",
-          "Blood pressure monitored before and after activity",
-          "Report any chest discomfort or palpitations immediately",
-        ],
-        benefits: [
-          "Risk-factor reset (BP, lipids, HR variability)",
-          "Symptom-limited graded exercise plan",
-          "Lifestyle and stress-load coaching",
+          "Safe return to daily activities",
+          "Improving stamina and confidence",
+          "Gradual exercise progression",
+          "Risk factor modification",
         ],
       },
       {
         i: Heart,
-        slug: "heart-failure-management",
-        t: "Heart Failure Management",
+        slug: "heart-failure-rehabilitation",
+        t: "Heart Failure Rehabilitation",
         intro:
-          "Low-intensity, closely monitored conditioning for heart failure - building tolerance safely within NYHA guidelines.",
-        for: "NYHA Class I-III, EF-reduced patients",
+          "Low-intensity, closely monitored conditioning for heart failure - improving tolerance, breathlessness, and quality of life within NYHA guidelines.",
+        for: "Heart failure NYHA Class I–III and EF-reduced patients",
+        includesLabel: "For patients living with:",
+        includes: ["Heart failure NYHA Class I–III", "EF-reduced patients"],
         dur: "12 weeks · 3 sessions/week",
         involves:
-          "Low-intensity interval training, fluid and weight monitoring education, and breathlessness desensitisation within NYHA guidelines.",
+          "Low-intensity interval training, fluid and weight monitoring education, breathlessness and fatigue management, and energy conservation strategies.",
         expect:
-          "Gentle, closely monitored sessions that build tolerance without overload - with clear rules for when to rest and when to report symptoms.",
+          "Gentle, closely monitored sessions that build tolerance without overload - with clear rules for rest, symptom reporting, and functional independence.",
         firstSession:
           "Weight and symptom review, fluid-status education, resting vitals and SpO₂; gentle seated or supported standing activity; personalised exertion scale and daily self-monitoring checklist.",
         safetyNotes: [
@@ -108,35 +94,43 @@ export const programCategories = [
           "Coordination with your cardiologist for medication timing",
         ],
         benefits: [
-          "Fluid-status & weight tracking guidance",
-          "Low-intensity interval conditioning",
-          "Breathlessness and fatigue desensitisation",
+          "Improving exercise tolerance",
+          "Managing breathlessness and fatigue",
+          "Energy conservation strategies",
+          "Functional independence",
+          "Improving quality of life",
         ],
       },
       {
-        i: Stethoscope,
-        slug: "post-valve-replacement",
-        t: "Post Valve Replacement",
+        i: Activity,
+        slug: "stable-cardiac-conditions",
+        t: "Rehabilitation for Heart Disease & Stable Cardiac Conditions",
         intro:
-          "Anticoagulation-aware rehab after valve surgery - restoring endurance and breathing capacity at a pace matched to your recovery.",
-        for: "Mechanical/tissue valve recovery",
-        dur: "10-12 weeks · 3 sessions/week",
+          "Supervised exercise for stable coronary artery disease and reduced exercise capacity - building cardiovascular fitness safely under specialist monitoring.",
+        for: "Stable coronary artery disease and reduced exercise capacity",
+        includesLabel: "Including patients with:",
+        includes: [
+          "Coronary artery disease",
+          "Chronic chest discomfort under medical management",
+          "Reduced exercise capacity",
+        ],
+        dur: "8-12 weeks · 2-3 sessions/week",
         involves:
-          "Anticoagulation-aware exercise pacing, inspiratory muscle training, and endurance rebuild tailored to your valve type and surgical recovery stage.",
+          "Supervised exercise training, symptom-limited graded activity, cardiovascular risk-factor coaching, and monitoring of your response to exertion each session.",
         expect:
-          "Supervised progression from gentle mobility to sustained aerobic work, with attention to wound healing, posture, and energy conservation.",
+          "Structured sessions that build fitness gradually with heart-rate monitoring, clear stop rules, and progression matched to how your body responds.",
         firstSession:
-          "Surgical and anticoagulation history review; wound check; resting heart rate and rhythm observation; gentle mobility and inspiratory muscle assessment; valve-specific activity precautions explained.",
+          "Cardiac history and medication review; resting vitals; short walk or cycle test if cleared; symptom recognition education; personalised exertion plan with stop rules.",
         safetyNotes: [
-          "Anticoagulation timing respected - avoid trauma-risk activities",
-          "Mechanical vs tissue valve protocols followed strictly",
-          "INR or anticoagulant plan coordinated with your physician",
-          "Stop for bleeding, unusual bruising, or new cardiac symptoms",
+          "Exercise stays symptom-limited until cardiologist clearance for progression",
+          "Blood pressure and heart rate monitored before and after activity",
+          "Report any chest discomfort, palpitations, or unusual breathlessness immediately",
+          "Risk factors (BP, lipids, glucose) tracked alongside exercise response",
         ],
         benefits: [
-          "Anticoagulation-aware exercise pacing",
-          "Inspiratory muscle training (IMT)",
-          "Endurance rebuild and posture restoration",
+          "Supervised exercise training",
+          "Monitoring response to activity",
+          "Building cardiovascular fitness safely",
         ],
       },
     ] satisfies Program[],

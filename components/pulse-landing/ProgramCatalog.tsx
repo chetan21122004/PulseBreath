@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 import type { ProgramSlug } from "./constants";
 import {
   programCategories,
+  type Program,
   type ProgramCategoryLayout,
   type ProgramCategoryTone,
 } from "./conditions-data";
+import { ProgramPreview, categoryServicesHeading } from "./ProgramPreview";
 
-type Program = (typeof programCategories)[number]["programs"][number];
 type Category = (typeof programCategories)[number];
 
 export function categorySlug(cat: string) {
@@ -23,10 +24,13 @@ export function getProgramHref(categorySlug: ProgramSlug, programSlug: string) {
   return `/services/${categorySlug}/${programSlug}`;
 }
 
-export function getProgramBySlugs(categorySlug: string, programSlug: string) {
+export function getProgramBySlugs(categorySlug: string, programSlug: string): {
+  category: Category;
+  program: Program;
+} | null {
   const category = getCategoryBySlug(categorySlug);
   if (!category) return null;
-  const program = category.programs.find((p) => p.slug === programSlug);
+  const program = category.programs.find((p) => p.slug === programSlug) as Program | undefined;
   if (!program) return null;
   return { category, program };
 }
@@ -120,9 +124,7 @@ function ProgramCard({
           <h4 className="font-display text-[1.05rem] font-bold leading-snug text-navy sm:text-lg">
             {program.t}
           </h4>
-          <p className="mt-1 font-sans-brand text-[13px] leading-relaxed text-navy/70">
-            {program.for}
-          </p>
+          <ProgramPreview program={program} />
         </div>
       </div>
       <div className="mt-4 flex items-center justify-between gap-3 border-t border-navy/[0.06] pt-4">
@@ -235,7 +237,7 @@ export function CategoryChapter({
                 {cat.tag}
               </p>
               <h3 className="font-display text-2xl font-bold text-navy sm:text-3xl">
-                {cat.cat}
+                {categoryServicesHeading(cat.cat, cat.tag)}
               </h3>
             </div>
           </div>

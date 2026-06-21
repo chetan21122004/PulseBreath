@@ -290,7 +290,7 @@ export function Hero() {
                     alt="Dr. Deepali Shah, Cardiopulmonary Physiotherapist"
                     width={800}
                     height={900}
-                    className="aspect-[4/5] w-full max-md:max-h-[min(38svh,280px)] max-h-[min(50svh,400px)] object-cover object-top sm:max-h-[min(54svh,460px)] lg:max-h-[min(60svh,520px)]"
+                    className="aspect-[4/5] w-full max-md:max-h-[min(38svh,280px)] max-h-[min(50svh,400px)] bg-white object-contain object-center sm:max-h-[min(54svh,460px)] lg:max-h-[min(60svh,520px)]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-deeper)]/35 via-transparent to-transparent" />
                   {/* In-frame footer -avoids hero overflow clip; stays legible on any backdrop */}

@@ -4,7 +4,7 @@ const careAwareness = "/assets/care-awareness.jpg";
 
 export function ServiceCategories() {
   const items = [
-    { i: careMonitoring, t: "Cardiac Rehabilitation", d: "Post CABG, Post PTCA/Angioplasty, Heart Failure, Post Valve Replacement, Reduced Functional Capacity." },
+    { i: careMonitoring, t: "Cardiovascular Rehabilitation", d: "After cardiac events & procedures, heart failure (NYHA I–III), and stable coronary disease with reduced exercise capacity." },
     { i: careAdherence, t: "Pulmonary Rehabilitation", d: "COPD, asthma, bronchiectasis, ILD, pulmonary hypertension, occupational lung diseases, and post lobectomy pathways." },
     { i: careAwareness, t: "Metabolic & Lifestyle Programs", d: "Diabetes, Obesity, and Thyroid exercise programs -medically safe, evidence-based, condition-specific." },
   ];

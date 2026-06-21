@@ -1,12 +1,14 @@
 const BASE = "/assets/dr_deepali";
 
+/** Official portrait - hero, home about section, and primary fallback */
+export const DR_DEEPALI_PORTRAIT_PRIMARY = `${BASE}/Dr_Deepali.png`;
+
 export const DR_DEEPALI_PHOTOS = [
-  `${BASE}/dr-deepali-01.webp`,
+  DR_DEEPALI_PORTRAIT_PRIMARY,
   `${BASE}/dr-deepali-02.webp`,
   `${BASE}/dr-deepali-03.webp`,
   `${BASE}/dr-deepali-04.webp`,
 ] as const;
-
 export const DR_DEEPALI_VIDEOS = [
   `${BASE}/dr-deepali-session-01.mp4`,
   `${BASE}/dr-deepali-session-02.mp4`,
@@ -15,10 +17,10 @@ export const DR_DEEPALI_VIDEOS = [
 ] as const;
 
 /** Primary portrait - hero and default fallback */
-export const DR_DEEPALI_HERO_PORTRAIT = DR_DEEPALI_PHOTOS[0];
+export const DR_DEEPALI_HERO_PORTRAIT = DR_DEEPALI_PORTRAIT_PRIMARY;
 
-/** About section - alternate portrait so hero and about feel distinct */
-export const DR_DEEPALI_ABOUT_PORTRAIT = DR_DEEPALI_PHOTOS[1];
+/** About section portrait */
+export const DR_DEEPALI_ABOUT_PORTRAIT = DR_DEEPALI_PORTRAIT_PRIMARY;
 
 /** Poster for supervised session clips */
 export const DR_DEEPALI_SESSION_POSTER = DR_DEEPALI_PHOTOS[2];

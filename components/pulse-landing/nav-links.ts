@@ -18,7 +18,7 @@ export const FOOTER_ABOUT_LINKS = [
 ] as const;
 
 export const FOOTER_PROGRAM_LINKS = [
-  { label: "Cardiac Rehab", href: "/services" },
+  { label: "Cardiovascular Rehab", href: "/services/cardiac" },
   { label: "Pulmonary Rehab", href: "/services" },
   { label: "Metabolic Programs", href: "/services" },
   { label: "Tele-Rehab", href: "/how-it-works" },

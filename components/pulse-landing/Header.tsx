@@ -45,7 +45,7 @@ export function Header() {
               <img
                 src={logo}
                 alt=""
-                className="relative h-8 w-8 origin-center object-contain max-sm:scale-[1.7] sm:h-16 sm:w-16 sm:scale-100 lg:h-24 lg:w-24"
+                className="relative h-8 w-8 origin-center object-contain max-sm:scale-[1.7] sm:h-16 sm:w-16 sm:scale-75 lg:h-24 lg:w-24 lg:scale-75"
               />
               <img
                 src={logo_text}

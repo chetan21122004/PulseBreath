@@ -96,9 +96,8 @@ export const DOCTOR_CREDENTIALS = [
 ];
 
 export const DOCTOR_HIGHLIGHTS = [
-  "MPT Gold Medalist -  Cardiopulmonary Sciences",
+  "MPT Gold Medalist - Cardiopulmonary Sciences",
   "Ex-Cipla Pulmonary Rehab Program Faculty",
-  "India's First Cardiac Medical Gym -  Lead Physiotherapist",
 ];
 
 export const DOCTOR_OVERVIEW =
