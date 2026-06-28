@@ -244,9 +244,16 @@ export function AboutPage() {
             </StaggerItem>
 
             <StaggerItem>
-              <p className="mt-5 text-[15px] leading-[1.8] text-[var(--body-text)] sm:mt-6 sm:max-w-xl sm:text-[16px] sm:leading-[1.85]">
-                {DOCTOR_OVERVIEW}
-              </p>
+              <div className="mt-5 space-y-4 sm:mt-6 sm:max-w-xl">
+                {DOCTOR_OVERVIEW.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="text-[15px] leading-[1.8] text-[var(--body-text)] sm:text-[16px] sm:leading-[1.85]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </StaggerItem>
 
             <StaggerItem>

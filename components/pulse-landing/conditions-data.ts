@@ -34,6 +34,8 @@ export const programCategories = [
     layout: "trio" as const satisfies ProgramCategoryLayout,
     icon: HeartPulse,
     tag: "Cardiovascular Rehabilitation",
+    heroDesc:
+      "Safe, specialist-led exercise for heart recovery - whether you're rebuilding after a cardiac event, managing heart failure, or improving fitness with stable disease.",
     desc: "Structured cardiovascular rehabilitation supervised by a cardiopulmonary specialist - from post-event recovery to heart failure and stable cardiac disease.",
     stat: { v: "120+", l: "Cardiac patients guided" },
     programs: [
@@ -142,8 +144,10 @@ export const programCategories = [
     layout: "five" as const satisfies ProgramCategoryLayout,
     icon: Wind,
     tag: "Lung Rehabilitation",
+    heroDesc:
+      "Breathe easier and move with confidence - live-supervised lung rehab tailored to your condition, with real-time monitoring every session.",
     desc: "Condition-specific pulmonary rehab - separate, evidence-led pathways for obstructive, restrictive and post-surgical lung conditions.",
-    stat: { v: "70+", l: "Pulmonary patients guided" },
+    stat: { v: "170+", l: "Pulmonary patients guided" },
     programs: [
       {
         i: Wind,
@@ -336,6 +340,8 @@ export const programCategories = [
     layout: "trio" as const satisfies ProgramCategoryLayout,
     icon: Droplet,
     tag: "Lifestyle & Metabolic",
+    heroDesc:
+      "Exercise programs for diabetes, obesity, and thyroid - supervised live and tailored to your labs, medications, and daily energy levels.",
     desc: "Medically supervised exercise programs for metabolic and lifestyle conditions - measured by labs, not the mirror.",
     stat: { v: "50+", l: "Metabolic patients guided" },
     programs: [

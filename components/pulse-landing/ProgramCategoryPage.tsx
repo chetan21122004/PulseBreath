@@ -54,7 +54,7 @@ export function ProgramCategoryPage({ slug }: ProgramCategoryPageProps) {
             <span className="font-display italic text-brand">Rehabilitation</span>
           </>
         }
-        description={category.desc}
+        description={category.heroDesc}
       >
         <div className="mt-6 flex flex-wrap items-center gap-6">
           <div className="flex items-center gap-3 rounded-xl border border-border/80 bg-white/80 px-4 py-3 shadow-sm">

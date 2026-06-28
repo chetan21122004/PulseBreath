@@ -28,7 +28,7 @@ import { BackgroundBlob } from "./BackgroundBlob";
 import { Reveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
 import { SectionPageLink } from "./SectionPageLink";
-import { ProgramPreview, categoryServicesHeading } from "./ProgramPreview";
+import { categoryServicesHeading } from "./ProgramPreview";
 import { ILLUSTRATIONS } from "./visual-assets";
 
 type Program = (typeof programCategories)[number]["programs"][number];
@@ -288,7 +288,6 @@ function ServiceCard({
         <h4 className="font-display text-base font-bold leading-snug text-navy sm:text-[1.05rem]">
           {program.t}
         </h4>
-        <ProgramPreview program={program} />
       </div>
 
       <div className="mt-5 flex items-center justify-between gap-3 border-t border-navy/[0.06] pt-4">

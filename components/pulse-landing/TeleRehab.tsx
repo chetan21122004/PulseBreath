@@ -20,7 +20,7 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function TeleRehab() {
   const features = [
-    { Icon: Users, t: "Small group of 5-8", d: "Intimate cohorts grouped by condition for focused supervision." },
+    { Icon: Users, t: "Small group of 5-8", d: "Intimate cohorts grouped by condition and capacity for focused supervision." },
     { Icon: Heart, t: "Personalized 1:1 sessions", d: "Individual sessions are also available when your goals need closer attention." },
     { Icon: Video, t: "Live video, never recorded", d: "Real-time guidance from Dr. Deepali Shah every session." },
     { Icon: Activity, t: "Vitals tracked together", d: "Heart-rate & SpO₂ monitoring guidance through the session." },

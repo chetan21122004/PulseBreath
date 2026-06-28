@@ -211,7 +211,8 @@ function SessionTimeline({
   const steps = firstSession
     .split(/;\s*/)
     .map((s) => s.trim().replace(/\.$/, ""))
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1));
 
   return (
     <ol className="space-y-0">
