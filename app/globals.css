@@ -123,13 +123,17 @@
   /* Typography tokens */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --header-height: 5rem;
+  --header-nav-height: 5rem;
+  --header-disclaimer-height: 2.25rem;
+  --header-height: calc(var(--header-nav-height) + var(--header-disclaimer-height) + 3px);
   --bottom-nav-height: 0px;
 }
 
 @media (max-width: 767px) {
   :root {
-    --header-height: 3.5rem;
+    --header-nav-height: 3.5rem;
+    --header-disclaimer-height: 2.5rem;
+    --header-height: calc(var(--header-nav-height) + var(--header-disclaimer-height) + 3px);
     --bottom-nav-height: 3.75rem;
   }
 }
@@ -387,6 +391,25 @@
   @keyframes illustration-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+  }
+
+  @keyframes announcement-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .animate-announcement-scroll {
+    animation: announcement-scroll 40s linear infinite;
+  }
+
+  .announcement-bar:hover .animate-announcement-scroll {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-announcement-scroll {
+      animation: none;
+    }
   }
 
   .animate-illustration-float {

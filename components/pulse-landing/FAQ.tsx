@@ -6,7 +6,7 @@ import { BackgroundBlob } from "./BackgroundBlob";
 import { PHONE, WHATSAPP } from "./constants";
 import { HOMEPAGE_FAQS, FAQ_REASSURANCE } from "./faq-data";
 import { FaqAccordionItem } from "@/components/pages/FaqAccordion";
-import { Reveal, StaggerReveal } from "./motion";
+import { Reveal } from "./motion";
 import { SectionPageLink } from "./SectionPageLink";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -95,7 +95,7 @@ export function FAQ() {
                 </p>
               </div>
 
-              <StaggerReveal as="div" itemVariant="fadeUp" amount={0.08}>
+              <div>
                 {HOMEPAGE_FAQS.map((item, index) => (
                   <FaqAccordionItem
                     key={item.id}
@@ -105,7 +105,7 @@ export function FAQ() {
                     onToggle={() => setOpenId(openId === item.id ? "" : item.id)}
                   />
                 ))}
-              </StaggerReveal>
+              </div>
             </div>
           </Reveal>
         </div>

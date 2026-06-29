@@ -3,6 +3,7 @@ import Link from "next/link";
 const logoIcon = "/assets/logo_n.png";
 const logoText = "/assets/logo_text.png";
 import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "./constants";
+import { MedicalDisclaimerNotice } from "./MedicalDisclaimerNotice";
 import { FOOTER_ABOUT_LINKS, FOOTER_PROGRAM_LINKS } from "./nav-links";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { WhatsAppIcon } from "./WhatsAppIcon";
@@ -192,11 +193,8 @@ export function Footer() {
         </div>
 
         {/* BOTTOM -  legal */}
-        <div className="space-y-4 py-6 sm:py-8">
-          <p className="max-w-3xl text-xs leading-relaxed text-white/50">
-            PulseBreath Physiotherapy is not an emergency service. Always consult your cardiologist
-            or pulmonologist before starting any rehabilitation program.
-          </p>
+        <div className="space-y-4 py-6 sm:space-y-5 sm:py-8">
+          <MedicalDisclaimerNotice variant="footer" />
           <div className="flex flex-col justify-between gap-4 text-xs text-white/45 md:flex-row md:items-center">
             <p>© {new Date().getFullYear()} PulseBreath Physiotherapy · pulsebreathphysiotherapy.in</p>
             <p className="flex items-center gap-2">

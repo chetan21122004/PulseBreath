@@ -18,6 +18,9 @@ export const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
 
 export const CLINIC_ADDRESS = "PulseBreath Physiotherapy, Noida, Uttar Pradesh, India";
 
+export const MEDICAL_DISCLAIMER =
+  "PulseBreath Physiotherapy is not an emergency service. Always consult your cardiologist or pulmonologist before starting any rehabilitation program.";
+
 /** Absolute site origin used for canonical URLs and structured data (no trailing slash). */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pulsebreathphysiotherapy.in"

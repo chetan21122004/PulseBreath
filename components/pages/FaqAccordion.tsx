@@ -2,7 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import type { FaqItem } from "@/components/pulse-landing/faq-data";
-import { StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 
 export function FaqAccordionItem({
   item,
@@ -16,8 +15,7 @@ export function FaqAccordionItem({
   onToggle: () => void;
 }) {
   return (
-    <StaggerItem
-      as="div"
+    <div
       className={`border-b border-border/70 last:border-b-0 ${open ? "bg-soft/25" : "bg-transparent"}`}
     >
       <button
@@ -60,7 +58,7 @@ export function FaqAccordionItem({
           </p>
         </div>
       </div>
-    </StaggerItem>
+    </div>
   );
 }
 
@@ -85,7 +83,7 @@ export function FaqAccordion({
         </p>
       </div>
 
-      <StaggerReveal as="div" itemVariant="fadeUp" amount={0.08}>
+      <div>
         {items.map((item, index) => (
           <FaqAccordionItem
             key={item.id}
@@ -95,7 +93,7 @@ export function FaqAccordion({
             onToggle={() => onToggle(openId === item.id ? "" : item.id)}
           />
         ))}
-      </StaggerReveal>
+      </div>
     </div>
   );
 }

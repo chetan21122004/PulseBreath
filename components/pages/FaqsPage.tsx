@@ -93,6 +93,7 @@ export function FaqsPage() {
 
           <Reveal variant="fadeUp" delay={0.12}>
             <FaqAccordion
+              key={activeCategory}
               items={categoryFaqs}
               openId={openId}
               onToggle={setOpenId}

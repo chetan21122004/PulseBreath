@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { WHATSAPP } from "./constants";
+import { AnnouncementBar } from "./AnnouncementBar";
 import { NAV_LINKS } from "./nav-links";
 import { fadeDown } from "./motion";
 import { ServicesMegaMenuDesktop } from "./ServicesMegaMenu";
@@ -25,12 +26,13 @@ export function Header() {
       animate="visible"
       variants={fadeDown}
     >
+      <AnnouncementBar />
       <div
         className="h-[3px] w-full bg-gradient-to-r from-[var(--brand-teal)] via-[var(--brand-pink)] to-[var(--brand-teal)]"
         aria-hidden
       />
       <div className="border-b border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_88%,transparent)] shadow-[0_18px_48px_-24px_rgba(30,46,61,0.22)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[color-mix(in_oklch,var(--background)_72%,transparent)]">
-        <div className="relative mx-auto flex h-[var(--header-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-4 sm:px-6 lg:h-16">
+        <div className="relative mx-auto flex h-[var(--header-nav-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-4 sm:px-6 lg:h-16">
           <div
             className="pointer-events-none absolute right-[12%] top-1/2 hidden h-40 w-[min(52vw,28rem)] -translate-y-1/2 rounded-full bg-gradient-to-l from-[var(--brand-teal-soft)]/45 via-[var(--primary-soft)]/25 to-transparent blur-2xl lg:block"
             aria-hidden
