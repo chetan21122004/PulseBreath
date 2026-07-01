@@ -132,7 +132,7 @@
 @media (max-width: 767px) {
   :root {
     --header-nav-height: 3.5rem;
-    --header-disclaimer-height: 2.5rem;
+    --header-disclaimer-height: 4.25rem;
     --header-height: calc(var(--header-nav-height) + var(--header-disclaimer-height) + 3px);
     --bottom-nav-height: 3.75rem;
   }

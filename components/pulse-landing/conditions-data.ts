@@ -158,17 +158,18 @@ export const programCategories = [
         for: "GOLD A-D, frequent exacerbators",
         dur: "8-12 weeks · 3 sessions/week",
         involves:
-          "Pursed-lip and diaphragmatic breathing retraining, airway clearance, energy conservation, and exacerbation early-warning education.",
+          "Correct breathing techniques as per condition and capacity, breathing pattern correction and retraining, airway clearance, energy conservation, exacerbation early-warning education, musculoskeletal strengthening training, and cardiovascular endurance exercises tailored to your condition.",
         expect:
           "Sessions paced to your breathlessness scale, with techniques you can use daily to reduce flare-ups and rebuild walking tolerance.",
         firstSession:
-          "COPD history and inhaler technique review; resting SpO₂ and breathlessness scale; pursed-lip breathing practice; short paced walk or cycle at comfortable intensity; flare-up action plan discussed.",
+          "The first session begins after a comprehensive assessment, followed by a detailed discussion about your medical history, current symptoms, lifestyle, and the medications you are currently taking. Based on this evaluation, the session focuses on helping you understand the correct breathing, movement, and exercise patterns that are appropriate for your condition. This forms the foundation of your rehabilitation program and ensures that all future sessions are safe, effective, and tailored to your individual needs.",
         safetyNotes: [
-          "SpO₂ monitored - supplemental oxygen used as prescribed",
-          "Exacerbation warning signs reviewed every session",
-          "Paced activity within your breathlessness comfort zone",
-          "Inhaler technique corrected before exercise progression",
+          "SpO₂ and PR monitoring through Oximeter.",
+          "Supplemental O₂ if prescribed and required.",
+          "Signs leading to exacerbation shall be reviewed in every session.",
+          "Pacing techniques training and retraining.",
         ],
+   
         benefits: [
           "Pursed-lip & diaphragmatic breathing retraining",
           "Exacerbation early-warning protocol",
@@ -437,7 +438,9 @@ export function programDurationParts(dur: string) {
  * Build a consistent FAQ set from a program's structured content.
  * Shared by the rendered accordion and the FAQPage JSON-LD so the two never drift.
  */
-export function buildProgramFaqs(program: Program): { q: string; a: string }[] {
+export type ProgramFaq = { q: string; a: string | string[] };
+
+export function buildProgramFaqs(program: Program): ProgramFaq[] {
   return [
     { q: `What is the ${program.t} program?`, a: program.intro },
     { q: "Who is this program for?", a: program.for },
@@ -449,7 +452,7 @@ export function buildProgramFaqs(program: Program): { q: string; a: string }[] {
     { q: "What does the program involve?", a: program.involves },
     {
       q: "How is my safety protected during the program?",
-      a: program.safetyNotes.join(" "),
+      a: program.safetyNotes,
     },
     {
       q: "Who supervises the sessions?",

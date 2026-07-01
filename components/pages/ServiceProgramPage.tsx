@@ -251,7 +251,7 @@ function FaqAccordion({
   faqs,
   tone,
 }: {
-  faqs: { q: string; a: string }[];
+  faqs: { q: string; a: string | string[] }[];
   tone: ToneUi;
 }) {
   const [open, setOpen] = useState<number | null>(0);
@@ -287,9 +287,23 @@ function FaqAccordion({
               )}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-sm leading-relaxed text-navy/70">
-                  {faq.a}
-                </p>
+                {Array.isArray(faq.a) ? (
+                  <ul className="space-y-2 px-5 pb-5">
+                    {faq.a.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-sm leading-relaxed text-navy/70"
+                      >
+                        <span
+                          className={cn("mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current", tone.accent)}
+                        />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="px-5 pb-5 text-sm leading-relaxed text-navy/70">{faq.a}</p>
+                )}
               </div>
             </div>
           </div>

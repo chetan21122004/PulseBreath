@@ -22,30 +22,29 @@ export function ProgramPreview({ program, compact = false, className }: ProgramP
     );
   }
 
-  const bulletClass = compact ? "text-[12px] leading-snug" : "text-[12px] leading-snug sm:text-[13px]";
+  const bulletClass = compact
+    ? "list-disc space-y-1 pl-4 text-[12px] leading-snug marker:text-brand"
+    : "list-disc space-y-1 pl-4 text-[12px] leading-snug marker:text-brand sm:text-[13px]";
+  const focusBulletClass = compact
+    ? "list-disc space-y-1 pl-4 text-[12px] leading-snug marker:text-teal"
+    : "list-disc space-y-1 pl-4 text-[12px] leading-snug marker:text-teal sm:text-[13px]";
   const labelClass = "text-[10px] font-bold uppercase tracking-[0.12em] text-navy/50 sm:text-[11px]";
   const focusItems = compact ? program.benefits.slice(0, 3) : program.benefits;
 
   return (
-    <div className={cn("mt-2 flex-1 space-y-2.5", className)}>
+    <div className={cn("mt-2 flex-1 space-y-2.5 font-sans-brand", className)}>
       {program.includesLabel ? <p className={labelClass}>{program.includesLabel}</p> : null}
-      <ul className="space-y-1">
+      <ul className={cn(bulletClass, "text-navy/75")}>
         {program.includes.map((item) => (
-          <li key={item} className={cn("flex items-start gap-2 text-navy/75", bulletClass)}>
-            <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-brand/70" aria-hidden />
-            <span>{item}</span>
-          </li>
+          <li key={item}>{item}</li>
         ))}
       </ul>
       {focusItems.length ? (
         <div>
           <p className={labelClass}>Focus:</p>
-          <ul className="mt-1 space-y-1">
+          <ul className={cn(focusBulletClass, "mt-1 text-navy/70")}>
             {focusItems.map((item) => (
-              <li key={item} className={cn("flex items-start gap-2 text-navy/70", bulletClass)}>
-                <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-teal/70" aria-hidden />
-                <span>{item}</span>
-              </li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>

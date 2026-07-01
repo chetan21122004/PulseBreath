@@ -1,8 +1,15 @@
 'use client';
 
-import { useState, type ReactNode } from "react";
-import { ChevronRight, Quote, Star, X } from "lucide-react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { ChevronLeft, ChevronRight, Quote, Star, X } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import { BackgroundBlob } from "./BackgroundBlob";
 import { StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
@@ -34,6 +41,50 @@ const testimonials = [
     rating: 5,
     illustration: ILLUSTRATIONS.onlineDoctor,
     illustrationAlt: "Supervised tele-rehabilitation session from home",
+  },
+  {
+    quote:
+      "I was immensely benefited from the guidance of Dr Deepali Shah. She was always helpful, approachable and could able to understand my issues well. Her positive feedbacks always encouraged and motivated me to move ahead towards my health goals.",
+    name: "Deepa Wagle",
+    role: "Patient",
+    city: "India",
+    program: "Pulmonary Rehab",
+    rating: 5,
+    illustration: ILLUSTRATIONS.elderlyAmico,
+    illustrationAlt: "Patient supported through guided pulmonary rehabilitation",
+  },
+  {
+    quote:
+      "Dr. Deepali is a very good physiotherapist. She doesn't only have physiotherapy knowledge but deeply looks into ECG and all the medical reports. Understands all your problems and aims at your perfect good cardio health. She is very dedicated and result giving doctor. I had angioplasty and was under her PT and she not only gave me my confidence back but also good cardiac health.",
+    name: "Seema Adhav",
+    role: "Patient",
+    city: "India",
+    program: "Cardiac Rehab",
+    rating: 5,
+    illustration: ILLUSTRATIONS.cardiologistRafiki,
+    illustrationAlt: "Cardiac rehabilitation with thorough medical review",
+  },
+  {
+    quote:
+      "One of the things I appreciated most about Deepali Shah was how comfortable she made me feel during every session. She listens without rushing, encourages you to openly share any discomfort or concerns, and adjusts the treatment accordingly. The exercises were explained thoroughly, and she made sure I understood the purpose behind each one. Her guidance and encouragement kept me motivated throughout my recovery.",
+    name: "Sahana Deshpande",
+    role: "Patient",
+    city: "India",
+    program: "Physiotherapy",
+    rating: 5,
+    illustration: ILLUSTRATIONS.cardiologistBro,
+    illustrationAlt: "Comfortable one-on-one physiotherapy session",
+  },
+  {
+    quote:
+      "I have a lung problem. And due to my allergic condition, I get sick easily. But since I started physiotherapy under Dr. Deepali ji, there has been a lot of difference. Our sessions are online but the doctor always explains each exercise step by step, guides us according to our condition, it never feels like she is not in front of us. She guides very well and is also helpful. She is attentive to the time, and since we treat online, it is easy for us and she also clarifies our doubts. With her guidance, my stamina has increased, my breathing is also better than before. Dr Deepali is friendly and very kind physiotherapist. I would recommend you 100%. Thank you mam for your support and guidance!",
+    name: "Archita Raktade",
+    role: "Patient",
+    city: "India",
+    program: "Tele-Rehab",
+    rating: 5,
+    illustration: ILLUSTRATIONS.onlineDoctor,
+    illustrationAlt: "Online pulmonary rehabilitation session from home",
   },
 ] as const;
 
@@ -249,6 +300,90 @@ function TestimonialCard({
   );
 }
 
+function TestimonialsCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [selected, setSelected] = useState(0);
+  const [snapCount, setSnapCount] = useState<number>(testimonials.length);
+
+  const onSelect = useCallback((embla: CarouselApi) => {
+    if (!embla) return;
+    setSelected(embla.selectedScrollSnap());
+    setSnapCount(embla.scrollSnapList().length);
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+
+    onSelect(api);
+    api.on("reInit", onSelect);
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("reInit", onSelect);
+      api.off("select", onSelect);
+    };
+  }, [api, onSelect]);
+
+  return (
+    <div className="relative mx-auto mt-12 max-w-4xl lg:max-w-6xl">
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true, align: "start", containScroll: "trimSnaps" }}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-3 sm:-ml-4">
+          {testimonials.map((item) => (
+            <CarouselItem
+              key={item.name}
+              className="basis-full pl-3 sm:basis-[48%] sm:pl-4 lg:basis-1/3"
+            >
+              <div className="group h-full">
+                <TestimonialCard {...item} />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      <div className="mt-6 flex items-center justify-between gap-3 px-1">
+        <div className="flex items-center gap-1.5">
+          {Array.from({ length: snapCount }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Go to review ${index + 1}`}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-300",
+                index === selected ? "w-6 bg-brand" : "w-1.5 bg-navy/20",
+              )}
+            />
+          ))}
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            aria-label="Previous reviews"
+            onClick={() => api?.scrollPrev()}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-navy/10 bg-white text-navy shadow-sm transition-colors hover:border-navy/20 hover:bg-navy/[0.03]"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next reviews"
+            onClick={() => api?.scrollNext()}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-navy/10 bg-white text-navy shadow-sm transition-colors hover:border-navy/20 hover:bg-navy/[0.03]"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 type TestimonialsProps = {
   mode?: "teaser" | "full";
 };
@@ -271,7 +406,7 @@ export function Testimonials({ mode = "teaser" }: TestimonialsProps) {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <StaggerReveal className="mx-auto max-w-2xl text-center" itemVariant="fadeUp">
           <StaggerItem>
             <span className="pill">Patient Voices</span>
@@ -291,17 +426,7 @@ export function Testimonials({ mode = "teaser" }: TestimonialsProps) {
           </StaggerItem>
         </StaggerReveal>
 
-        <StaggerReveal
-          className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2"
-          itemVariant="scaleIn"
-          amount={0.12}
-        >
-          {testimonials.map((item) => (
-            <StaggerItem key={item.name} className="group h-full">
-              <TestimonialCard {...item} />
-            </StaggerItem>
-          ))}
-        </StaggerReveal>
+        <TestimonialsCarousel />
 
         <div className="mt-10 text-center">
           <SectionPageLink href="/contact" className="justify-center">

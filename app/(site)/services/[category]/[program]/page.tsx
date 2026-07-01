@@ -102,7 +102,10 @@ export default async function ServiceProgramRoute({ params }: PageProps) {
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: Array.isArray(faq.a) ? faq.a.join(" ") : faq.a,
+      },
     })),
   };
 
