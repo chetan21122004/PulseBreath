@@ -13,6 +13,7 @@ import {
   LayoutGrid,
   CircleHelp,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -55,6 +56,13 @@ const MOBILE_LINK_ITEMS: MobileNavItem[] = [
 ];
 
 const MOBILE_MORE_ITEMS: MobileNavItem[] = [
+  {
+    label: "New Batch",
+    href: "/new-batch",
+    icon: Sparkles,
+    description: "New group sessions starting 27 July",
+    isActive: (pathname) => pathname === "/new-batch",
+  },
   {
     label: "How It Works",
     href: "/how-it-works",

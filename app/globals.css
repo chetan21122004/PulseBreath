@@ -123,15 +123,21 @@
   /* Typography tokens */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --header-nav-height: 5rem;
+  --header-nav-height: 4.5rem;
   --header-disclaimer-height: 2.25rem;
   --header-height: calc(var(--header-nav-height) + var(--header-disclaimer-height) + 3px);
   --bottom-nav-height: 0px;
 }
 
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root {
+    --header-nav-height: 4.75rem;
+  }
+}
+
 @media (max-width: 767px) {
   :root {
-    --header-nav-height: 3.5rem;
+    --header-nav-height: 3.75rem;
     --header-disclaimer-height: 4.25rem;
     --header-height: calc(var(--header-nav-height) + var(--header-disclaimer-height) + 3px);
     --bottom-nav-height: 3.75rem;
@@ -174,6 +180,10 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: var(--header-height);
+  }
+
   * {
     border-color: var(--color-border);
   }

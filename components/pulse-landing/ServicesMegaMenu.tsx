@@ -11,7 +11,7 @@ import { categorySlug, getProgramHref } from "./ProgramCatalog";
 import { categoryProgramsHeading } from "./ProgramPreview";
 
 const navLinkClass =
-  "group relative inline-flex items-center gap-1 rounded-full px-3.5 py-2.5 font-sans-brand text-[11px] font-bold uppercase tracking-[0.11em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-4";
+  "group relative inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-2 font-sans-brand text-[10px] font-bold uppercase tracking-[0.09em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-3.5 xl:py-2.5 xl:text-[11px] xl:tracking-[0.11em]";
 
 const toneRail: Record<
   ProgramCategoryTone,

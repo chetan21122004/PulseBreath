@@ -16,6 +16,10 @@ export const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
   "Hi Dr. Deepali, I'd like to book a free assessment. My condition is ___.",
 )}`;
 
+export const WHATSAPP_OFFERS = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
+  "Hi Dr. Deepali, I'd like to book my FREE clinical assessment for the 8-week Pulmonary Rehabilitation Programme.",
+)}`;
+
 export const CLINIC_ADDRESS = "PulseBreath Physiotherapy, Noida, Uttar Pradesh, India";
 
 export const MEDICAL_DISCLAIMER =

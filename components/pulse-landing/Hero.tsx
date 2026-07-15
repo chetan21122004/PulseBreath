@@ -30,17 +30,38 @@ export function Hero() {
   const heroBgVideoRef = useRef<HTMLVideoElement | null>(null);
   const [heroBgClipIndex, setHeroBgClipIndex] = useState(0);
   const [heroBgVideoFailed, setHeroBgVideoFailed] = useState(false);
+  const [shouldLoadHeroVideo, setShouldLoadHeroVideo] = useState(false);
+  const [heroBgVideoReady, setHeroBgVideoReady] = useState(false);
+
+  /** Defer background video until the page has finished loading. */
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const enableVideo = () => setShouldLoadHeroVideo(true);
+
+    if (document.readyState === "complete") {
+      enableVideo();
+      return;
+    }
+
+    window.addEventListener("load", enableVideo, { once: true });
+    return () => window.removeEventListener("load", enableVideo);
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    setHeroBgVideoReady(false);
+  }, [heroBgClipIndex]);
 
   useEffect(() => {
     const el = heroBgVideoRef.current;
-    if (!el || heroBgVideoFailed) return;
+    if (!el || heroBgVideoFailed || !shouldLoadHeroVideo) return;
     el.playbackRate = HERO_BG_PLAYBACK_RATE;
     void el.play().catch(() => setHeroBgVideoFailed(true));
-  }, [heroBgClipIndex, heroBgVideoFailed]);
+  }, [heroBgClipIndex, heroBgVideoFailed, shouldLoadHeroVideo]);
 
   /** If the clip never reaches playable data (network/format), fall back to static art. */
   useEffect(() => {
-    if (heroBgVideoFailed) return;
+    if (heroBgVideoFailed || !shouldLoadHeroVideo) return;
     let cancelled = false;
     const id = window.setTimeout(() => {
       if (cancelled) return;
@@ -54,39 +75,44 @@ export function Hero() {
       cancelled = true;
       window.clearTimeout(id);
     };
-  }, [heroBgClipIndex, heroBgVideoFailed]);
+  }, [heroBgClipIndex, heroBgVideoFailed, shouldLoadHeroVideo]);
+
+  const showStaticHeroBg =
+    reduceMotion || heroBgVideoFailed || !shouldLoadHeroVideo || !heroBgVideoReady;
 
   return (
-    <section className="relative isolate max-md:snap-align-none snap-start max-md:h-auto max-md:max-h-none max-md:min-h-[calc(100svh-var(--header-height))] h-[calc(100svh-var(--header-height))] max-h-[calc(100svh-var(--header-height))] min-h-0 max-md:overflow-visible overflow-hidden bg-[var(--brand-deeper)] max-md:py-6">
+    <section className="relative isolate scroll-mt-[var(--header-height)] min-h-[calc(100svh-var(--header-height))] overflow-hidden bg-[var(--brand-deeper)]">
       {/* Cinematographic background -all `bg_vdo` clips sequentially at 1.25× */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        {!heroBgVideoFailed && (
+        {shouldLoadHeroVideo && !heroBgVideoFailed && !reduceMotion && (
           <video
             ref={heroBgVideoRef}
             key={heroBgClipIndex}
-            className="absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.04] saturate-[1.06] motion-reduce:hidden"
+            className="absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.04] saturate-[1.06]"
             src={HERO_BG_CLIPS[heroBgClipIndex]}
             autoPlay
             muted
             playsInline
-            poster={bgHero}
-            preload="auto"
+            preload="none"
             onLoadedMetadata={(e) => {
               e.currentTarget.playbackRate = HERO_BG_PLAYBACK_RATE;
             }}
+            onCanPlay={() => setHeroBgVideoReady(true)}
             onEnded={() => {
               setHeroBgClipIndex((i) => (i + 1) % HERO_BG_CLIPS.length);
             }}
             onError={() => setHeroBgVideoFailed(true)}
           />
         )}
-        {/* Static hero art while video loads (poster), if a clip fails to load/decode, or reduced motion */}
+        {/* Static hero art on first paint, while video loads, on failure, or reduced motion */}
         <img
           src={bgHero}
           alt=""
           width={1920}
           height={1080}
-          className={`absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.04] saturate-[1.06] motion-reduce:opacity-40 ${heroBgVideoFailed ? "" : "motion-safe:hidden"}`}
+          fetchPriority="high"
+          decoding="async"
+          className={`absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.04] saturate-[1.06] motion-reduce:opacity-40 ${showStaticHeroBg ? "" : "motion-safe:hidden"}`}
         />
         {/* Light global tint -video stays vivid; darken only lightly for depth */}
          {/* Subtle grid -“clinical precision” without noise */}
@@ -120,15 +146,15 @@ export function Hero() {
         BREATHE
       </div>
 
-      <div className="relative z-10 mx-auto flex max-md:h-auto h-full max-w-7xl flex-col justify-center px-4 py-5 sm:px-6 sm:py-8">
-        <div className="grid min-h-0 flex-1 grid-cols-1 items-center gap-4 max-md:gap-4 lg:grid-cols-12 lg:items-stretch lg:gap-8 xl:gap-10">
-          <motion.div className="relative z-[2] flex min-h-0 flex-col gap-3 lg:col-span-7 lg:gap-4 lg:self-center lg:pb-1">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-4 py-6 sm:px-6 sm:py-8 lg:py-10">
+        <div className="grid grid-cols-1 items-start gap-5 sm:gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 xl:gap-10">
+          <motion.div className="relative z-[2] flex flex-col gap-3 lg:col-span-7 lg:gap-4">
             <motion.h1
               custom={0}
               variants={heroItem}
               initial={reduceMotion ? "visible" : "hidden"}
               animate="visible"
-              className="font-display max-md:text-[clamp(1.5rem,6.5vw,1.85rem)] max-md:leading-[1.15] text-[clamp(1.85rem,3.8vw,3.25rem)] font-bold pt-2 leading-[1.1] tracking-[-0.02em] text-white max-lg:[text-shadow:0_2px_28px_rgba(0,0,0,0.95),0_1px_4px_rgba(0,0,0,1)] lg:[text-shadow:0_2px_20px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.85)]"
+              className="font-display text-[clamp(1.5rem,4.5vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.02em] text-white text-balance max-lg:[text-shadow:0_2px_28px_rgba(0,0,0,0.95),0_1px_4px_rgba(0,0,0,1)] lg:leading-[1.1] lg:[text-shadow:0_2px_20px_rgba(0,0,0,0.55),0_1px_3px_rgba(0,0,0,0.85)]"
             >
               Breathlessness is not the end of your recovery.
             </motion.h1>
@@ -142,9 +168,9 @@ export function Hero() {
             >
               Rehabilitation that helps you{" "}
               <span className="text-[var(--brand-teal-soft)] max-lg:[text-shadow:0_1px_16px_rgba(0,0,0,0.95)]">
-                reclaim life
+                reclaim your life,
               </span>
-              {" "}- not just manage disease.
+              {" "} not just manage disease.
             </motion.p>
 
             <motion.div
@@ -264,9 +290,9 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          <div className="relative flex min-h-0 items-end justify-center pb-2 pt-2 lg:col-span-5 lg:items-center lg:justify-center lg:pb-0 lg:pt-0">
+          <div className="relative flex items-center justify-center pt-1 lg:col-span-5 lg:pt-0">
             <motion.div
-              className="flex w-full max-w-[280px] flex-col items-center sm:max-w-[300px] lg:max-h-full lg:max-w-none lg:items-center"
+              className="flex w-full max-w-[280px] flex-col items-center sm:max-w-[300px] lg:max-w-none lg:items-center"
             >
               <motion.div
                 custom={3}
@@ -290,7 +316,7 @@ export function Hero() {
                     alt="Dr. Deepali Shah, Cardiopulmonary Physiotherapist"
                     width={800}
                     height={900}
-                    className="aspect-[4/5] w-full max-md:max-h-[min(38svh,280px)] max-h-[min(50svh,400px)] bg-white object-contain object-center sm:max-h-[min(54svh,460px)] lg:max-h-[min(60svh,520px)]"
+                    className="aspect-[4/5] w-full max-h-[min(42svh,320px)] bg-white object-contain object-center sm:max-h-[min(48svh,380px)] lg:max-h-[min(52svh,440px)]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-deeper)]/35 via-transparent to-transparent" />
                   {/* In-frame footer -avoids hero overflow clip; stays legible on any backdrop */}

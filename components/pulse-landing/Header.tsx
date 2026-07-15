@@ -32,7 +32,7 @@ export function Header() {
         aria-hidden
       />
       <div className="border-b border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_88%,transparent)] shadow-[0_18px_48px_-24px_rgba(30,46,61,0.22)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[color-mix(in_oklch,var(--background)_72%,transparent)]">
-        <div className="relative mx-auto flex h-[var(--header-nav-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-4 sm:px-6 lg:h-16">
+        <div className="relative mx-auto flex min-h-[var(--header-nav-height)] max-w-7xl items-center justify-between gap-2 overflow-hidden px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-3 sm:px-6 lg:gap-4">
           <div
             className="pointer-events-none absolute right-[12%] top-1/2 hidden h-40 w-[min(52vw,28rem)] -translate-y-1/2 rounded-full bg-gradient-to-l from-[var(--brand-teal-soft)]/45 via-[var(--primary-soft)]/25 to-transparent blur-2xl lg:block"
             aria-hidden
@@ -40,19 +40,19 @@ export function Header() {
 
           <Link
             href="/"
-            className="group flex min-w-0 items-center gap-1.5 justify-self-start sm:gap-4"
+            className="group flex min-w-0 max-w-[min(42vw,11rem)] shrink items-center gap-1.5 justify-self-start sm:max-w-none sm:gap-2.5 lg:gap-3"
             aria-label="PulseBreath home"
           >
-            <span className="relative flex shrink-0 items-center justify-center sm:mr-3 lg:mr-7">
+            <span className="relative flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 lg:gap-2.5">
               <img
                 src={logo}
                 alt=""
-                className="relative h-8 w-8 origin-center object-contain max-sm:scale-[1.7] sm:h-16 sm:w-16 sm:scale-75 lg:h-24 lg:w-24 lg:scale-75"
+                className="relative h-9 w-9 object-contain max-sm:h-10 max-sm:w-10 sm:h-11 sm:w-11 lg:h-12 lg:w-12"
               />
               <img
                 src={logo_text}
                 alt="PulseBreath"
-                className="relative hidden h-9 w-auto max-w-[6.5rem] object-contain sm:block sm:h-20 sm:max-w-none lg:h-32 lg:w-32"
+                className="relative hidden h-8 w-auto max-w-[5.5rem] object-contain object-left sm:block sm:h-9 sm:max-w-[7rem] lg:h-10 lg:max-w-[8.5rem] xl:h-11 xl:max-w-[9.5rem]"
               />
             </span>
           </Link>
@@ -70,11 +70,11 @@ export function Header() {
             />
           </Link>
 
-          <nav className="relative hidden lg:flex" aria-label="Primary">
+          <nav className="relative hidden min-w-0 flex-1 justify-center lg:flex" aria-label="Primary">
             <div
               className={cn(
-                "flex items-center gap-0.5 rounded-full border border-[color-mix(in_oklch,var(--brand-teal)_22%,var(--border))] bg-[color-mix(in_oklch,white_78%,var(--brand-teal-soft))] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_40px_-12px_rgba(30,46,61,0.18),0_0_0_1px_rgba(176,64,96,0.06)]",
-                "backdrop-blur-md",
+                "flex max-w-full items-center gap-0.5 overflow-x-auto rounded-full border border-[color-mix(in_oklch,var(--brand-teal)_22%,var(--border))] bg-[color-mix(in_oklch,white_78%,var(--brand-teal-soft))] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_40px_-12px_rgba(30,46,61,0.18),0_0_0_1px_rgba(176,64,96,0.06)]",
+                "backdrop-blur-md [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
               )}
             >
               {links.map((l) =>
@@ -88,7 +88,7 @@ export function Header() {
                     key={l.label}
                     href={l.href}
                     className={cn(
-                      "group relative rounded-full px-3.5 py-2.5 font-sans-brand text-[11px] font-bold uppercase tracking-[0.11em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-4",
+                      "group relative shrink-0 rounded-full px-2.5 py-2 font-sans-brand text-[10px] font-bold uppercase tracking-[0.09em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-3.5 xl:py-2.5 xl:text-[11px] xl:tracking-[0.11em]",
                       pathname === l.href ||
                         (l.href === "/blog" && pathname.startsWith("/blog"))
                         ? "bg-white text-[var(--brand-pink)] shadow-[0_2px_12px_rgba(176,64,96,0.12)]"

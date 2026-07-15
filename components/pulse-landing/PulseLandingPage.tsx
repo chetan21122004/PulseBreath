@@ -5,6 +5,7 @@ import { Journey } from "./Journey";
 import { Conditions } from "./Conditions";
 import { ServicesOverview } from "./ServicesOverview";
 import { Testimonials } from "./Testimonials";
+import { NewBatchSection } from "./NewBatchSection";
 import { TeleRehab } from "./TeleRehab";
 import { RehabExpertise } from "./RehabExpertise";
 import { BlogTeaser } from "./BlogTeaser";
@@ -13,12 +14,13 @@ import { CTASection } from "./CTASection";
 
 export function PulseLandingPage() {
   return (
-    <div className="max-md:snap-none snap-y snap-proximity scroll-pt-[var(--header-height)]">
+    <div>
       <Hero />
       <Stats />
       <Conditions />
       <ServicesOverview />
       <TeleRehab />
+      <NewBatchSection />
       <RehabExpertise />
       <Doctor />
       <Journey />

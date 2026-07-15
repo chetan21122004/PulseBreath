@@ -24,6 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     }),
+    url("/new-batch", {
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    }),
     url("/about", {
       lastModified: now,
       changeFrequency: "monthly",
