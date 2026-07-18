@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, CheckCircle2, ClipboardCheck, Phone, Video } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, Phone, Video } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { PHONE, WHATSAPP_OFFERS } from "@/components/pulse-landing/constants";
@@ -8,13 +8,12 @@ import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/m
 import {
   FREE_ASSESSMENT,
   PROGRAM_HIGHLIGHTS,
-  PROGRAM_OPTIONS,
   PULMONARY_PROGRAM,
   SESSION_FEATURES,
   TARGET_CONDITIONS,
   UPCOMING_BATCH,
 } from "@/components/pulse-landing/new-batch-data";
-import { UpcomingBatchCard } from "@/components/pulse-landing/UpcomingBatchCard";
+import { UpcomingBatchRow } from "@/components/pulse-landing/UpcomingBatchCard";
 import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 
 export function NewBatchPage() {
@@ -25,7 +24,7 @@ export function NewBatchPage() {
         title={
           <>
             New group sessions{" "}
-            <span className="font-display italic text-brand">starting {UPCOMING_BATCH.startDateShort}</span>
+            <span className="font-display italic text-brand">starting soon</span>
           </>
         }
         description={`${PULMONARY_PROGRAM.tagline} ${PULMONARY_PROGRAM.subtitle} Enrolment is now open for our next pulmonary rehabilitation batch.`}
@@ -34,10 +33,6 @@ export function NewBatchPage() {
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-[var(--primary-soft)] px-4 py-2 text-sm font-semibold text-navy">
             <span className="h-2 w-2 animate-pulse rounded-full bg-brand" aria-hidden />
             {UPCOMING_BATCH.status}
-          </span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-white/90 px-4 py-2 text-sm font-semibold text-navy">
-            <Calendar className="h-4 w-4 text-brand" />
-            Starts {UPCOMING_BATCH.startDate}
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/80 px-4 py-2 text-sm font-medium text-navy/80">
             <Video className="h-4 w-4 text-brand" />
@@ -53,18 +48,13 @@ export function NewBatchPage() {
             Choose your <span className="italic text-brand">upcoming batch</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
-            Two supervised tracks, one start date. Pick the pace that suits your recovery goals —
-            both batches commence on {UPCOMING_BATCH.startDate}.
+            Two supervised tracks, one start date. Pick the pace that suits your recovery goals.
           </p>
         </Reveal>
 
-        <StaggerReveal className="mt-10 grid gap-6 md:grid-cols-2" itemVariant="fadeUp">
-          {PROGRAM_OPTIONS.map((option, index) => (
-            <StaggerItem key={option.id}>
-              <UpcomingBatchCard option={option} index={index} variant="page" />
-            </StaggerItem>
-          ))}
-        </StaggerReveal>
+        <div className="mt-10">
+          <UpcomingBatchRow variant="page" />
+        </div>
       </PageSection>
 
       <PageSection>
@@ -154,7 +144,7 @@ export function NewBatchPage() {
                 {PULMONARY_PROGRAM.motto}
               </p>
               <h2 className="heading-display mt-5 text-2xl text-white sm:text-4xl">
-                Reserve your place in the {UPCOMING_BATCH.startDateShort} batch
+                Reserve your place in the upcoming batch
               </h2>
               <p className="mt-4 text-base leading-relaxed text-white/75">
                 {FREE_ASSESSMENT.support}

@@ -1,8 +1,10 @@
 'use client';
 
 import { Award, BadgeCheck } from "lucide-react";
+import { LINKEDIN } from "./constants";
 import { DOCTOR_CREDENTIALS, DOCTOR_HIGHLIGHTS, DOCTOR_OVERVIEW_BRIEF } from "./doctor-content";
 import { DR_DEEPALI_ABOUT_PORTRAIT } from "./dr-deepali-assets";
+import { LinkedInIcon } from "./LinkedInIcon";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { SectionPageLink } from "./SectionPageLink";
 
@@ -56,11 +58,22 @@ export function Doctor() {
                 />
 
                 <div className="flex items-center justify-between gap-3 border-b border-border/70 bg-white/90 px-3 py-2.5 backdrop-blur-sm sm:px-5 sm:py-3">
-                  <div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15 sm:h-9 sm:w-9"
-                    aria-hidden
-                  >
-                    <BadgeCheck className="h-3.5 w-3.5 text-brand sm:h-4 sm:w-4" strokeWidth={2.25} />
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15 sm:h-9 sm:w-9"
+                      aria-hidden
+                    >
+                      <BadgeCheck className="h-3.5 w-3.5 text-brand sm:h-4 sm:w-4" strokeWidth={2.25} />
+                    </div>
+                    <a
+                      href={LINKEDIN}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Dr. Deepali Shah on LinkedIn"
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0A66C2]/10 text-[#0A66C2] ring-1 ring-[#0A66C2]/25 transition-colors hover:bg-[#0A66C2] hover:text-white sm:h-9 sm:w-9"
+                    >
+                      <LinkedInIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    </a>
                   </div>
                   <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[var(--brand-gold)]/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[var(--brand-dark)] ring-1 ring-[var(--brand-gold)]/35 sm:px-3 sm:text-[10px]">
                     <Award className="h-3 w-3 text-[var(--brand-gold)]" strokeWidth={2.25} />

@@ -1,5 +1,10 @@
 import { Calendar, CheckCircle2, Clock } from "lucide-react";
-import { UPCOMING_BATCH, type ProgramOption } from "./new-batch-data";
+import { Reveal, StaggerItem, StaggerReveal } from "./motion";
+import {
+  PROGRAM_OPTIONS,
+  UPCOMING_BATCH,
+  type ProgramOption,
+} from "./new-batch-data";
 
 type UpcomingBatchCardProps = {
   option: ProgramOption;
@@ -7,19 +12,18 @@ type UpcomingBatchCardProps = {
   variant?: "home" | "page";
 };
 
-export function UpcomingBatchCard({ option, index, variant = "home" }: UpcomingBatchCardProps) {
+function UpcomingBatchCard({ option, index, variant = "home" }: UpcomingBatchCardProps) {
   const isPage = variant === "page";
 
   return (
     <article
-      className={`motion-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 bg-background/95 shadow-[0_12px_40px_-24px_rgba(30,46,61,0.14)] ${
+      className={`motion-card relative flex h-full flex-col overflow-hidden bg-background/95 ${
         isPage ? "p-6 sm:p-8" : "p-5 sm:p-6"
       }`}
     >
       <div className="flex items-start justify-between gap-3">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-[var(--primary-soft)] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-brand sm:text-[10px]">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" aria-hidden />
-          {UPCOMING_BATCH.status}
+          Batch {index + 1}
         </span>
         <span
           className={`font-display font-bold text-[var(--primary-soft)] ${
@@ -29,26 +33,6 @@ export function UpcomingBatchCard({ option, index, variant = "home" }: UpcomingB
         >
           0{index + 1}
         </span>
-      </div>
-
-      <div className="mt-4 rounded-xl border border-brand/20 bg-gradient-to-br from-[var(--primary-soft)]/80 to-white/60 p-4 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand sm:text-[11px]">
-          Batch starts on
-        </p>
-        <div className="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
-          <p
-            className={`font-display font-bold leading-none text-navy ${
-              isPage ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
-            }`}
-          >
-            {option.startDateShort}
-          </p>
-          <p className="pb-0.5 text-sm font-medium text-navy/55">{UPCOMING_BATCH.startDay}</p>
-        </div>
-        <p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-navy/65">
-          <Calendar className="h-3.5 w-3.5 text-brand" />
-          {option.startDate}
-        </p>
       </div>
 
       <div className="mt-5 flex-1">
@@ -84,3 +68,56 @@ export function UpcomingBatchCard({ option, index, variant = "home" }: UpcomingB
     </article>
   );
 }
+
+type UpcomingBatchRowProps = {
+  variant?: "home" | "page";
+};
+
+/** Shared start-date header with two batch columns underneath. */
+export function UpcomingBatchRow({ variant = "home" }: UpcomingBatchRowProps) {
+  const isPage = variant === "page";
+
+  return (
+    <Reveal
+      variant="fadeUp"
+      className="overflow-hidden rounded-2xl border border-border/80 bg-background/95 shadow-[0_12px_40px_-24px_rgba(30,46,61,0.14)]"
+    >
+      <div className="flex flex-col items-center justify-between gap-3 border-b border-border/70 bg-gradient-to-r from-[var(--primary-soft)]/70 via-white/80 to-[var(--primary-soft)]/40 px-5 py-4 sm:flex-row sm:px-8 sm:py-5">
+        <div className="flex items-center gap-3">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/90 ring-1 ring-brand/20">
+            <Calendar className="h-5 w-5 text-brand" strokeWidth={2.25} />
+          </span>
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand sm:text-[11px]">
+              Starts
+            </p>
+            <p
+              className={`font-display font-bold leading-tight text-navy ${
+                isPage ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
+              }`}
+            >
+              {UPCOMING_BATCH.startDate}
+            </p>
+            <p className="mt-0.5 text-xs font-medium text-navy/50">{UPCOMING_BATCH.startDay}</p>
+          </div>
+        </div>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand sm:text-[11px]">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" aria-hidden />
+          {UPCOMING_BATCH.status}
+        </span>
+      </div>
+
+      <StaggerReveal
+        className="grid divide-y divide-border/70 sm:grid-cols-2 sm:divide-x sm:divide-y-0"
+        itemVariant="fadeUp"
+      >
+        {PROGRAM_OPTIONS.map((option, index) => (
+          <StaggerItem key={option.id}>
+            <UpcomingBatchCard option={option} index={index} variant={variant} />
+          </StaggerItem>
+        ))}
+      </StaggerReveal>
+    </Reveal>
+  );
+}
+

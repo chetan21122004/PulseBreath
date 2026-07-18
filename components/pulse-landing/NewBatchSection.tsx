@@ -1,16 +1,14 @@
-import { Calendar, ClipboardCheck, Users, Video } from "lucide-react";
+import { ClipboardCheck, Users, Video } from "lucide-react";
 import { WHATSAPP_OFFERS } from "./constants";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import {
   FREE_ASSESSMENT,
   NEW_BATCH_ROUTE,
   PROGRAM_HIGHLIGHTS,
-  PROGRAM_OPTIONS,
   PULMONARY_PROGRAM,
-  UPCOMING_BATCH,
 } from "./new-batch-data";
 import { SectionPageLink } from "./SectionPageLink";
-import { UpcomingBatchCard } from "./UpcomingBatchCard";
+import { UpcomingBatchRow } from "./UpcomingBatchCard";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function NewBatchSection() {
@@ -36,13 +34,9 @@ export function NewBatchSection() {
           </p>
         </Reveal>
 
-        <StaggerReveal className="mt-10 grid gap-5 sm:grid-cols-2" itemVariant="fadeUp">
-          {PROGRAM_OPTIONS.map((option, index) => (
-            <StaggerItem key={option.id}>
-              <UpcomingBatchCard option={option} index={index} variant="home" />
-            </StaggerItem>
-          ))}
-        </StaggerReveal>
+        <div className="mt-10">
+          <UpcomingBatchRow variant="home" />
+        </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-10">
           <Reveal variant="fadeUp" className="rounded-2xl border border-border/80 bg-background/95 p-5 sm:p-6">
@@ -102,10 +96,6 @@ export function NewBatchSection() {
           <p className="inline-flex items-center gap-2 text-sm font-medium italic text-navy/55">
             <Users className="h-4 w-4 text-brand" />
             {PULMONARY_PROGRAM.motto}
-          </p>
-          <p className="mt-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-brand">
-            <Calendar className="h-3.5 w-3.5" />
-            Enrolment open for {UPCOMING_BATCH.startDate}
           </p>
         </Reveal>
       </div>

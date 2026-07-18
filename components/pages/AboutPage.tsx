@@ -5,6 +5,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Award, BadgeCheck, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
+import { LINKEDIN } from "@/components/pulse-landing/constants";
 import {
   DOCTOR_CREDENTIALS,
   DOCTOR_HIGHLIGHTS,
@@ -18,6 +19,7 @@ import {
 } from "@/components/pulse-landing/dr-deepali-assets";
 import { DrDeepaliGallery } from "@/components/pulse-landing/DrDeepaliGallery";
 import { DrDeepaliVideo } from "@/components/pulse-landing/DrDeepaliVideo";
+import { LinkedInIcon } from "@/components/pulse-landing/LinkedInIcon";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 
 const teamDoctorFallback = "/assets/team-doctor.jpg";
@@ -183,11 +185,22 @@ export function AboutPage() {
                 />
 
                 <div className="flex items-center justify-between gap-3 border-b border-border/70 bg-white/90 px-4 py-3 backdrop-blur-sm sm:px-5">
-                  <div
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15"
-                    aria-hidden
-                  >
-                    <BadgeCheck className="h-4 w-4 text-brand" strokeWidth={2.25} />
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--primary-soft)] ring-1 ring-brand/15"
+                      aria-hidden
+                    >
+                      <BadgeCheck className="h-4 w-4 text-brand" strokeWidth={2.25} />
+                    </div>
+                    <a
+                      href={LINKEDIN}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Dr. Deepali Shah on LinkedIn"
+                      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#0A66C2]/10 text-[#0A66C2] ring-1 ring-[#0A66C2]/25 transition-colors hover:bg-[#0A66C2] hover:text-white"
+                    >
+                      <LinkedInIcon className="h-4 w-4" />
+                    </a>
                   </div>
                   <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[var(--brand-gold)]/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[var(--brand-dark)] ring-1 ring-[var(--brand-gold)]/35 sm:px-3 sm:text-[10px]">
                     <Award className="h-3 w-3 text-[var(--brand-gold)]" strokeWidth={2.25} />

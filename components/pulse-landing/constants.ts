@@ -12,6 +12,8 @@ const heroBgClip4 = "/assets/bg_vdo/4.mp4";
 
 export const PHONE = "7772894136";
 export const EMAIL = "deepalishah.pt@gmail.com";
+export const LINKEDIN =
+  "https://www.linkedin.com/in/dr-deepali-shah-pt-29396b200/";
 export const WHATSAPP = `https://wa.me/91${PHONE}?text=${encodeURIComponent(
   "Hi Dr. Deepali, I'd like to book a free assessment. My condition is ___.",
 )}`;

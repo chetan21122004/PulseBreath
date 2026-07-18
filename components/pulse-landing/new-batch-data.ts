@@ -16,16 +16,16 @@ export const NEW_BATCH_ROUTE = "/new-batch" as const;
 
 export const UPCOMING_BATCH = {
   status: "Enrolling Now",
-  startDate: "27 July 2026",
-  startDateShort: "27 July",
-  startDay: "Sunday",
+  startDate: "27th July 2026",
+  startDateShort: "27th July",
+  startDay: "Monday",
 } as const;
 
 export const PROMO_FLASH = {
   badge: "New Batch",
   message:
-    "New group sessions starting 27 July — 8-week specialist pulmonary rehabilitation. Book your free clinical assessment.",
-  shortMessage: "New group sessions starting 27 July",
+    "New group sessions starting 27th July — 8-week specialist pulmonary rehabilitation. Book your free clinical assessment.",
+  shortMessage: "New group sessions starting 27th July",
 } as const;
 
 export const PULMONARY_PROGRAM = {
@@ -33,7 +33,7 @@ export const PULMONARY_PROGRAM = {
   tagline: "Expert care. Wherever you are.",
   subtitle: "Science-backed. Specialist-led. Outcome-driven.",
   teleRehab: "Live tele-rehabilitation from the comfort of your home.",
-  batchDate: "New batch commencing 27 July",
+  batchDate: "New batch commencing 27th July",
   motto: "Small groups. Better supervision. Better outcomes.",
 } as const;
 
@@ -55,8 +55,6 @@ export const PROGRAM_OPTIONS = [
     label: "Consistent rehabilitation",
     description:
       "Ideal for consistent rehabilitation while maintaining your daily routine.",
-    startDate: UPCOMING_BATCH.startDate,
-    startDateShort: UPCOMING_BATCH.startDateShort,
   },
   {
     id: "intensive",
@@ -66,8 +64,6 @@ export const PROGRAM_OPTIONS = [
     label: "Faster recovery",
     description:
       "Ideal for faster functional recovery and closer professional supervision.",
-    startDate: UPCOMING_BATCH.startDate,
-    startDateShort: UPCOMING_BATCH.startDateShort,
   },
 ] as const;
 
