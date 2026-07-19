@@ -6,8 +6,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { WHATSAPP } from "./constants";
 import { AnnouncementBar } from "./AnnouncementBar";
-import { NAV_LINKS } from "./nav-links";
+import { EXPLORE_LINKS, NAV_LINKS } from "./nav-links";
 import { fadeDown } from "./motion";
+import { ExploreDropdownDesktop } from "./ExploreDropdown";
 import { ServicesMegaMenuDesktop } from "./ServicesMegaMenu";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -32,7 +33,7 @@ export function Header() {
         aria-hidden
       />
       <div className="border-b border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_88%,transparent)] shadow-[0_18px_48px_-24px_rgba(30,46,61,0.22)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-[color-mix(in_oklch,var(--background)_72%,transparent)]">
-        <div className="relative mx-auto flex min-h-[var(--header-nav-height)] max-w-7xl items-center justify-between gap-2 overflow-hidden px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-3 sm:px-6 lg:gap-4">
+        <div className="relative mx-auto flex min-h-[var(--header-nav-height)] max-w-7xl items-center justify-between gap-2 overflow-visible px-4 max-sm:grid max-sm:grid-cols-[1fr_auto_1fr] sm:gap-3 sm:px-6 lg:gap-4">
           <div
             className="pointer-events-none absolute right-[12%] top-1/2 hidden h-40 w-[min(52vw,28rem)] -translate-y-1/2 rounded-full bg-gradient-to-l from-[var(--brand-teal-soft)]/45 via-[var(--primary-soft)]/25 to-transparent blur-2xl lg:block"
             aria-hidden
@@ -73,8 +74,8 @@ export function Header() {
           <nav className="relative hidden min-w-0 flex-1 justify-center lg:flex" aria-label="Primary">
             <div
               className={cn(
-                "flex max-w-full items-center gap-0.5 overflow-x-auto rounded-full border border-[color-mix(in_oklch,var(--brand-teal)_22%,var(--border))] bg-[color-mix(in_oklch,white_78%,var(--brand-teal-soft))] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_40px_-12px_rgba(30,46,61,0.18),0_0_0_1px_rgba(176,64,96,0.06)]",
-                "backdrop-blur-md [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden",
+                "flex max-w-full items-center gap-0.5 overflow-visible rounded-full border border-[color-mix(in_oklch,var(--brand-teal)_22%,var(--border))] bg-[color-mix(in_oklch,white_78%,var(--brand-teal-soft))] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85),0_10px_40px_-12px_rgba(30,46,61,0.18),0_0_0_1px_rgba(176,64,96,0.06)]",
+                "backdrop-blur-md",
               )}
             >
               {links.map((l) =>
@@ -83,14 +84,22 @@ export function Header() {
                     key={l.label}
                     isActive={pathname === l.href || pathname.startsWith("/services/")}
                   />
+                ) : l.label === "Explore" ? (
+                  <ExploreDropdownDesktop
+                    key={l.label}
+                    isActive={EXPLORE_LINKS.some(
+                      (item) =>
+                        pathname === item.href ||
+                        (item.href === "/blog" && pathname.startsWith("/blog")),
+                    )}
+                  />
                 ) : (
                   <Link
                     key={l.label}
                     href={l.href}
                     className={cn(
                       "group relative shrink-0 rounded-full px-2.5 py-2 font-sans-brand text-[10px] font-bold uppercase tracking-[0.09em] transition-[color,background-color,box-shadow] hover:bg-white hover:text-[var(--brand-pink)] hover:shadow-[0_2px_12px_rgba(176,64,96,0.12)] xl:px-3.5 xl:py-2.5 xl:text-[11px] xl:tracking-[0.11em]",
-                      pathname === l.href ||
-                        (l.href === "/blog" && pathname.startsWith("/blog"))
+                      pathname === l.href
                         ? "bg-white text-[var(--brand-pink)] shadow-[0_2px_12px_rgba(176,64,96,0.12)]"
                         : "text-[var(--brand-dark)]/72",
                     )}
