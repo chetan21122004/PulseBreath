@@ -22,6 +22,80 @@ export const BLOG_OVERVIEW =
 
 export const BLOG_POSTS = [
   {
+    slug: "medicines-alone-arent-the-whole-story",
+    title: "Why Medicines Alone Aren't the Whole Story",
+    excerpt:
+      "Medicines help you breathe easier. Pulmonary rehabilitation helps you live easier. Why inhalers alone cannot reverse deconditioning in COPD.",
+    overview:
+      "Why everyday tasks still feel hard on correct inhalers - and how pulmonary rehab restores the function medicines cannot fully rebuild.",
+    publishedAt: "2026-07-24",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "\"Managing COPD isn't just about improving how you breathe. It's about improving what your breathing allows you to do.\"",
+      },
+      {
+        type: "p",
+        text: "For many people living with COPD, the daily routine is familiar. Wake up. Take your inhalers. Feel a little better. Then climb a flight of stairs and become breathless again. Naturally, a question follows. \"If I'm taking all my medicines correctly, why do I still struggle to do everyday activities?\" The answer lies in understanding what COPD changes inside the body.",
+      },
+      {
+        type: "h2",
+        text: "What medicines do - and what they cannot",
+      },
+      {
+        type: "p",
+        text: "Medicines play a vital role in COPD management. They help open the airways, reduce inflammation, relieve symptoms and lower the risk of exacerbations. For millions of people, they are an essential part of staying well. But breathing comfortably is only one part of living well.",
+      },
+      {
+        type: "p",
+        text: "Over time, COPD often changes how people move. Breathlessness makes activity uncomfortable, so many people begin avoiding it without even realising. Gradually, muscles lose strength, endurance declines, and everyday tasks begin demanding more effort than they once did. This is why climbing stairs feels harder. Why shopping becomes tiring. Why even walking across a room can leave someone exhausted.",
+      },
+      {
+        type: "p",
+        text: "These changes are not always caused by worsening lung function alone. They are also the result of physical deconditioning - a change that medicines alone cannot fully reverse.",
+      },
+      {
+        type: "h2",
+        text: "Pulmonary rehabilitation as a partner, not a replacement",
+      },
+      {
+        type: "p",
+        text: "This is where pulmonary rehabilitation becomes an essential partner in recovery. Rather than replacing medicines, it complements them. While medicines help improve airflow, pulmonary rehabilitation helps your body use that improved airflow more effectively. Through carefully prescribed exercise, education and structured progression, it trains the heart, muscles and circulation to work together more efficiently.",
+      },
+      {
+        type: "p",
+        text: "In simple terms: medicines help you breathe easier. Pulmonary rehabilitation helps you live easier.",
+      },
+      {
+        type: "h2",
+        text: "What the guidelines recommend",
+      },
+      {
+        type: "p",
+        text: "That is why international organisations such as the Global Initiative for Chronic Obstructive Lung Disease (GOLD) and the American Thoracic Society/European Respiratory Society (ATS/ERS) recommend pulmonary rehabilitation alongside optimal medical therapy. These recommendations are based on decades of evidence showing that medicines and rehabilitation address different - but equally important - aspects of COPD management.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Medicines help manage the disease",
+          "Pulmonary rehabilitation helps restore function",
+          "Together, they offer the best opportunity to move with greater confidence, participate more fully in everyday life and regain independence",
+        ],
+      },
+      {
+        type: "h2",
+        text: "A thought to take home",
+      },
+      {
+        type: "p",
+        text: "Every inhaler opens a door. Pulmonary rehabilitation teaches your body how to walk through it.",
+      },
+    ],
+  },
+  {
     slug: "cardiac-rehab-after-surgery",
     title: "Why Cardiac Rehabilitation Matters After Heart Surgery",
     excerpt:
