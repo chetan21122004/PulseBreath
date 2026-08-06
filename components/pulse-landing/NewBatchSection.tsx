@@ -24,8 +24,8 @@ export function NewBatchSection() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--body-text)] sm:text-base lg:mx-0">
-            {PULMONARY_PROGRAM.title}. Choose the track that fits your routine — both batches begin
-            on the same date.
+            {PULMONARY_PROGRAM.title}. Enquiry open for the upcoming group session — choose the
+            track that fits your routine.
           </p>
 
           <p className="mx-auto mt-4 inline-flex max-w-full items-center justify-center gap-2 text-sm font-medium text-navy/80 lg:mx-0 lg:justify-start">

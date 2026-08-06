@@ -16,16 +16,15 @@ export const NEW_BATCH_ROUTE = "/new-batch" as const;
 
 export const UPCOMING_BATCH = {
   status: "Enrolling Now",
-  startDate: "27th July 2026",
-  startDateShort: "27th July",
-  startDay: "Monday",
+  enquiryLabel: "Enquiry open",
+  enquiryMessage: "for the upcoming group session",
 } as const;
 
 export const PROMO_FLASH = {
   badge: "New Batch",
   message:
-    "New group sessions starting 27th July — 8-week specialist pulmonary rehabilitation. Book your free clinical assessment.",
-  shortMessage: "New group sessions starting 27th July",
+    "Enquiry open for the upcoming group session — 8-week specialist pulmonary rehabilitation. Book your free clinical assessment.",
+  shortMessage: "Enquiry open for the upcoming group session",
 } as const;
 
 export const PULMONARY_PROGRAM = {
@@ -33,7 +32,7 @@ export const PULMONARY_PROGRAM = {
   tagline: "Expert care. Wherever you are.",
   subtitle: "Science-backed. Specialist-led. Outcome-driven.",
   teleRehab: "Live tele-rehabilitation from the comfort of your home.",
-  batchDate: "New batch commencing 27th July",
+  batchDate: "Enquiry open for the upcoming group session",
   motto: "Small groups. Better supervision. Better outcomes.",
 } as const;
 

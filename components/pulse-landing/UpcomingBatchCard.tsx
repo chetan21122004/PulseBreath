@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle2, Clock } from "lucide-react";
+import { CheckCircle2, Clock, MessageCircle } from "lucide-react";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import {
   PROGRAM_OPTIONS,
@@ -73,7 +73,7 @@ type UpcomingBatchRowProps = {
   variant?: "home" | "page";
 };
 
-/** Shared start-date header with two batch columns underneath. */
+/** Shared enquiry header with two batch columns underneath. */
 export function UpcomingBatchRow({ variant = "home" }: UpcomingBatchRowProps) {
   const isPage = variant === "page";
 
@@ -85,20 +85,19 @@ export function UpcomingBatchRow({ variant = "home" }: UpcomingBatchRowProps) {
       <div className="flex flex-col items-center justify-between gap-3 border-b border-border/70 bg-gradient-to-r from-[var(--primary-soft)]/70 via-white/80 to-[var(--primary-soft)]/40 px-5 py-4 sm:flex-row sm:px-8 sm:py-5">
         <div className="flex items-center gap-3">
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/90 ring-1 ring-brand/20">
-            <Calendar className="h-5 w-5 text-brand" strokeWidth={2.25} />
+            <MessageCircle className="h-5 w-5 text-brand" strokeWidth={2.25} />
           </span>
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand sm:text-[11px]">
-              Starts
-            </p>
             <p
               className={`font-display font-bold leading-tight text-navy ${
                 isPage ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
               }`}
             >
-              {UPCOMING_BATCH.startDate}
+              {UPCOMING_BATCH.enquiryLabel}
             </p>
-            <p className="mt-0.5 text-xs font-medium text-navy/50">{UPCOMING_BATCH.startDay}</p>
+            <p className="mt-0.5 text-sm font-medium text-navy/60">
+              {UPCOMING_BATCH.enquiryMessage}
+            </p>
           </div>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand sm:text-[11px]">

@@ -48,7 +48,7 @@ export function NewBatchPage() {
             Choose your <span className="italic text-brand">upcoming batch</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
-            Two supervised tracks, one start date. Pick the pace that suits your recovery goals.
+            Two supervised tracks for the upcoming group session. Pick the pace that suits your recovery goals.
           </p>
         </Reveal>
 

@@ -22,6 +22,158 @@ export const BLOG_OVERVIEW =
 
 export const BLOG_POSTS = [
   {
+    slug: "why-do-i-cough-more-in-the-morning",
+    title: "Why Do I Cough More in the Morning?",
+    excerpt:
+      "Morning cough is often your lungs clearing overnight mucus - not a random habit. Here is what happens during sleep, on waking, and how pulmonary rehab helps.",
+    overview:
+      "Why mucus pools overnight, why sitting up triggers a productive cough, when to seek medical advice, and how airway clearance and rehab support clearer breathing.",
+    publishedAt: "2026-08-06",
+    category: "Pulmonary",
+    readMinutes: 6,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "If you wake up coughing more than at other times of day, you are not alone. For many people with COPD, bronchiectasis, asthma, or other chronic lung conditions, the morning cough is the lungs' natural way of clearing mucus that collected overnight. Understanding that process helps you respond with the right techniques - and know when a change in cough needs medical attention.",
+      },
+      {
+        type: "h2",
+        text: "During sleep: mucus has time to collect",
+      },
+      {
+        type: "p",
+        text: "Coughing frequency usually falls during sleep. Lying down for several hours, with less movement, reduces mucociliary clearance - the natural system that moves mucus out of the airways. Mucus gradually pools in smaller airways. By morning, there is more material ready to be cleared than there was when you went to bed.",
+      },
+      {
+        type: "h2",
+        text: "When you wake: gravity and movement mobilise mucus",
+      },
+      {
+        type: "p",
+        text: "Sitting up and starting to move lets gravity and activity help shift mucus from smaller airways toward larger ones. That movement often triggers the morning cough. The cough itself has a purpose: it is one of the body's main tools for clearing the airways so air can flow more freely.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Mucus that stayed in the lungs overnight begins to mobilise",
+          "Larger airways are more sensitive to irritation - so cough is more noticeable",
+          "A productive morning cough can be a sign clearance is working, not that something is \"wrong\" in isolation",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Why clearing mucus matters",
+      },
+      {
+        type: "p",
+        text: "When mucus is not cleared effectively, breathing can feel harder, the risk of chest infections can rise, and daily activities may become more limited. Airway clearance techniques taught in pulmonary rehabilitation - used alongside your prescribed medicines - help move mucus out more efficiently, so you rely less on exhausting, unproductive coughing alone.",
+      },
+      {
+        type: "h2",
+        text: "How pulmonary rehabilitation can help",
+      },
+      {
+        type: "p",
+        text: "Specialist-led pulmonary rehab combines airway clearance techniques, breathing retraining, and exercise training. Guidelines from GOLD, ATS, and ERS support rehabilitation as a core part of care for chronic respiratory disease - not as an optional extra.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Clear mucus more effectively with techniques matched to your condition",
+          "Reduce breathlessness during daily activities",
+          "Improve exercise capacity and endurance",
+          "Stay more active and independent over time",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Seek medical advice if you notice",
+      },
+      {
+        type: "ul",
+        items: [
+          "More mucus than usual",
+          "Yellow, green, foul-smelling, or blood-stained mucus",
+          "Increasing breathlessness",
+          "Fever or chest pain",
+        ],
+      },
+      {
+        type: "p",
+        text: "These changes can signal an infection or exacerbation and should be assessed promptly by your doctor. PulseBreath supports long-term breathing confidence through evidence-based rehab - but acute warning signs always need medical care first.",
+      },
+    ],
+  },
+  {
+    slug: "why-do-i-get-breathless-while-taking-a-shower",
+    title: "Why Do I Get Breathless While Taking a Shower?",
+    excerpt:
+      "Shower breathlessness is common in COPD, asthma, and ILD - and it has real physiological causes. Five reasons it happens, and how rehab makes daily tasks easier.",
+    overview:
+      "Warm humid air, arms overhead, bending, breath-holding, and energy demand - why showers challenge the lungs, and how pacing and pulmonary rehab help.",
+    publishedAt: "2026-08-05",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "Breathlessness while showering is common for people with lung conditions such as COPD, asthma, interstitial lung disease (ILD), and other chronic respiratory diseases. It is not \"in your head.\" Warm steam, raised arms, bending, and the simple energy cost of washing all place real demands on breathing. Understanding those reasons is the first step toward smarter strategies that make the task less exhausting.",
+      },
+      {
+        type: "h2",
+        text: "Why showering can be challenging",
+      },
+      {
+        type: "p",
+        text: "A shower looks simple from the outside. Inside the body, several factors often stack at once:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Warm, humid air - warmth and humidity can narrow the airways and increase the work of breathing, especially in COPD and asthma",
+          "Arms overhead - washing hair and reaching up recruit shoulder and chest muscles that also assist breathing, so the lungs share that workload",
+          "Bending and reaching - repeated forward bending or stretching for soap, shampoo, or the tap raises oxygen demand",
+          "Unintentional breath-holding - many people briefly hold their breath while lathering or rinsing, which can trap air and worsen breathlessness",
+          "Energy expenditure - showering uses more energy than people expect, particularly when lung capacity is already limited",
+        ],
+      },
+      {
+        type: "p",
+        text: "It is not weakness. It is physiology. Once you see the pattern, you can change how you approach the task - pacing, seating, cooler water, and breathing techniques taught in rehab - rather than pushing through until you are drained.",
+      },
+      {
+        type: "h2",
+        text: "How pulmonary rehabilitation helps",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation does not only train you on a treadmill. It teaches you to manage the activities that matter most in daily life. At PulseBreath, that includes personalised assessment, breathing techniques to reduce breathlessness, individualised exercise and functional training, energy conservation and activity pacing, and education for long-term self-management.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Doing the right activity the right way - including bathroom and self-care tasks",
+          "Building breathing capacity and endurance safely",
+          "Improving independence and quality of life at home",
+        ],
+      },
+      {
+        type: "h2",
+        text: "What the evidence supports",
+      },
+      {
+        type: "p",
+        text: "International guidance consistently supports pulmonary rehab and self-management for people with chronic lung disease. GOLD reports, ATS clinical practice guidelines, and Cochrane reviews show that rehabilitation reduces symptoms, improves exercise tolerance, and enhances quality of life when combined with appropriate medical care.",
+      },
+      {
+        type: "p",
+        text: "Breathing easier during daily tasks is possible - with the right approach. If showers leave you breathless, a free assessment can help identify which factors affect you most and which strategies fit your condition. PulseBreath is here to help you breathe better and live better.",
+      },
+    ],
+  },
+  {
     slug: "medicines-alone-arent-the-whole-story",
     title: "Why Medicines Alone Aren't the Whole Story",
     excerpt:
