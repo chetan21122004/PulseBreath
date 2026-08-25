@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
+import { DEFAULT_DESCRIPTION, HOME_TITLE, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.pulsebreathphysiotherapy.in"),
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: {
-    default: "PulseBreath Physiotherapy – Adding Life to your Years",
-    template: "%s | PulseBreath Physiotherapy",
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Specialist cardiac and pulmonary rehabilitation by Dr. Deepali Shah (PT), MPT Cardiopulmonary Sciences (Gold Medalist). Personalised, supervised programs – online and in-person across India.",
+  description: DEFAULT_DESCRIPTION,
+  authors: [{ name: "Dr. Deepali Shah (PT)", url: `${SITE_URL}/about` }],
+  creator: "Dr. Deepali Shah (PT)",
+  publisher: SITE_NAME,
   keywords: [
     "cardiac rehabilitation",
     "pulmonary rehabilitation",
@@ -21,24 +25,6 @@ export const metadata: Metadata = {
     "physiotherapy online India",
     "metabolic rehabilitation",
   ],
-  alternates: {
-    canonical: "https://www.pulsebreathphysiotherapy.in",
-  },
-  openGraph: {
-    title: "PulseBreath Physiotherapy – Adding Life to your Years",
-    description:
-      "Specialist cardiac and pulmonary rehabilitation by Dr. Deepali Shah (PT). Personalised, supervised, evidence-based recovery programs.",
-    type: "website",
-    url: "https://www.pulsebreathphysiotherapy.in",
-    locale: "en_IN",
-    siteName: "PulseBreath Physiotherapy",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PulseBreath Physiotherapy – Adding Life to your Years",
-    description:
-      "Specialist cardiac and pulmonary rehabilitation by Dr. Deepali Shah (PT). Personalised, supervised, evidence-based.",
-  },
   robots: {
     index: true,
     follow: true,

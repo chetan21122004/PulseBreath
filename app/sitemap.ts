@@ -2,67 +2,35 @@ import type { MetadataRoute } from "next";
 import { programCategories } from "@/components/pulse-landing/conditions-data";
 import { categorySlug } from "@/components/pulse-landing/ProgramCatalog";
 import { BLOG_POSTS } from "@/components/pulse-landing/blog-data";
+import { getIndexableSeoManifests } from "@/lib/programmatic-seo/catalog";
+import { SITE_URL } from "@/lib/seo";
 
-const BASE = "https://www.pulsebreathphysiotherapy.in";
+const SITE_CONTENT_UPDATED = new Date("2026-08-26");
 
 function url(path: string, extra?: Omit<MetadataRoute.Sitemap[number], "url">): MetadataRoute.Sitemap[number] {
-  return { url: `${BASE}${path}`, ...extra };
+  return { url: `${SITE_URL}${path}`, ...extra };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   /* ── Static pages ── */
   const staticPages: MetadataRoute.Sitemap = [
-    url("/", {
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    }),
-    url("/services", {
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    }),
-    url("/new-batch", {
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    }),
-    url("/about", {
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    }),
-    url("/contact", {
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    }),
-    url("/how-it-works", {
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    }),
-    url("/faqs", {
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    }),
-    url("/blog", {
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    }),
+    url("/", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/services", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/new-batch", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/about", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/contact", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/how-it-works", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/faqs", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/blog", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/rehabilitation", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/privacy", { lastModified: SITE_CONTENT_UPDATED }),
   ];
 
   /* ── Service category pages ── */
   const categoryPages: MetadataRoute.Sitemap = programCategories.map((cat) => {
     const slug = categorySlug(cat.cat);
     return url(`/services/${slug}`, {
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
+      lastModified: SITE_CONTENT_UPDATED,
     });
   });
 
@@ -71,9 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const catSl = categorySlug(cat.cat);
     return cat.programs.map((program) =>
       url(`/services/${catSl}/${program.slug}`, {
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.8,
+        lastModified: SITE_CONTENT_UPDATED,
       }),
     );
   });
@@ -81,11 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* ── Blog article pages ── */
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) =>
     url(`/blog/${post.slug}`, {
-      lastModified: new Date(post.publishedAt),
-      changeFrequency: "yearly",
-      priority: 0.65,
+      lastModified: new Date(post.updatedAt ?? post.publishedAt),
     }),
   );
 
-  return [...staticPages, ...categoryPages, ...programPages, ...blogPages];
+  /* ── Clinically approved programmatic guides only ── */
+  const programmaticPages: MetadataRoute.Sitemap = getIndexableSeoManifests().map((page) =>
+    url(page.path, { lastModified: new Date(page.lastModified) }),
+  );
+
+  return [...staticPages, ...categoryPages, ...programPages, ...blogPages, ...programmaticPages];
 }

@@ -1,0 +1,131 @@
+{
+  "serviceLines": [
+    {
+      "id": "pulmonary",
+      "label": "Pulmonary rehabilitation",
+      "conditions": [
+        { "id": "copd", "label": "COPD", "synonyms": ["chronic obstructive pulmonary disease"] },
+        { "id": "asthma", "label": "Asthma", "synonyms": [] },
+        { "id": "bronchiectasis", "label": "Bronchiectasis", "synonyms": [] },
+        { "id": "ild", "label": "Interstitial lung disease", "synonyms": ["ILD", "pulmonary fibrosis"] },
+        { "id": "post-lobectomy", "label": "Recovery after lobectomy", "synonyms": ["after lung surgery"] },
+        { "id": "pulmonary-hypertension", "label": "Pulmonary hypertension", "synonyms": [] },
+        { "id": "occupational-lung-disease", "label": "Occupational lung disease", "synonyms": [] },
+        { "id": "post-covid-lung-disease", "label": "Post-COVID lung disease", "synonyms": ["post-COVID fibrosis"] }
+      ]
+    },
+    {
+      "id": "cardiac",
+      "label": "Cardiac rehabilitation",
+      "conditions": [
+        { "id": "angioplasty", "label": "Recovery after angioplasty", "synonyms": ["after PTCA", "after stent placement"] },
+        { "id": "cabg", "label": "Recovery after bypass surgery", "synonyms": ["after CABG", "after heart bypass"] },
+        { "id": "heart-attack", "label": "Recovery after heart attack", "synonyms": ["after myocardial infarction", "after MI"] },
+        { "id": "heart-failure", "label": "Heart failure", "synonyms": ["congestive heart failure"] },
+        { "id": "valve-surgery", "label": "Recovery after valve surgery", "synonyms": [] },
+        { "id": "stable-coronary-disease", "label": "Stable coronary artery disease", "synonyms": ["stable CAD"] }
+      ]
+    },
+    {
+      "id": "metabolic",
+      "label": "Metabolic rehabilitation",
+      "conditions": [
+        { "id": "type-2-diabetes", "label": "Type 2 diabetes", "synonyms": ["diabetes mellitus type 2"] },
+        { "id": "prediabetes", "label": "Prediabetes", "synonyms": ["pre-diabetes"] },
+        { "id": "obesity", "label": "Obesity", "synonyms": [] },
+        { "id": "hypothyroidism", "label": "Hypothyroidism", "synonyms": ["underactive thyroid"] }
+      ]
+    }
+  ],
+  "intents": [
+    {
+      "id": "program",
+      "label": "Condition-specific rehabilitation program",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "at-home",
+      "label": "Rehabilitation at home",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "online",
+      "label": "Online supervised rehabilitation",
+      "searchIntent": "transactional",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "after-hospital-discharge",
+      "label": "Rehabilitation after hospital discharge",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac"]
+    },
+    {
+      "id": "exercises",
+      "label": "Exercise education",
+      "searchIntent": "informational",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "safety",
+      "label": "Exercise safety and precautions",
+      "searchIntent": "informational",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "eligibility",
+      "label": "Who is suitable for rehabilitation",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "cost",
+      "label": "Program cost and access",
+      "searchIntent": "transactional",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "duration",
+      "label": "Program duration and frequency",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    },
+    {
+      "id": "monitoring",
+      "label": "How sessions are monitored",
+      "searchIntent": "commercial-investigation",
+      "eligibleServiceLines": ["pulmonary", "cardiac", "metabolic"]
+    }
+  ],
+  "recoveryStages": [
+    "newly-diagnosed",
+    "early-recovery",
+    "after-hospital-discharge",
+    "stable-long-term-management",
+    "after-exacerbation",
+    "maintenance"
+  ],
+  "audiences": ["adult", "older-adult", "caregiver", "working-adult"],
+  "markets": [
+    {
+      "id": "india",
+      "label": "India",
+      "kind": "national",
+      "pageGenerationAllowed": true,
+      "reason": "PulseBreath states that supervised online sessions are available across India."
+    },
+    {
+      "id": "indian-states",
+      "label": "Indian states and union territories",
+      "kind": "regional-research-pool",
+      "pageGenerationAllowed": false,
+      "reason": "A state or city name alone is not unique value. Enable individual locations only after verified regional service, language, referral, and care-pathway evidence is recorded."
+    }
+  ],
+  "languages": [
+    { "locale": "en-IN", "label": "English (India)", "publishingEnabled": true },
+    { "locale": "hi-IN", "label": "Hindi (India)", "publishingEnabled": false }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "fieldTargetsP75": {
+    "lcpMilliseconds": 2500,
+    "inpMilliseconds": 200,
+    "cls": 0.1
+  },
+  "programmaticTemplateLabBudgets": {
+    "totalTransferKiB": 500,
+    "imageTransferKiB": 200,
+    "pageSpecificJavaScriptGzipKiB": 20,
+    "htmlGzipKiB": 40,
+    "domNodes": 1500,
+    "lighthouseMobilePerformance": 90
+  },
+  "catalogueBudgets": {
+    "maximumPages": 5000,
+    "maximumPreRenderedPagesPerBuild": 200,
+    "maximumManifestUncompressedMiB": 5,
+    "maximumSourceShardUncompressedMiB": 20,
+    "maximumRelatedLinksPerLeaf": 8
+  },
+  "notes": [
+    "Field Core Web Vitals are the ranking-related target; Lighthouse is a regression proxy.",
+    "The programmatic page renderer is server-first and intentionally has no video, carousel, hero image or page-specific client component.",
+    "Benchmark a real approved 100-page cohort before increasing the pre-render limit."
+  ]
+}

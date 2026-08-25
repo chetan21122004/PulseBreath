@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -60,9 +61,13 @@ export function DrDeepaliVideo({
   if (reduceMotion || failed) {
     return (
       <figure className={cn("overflow-hidden rounded-2xl", className)}>
-        <img
+        <Image
           src={poster ?? DR_DEEPALI_PORTRAIT}
           alt={alt}
+          width={800}
+          height={900}
+          sizes="(max-width: 1024px) 92vw, 44vw"
+          loading="lazy"
           className={cn("aspect-[4/3] w-full object-cover", videoClassName)}
         />
         {caption ? (

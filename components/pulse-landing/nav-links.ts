@@ -11,6 +11,7 @@ export const EXPLORE_LINKS = [
   { label: "FAQs", href: "/faqs" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Articles", href: "/blog" },
+  { label: "Rehabilitation Guides", href: "/rehabilitation" },
 ] as const;
 
 export const FOOTER_ABOUT_LINKS = [
@@ -19,13 +20,14 @@ export const FOOTER_ABOUT_LINKS = [
   { label: "All Services", href: "/services" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Articles", href: "/blog" },
+  { label: "Rehabilitation Guides", href: "/rehabilitation" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export const FOOTER_PROGRAM_LINKS = [
   { label: "Cardiovascular Rehab", href: "/services/cardiac" },
-  { label: "Pulmonary Rehab", href: "/services" },
-  { label: "Metabolic Programs", href: "/services" },
+  { label: "Pulmonary Rehab", href: "/services/pulmonary" },
+  { label: "Metabolic Programs", href: "/services/metabolic" },
   { label: "Tele-Rehab", href: "/how-it-works" },
 ] as const;

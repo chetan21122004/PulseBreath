@@ -1,9 +1,12 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const logo = "/assets/pulsebreath-logo.png";
 
 export function Logo() {
   return (
-    <a
-      href="#"
+    <Link
+      href="/"
       className="group flex min-w-0 items-center gap-3 sm:gap-4 motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:scale-[1.02]"
     >
       {/* Transform scale only affects painting; h-14 layout box keeps navbar height stable */}
@@ -12,7 +15,7 @@ export function Logo() {
           className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-br from-[var(--brand-teal)]/35 via-[var(--brand-pink)]/15 to-transparent opacity-80 blur-md motion-safe:transition-opacity motion-safe:duration-300 group-hover:opacity-100"
           aria-hidden
         />
-        <img
+        <Image
           src={logo}
           alt=""
           width={152}
@@ -30,6 +33,6 @@ export function Logo() {
         </div>
       </div>
       <span className="sr-only">PulseBreath Physiotherapy -  Home</span>
-    </a>
+    </Link>
   );
 }

@@ -11,10 +11,17 @@ export type BlogPost = {
   excerpt: string;
   overview: string;
   publishedAt: string;
+  updatedAt?: string;
   category: BlogCategory;
   readMinutes: number;
   author: string;
   blocks: BlogBlock[];
+};
+
+export type BlogReference = {
+  title: string;
+  publisher: string;
+  url: string;
 };
 
 export const BLOG_OVERVIEW =
@@ -29,6 +36,7 @@ export const BLOG_POSTS = [
     overview:
       "Why mucus pools overnight, why sitting up triggers a productive cough, when to seek medical advice, and how airway clearance and rehab support clearer breathing.",
     publishedAt: "2026-08-06",
+    updatedAt: "2026-08-26",
     category: "Pulmonary",
     readMinutes: 6,
     author: "Dr. Deepali Shah (PT)",
@@ -113,6 +121,7 @@ export const BLOG_POSTS = [
     overview:
       "Warm humid air, arms overhead, bending, breath-holding, and energy demand - why showers challenge the lungs, and how pacing and pulmonary rehab help.",
     publishedAt: "2026-08-05",
+    updatedAt: "2026-08-26",
     category: "Pulmonary",
     readMinutes: 5,
     author: "Dr. Deepali Shah (PT)",
@@ -181,6 +190,7 @@ export const BLOG_POSTS = [
     overview:
       "Why everyday tasks still feel hard on correct inhalers - and how pulmonary rehab restores the function medicines cannot fully rebuild.",
     publishedAt: "2026-07-24",
+    updatedAt: "2026-08-26",
     category: "Pulmonary",
     readMinutes: 5,
     author: "Dr. Deepali Shah (PT)",
@@ -255,6 +265,7 @@ export const BLOG_POSTS = [
     overview:
       "What happens after discharge, why generic gym workouts fall short, and how specialist supervision protects your recovery.",
     publishedAt: "2025-11-12",
+    updatedAt: "2026-08-26",
     category: "Cardiac",
     readMinutes: 5,
     author: "Dr. Deepali Shah (PT)",
@@ -302,6 +313,7 @@ export const BLOG_POSTS = [
     overview:
       "How paced pulmonary rehab reduces flare-ups, rebuilds walking tolerance, and keeps exertion within safe limits.",
     publishedAt: "2025-10-28",
+    updatedAt: "2026-08-26",
     category: "Pulmonary",
     readMinutes: 6,
     author: "Dr. Deepali Shah (PT)",
@@ -349,6 +361,7 @@ export const BLOG_POSTS = [
     overview:
       "Equipment, space, vitals, and how live video sessions differ from pre-recorded exercise videos.",
     publishedAt: "2025-09-15",
+    updatedAt: "2026-08-26",
     category: "Tele-Rehab",
     readMinutes: 4,
     author: "Dr. Deepali Shah (PT)",
@@ -408,6 +421,43 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 
 export function getAllPostSlugs(): BlogPostSlug[] {
   return BLOG_POSTS.map((post) => post.slug);
+}
+
+const PULMONARY_REFERENCES: readonly BlogReference[] = [
+  {
+    title: "Pulmonary Rehabilitation for Adults with Chronic Respiratory Disease: Official Clinical Practice Guideline",
+    publisher: "American Thoracic Society",
+    url: "https://www.thoracic.org/statements/guideline-implementation-tools/matrix-guidelines-and-derivatives-pulmonary-rehab-in-adults-08-23-23.php",
+  },
+  {
+    title: "Global Strategy for Prevention, Diagnosis and Management of COPD — 2026 Report",
+    publisher: "Global Initiative for Chronic Obstructive Lung Disease (GOLD)",
+    url: "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf",
+  },
+];
+
+const CARDIAC_REFERENCES: readonly BlogReference[] = [
+  {
+    title: "Core Components of Cardiac Rehabilitation Programs: 2024 Update",
+    publisher: "American Heart Association and AACVPR",
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001289",
+  },
+  {
+    title: "Home-Based Cardiac Rehabilitation: A Scientific Statement",
+    publisher: "AACVPR, American Heart Association and American College of Cardiology",
+    url: "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000663",
+  },
+];
+
+const TELE_REHAB_REFERENCES: readonly BlogReference[] = [
+  PULMONARY_REFERENCES[0],
+  CARDIAC_REFERENCES[1],
+];
+
+export function getPostReferences(post: BlogPost): readonly BlogReference[] {
+  if (post.category === "Cardiac") return CARDIAC_REFERENCES;
+  if (post.category === "Tele-Rehab") return TELE_REHAB_REFERENCES;
+  return PULMONARY_REFERENCES;
 }
 
 export function formatBlogDate(iso: string): string {

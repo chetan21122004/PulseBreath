@@ -1,0 +1,168 @@
+{
+  "pages": [
+    {
+      "id": "cardiac-angioplasty-recovery-en-in",
+      "path": "/rehabilitation/cardiac/angioplasty/recovery",
+      "serviceLine": "cardiac",
+      "locale": "en-IN",
+      "pageType": "recovery-stage",
+      "publication": {
+        "status": "ready-for-clinical-review",
+        "createdAt": "2026-08-26",
+        "updatedAt": "2026-08-26",
+        "preRender": false
+      },
+      "indexing": {
+        "requested": false,
+        "reason": "Pilot content must be checked against the clinician's current post-angioplasty pathway and formally approved before publication."
+      },
+      "taxonomy": {
+        "conditionId": "angioplasty",
+        "conditionName": "Recovery after coronary angioplasty",
+        "intentId": "program",
+        "intentName": "Cardiac rehabilitation after angioplasty",
+        "recoveryStage": "early-recovery",
+        "audience": ["adult", "older-adult", "caregiver", "working-adult"],
+        "market": {
+          "id": "india",
+          "kind": "national",
+          "verifiedLocalPresence": false,
+          "localProof": [
+            { "type": "verified-service-availability", "detail": "PulseBreath states that live supervised cardiac rehabilitation is available online across India for suitable patients." },
+            { "type": "supported-language", "detail": "Sessions are currently described as available in English and Hindi." },
+            { "type": "regional-care-pathway", "detail": "The pathway is designed to work alongside the patient's cardiologist and discharge instructions rather than replace hospital follow-up." }
+          ]
+        }
+      },
+      "keyword": {
+        "clusterId": "cardiac-angioplasty-rehab",
+        "primary": "cardiac rehabilitation after angioplasty",
+        "secondary": ["cardiac rehab after stent", "rehabilitation after PTCA", "exercise program after angioplasty"],
+        "intent": "commercial-investigation"
+      },
+      "metadata": {
+        "title": "Cardiac Rehabilitation After Angioplasty: Recovery Guide",
+        "description": "Understand assessment, exercise progression, monitoring and safety in cardiac rehabilitation after angioplasty or stent placement for suitable patients."
+      },
+      "content": {
+        "eyebrow": "Cardiac rehabilitation · After angioplasty",
+        "h1": "Cardiac rehabilitation after angioplasty or stent placement",
+        "summary": "Angioplasty opens a narrowed coronary artery, but it does not by itself rebuild physical capacity, reduce fear of movement or address every cardiovascular risk factor. Cardiac rehabilitation provides a structured return to activity with symptom monitoring, education and progressive exercise. The starting point and pace depend on the reason for the procedure, access-site healing, heart function, medicines, symptoms and the cardiologist's instructions.",
+        "keyTakeaways": [
+          "Cardiac rehabilitation is part of recovery and secondary prevention; it is more than a list of exercises.",
+          "There is no single exercise timeline that is right for everyone after angioplasty.",
+          "The rehabilitation professional should review discharge advice, symptoms, medicines and relevant test results before progression.",
+          "New chest discomfort, fainting or severe unexplained breathlessness requires medical assessment, not an online session."
+        ],
+        "sections": [
+          {
+            "id": "why-rehab",
+            "heading": "Why rehabilitation matters after the artery is opened",
+            "paragraphs": [
+              "A successful angioplasty treats a blockage, but recovery also involves the rest of the cardiovascular system and the person's confidence in daily activity. Time in hospital, reduced movement before the procedure and fear of another event can leave someone walking less, avoiding stairs or interpreting every change in heart rate as danger. A structured program creates a controlled way to rebuild capacity and understand the body's response to exertion.",
+              "Comprehensive cardiac rehabilitation also reinforces the wider treatment plan. That can include medication adherence, blood-pressure and glucose management, smoking cessation, sleep, stress, nutrition and long-term physical activity. A physiotherapy-led exercise pathway should work with the cardiologist's plan and refer questions about medication or new cardiac symptoms back to the medical team."
+            ]
+          },
+          {
+            "id": "before-starting",
+            "heading": "What should be reviewed before exercise progresses",
+            "paragraphs": [
+              "The assessment should establish when and why the angioplasty was performed, whether it followed a heart attack or unstable symptoms, which artery was treated, whether there were complications and what the discharge instructions say. Access through the wrist and access through the groin can have different short-term precautions. Current chest symptoms, palpitations, dizziness, breathlessness, swelling and unusual fatigue need to be discussed rather than hidden to complete an exercise session.",
+              "Medication timing can influence heart rate, blood pressure and perceived effort, so a target copied from somebody else's plan may be misleading. Relevant information may include resting pulse and blood pressure, heart function, ECG or stress-test guidance, diabetes, kidney disease, joint limitations and the person's pre-procedure activity. The clinician then decides whether remote rehabilitation is appropriate, whether cardiologist clearance is needed, and which measurements should be used during sessions."
+            ],
+            "bullets": [
+              "Hospital discharge summary and cardiologist instructions",
+              "Access-site healing and lifting restrictions",
+              "Current medicines and their timing",
+              "Resting symptoms, pulse and blood pressure",
+              "Functional baseline such as comfortable walking and chair-rise ability",
+              "Home space, technology and family support for online sessions"
+            ]
+          },
+          {
+            "id": "progression",
+            "heading": "How activity is progressed after angioplasty",
+            "paragraphs": [
+              "Early activity is usually light and focused on safe movement, comfortable walking and confidence with ordinary tasks, but the exact timing must follow the treating team's advice. The goal is not to test the stent by pushing hard. The clinician observes symptoms and recovery, uses an exertion scale or talk test, and may monitor heart rate and blood pressure. A warm-up and cool-down help avoid abrupt changes in demand.",
+              "As recovery remains stable, the program can gradually add walking time, cycling or another appropriate aerobic activity and later introduce resistance work. Progression is usually made one variable at a time: duration, frequency, repetitions or load. The person should also learn how to plan stairs, work tasks and travel. Someone recovering from a heart attack at the same time may follow a different pace from a person who had an uncomplicated elective procedure."
+            ]
+          },
+          {
+            "id": "online-sessions",
+            "heading": "What supervised online cardiac rehabilitation can cover",
+            "paragraphs": [
+              "For a medically stable and appropriately selected patient, a live online session can provide direct observation, pacing cues and symptom checks while the person exercises in the environment where daily activity actually happens. The camera should show the relevant movement, and the room should be free of trip hazards. The clinician confirms an emergency contact and explains what to do if the connection drops or symptoms change.",
+              "Remote care has limits. It cannot provide the same immediate equipment or medical response as a hospital or monitored centre. People with unstable symptoms, complex rhythm problems, uncontrolled blood pressure, decompensated heart failure or another condition requiring close medical observation may need centre-based care. Suitability should be reconsidered when the clinical situation changes."
+            ]
+          },
+          {
+            "id": "outcomes",
+            "heading": "Useful recovery outcomes to track",
+            "paragraphs": [
+              "Meaningful outcomes include walking comfortably for longer, returning to household or work tasks, using stairs with an agreed strategy, improving strength and completing regular activity without excessive fear. Blood pressure, glucose, waist measurement or other risk-factor measures may be followed when they are part of the treatment plan. Progress should be documented over time rather than judged from one unusually good or difficult day.",
+              "Rehabilitation does not make another cardiac event impossible. Its role is to support recovery, improve functional capacity and help the person follow a sustainable secondary-prevention plan. The end of a supervised block should lead into a maintenance routine and ongoing medical follow-up, with clear instructions for symptoms that require review."
+            ]
+          }
+        ],
+        "safetyTitle": "Symptoms that need urgent medical attention",
+        "safetyPoints": [
+          "Stop activity and seek urgent medical care for new or persistent chest pressure, fainting, severe unexplained breathlessness, cold sweating with illness, or symptoms that resemble the original cardiac event.",
+          "Contact the treating team for increasing access-site pain, bleeding, swelling, fever, new palpitations, worsening ankle swelling or a meaningful decline in exercise tolerance.",
+          "Do not change antiplatelet, blood-pressure or other cardiac medication because an exercise session felt easy or difficult; medication decisions belong to the prescribing clinician.",
+          "Use only the heart-rate, blood-pressure and exertion boundaries agreed for the individual; wearable-device targets are not a substitute for clinical guidance."
+        ],
+        "faqs": [
+          {
+            "question": "When can I start exercise after angioplasty?",
+            "answer": "The timing varies with the reason for angioplasty, access site, complications, symptoms and cardiologist instructions. Light movement may begin early in an uncomplicated recovery, but a rehabilitation professional should review the discharge plan before progressing duration or intensity. A universal day-by-day prescription is not appropriate."
+          },
+          {
+            "question": "Is cardiac rehabilitation necessary after a stent?",
+            "answer": "A stent treats a narrowed artery, while cardiac rehabilitation addresses physical recovery, confidence, exercise capacity and secondary-prevention behaviours. Guidelines support comprehensive rehabilitation for eligible cardiac patients, but the format and timing should be individualized."
+          },
+          {
+            "question": "Can cardiac rehabilitation after angioplasty be done at home?",
+            "answer": "Home-based or online rehabilitation can be considered for selected, medically stable patients when monitoring needs, technology, home safety and cardiologist guidance make it appropriate. Some people need a hospital or centre-based program, particularly when risk or symptoms require closer observation."
+          },
+          {
+            "question": "What should be monitored during exercise after angioplasty?",
+            "answer": "Monitoring may include symptoms, perceived effort, the talk test, heart rate and blood pressure, depending on the person's condition and plan. The most important requirement is a clear set of stop rules and a professional who can adjust the session when the response is not as expected."
+          }
+        ],
+        "cta": {
+          "heading": "Plan a safe return to activity after angioplasty",
+          "body": "A free assessment can review your procedure, discharge guidance, current symptoms and goals before a rehabilitation pathway is recommended.",
+          "label": "Book a free assessment",
+          "href": "/contact"
+        }
+      },
+      "evidence": {
+        "referenceIds": ["aha-aacvpr-core-components-2024", "aha-home-based-cardiac-rehab", "csi-stemi-position-statement"],
+        "authorId": "dr-deepali-shah",
+        "assignedReviewerId": "dr-deepali-shah",
+        "medicalReview": {
+          "status": "pending",
+          "reviewedAt": null,
+          "notes": "Confirm access-site wording, monitoring boundaries, clearance criteria and alignment with the current PulseBreath cardiac pathway before approval."
+        }
+      },
+      "links": [
+        { "label": "Cardiac rehabilitation programs", "href": "/services/cardiac", "relationship": "parent" },
+        { "label": "Recovery after cardiac events and procedures", "href": "/services/cardiac/after-cardiac-events-procedures", "relationship": "service" },
+        { "label": "Why cardiac rehabilitation matters after heart surgery", "href": "/blog/cardiac-rehab-after-surgery", "relationship": "related" },
+        { "label": "How online rehabilitation works", "href": "/how-it-works", "relationship": "related" },
+        { "label": "Book an assessment", "href": "/contact", "relationship": "next-step" }
+      ],
+      "quality": {
+        "uniqueValueSignals": [
+          "Separates the angioplasty procedure from functional recovery and secondary prevention",
+          "Explains how access route, indication and medicines affect assessment",
+          "Describes staged progression without giving a universal timeline",
+          "Defines the limits of remote cardiac rehabilitation",
+          "Includes procedure-relevant red flags and medication boundaries"
+        ],
+        "sourceNotes": "Drafted from the existing PulseBreath cardiac service model, AHA/AACVPR statements and an India-specific cardiology position statement; exact outcomes and timelines remain individualized."
+      }
+    }
+  ]
+}

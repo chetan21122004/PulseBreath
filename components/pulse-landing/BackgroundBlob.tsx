@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { BLOBS } from "./visual-assets";
 
@@ -27,11 +28,15 @@ export function BackgroundBlob({
   cover = false,
 }: BackgroundBlobProps) {
   return (
-    <img
+    <Image
       src={BLOBS[variant]}
       alt=""
       aria-hidden
       draggable={false}
+      loading="lazy"
+      decoding="async"
+      width={1600}
+      height={1000}
       className={cn(
         "pointer-events-none absolute select-none",
         cover

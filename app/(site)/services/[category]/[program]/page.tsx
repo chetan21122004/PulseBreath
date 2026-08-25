@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServiceProgramPage } from "@/components/pages/ServiceProgramPage";
+import { JsonLd } from "@/components/seo/JsonLd";
 import {
   PROGRAM_ROUTES,
   SITE_URL,
@@ -8,6 +9,7 @@ import {
 } from "@/components/pulse-landing/constants";
 import { buildProgramFaqs } from "@/components/pulse-landing/conditions-data";
 import { getAllProgramParams, getProgramBySlugs } from "@/components/pulse-landing/ProgramCatalog";
+import { createPageMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ category: string; program: string }>;
@@ -22,12 +24,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const result = getProgramBySlugs(category, program);
   if (!result) return { title: "Program Not Found" };
 
-  const canonical = `/services/${category}/${program}`;
-  const title = `${result.program.t} | PulseBreath Physiotherapy`;
-
   return {
-    title,
-    description: result.program.intro,
+    ...createPageMetadata({
+      title: result.program.t,
+      description: result.program.intro,
+      path: `/services/${category}/${program}`,
+      type: "article",
+    }),
     keywords: [
       result.program.t,
       result.category.tag,
@@ -37,14 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "tele-rehabilitation",
       "Dr. Deepali Shah",
     ],
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description: result.program.intro,
-      type: "article",
-      url: canonical,
-      siteName: "PulseBreath Physiotherapy",
-    },
   };
 }
 
@@ -111,18 +106,9 @@ export default async function ServiceProgramRoute({ params }: PageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(therapyLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
+      <JsonLd data={breadcrumbLd} />
+      <JsonLd data={therapyLd} />
+      <JsonLd data={faqLd} />
       <ServiceProgramPage categorySlug={catSlug} programSlug={program} />
     </>
   );

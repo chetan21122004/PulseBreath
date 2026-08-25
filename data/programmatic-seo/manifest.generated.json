@@ -1,0 +1,52 @@
+{
+  "contentVersion": 1,
+  "generatedAt": "2026-08-26",
+  "pages": [
+    {
+      "id": "cardiac-angioplasty-recovery-en-in",
+      "path": "/rehabilitation/cardiac/angioplasty/recovery",
+      "slug": [
+        "cardiac",
+        "angioplasty",
+        "recovery"
+      ],
+      "serviceLine": "cardiac",
+      "locale": "en-IN",
+      "title": "Cardiac Rehabilitation After Angioplasty: Recovery Guide",
+      "description": "Understand assessment, exercise progression, monitoring and safety in cardiac rehabilitation after angioplasty or stent placement for suitable patients.",
+      "h1": "Cardiac rehabilitation after angioplasty or stent placement",
+      "conditionName": "Recovery after coronary angioplasty",
+      "status": "ready-for-clinical-review",
+      "medicalReviewStatus": "pending",
+      "indexingRequested": false,
+      "preRender": false,
+      "lastModified": "2026-08-26",
+      "qualityScore": 100,
+      "qualityIssues": [],
+      "indexable": false
+    },
+    {
+      "id": "pulmonary-copd-at-home-en-in",
+      "path": "/rehabilitation/pulmonary/copd/at-home",
+      "slug": [
+        "pulmonary",
+        "copd",
+        "at-home"
+      ],
+      "serviceLine": "pulmonary",
+      "locale": "en-IN",
+      "title": "COPD Rehabilitation at Home: Supervised Online Program",
+      "description": "Learn how supervised COPD rehabilitation at home is assessed, monitored and progressed through live online sessions for suitable patients across India.",
+      "h1": "COPD rehabilitation at home with live clinical supervision",
+      "conditionName": "Chronic obstructive pulmonary disease (COPD)",
+      "status": "ready-for-clinical-review",
+      "medicalReviewStatus": "pending",
+      "indexingRequested": false,
+      "preRender": false,
+      "lastModified": "2026-08-26",
+      "qualityScore": 100,
+      "qualityIssues": [],
+      "indexable": false
+    }
+  ]
+}

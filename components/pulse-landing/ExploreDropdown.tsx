@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { BookOpen, ChevronDown, CircleHelp, Route } from "lucide-react";
+import { BookHeart, BookOpen, ChevronDown, CircleHelp, Route } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { EXPLORE_LINKS } from "./nav-links";
@@ -13,12 +13,14 @@ const exploreIcons: Record<string, LucideIcon> = {
   FAQs: CircleHelp,
   "How It Works": Route,
   Articles: BookOpen,
+  "Rehabilitation Guides": BookHeart,
 };
 
 const exploreDescriptions: Record<string, string> = {
   FAQs: "Common questions answered",
   "How It Works": "Four steps from first call to recovery",
   Articles: "Guides on safe rehab and tele-health",
+  "Rehabilitation Guides": "Clinically reviewed condition guides",
 };
 
 type ExploreDropdownDesktopProps = {

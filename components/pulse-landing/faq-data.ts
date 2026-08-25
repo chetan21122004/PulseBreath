@@ -34,7 +34,7 @@ export const FAQS: FaqItem[] = [
     id: "online-effective",
     category: "general",
     q: "Is online rehabilitation as effective as in-person?",
-    a: "Yes. Multiple studies confirm supervised tele-rehabilitation produces outcomes comparable to in-person programs for cardiac and pulmonary patients. The key word is supervised - sessions with Dr. Deepali are real-time, not pre-recorded videos.",
+    a: "For suitable patients, supervised tele-rehabilitation can be an effective alternative to centre-based care. Current pulmonary rehabilitation guidance supports offering a choice between centre-based rehabilitation and telerehabilitation for appropriate adults. Suitability depends on your diagnosis, stability, monitoring needs, technology access, and treating doctor's advice. PulseBreath sessions are live and supervised, not pre-recorded workouts.",
   },
   {
     id: "outside-noida",
@@ -64,7 +64,7 @@ export const FAQS: FaqItem[] = [
     id: "safety",
     category: "safety",
     q: "Is it safe to exercise with my condition?",
-    a: "When supervised by a specialist, yes - and it is essential. Structured, supervised exercise significantly improves outcomes for cardiac and pulmonary patients. The risk comes from exercising incorrectly or without guidance - which is exactly what Dr. Deepali's programs prevent.",
+    a: "Exercise can be appropriate and beneficial for many stable cardiac and pulmonary conditions when it is individually prescribed and supervised. It is not automatically safe for every person or at every stage of illness. Dr. Deepali reviews your diagnosis, symptoms, medical advice, medications, and baseline capacity before recommending a program, and may ask for clearance from your treating doctor.",
   },
   {
     id: "symptoms-worsen",

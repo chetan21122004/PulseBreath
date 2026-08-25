@@ -40,7 +40,7 @@ export function WhyTrust() {
             and answer every question you have. Zero pressure to join.
           </p>
           <p className="mt-4 italic text-navy/80 border-l-2 border-brand pl-4">
-            "We will never recommend a program that isn't right for you."
+            &ldquo;We will never recommend a program that isn&apos;t right for you.&rdquo;
           </p>
           <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp mt-7">
             <WhatsAppIcon className="h-5 w-5" /> Book Free Assessment on WhatsApp

@@ -1,0 +1,67 @@
+{
+  "references": [
+    {
+      "id": "ats-pulmonary-rehab-2023",
+      "title": "Pulmonary Rehabilitation for Adults with Chronic Respiratory Disease: Official Clinical Practice Guideline",
+      "publisher": "American Thoracic Society",
+      "url": "https://www.thoracic.org/statements/guideline-implementation-tools/matrix-guidelines-and-derivatives-pulmonary-rehab-in-adults-08-23-23.php",
+      "publishedYear": 2023,
+      "topics": ["pulmonary-rehabilitation", "copd", "ild", "telerehabilitation"],
+      "sourceType": "clinical-guideline"
+    },
+    {
+      "id": "gold-copd-2026",
+      "title": "Global Strategy for Prevention, Diagnosis and Management of COPD — 2026 Report",
+      "publisher": "Global Initiative for Chronic Obstructive Lung Disease",
+      "url": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf",
+      "publishedYear": 2026,
+      "topics": ["copd", "pulmonary-rehabilitation", "exacerbation"],
+      "sourceType": "clinical-guideline"
+    },
+    {
+      "id": "aha-aacvpr-core-components-2024",
+      "title": "Core Components of Cardiac Rehabilitation Programs: 2024 Update",
+      "publisher": "American Heart Association and AACVPR",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000001289",
+      "publishedYear": 2024,
+      "topics": ["cardiac-rehabilitation", "angioplasty", "cabg", "heart-failure"],
+      "sourceType": "scientific-statement"
+    },
+    {
+      "id": "aha-home-based-cardiac-rehab",
+      "title": "Home-Based Cardiac Rehabilitation: A Scientific Statement",
+      "publisher": "AACVPR, American Heart Association and American College of Cardiology",
+      "url": "https://www.ahajournals.org/doi/10.1161/CIR.0000000000000663",
+      "publishedYear": 2019,
+      "topics": ["cardiac-rehabilitation", "home-based-rehabilitation", "tele-rehabilitation"],
+      "sourceType": "scientific-statement"
+    },
+    {
+      "id": "csi-stemi-position-statement",
+      "title": "Cardiological Society of India position statement for the management of ST elevation myocardial infarction in India",
+      "publisher": "Cardiological Society of India",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5388060/",
+      "publishedYear": 2017,
+      "topics": ["india", "heart-attack", "cardiac-rehabilitation", "secondary-prevention"],
+      "sourceType": "position-statement"
+    },
+    {
+      "id": "google-people-first-content",
+      "title": "Creating helpful, reliable, people-first content",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "publishedYear": 2026,
+      "topics": ["seo-quality", "health-content", "authorship"],
+      "sourceType": "search-guidance"
+    },
+    {
+      "id": "google-spam-policies",
+      "title": "Spam policies for Google web search",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "publishedYear": 2026,
+      "topics": ["scaled-content", "doorway-pages", "seo-quality"],
+      "sourceType": "search-policy"
+    }
+  ]
+}

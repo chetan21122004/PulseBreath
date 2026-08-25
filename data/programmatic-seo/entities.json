@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "id": "dr-deepali-shah",
+      "name": "Dr. Deepali Shah",
+      "honorificSuffix": "PT",
+      "role": "Cardiopulmonary physiotherapist and founder",
+      "profilePath": "/about",
+      "credentials": [
+        "MPT Cardiopulmonary Sciences — Gold Medalist",
+        "Former Cipla Pulmonary Rehabilitation faculty",
+        "Registration No. 54685/2023"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import { ChevronRight, HeartPulse, ShieldCheck, Video, X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -379,9 +380,12 @@ export function Journey() {
 
       <div className="relative overflow-hidden py-4 sm:py-5">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <img
+          <Image
             src={DR_DEEPALI_JOURNEY_BG}
             alt=""
+            fill
+            sizes="100vw"
+            quality={70}
             className="h-full w-full object-cover object-[42%_40%]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/35 via-background/12 to-background/35" />

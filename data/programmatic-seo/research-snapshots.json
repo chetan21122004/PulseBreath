@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-08-26T02:15:00+05:30",
+  "market": "India",
+  "snapshots": [
+    {
+      "type": "google-serp",
+      "query": "online pulmonary rehabilitation India",
+      "observations": {
+        "leadingDomains": [
+          "maxhealthcare.in",
+          "respirehab.com",
+          "apollohospitals.com",
+          "mypulmonaryrehab.com",
+          "reliva.in",
+          "bsiphysiotherapy.com",
+          "pulmocareindia.org"
+        ],
+        "resultMix": ["hospital education", "specialist online service", "local rehabilitation centre", "research article"],
+        "relatedSearches": [
+          "Pulmonary rehabilitation Center near me",
+          "Pulmonary Rehabilitation centres in India",
+          "Free online pulmonary rehab",
+          "Pulmonary rehabilitation exercises",
+          "Pulmonary rehabilitation program online"
+        ],
+        "interpretation": "The result set is mixed rather than dominated by one national specialist. A clinically specific online-service page has room to differentiate through suitability, live monitoring, program structure and qualified review."
+      }
+    },
+    {
+      "type": "google-index-sample",
+      "query": "site:pulsebreathphysiotherapy.in",
+      "observations": {
+        "sampledIndexedUrls": [
+          "/",
+          "/services/pulmonary",
+          "/services/cardiac",
+          "/services/pulmonary/copd-management",
+          "/services/metabolic/thyroid-exercise-program",
+          "/blog/why-do-i-cough-more-in-the-morning",
+          "/blog/cardiac-rehab-after-surgery"
+        ],
+        "legacyIndexedUrl": "/services/cardiac/post-ptca-angioplasty",
+        "interpretation": "Google is discovering condition and program pages, but legacy URL consolidation and first-party Search Console data are needed before claiming ranking performance."
+      }
+    },
+    {
+      "type": "pagespeed-insights-mobile",
+      "url": "https://www.pulsebreathphysiotherapy.in/",
+      "reportUrl": "https://pagespeed.web.dev/analysis/https-www-pulsebreathphysiotherapy-in/vim5ewrdyf?form_factor=mobile",
+      "observations": {
+        "fieldData": "No Data",
+        "lighthouseVersion": "13.4.1",
+        "performanceScore": 60,
+        "seoScore": 100,
+        "accessibilityScore": 92,
+        "bestPracticesScore": 100,
+        "fcpSeconds": 1.7,
+        "lcpSeconds": 21.7,
+        "tbtMilliseconds": 230,
+        "cls": 0,
+        "speedIndexSeconds": 16.6,
+        "totalPayloadKiB": 16634,
+        "estimatedImageSavingsKiB": 4416,
+        "interpretation": "Basic Lighthouse SEO checks pass, but the live homepage has a severe lab LCP and payload problem. Programmatic templates must stay server-first and media-light, and the landing-page media work should be measured again after deployment."
+      }
+    }
+  ]
+}

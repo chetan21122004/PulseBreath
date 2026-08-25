@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
@@ -41,9 +42,12 @@ export function DrDeepaliGallery({
               onClick={() => setLightbox(src)}
               className="motion-card group relative w-full overflow-hidden rounded-xl border border-border/80 ring-1 ring-white/80 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             >
-              <img
+              <Image
                 src={src}
                 alt={`${altPrefix} - photo ${index + 1}`}
+                width={800}
+                height={900}
+                sizes="(max-width: 640px) 44vw, (max-width: 1024px) 22vw, 18vw"
                 loading="lazy"
                 className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -70,9 +74,12 @@ export function DrDeepaliGallery({
             <X className="h-5 w-5" />
           </button>
           <Reveal variant="scaleIn" className="max-h-[90vh] max-w-4xl">
-            <img
+            <Image
               src={lightbox}
               alt={`${altPrefix} - enlarged`}
+              width={1200}
+              height={1350}
+              sizes="90vw"
               className="max-h-[85vh] w-auto rounded-2xl object-contain shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />

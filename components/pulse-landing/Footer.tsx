@@ -98,14 +98,14 @@ export function Footer() {
               href="/"
               className="inline-flex w-full max-w-md items-center gap-3 rounded-2xl border border-white/15 bg-white px-4 py-3 shadow-[0_12px_32px_-14px_rgba(0,0,0,0.4)] sm:gap-5 sm:px-6 sm:py-5"
             >
-              <img
+              <Image
                 src={logoIcon}
                 alt=""
                 width={192}
                 height={192}
                 className="h-16 w-16 shrink-0 object-contain sm:h-24 sm:w-24"
               />
-              <img
+              <Image
                 src={logoText}
                 alt="PulseBreath Physiotherapy - Adding life to your years"
                 width={480}
@@ -220,3 +220,4 @@ export function Footer() {
     </footer>
   );
 }
+import Image from "next/image";

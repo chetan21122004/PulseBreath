@@ -7,7 +7,6 @@ import { PageSection } from "@/components/pages/PageSection";
 import { FaqAccordion } from "@/components/pages/FaqAccordion";
 import {
   FAQ_CATEGORIES,
-  FAQ_REASSURANCE,
   getFaqsByCategory,
   type FaqCategory,
 } from "@/components/pulse-landing/faq-data";

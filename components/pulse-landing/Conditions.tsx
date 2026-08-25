@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, HeartPulse, Wind, Droplet } from "lucide-react";
 const careMonitoring = "/assets/care-monitoring.jpg";
@@ -100,12 +101,14 @@ export function Conditions() {
                 </div>
 
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <Image
                     src={image}
                     alt={title}
                     loading="lazy"
                     width={700}
                     height={525}
+                    sizes="(max-width: 768px) 92vw, 31vw"
+                    quality={76}
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div

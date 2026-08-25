@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -49,10 +50,6 @@ export function Hero() {
   }, [reduceMotion]);
 
   useEffect(() => {
-    setHeroBgVideoReady(false);
-  }, [heroBgClipIndex]);
-
-  useEffect(() => {
     const el = heroBgVideoRef.current;
     if (!el || heroBgVideoFailed || !shouldLoadHeroVideo) return;
     el.playbackRate = HERO_BG_PLAYBACK_RATE;
@@ -99,19 +96,20 @@ export function Hero() {
             }}
             onCanPlay={() => setHeroBgVideoReady(true)}
             onEnded={() => {
+              setHeroBgVideoReady(false);
               setHeroBgClipIndex((i) => (i + 1) % HERO_BG_CLIPS.length);
             }}
             onError={() => setHeroBgVideoFailed(true)}
           />
         )}
         {/* Static hero art on first paint, while video loads, on failure, or reduced motion */}
-        <img
+        <Image
           src={bgHero}
           alt=""
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          decoding="async"
+          fill
+          priority
+          quality={72}
+          sizes="100vw"
           className={`absolute inset-0 h-full w-full object-cover brightness-[1.12] contrast-[1.04] saturate-[1.06] motion-reduce:opacity-40 ${showStaticHeroBg ? "" : "motion-safe:hidden"}`}
         />
         {/* Light global tint -video stays vivid; darken only lightly for depth */}
@@ -311,11 +309,13 @@ export function Hero() {
                 <div className="pointer-events-none absolute max-md:hidden -left-4 bottom-[12%] z-0 h-32 w-32 rounded-full bg-[var(--brand-teal)]/18 blur-3xl motion-reduce:hidden" aria-hidden />
 
                 <div className="relative z-[1] overflow-hidden rounded-2xl ring-2 ring-white/25 ring-offset-2 ring-offset-transparent lg:translate-x-1">
-                  <img
+                  <Image
                     src={DR_DEEPALI_HERO_PORTRAIT}
                     alt="Dr. Deepali Shah, Cardiopulmonary Physiotherapist"
                     width={800}
                     height={900}
+                    sizes="(max-width: 767px) 0px, (max-width: 1023px) 38vw, 30vw"
+                    quality={78}
                     className="aspect-[4/5] w-full max-h-[min(42svh,320px)] bg-white object-contain object-center sm:max-h-[min(48svh,380px)] lg:max-h-[min(52svh,440px)]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-deeper)]/35 via-transparent to-transparent" />

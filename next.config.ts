@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "/new-batch",
         permanent: true,
       },
+      {
+        source: "/services/cardiac/post-ptca-angioplasty",
+        destination: "/services/cardiac/after-cardiac-events-procedures",
+        permanent: true,
+      },
     ];
   },
 };

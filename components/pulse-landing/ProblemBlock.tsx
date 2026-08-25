@@ -14,7 +14,7 @@ export function ProblemBlock() {
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div className="relative">
           <div className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-soft" />
-          <img
+          <Image
             src={problemHands}
             alt="Patient receiving guidance"
             loading="lazy"
@@ -60,3 +60,4 @@ export function ProblemBlock() {
     </div>
   );
 }
+import Image from "next/image";

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { Award, BadgeCheck } from "lucide-react";
 import { LINKEDIN } from "./constants";
 import { DOCTOR_CREDENTIALS, DOCTOR_HIGHLIGHTS, DOCTOR_OVERVIEW_BRIEF } from "./doctor-content";
@@ -82,11 +83,13 @@ export function Doctor() {
                 </div>
 
                 <div className="relative overflow-hidden bg-[var(--brand-deeper)]/5">
-                  <img
+                  <Image
                     src={DR_DEEPALI_ABOUT_PORTRAIT}
                     alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
+                    sizes="(max-width: 1024px) 92vw, 36vw"
+                    quality={78}
                     className="aspect-[3/4] max-h-[min(58vw,280px)] w-full bg-white object-contain object-center sm:max-h-none"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--brand-deeper)]/55 via-[var(--brand-deeper)]/10 to-transparent" />

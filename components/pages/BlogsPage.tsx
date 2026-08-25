@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft, Clock, ExternalLink, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { BlogCard } from "@/components/pulse-landing/BlogCard";
@@ -7,6 +7,7 @@ import {
   BLOG_OVERVIEW,
   formatBlogDate,
   getAllPosts,
+  getPostReferences,
   type BlogPost,
 } from "@/components/pulse-landing/blog-data";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
@@ -64,6 +65,8 @@ export function BlogsPage() {
 }
 
 export function BlogArticleBody({ post }: { post: BlogPost }) {
+  const references = getPostReferences(post);
+
   return (
     <article className="prose-blog mx-auto max-w-3xl">
       {post.blocks.map((block, index) => {
@@ -101,6 +104,52 @@ export function BlogArticleBody({ post }: { post: BlogPost }) {
           </p>
         );
       })}
+
+      <section className="mt-12 border-t border-border/80 pt-8" aria-labelledby="references-heading">
+        <h2 id="references-heading" className="font-display text-2xl font-bold text-navy">
+          Clinical references
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Primary professional guidance used to support the clinical context in this article.
+        </p>
+        <ol className="mt-5 space-y-3">
+          {references.map((reference) => (
+            <li key={reference.url} className="rounded-xl border border-border/75 bg-white/80 p-4">
+              <a
+                href={reference.url}
+                rel="external"
+                className="group flex items-start justify-between gap-4 font-semibold leading-relaxed text-navy transition-colors hover:text-brand"
+              >
+                <span>
+                  {reference.title}
+                  <span className="mt-1 block text-xs font-medium text-muted-foreground">
+                    {reference.publisher}
+                  </span>
+                </span>
+                <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-brand" aria-hidden />
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <aside className="mt-8 rounded-2xl border border-[var(--brand-teal)]/25 bg-[var(--brand-teal-soft)]/45 p-5 sm:p-6">
+        <div className="flex items-start gap-3">
+          <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-teal-deep)]" aria-hidden />
+          <div>
+            <h2 className="font-display text-xl font-bold text-navy">About this medical content</h2>
+            <p className="mt-2 text-sm leading-relaxed text-navy/80">
+              Written by{" "}
+              <Link href="/about" className="font-semibold text-brand underline-offset-4 hover:underline">
+                Dr. Deepali Shah (PT)
+              </Link>
+              , MPT Cardiopulmonary Sciences (Gold Medalist), and updated on{" "}
+              {formatBlogDate(post.updatedAt ?? post.publishedAt)}. This article provides general
+              education and does not replace assessment by your treating doctor or physiotherapist.
+            </p>
+          </div>
+        </div>
+      </aside>
     </article>
   );
 }
@@ -117,9 +166,17 @@ export function BlogArticlePage({ post }: { post: BlogPost }) {
         className="pb-10 lg:pb-14"
       >
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-sans-brand text-sm text-navy/70">
-          <span>{post.author}</span>
+          <Link href="/about" className="font-semibold text-brand underline-offset-4 hover:underline">
+            {post.author}
+          </Link>
           <span aria-hidden>·</span>
           <span>{formatBlogDate(post.publishedAt)}</span>
+          {post.updatedAt && post.updatedAt !== post.publishedAt ? (
+            <>
+              <span aria-hidden>·</span>
+              <span>Updated {formatBlogDate(post.updatedAt)}</span>
+            </>
+          ) : null}
           <span aria-hidden>·</span>
           <span className="inline-flex items-center gap-1.5">
             <Clock className="h-4 w-4 text-brand" strokeWidth={2.25} />

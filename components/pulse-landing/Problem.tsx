@@ -13,7 +13,7 @@ export function Problem() {
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div className="relative">
           <div className="absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-soft" />
-          <img src={problemHands} alt="Patient receiving guidance" loading="lazy" width={800} height={800} className="relative rounded-2xl w-full" />
+          <Image src={problemHands} alt="Patient receiving guidance" loading="lazy" width={800} height={800} sizes="(max-width: 1024px) 92vw, 45vw" className="relative rounded-2xl w-full" />
         </div>
         <div>
           <span className="pill">The Problem</span>
@@ -45,3 +45,4 @@ export function Problem() {
     </section>
   );
 }
+import Image from "next/image";

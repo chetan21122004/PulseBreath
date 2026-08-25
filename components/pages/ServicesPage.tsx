@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Clock, ArrowRight, HeartPulse, Wind, Droplet } from "lucide-react";
@@ -100,25 +101,27 @@ function AnimatedNumber({
   reduceMotion: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
 
-  if (typeof window !== "undefined" && !hasAnimated.current && !reduceMotion) {
-    hasAnimated.current = true;
-    const startTime = performance.now();
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (reduceMotion) {
+      element.textContent = `${target}${suffix}`;
+      return;
+    }
+
+    let startTime: number | undefined;
+    let frame = 0;
     const animate = (currentTime: number) => {
-      const elapsed = (currentTime - startTime) / 1000;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(easedProgress * target);
-      if (ref.current) {
-        ref.current.textContent = `${current}${suffix}`;
-      }
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      startTime ??= currentTime;
+      const progress = Math.min((currentTime - startTime) / 1000 / duration, 1);
+      const current = Math.round((1 - Math.pow(1 - progress, 3)) * target);
+      element.textContent = `${current}${suffix}`;
+      if (progress < 1) frame = requestAnimationFrame(animate);
     };
-    requestAnimationFrame(animate);
-  }
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [duration, reduceMotion, suffix, target]);
 
   return <span ref={ref}>{reduceMotion ? `${target}${suffix}` : `0${suffix}`}</span>;
 }
@@ -422,9 +425,12 @@ function ServicesHeroAside() {
       />
 
       <div className="relative overflow-hidden rounded-2xl border border-white/75 bg-white/60 p-5 shadow-[0_28px_70px_-32px_rgba(30,46,61,0.28)] backdrop-blur-sm sm:p-6">
-        <img
+        <Image
           src={ILLUSTRATIONS.cardiologistRafiki}
           alt="Specialist guiding personalised rehabilitation services"
+          width={800}
+          height={800}
+          sizes="(max-width: 1024px) 88vw, 38vw"
           className="mx-auto max-h-[min(32vh,260px)] w-full object-contain xl:max-h-[280px]"
         />
         <p className="mt-3 text-center font-sans-brand text-[12px] font-medium leading-snug text-navy/65">

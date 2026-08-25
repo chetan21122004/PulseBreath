@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -14,6 +14,7 @@ import {
   CircleHelp,
   ChevronRight,
   Sparkles,
+  BookHeart,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -76,6 +77,14 @@ const MOBILE_MORE_ITEMS: MobileNavItem[] = [
     icon: BookOpen,
     description: "Guides on safe rehab and tele-health",
     isActive: (pathname) => pathname === "/blog" || pathname.startsWith("/blog/"),
+  },
+  {
+    label: "Rehab Guides",
+    href: "/rehabilitation",
+    icon: BookHeart,
+    description: "Clinically reviewed condition guides",
+    isActive: (pathname) =>
+      pathname === "/rehabilitation" || pathname.startsWith("/rehabilitation/"),
   },
   {
     label: "FAQs",
@@ -150,11 +159,6 @@ export function MobileBottomNav() {
   const [moreOpen, setMoreOpen] = useState(false);
   const servicesActive = isServicesActive(pathname);
   const moreActive = MOBILE_MORE_ITEMS.some((item) => item.isActive(pathname));
-
-  useEffect(() => {
-    setServicesOpen(false);
-    setMoreOpen(false);
-  }, [pathname]);
 
   const closeSheets = () => {
     setServicesOpen(false);

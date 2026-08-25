@@ -20,7 +20,7 @@ export function ServiceCategories() {
       <div className="mt-14 mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-6">
         {items.map(it => (
           <div key={it.t} className="relative overflow-hidden rounded-2xl aspect-square group">
-            <img src={it.i} alt={it.t} loading="lazy" width={700} height={800} className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <Image src={it.i} alt={it.t} loading="lazy" width={700} height={800} sizes="(max-width: 768px) 92vw, 31vw" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" style={{ background: "linear-gradient(to top, var(--brand-dark), rgba(44,62,80,0.4), transparent)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p className="text-white font-bold font-display text-2xl drop-shadow-lg">{it.t}</p>
@@ -32,3 +32,4 @@ export function ServiceCategories() {
     </section>
   );
 }
+import Image from "next/image";

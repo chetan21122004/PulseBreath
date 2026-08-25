@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "siteUrl": "https://www.pulsebreathphysiotherapy.in",
+  "routePrefix": "/rehabilitation",
+  "defaultLocale": "en-IN",
+  "supportedLocales": ["en-IN"],
+  "publication": {
+    "autoPublish": false,
+    "minimumWordCount": 700,
+    "minimumSections": 4,
+    "minimumFaqs": 3,
+    "minimumReferences": 2,
+    "minimumInternalLinks": 3,
+    "minimumUniqueValueSignals": 3,
+    "minimumMetaDescriptionLength": 110,
+    "maximumMetaDescriptionLength": 160,
+    "maximumTitleLength": 62,
+    "minimumQualityScore": 85,
+    "maximumPairSimilarity": 0.64,
+    "forbiddenClaims": [
+      "guaranteed recovery",
+      "guaranteed results",
+      "cure copd",
+      "cure heart disease",
+      "reverse heart disease",
+      "reverse diabetes",
+      "100% safe",
+      "no risk",
+      "replace your doctor",
+      "stop your medication"
+    ]
+  },
+  "rendering": {
+    "preRenderLimit": 200,
+    "revalidateSeconds": 86400,
+    "maximumApprovedPages": 5000,
+    "sitemapBatchSize": 10000
+  },
+  "geography": {
+    "locationPagesEnabled": false,
+    "allowedWithoutLocalProof": ["india"],
+    "minimumLocalProofItems": 3,
+    "requiredLocalProofTypes": [
+      "verified-service-availability",
+      "supported-language",
+      "regional-care-pathway"
+    ]
+  },
+  "localization": {
+    "machineTranslationPublishingEnabled": false,
+    "requireHumanTranslation": true,
+    "requireClinicalReviewPerLocale": true
+  }
+}

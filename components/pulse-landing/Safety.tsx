@@ -1,30 +1,7 @@
-import { CheckCircle2, HeartPulse, ShieldCheck, TrendingUp, Video } from "lucide-react";
+import Image from "next/image";
+import { Video } from "lucide-react";
 const safetyExercise = "/assets/imgs/pexels-kampus-8173440.jpg.jpeg";
 import { BackgroundBlob } from "./BackgroundBlob";
-
-const pillars = [
-  {
-    Icon: ShieldCheck,
-    title: "Specialist-led every session",
-    body: "Every session is guided live by Dr. Deepali - a cardiopulmonary physiotherapist, not a generic workout plan.",
-  },
-  {
-    Icon: HeartPulse,
-    title: "Monitored as you move",
-    body: "Heart rate, breathing, and how you feel are tracked throughout. Intensity stays within limits set for your condition.",
-  },
-  {
-    Icon: TrendingUp,
-    title: "Progress at your pace",
-    body: "Your capacity is reviewed regularly. The program advances only when your body is ready - never rushed.",
-  },
-];
-
-const commitments = [
-  "Built on clinical cardiac and pulmonary rehab guidelines",
-  "Clear stop rules if you feel unwell during a session",
-  "Weekly review and plan adjustment as you improve",
-];
 
 export function Safety() {
   return (
@@ -49,12 +26,13 @@ export function Safety() {
               className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand/15 via-transparent to-[#C0516A]/10 blur-sm"
             />
             <div className="relative overflow-hidden rounded-[1.75rem] border border-white/70 shadow-[0_28px_70px_-32px_rgba(44,62,80,0.35)]">
-              <img
+              <Image
                 src={safetyExercise}
                 alt="Small group exercising at home under live specialist supervision"
                 loading="lazy"
                 width={960}
                 height={720}
+                sizes="(max-width: 1024px) 92vw, 46vw"
                 className="aspect-[4/3] h-full w-full object-cover object-[center_35%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />

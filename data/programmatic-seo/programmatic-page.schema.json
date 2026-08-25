@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.pulsebreathphysiotherapy.in/schemas/programmatic-page.schema.json",
+  "title": "PulseBreath programmatic SEO page shard",
+  "type": "object",
+  "required": ["pages"],
+  "additionalProperties": false,
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/page" }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "isoDate": { "type": "string", "format": "date" },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "serviceLine",
+        "locale",
+        "pageType",
+        "publication",
+        "indexing",
+        "taxonomy",
+        "keyword",
+        "metadata",
+        "content",
+        "evidence",
+        "links",
+        "quality"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "path": { "type": "string", "pattern": "^/rehabilitation/[a-z0-9/-]+$" },
+        "serviceLine": { "enum": ["pulmonary", "cardiac", "metabolic", "tele-rehabilitation"] },
+        "locale": { "$ref": "#/$defs/nonEmptyString" },
+        "pageType": {
+          "enum": ["condition-intent", "recovery-stage", "symptom-question", "national-service", "regional-service"]
+        },
+        "publication": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "createdAt", "updatedAt", "preRender"],
+          "properties": {
+            "status": { "enum": ["draft", "ready-for-clinical-review", "approved", "retired"] },
+            "createdAt": { "$ref": "#/$defs/isoDate" },
+            "updatedAt": { "$ref": "#/$defs/isoDate" },
+            "preRender": { "type": "boolean" }
+          }
+        },
+        "indexing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requested", "reason"],
+          "properties": {
+            "requested": { "type": "boolean" },
+            "reason": { "$ref": "#/$defs/nonEmptyString" }
+          }
+        },
+        "taxonomy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["conditionId", "conditionName", "intentId", "intentName", "audience", "market"],
+          "properties": {
+            "conditionId": { "$ref": "#/$defs/nonEmptyString" },
+            "conditionName": { "$ref": "#/$defs/nonEmptyString" },
+            "intentId": { "$ref": "#/$defs/nonEmptyString" },
+            "intentName": { "$ref": "#/$defs/nonEmptyString" },
+            "recoveryStage": { "type": "string" },
+            "audience": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "market": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "kind", "verifiedLocalPresence", "localProof"],
+              "properties": {
+                "id": { "$ref": "#/$defs/nonEmptyString" },
+                "kind": { "enum": ["national", "state", "city"] },
+                "verifiedLocalPresence": { "type": "boolean" },
+                "localProof": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["type", "detail"],
+                    "properties": {
+                      "type": { "$ref": "#/$defs/nonEmptyString" },
+                      "detail": { "$ref": "#/$defs/nonEmptyString" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "keyword": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["clusterId", "primary", "secondary", "intent"],
+          "properties": {
+            "clusterId": { "$ref": "#/$defs/nonEmptyString" },
+            "primary": { "$ref": "#/$defs/nonEmptyString" },
+            "secondary": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "intent": { "enum": ["informational", "commercial-investigation", "transactional", "navigational"] }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "description"],
+          "properties": {
+            "title": { "$ref": "#/$defs/nonEmptyString" },
+            "description": { "$ref": "#/$defs/nonEmptyString" }
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["eyebrow", "h1", "summary", "keyTakeaways", "sections", "safetyTitle", "safetyPoints", "faqs", "cta"],
+          "properties": {
+            "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+            "h1": { "$ref": "#/$defs/nonEmptyString" },
+            "summary": { "$ref": "#/$defs/nonEmptyString" },
+            "keyTakeaways": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "sections": {
+              "type": "array",
+              "minItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "heading", "paragraphs"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+                  "heading": { "$ref": "#/$defs/nonEmptyString" },
+                  "paragraphs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } },
+                  "bullets": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" } }
+                }
+              }
+            },
+            "safetyTitle": { "$ref": "#/$defs/nonEmptyString" },
+            "safetyPoints": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "faqs": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["question", "answer"],
+                "properties": {
+                  "question": { "$ref": "#/$defs/nonEmptyString" },
+                  "answer": { "$ref": "#/$defs/nonEmptyString" }
+                }
+              }
+            },
+            "cta": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["heading", "body", "label", "href"],
+              "properties": {
+                "heading": { "$ref": "#/$defs/nonEmptyString" },
+                "body": { "$ref": "#/$defs/nonEmptyString" },
+                "label": { "$ref": "#/$defs/nonEmptyString" },
+                "href": { "type": "string", "pattern": "^/" }
+              }
+            }
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["referenceIds", "authorId", "assignedReviewerId", "medicalReview"],
+          "properties": {
+            "referenceIds": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "authorId": { "$ref": "#/$defs/nonEmptyString" },
+            "assignedReviewerId": { "$ref": "#/$defs/nonEmptyString" },
+            "medicalReview": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["status", "reviewedAt", "notes"],
+              "properties": {
+                "status": { "enum": ["pending", "changes-requested", "approved"] },
+                "reviewedAt": { "type": ["string", "null"], "format": "date" },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "href", "relationship"],
+            "properties": {
+              "label": { "$ref": "#/$defs/nonEmptyString" },
+              "href": { "type": "string", "pattern": "^/" },
+              "relationship": { "enum": ["parent", "related", "service", "next-step"] }
+            }
+          }
+        },
+        "quality": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["uniqueValueSignals", "sourceNotes"],
+          "properties": {
+            "uniqueValueSignals": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/nonEmptyString" } },
+            "sourceNotes": { "$ref": "#/$defs/nonEmptyString" }
+          }
+        }
+      }
+    }
+  }
+}

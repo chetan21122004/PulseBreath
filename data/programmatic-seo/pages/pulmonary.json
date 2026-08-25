@@ -1,0 +1,167 @@
+{
+  "pages": [
+    {
+      "id": "pulmonary-copd-at-home-en-in",
+      "path": "/rehabilitation/pulmonary/copd/at-home",
+      "serviceLine": "pulmonary",
+      "locale": "en-IN",
+      "pageType": "condition-intent",
+      "publication": {
+        "status": "ready-for-clinical-review",
+        "createdAt": "2026-08-26",
+        "updatedAt": "2026-08-26",
+        "preRender": false
+      },
+      "indexing": {
+        "requested": false,
+        "reason": "Pilot content is structurally complete but must receive recorded clinical approval before it can become public or enter the sitemap."
+      },
+      "taxonomy": {
+        "conditionId": "copd",
+        "conditionName": "Chronic obstructive pulmonary disease (COPD)",
+        "intentId": "at-home",
+        "intentName": "Supervised rehabilitation at home",
+        "recoveryStage": "stable-long-term-management",
+        "audience": ["adult", "older-adult", "caregiver"],
+        "market": {
+          "id": "india",
+          "kind": "national",
+          "verifiedLocalPresence": false,
+          "localProof": [
+            { "type": "verified-service-availability", "detail": "PulseBreath states that live online sessions are offered across India for clinically suitable patients." },
+            { "type": "supported-language", "detail": "Sessions are currently described as available in English and Hindi." },
+            { "type": "regional-care-pathway", "detail": "Online assessment and sessions are scheduled in Indian Standard Time and are intended to complement care from the patient's treating respiratory team." }
+          ]
+        }
+      },
+      "keyword": {
+        "clusterId": "pulmonary-copd-at-home",
+        "primary": "COPD rehabilitation at home",
+        "secondary": ["home pulmonary rehab for COPD", "online COPD rehabilitation", "COPD exercise program at home"],
+        "intent": "commercial-investigation"
+      },
+      "metadata": {
+        "title": "COPD Rehabilitation at Home: Supervised Online Program",
+        "description": "Learn how supervised COPD rehabilitation at home is assessed, monitored and progressed through live online sessions for suitable patients across India."
+      },
+      "content": {
+        "eyebrow": "COPD rehabilitation · At home",
+        "h1": "COPD rehabilitation at home with live clinical supervision",
+        "summary": "Home-based pulmonary rehabilitation can help a suitable person with stable COPD work on walking tolerance, strength, breathing control and everyday activity without travelling to a centre. It is not a generic video workout. A safe program starts with an assessment, respects the treatment plan from the respiratory physician, and changes according to symptoms, oxygen saturation, exertion and recovery.",
+        "keyTakeaways": [
+          "A home program should be prescribed after an individual assessment, not copied from a standard exercise list.",
+          "Live supervision allows technique, pacing and symptoms to be checked during the session, but remote care is not appropriate for every patient.",
+          "Pulmonary rehabilitation complements inhalers, oxygen and medical follow-up; it does not replace them.",
+          "The useful outcome is better day-to-day function and self-management, not a promise to remove the underlying lung condition."
+        ],
+        "sections": [
+          {
+            "id": "what-it-includes",
+            "heading": "What a COPD home rehabilitation program includes",
+            "paragraphs": [
+              "Pulmonary rehabilitation is a structured combination of individually prescribed exercise, education and self-management support. For COPD, the plan commonly addresses lower- and upper-limb strength, aerobic or walking-based conditioning, breathing strategies, pacing, energy conservation and recognition of a worsening symptom pattern. Airway-clearance work may be relevant when mucus is a significant problem, but the technique must match the person's symptoms and clinical advice.",
+              "The home setting changes how this care is delivered, not the clinical reasoning behind it. The physiotherapist still needs to understand the diagnosis, recent flare-ups or hospital visits, medicines, prescribed oxygen, other health conditions, falls risk and the activities the person wants to regain. A chair, clear floor area, phone or computer camera and pulse oximeter may be used when appropriate. Equipment is selected only after the assessment."
+            ],
+            "bullets": [
+              "Live review of breathing pattern, posture and movement technique",
+              "Graded walking, stepping or low-impact endurance work",
+              "Strength work adapted to current capacity and joint limitations",
+              "Practical pacing for bathing, dressing, stairs and household activity",
+              "A plan for recognising deterioration and contacting the medical team"
+            ]
+          },
+          {
+            "id": "assessment",
+            "heading": "The assessment before online sessions begin",
+            "paragraphs": [
+              "Suitability cannot be decided from a diagnosis label alone. The initial conversation should cover current breathlessness, cough and sputum, recent exacerbations, emergency visits, smoking history, medications, oxygen prescription and any cardiac, neurological or musculoskeletal conditions. Existing reports and the treating doctor's recommendations help establish the boundaries of the rehabilitation plan.",
+              "A remote functional assessment can observe how the person rises from a chair, walks in the available space and recovers after gentle activity. Resting and exertional heart rate, oxygen saturation and perceived breathlessness may be recorded when clinically appropriate. The physiotherapist also checks whether the camera position, lighting, internet connection, footwear and room layout allow movement to be seen safely. If the information suggests instability or a need for continuous medical monitoring, centre-based or hospital-led care may be more suitable."
+            ]
+          },
+          {
+            "id": "live-monitoring",
+            "heading": "How a live home session is monitored",
+            "paragraphs": [
+              "At the start of a session, the physiotherapist checks for changes such as fever, unusual fatigue, new chest discomfort, increased wheeze, a meaningful change in sputum, ankle swelling or breathlessness that is worse than usual. The planned session may be reduced, changed or deferred when the symptom picture is not stable. This check is one of the main differences between supervised rehabilitation and following an exercise video independently.",
+              "During movement, the person is coached on posture, breathing, pace and recovery. Intensity can be guided by symptoms, the talk test, a breathlessness or exertion scale, heart rate and oxygen saturation when prescribed for monitoring. Rest periods are planned rather than treated as failure. Progression may involve a little more time, a small increase in repetitions or a more demanding daily task, but only when the previous level is tolerated without concerning symptoms."
+            ]
+          },
+          {
+            "id": "who-may-benefit",
+            "heading": "Who may be suitable for COPD rehabilitation at home",
+            "paragraphs": [
+              "A home pathway may be considered for an adult with medically stable COPD who has reduced activity tolerance, breathlessness during daily tasks or deconditioning and who can use video technology with or without family support. It can also help someone who cannot travel easily to a centre but can move in a safe space and follow instructions. The final decision depends on clinical stability, monitoring needs and the advice of the treating team.",
+              "Remote rehabilitation is not a substitute for acute care. New or severe symptoms, an untreated exacerbation, unstable cardiac disease, fainting, confusion, rapidly worsening oxygen levels or an unsafe home environment require medical assessment rather than an online exercise session. Some people may begin in a centre and move to home sessions later, while others may need a blended approach."
+            ]
+          },
+          {
+            "id": "progress",
+            "heading": "What progress should be measured",
+            "paragraphs": [
+              "Progress should be connected to the person's life. Useful measures may include walking for longer with planned pauses, recovering more calmly after stairs, completing self-care with less disruption, improving repeated chair rises, understanding how to pace a difficult task, or becoming more consistent with a safe weekly activity plan. Symptom scores and a repeat functional test can add context, but no single number describes the whole result.",
+              "COPD is a long-term condition, so rehabilitation is followed by maintenance rather than a finish line. The closing phase should leave the person with an agreed activity routine, clear warning signs, a method for adjusting activity on a difficult day and an understanding of when to contact the respiratory physician. Benefits vary, and the program should never promise a fixed improvement for every participant."
+            ]
+          }
+        ],
+        "safetyTitle": "When to pause and seek medical help",
+        "safetyPoints": [
+          "Do not begin or continue an online exercise session during severe or rapidly worsening breathlessness, new chest pain, fainting, confusion or blue lips; seek urgent medical care.",
+          "Report fever, a marked change in sputum, new swelling, an unusual drop in oxygen saturation or a significant change from the agreed symptom baseline to the treating team.",
+          "Use supplemental oxygen only as prescribed. Rehabilitation guidance should not independently change oxygen flow or medication doses.",
+          "Keep a family member nearby when the assessment identifies that additional support is needed for technology, balance or emergency planning."
+        ],
+        "faqs": [
+          {
+            "question": "Can pulmonary rehabilitation for COPD really be done online?",
+            "answer": "It can be delivered online for appropriately selected, medically stable patients when the assessment, technology, home environment and monitoring plan are suitable. Some people need centre-based or hospital-led rehabilitation instead. The choice should be made with the rehabilitation professional and treating respiratory team."
+          },
+          {
+            "question": "Do I need a pulse oximeter for every COPD home session?",
+            "answer": "Not every person has the same monitoring requirement. A pulse oximeter may be recommended when oxygen saturation is clinically relevant, but the physiotherapist should explain how to use it and what values or symptoms require a pause. It does not replace clinical judgement or emergency care."
+          },
+          {
+            "question": "Are breathing exercises enough for COPD rehabilitation?",
+            "answer": "Breathing strategies can be useful, but pulmonary rehabilitation is broader. It normally includes graded physical training, strength work, education, pacing and self-management alongside the person's prescribed medical treatment. The balance of components depends on assessment findings."
+          },
+          {
+            "question": "How long does a COPD rehabilitation program take?",
+            "answer": "Many structured programs run for several weeks, but frequency and duration depend on clinical stability, starting capacity, goals and response. PulseBreath's existing COPD program describes an 8–12 week pathway with live supervision, subject to individual assessment."
+          }
+        ],
+        "cta": {
+          "heading": "Find out whether home COPD rehabilitation is suitable",
+          "body": "A free assessment can review your current symptoms, medical advice, home setup and goals before any exercise plan is recommended.",
+          "label": "Book a free assessment",
+          "href": "/contact"
+        }
+      },
+      "evidence": {
+        "referenceIds": ["ats-pulmonary-rehab-2023", "gold-copd-2026"],
+        "authorId": "dr-deepali-shah",
+        "assignedReviewerId": "dr-deepali-shah",
+        "medicalReview": {
+          "status": "pending",
+          "reviewedAt": null,
+          "notes": "Verify clinical phrasing, monitoring language, contraindications and program claims against current practice before approval."
+        }
+      },
+      "links": [
+        { "label": "Pulmonary rehabilitation programs", "href": "/services/pulmonary", "relationship": "parent" },
+        { "label": "PulseBreath COPD management program", "href": "/services/pulmonary/copd-management", "relationship": "service" },
+        { "label": "How tele-rehabilitation works", "href": "/how-it-works", "relationship": "related" },
+        { "label": "Why inhalers alone may not restore function", "href": "/blog/inhalers-are-not-enough-for-copd", "relationship": "related" },
+        { "label": "Book an assessment", "href": "/contact", "relationship": "next-step" }
+      ],
+      "quality": {
+        "uniqueValueSignals": [
+          "Explains the difference between supervised home rehabilitation and a generic exercise video",
+          "Includes remote-assessment and home-environment suitability criteria",
+          "Describes live session monitoring and progression",
+          "States when online care is not appropriate",
+          "Connects progress to daily activities rather than unsupported cure claims"
+        ],
+        "sourceNotes": "Drafted from the current PulseBreath COPD service model and authoritative pulmonary rehabilitation guidance; no exact keyword volume or outcome guarantee is asserted."
+      }
+    }
+  ]
+}

@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# private/generated SEO performance imports
+/data/programmatic-seo/generated/*.json
+
 # next.js
 /.next/
 /out/

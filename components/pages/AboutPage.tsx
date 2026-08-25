@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Award, BadgeCheck, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
@@ -22,7 +23,6 @@ import { DrDeepaliVideo } from "@/components/pulse-landing/DrDeepaliVideo";
 import { LinkedInIcon } from "@/components/pulse-landing/LinkedInIcon";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 
-const teamDoctorFallback = "/assets/team-doctor.jpg";
 
 /* ─────────────────── animation presets ─────────────────── */
 
@@ -112,27 +112,26 @@ function AnimatedNumber({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
 
-  // Use a simple approach: animate with useRef + requestAnimationFrame
-  const hasAnimated = useRef(false);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (reduceMotion) {
+      element.textContent = `${target}${suffix}`;
+      return;
+    }
 
-  if (typeof window !== "undefined" && !hasAnimated.current && !reduceMotion) {
-    hasAnimated.current = true;
-    const startTime = performance.now();
+    let startTime: number | undefined;
+    let frame = 0;
     const animate = (currentTime: number) => {
-      const elapsed = (currentTime - startTime) / 1000;
-      const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(easedProgress * target);
-      if (ref.current) {
-        ref.current.textContent = `${current}${suffix}`;
-      }
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      startTime ??= currentTime;
+      const progress = Math.min((currentTime - startTime) / 1000 / duration, 1);
+      const current = Math.round((1 - Math.pow(1 - progress, 3)) * target);
+      element.textContent = `${current}${suffix}`;
+      if (progress < 1) frame = requestAnimationFrame(animate);
     };
-    requestAnimationFrame(animate);
-  }
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [duration, reduceMotion, suffix, target]);
 
   return <span ref={ref}>{reduceMotion ? `${target}${suffix}` : `0${suffix}`}</span>;
 }
@@ -209,15 +208,14 @@ export function AboutPage() {
                 </div>
 
                 <div className="relative overflow-hidden bg-[var(--brand-deeper)]/5">
-                  <img
+                  <Image
                     src={DR_DEEPALI_ABOUT_PORTRAIT}
                     alt="Dr. Deepali Shah (PT) - Founder, PulseBreath Physiotherapy"
                     width={800}
                     height={900}
+                    sizes="(max-width: 1024px) 92vw, 36vw"
+                    quality={78}
                     className="aspect-[3/4] w-full bg-white object-contain object-center"
-                    onError={(e) => {
-                      e.currentTarget.src = teamDoctorFallback;
-                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--brand-deeper)]/55 via-[var(--brand-deeper)]/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--brand-deeper)]/92 via-[var(--brand-deeper)]/72 to-transparent px-4 pb-4 pt-14 sm:px-5 sm:pb-5 sm:pt-16">
@@ -397,7 +395,7 @@ export function AboutPage() {
               <DrDeepaliVideo
                 src={DR_DEEPALI_FEATURED_VIDEO}
                 poster={DR_DEEPALI_PORTRAIT}
-                preload="metadata"
+                preload="none"
                 maxDurationSeconds={6}
                 caption="Live supervised session with Dr. Deepali Shah"
                 className="border border-border/80 shadow-[0_28px_70px_-24px_rgba(30,46,61,0.28)]"

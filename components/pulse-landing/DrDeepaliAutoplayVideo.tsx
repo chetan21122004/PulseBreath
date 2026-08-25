@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -25,11 +26,30 @@ export function DrDeepaliAutoplayVideo({
   trimEndSeconds = DEFAULT_TRIM_SECONDS,
 }: DrDeepaliAutoplayVideoProps) {
   const reduceMotion = useReducedMotion();
+  const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [failed, setFailed] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    if (reduceMotion || failed) return;
+    const figure = figureRef.current;
+    if (!figure || reduceMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoad(true);
+        observer.disconnect();
+      },
+      { rootMargin: "240px 0px" },
+    );
+
+    observer.observe(figure);
+    return () => observer.disconnect();
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    if (reduceMotion || failed || !shouldLoad) return;
 
     const video = videoRef.current;
     if (!video) return;
@@ -56,16 +76,21 @@ export function DrDeepaliAutoplayVideo({
       video.removeEventListener("loadedmetadata", onLoadedMetadata);
       video.removeEventListener("timeupdate", onTimeUpdate);
     };
-  }, [reduceMotion, failed, src, trimEndSeconds]);
+  }, [reduceMotion, failed, shouldLoad, src, trimEndSeconds]);
 
   const fallbackSrc = poster ?? DR_DEEPALI_PORTRAIT;
 
-  if (reduceMotion || failed) {
+  if (reduceMotion || failed || !shouldLoad) {
     return (
-      <figure className={cn("overflow-hidden", className)}>
-        <img
+      <figure ref={figureRef} className={cn("overflow-hidden", className)}>
+        <Image
           src={fallbackSrc}
           alt={alt}
+          width={800}
+          height={900}
+          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 34vw"
+          loading="lazy"
+          quality={74}
           className={cn("w-full object-cover", videoClassName)}
         />
       </figure>
@@ -73,7 +98,7 @@ export function DrDeepaliAutoplayVideo({
   }
 
   return (
-    <figure className={cn("overflow-hidden", className)}>
+    <figure ref={figureRef} className={cn("overflow-hidden", className)}>
       <video
         ref={videoRef}
         src={src}
@@ -81,7 +106,7 @@ export function DrDeepaliAutoplayVideo({
         muted
         autoPlay
         playsInline
-        preload="metadata"
+        preload="none"
         aria-label={alt}
         onError={() => setFailed(true)}
         className={cn("bg-[var(--brand-deeper)]/5 w-full object-cover", videoClassName)}

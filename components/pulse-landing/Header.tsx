@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
@@ -45,14 +46,18 @@ export function Header() {
             aria-label="PulseBreath home"
           >
             <span className="relative flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 lg:gap-2.5">
-              <img
+              <Image
                 src={logo}
                 alt=""
+                width={192}
+                height={192}
                 className="relative h-9 w-9 object-contain max-sm:h-10 max-sm:w-10 sm:h-11 sm:w-11 lg:h-12 lg:w-12"
               />
-              <img
+              <Image
                 src={logo_text}
                 alt="PulseBreath"
+                width={480}
+                height={138}
                 className="relative hidden h-8 w-auto max-w-[5.5rem] object-contain object-left sm:block sm:h-9 sm:max-w-[7rem] lg:h-10 lg:max-w-[8.5rem] xl:h-11 xl:max-w-[9.5rem]"
               />
             </span>
@@ -64,9 +69,11 @@ export function Header() {
             aria-hidden
             tabIndex={-1}
           >
-            <img
+            <Image
               src={logo_text}
               alt=""
+              width={480}
+              height={138}
               className="h-9 w-auto max-w-[7.5rem] object-contain"
             />
           </Link>
@@ -89,8 +96,7 @@ export function Header() {
                     key={l.label}
                     isActive={EXPLORE_LINKS.some(
                       (item) =>
-                        pathname === item.href ||
-                        (item.href === "/blog" && pathname.startsWith("/blog")),
+                        pathname === item.href || pathname.startsWith(`${item.href}/`),
                     )}
                   />
                 ) : (

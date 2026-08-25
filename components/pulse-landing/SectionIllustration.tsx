@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Reveal, type RevealVariant } from "./motion";
@@ -26,10 +27,14 @@ export function SectionIllustration({
   const reduceMotion = useReducedMotion();
 
   const image = (
-    <img
+    <Image
       src={src}
       alt={alt}
       loading="lazy"
+      decoding="async"
+      width={800}
+      height={800}
+      sizes="(max-width: 640px) 82vw, (max-width: 1024px) 45vw, 30vw"
       draggable={false}
       className={cn("h-auto w-full", imgClassName)}
     />
