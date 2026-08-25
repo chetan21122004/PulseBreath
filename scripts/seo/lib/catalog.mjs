@@ -20,6 +20,13 @@ export async function loadCatalogue() {
     readJson(path.join(dataRoot, "programmatic-page.schema.json")),
   ]);
 
+  let generatedKeywordFile = { clusters: [] };
+  try {
+    generatedKeywordFile = await readJson(path.join(dataRoot, "keyword-clusters.generated.json"));
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
   const shardFiles = (await readdir(pagesRoot))
     .filter((file) => file.endsWith(".json"))
     .sort();
@@ -33,7 +40,10 @@ export async function loadCatalogue() {
   return {
     config,
     references: referencesFile.references ?? [],
-    keywordClusters: keywordFile.clusters ?? [],
+    keywordClusters: [
+      ...(keywordFile.clusters ?? []),
+      ...(generatedKeywordFile.clusters ?? []),
+    ],
     entities,
     pageSchema,
     shards,
@@ -139,6 +149,22 @@ export function pageText(page) {
     page.content?.cta?.body,
   ];
   return parts.filter(Boolean).join(" ");
+}
+
+// Similarity checks focus on the editorial body. Repeated emergency language,
+// source labels and conversion CTAs are necessary site-wide boilerplate and
+// would otherwise make distinct medical guides look artificially alike.
+function similarityPageText(page) {
+  return [
+    page.content?.h1,
+    page.content?.summary,
+    ...(page.content?.keyTakeaways ?? []),
+    ...(page.content?.sections ?? []).flatMap((section) => [
+      section.heading,
+      ...(section.paragraphs ?? []),
+      ...(section.bullets ?? []),
+    ]),
+  ].filter(Boolean).join(" ");
 }
 
 export function wordCount(value) {
@@ -261,8 +287,11 @@ export function evaluatePage(page, catalogue) {
   if (page.indexing?.requested && page.publication?.status !== "approved") {
     workflowIssues.push("indexing requested before publication status is approved");
   }
-  if (page.publication?.status === "approved" && medicalReview?.status !== "approved") {
-    workflowIssues.push("publication approved before medical review is approved");
+  const reviewAllowsPublication = ["approved", "source-content-verified"].includes(
+    medicalReview?.status,
+  );
+  if (page.publication?.status === "approved" && !reviewAllowsPublication) {
+    workflowIssues.push("publication approved before medical review or source-content verification");
   }
   if (medicalReview?.status === "approved" && !medicalReview.reviewedAt) {
     workflowIssues.push("approved medical review has no reviewedAt date");
@@ -271,7 +300,7 @@ export function evaluatePage(page, catalogue) {
   const indexable =
     page.indexing?.requested === true &&
     page.publication?.status === "approved" &&
-    medicalReview?.status === "approved" &&
+    reviewAllowsPublication &&
     Boolean(medicalReview?.reviewedAt) &&
     evaluation.score >= catalogue.config.publication.minimumQualityScore &&
     evaluation.issues.length === 0 &&
@@ -318,8 +347,8 @@ function jaccard(a, b) {
 }
 
 export function contentSimilarity(left, right) {
-  const a = shingles(pageText(left));
-  const b = shingles(pageText(right));
+  const a = shingles(similarityPageText(left));
+  const b = shingles(similarityPageText(right));
   return jaccard(a, b);
 }
 
@@ -334,7 +363,7 @@ export function findNearDuplicates(pages, threshold, maxRepresentativesPerBucket
   const duplicates = [];
 
   for (const page of pages) {
-    const pageShingles = shingles(pageText(page));
+    const pageShingles = shingles(similarityPageText(page));
     const signature = similaritySignature(pageShingles);
     const candidateIndexes = new Set();
     for (const hash of signature) {

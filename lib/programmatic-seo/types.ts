@@ -4,7 +4,11 @@ export type SeoPublicationStatus =
   | "ready-for-clinical-review"
   | "approved"
   | "retired";
-export type SeoMedicalReviewStatus = "pending" | "changes-requested" | "approved";
+export type SeoMedicalReviewStatus =
+  | "pending"
+  | "changes-requested"
+  | "source-content-verified"
+  | "approved";
 export type SeoSearchIntent =
   | "informational"
   | "commercial-investigation"

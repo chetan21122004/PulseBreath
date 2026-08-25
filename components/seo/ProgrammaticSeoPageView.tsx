@@ -42,7 +42,11 @@ export function ProgrammaticSeoPageView({
             {page.content.summary}
           </p>
           <div className="mt-7 flex flex-wrap gap-3 text-sm text-navy/65">
-            <span className="rounded-full border border-border bg-white px-3 py-1.5">Reviewed health content</span>
+            <span className="rounded-full border border-border bg-white px-3 py-1.5">
+              {page.evidence.medicalReview.status === "approved"
+                ? "Clinically reviewed health content"
+                : "Based on published PulseBreath service information"}
+            </span>
             <span className="rounded-full border border-border bg-white px-3 py-1.5">Updated {page.publication.updatedAt}</span>
             <span className="rounded-full border border-border bg-white px-3 py-1.5">{page.locale}</span>
           </div>
@@ -130,7 +134,11 @@ export function ProgrammaticSeoPageView({
           <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
             <div className="flex items-center gap-3">
               <Stethoscope className="h-5 w-5 text-[var(--brand-pink-deep)]" aria-hidden />
-              <p className="font-display text-lg font-bold">Clinical authorship</p>
+              <p className="font-display text-lg font-bold">
+                {page.evidence.medicalReview.status === "approved"
+                  ? "Clinical authorship"
+                  : "Source clinician"}
+              </p>
             </div>
             {author ? (
               <div className="mt-4">
@@ -138,6 +146,11 @@ export function ProgrammaticSeoPageView({
                   {author.name} ({author.honorificSuffix})
                 </Link>
                 <p className="mt-1 text-sm leading-6 text-navy/65">{author.role}</p>
+                {page.evidence.medicalReview.status === "source-content-verified" ? (
+                  <p className="mt-2 text-xs leading-5 text-navy/60">
+                    This guide was assembled from PulseBreath&apos;s published service information; individual page-level clinical review is not claimed.
+                  </p>
+                ) : null}
                 <ul className="mt-3 space-y-1.5 text-xs leading-5 text-navy/60">
                   {author.credentials.map((credential) => <li key={credential}>• {credential}</li>)}
                 </ul>

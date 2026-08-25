@@ -34,7 +34,10 @@ export function buildProgrammaticJsonLd({
     inLanguage: page.locale,
     datePublished: page.publication.createdAt,
     dateModified: page.publication.updatedAt,
-    author: person(author),
+    author:
+      page.evidence.medicalReview.status === "approved"
+        ? person(author)
+        : { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     ...(page.evidence.medicalReview.status === "approved" && reviewer
       ? {
           reviewedBy: person(reviewer),

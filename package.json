@@ -11,6 +11,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "seo:compile": "node scripts/seo/build-programmatic-manifest.mjs",
+    "seo:generate-derived": "node scripts/seo/generate-derived-pages.mjs",
     "seo:validate": "node scripts/seo/validate-programmatic-seo.mjs",
     "seo:prepare": "npm run seo:compile && npm run seo:validate",
     "seo:report": "node scripts/seo/report-keyword-opportunities.mjs",

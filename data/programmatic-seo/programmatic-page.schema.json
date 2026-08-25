@@ -181,7 +181,7 @@
               "additionalProperties": false,
               "required": ["status", "reviewedAt", "notes"],
               "properties": {
-                "status": { "enum": ["pending", "changes-requested", "approved"] },
+                  "status": { "enum": ["pending", "changes-requested", "source-content-verified", "approved"] },
                 "reviewedAt": { "type": ["string", "null"], "format": "date" },
                 "notes": { "type": "string" }
               }

@@ -53,7 +53,7 @@ export function getSeoManifestBySlug(slug: readonly string[]) {
 export function isPublishableSeoManifest(page: SeoPageManifest) {
   return (
     page.status === "approved" &&
-    page.medicalReviewStatus === "approved" &&
+    ["approved", "source-content-verified"].includes(page.medicalReviewStatus) &&
     page.qualityScore >= config.publication.minimumQualityScore &&
     page.qualityIssues.length === 0
   );
