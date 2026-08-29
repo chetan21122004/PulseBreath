@@ -14,6 +14,7 @@ import { BackgroundBlob } from "./BackgroundBlob";
 import { StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
 import { SectionPageLink } from "./SectionPageLink";
+import { ENQUIRY_HREF } from "./constants";
 import { ILLUSTRATIONS } from "./visual-assets";
 
 const PREVIEW_LENGTH = 150;
@@ -430,7 +431,7 @@ export function Testimonials({ mode = "teaser" }: TestimonialsProps) {
         <TestimonialsCarousel />
 
         <div className="mt-10 text-center">
-          <SectionPageLink href="/contact" className="justify-center">
+          <SectionPageLink href={ENQUIRY_HREF} className="justify-center">
             Start your recovery journey
           </SectionPageLink>
         </div>

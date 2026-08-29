@@ -11,6 +11,7 @@ import {
 import { DR_DEEPALI_PHOTOS } from "@/components/pulse-landing/dr-deepali-assets";
 import { DrDeepaliGallery } from "@/components/pulse-landing/DrDeepaliGallery";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
+import { ENQUIRY_HREF } from "@/components/pulse-landing/constants";
 import { cn } from "@/lib/utils";
 
 export function HowItWorksPage() {
@@ -140,7 +141,7 @@ export function HowItWorksPage() {
           ))}
         </StaggerReveal>
         <Reveal variant="fadeUp" className="mt-12 text-center">
-          <Link href="/contact" className="btn-primary motion-btn inline-flex items-center gap-2">
+          <Link href={ENQUIRY_HREF} className="btn-primary motion-btn inline-flex items-center gap-2">
             Book your free assessment <ArrowRight className="h-4 w-4" />
           </Link>
         </Reveal>

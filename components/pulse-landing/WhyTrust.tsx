@@ -1,5 +1,5 @@
-import { Award, ShieldCheck, Heart, Video, Calendar } from "lucide-react";
-import { WHATSAPP } from "./constants";
+import { Award, ShieldCheck, Heart, Video, Calendar, Send } from "lucide-react";
+import { ENQUIRY_HREF, WHATSAPP } from "./constants";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function WhyTrust() {
@@ -42,9 +42,14 @@ export function WhyTrust() {
           <p className="mt-4 italic text-navy/80 border-l-2 border-brand pl-4">
             &ldquo;We will never recommend a program that isn&apos;t right for you.&rdquo;
           </p>
-          <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp mt-7">
-            <WhatsAppIcon className="h-5 w-5" /> Book Free Assessment on WhatsApp
-          </a>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-whatsapp">
+              <WhatsAppIcon className="h-5 w-5" /> Book on WhatsApp
+            </a>
+            <a href={ENQUIRY_HREF} className="btn-secondary">
+              <Send className="h-4 w-4" /> Send enquiry
+            </a>
+          </div>
         </div>
       </div>
     </section>

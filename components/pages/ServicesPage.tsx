@@ -10,7 +10,7 @@ import { PageSection } from "@/components/pages/PageSection";
 import { programCategories, type ProgramCategoryTone } from "@/components/pulse-landing/conditions-data";
 import { categoryProgramsHeading, ProgramPreview } from "@/components/pulse-landing/ProgramPreview";
 import { categorySlug, getProgramHref } from "@/components/pulse-landing/ProgramCatalog";
-import type { ProgramSlug } from "@/components/pulse-landing/constants";
+import { ENQUIRY_HREF, type ProgramSlug } from "@/components/pulse-landing/constants";
 import { ILLUSTRATIONS } from "@/components/pulse-landing/visual-assets";
 import { cn } from "@/lib/utils";
 
@@ -535,7 +535,7 @@ export function ServicesPage() {
                   whileTap={reduceMotion ? {} : { scale: 0.97 }}
                 >
                   <Link
-                    href="/contact"
+                    href={ENQUIRY_HREF}
                     className="btn-primary motion-btn inline-flex items-center gap-2"
                   >
                     Book free assessment <ArrowRight className="h-4 w-4" />

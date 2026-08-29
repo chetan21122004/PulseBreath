@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, ChevronRight } from "lucide-react";
+import { Phone, MapPin, Clock, MessageCircle, ArrowRight, ChevronRight, Send } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { CONTACT_FLOW } from "@/components/pulse-landing/journey-content";
-import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "@/components/pulse-landing/constants";
+import { CLINIC_ADDRESS, ENQUIRY_HREF, PHONE, WHATSAPP } from "@/components/pulse-landing/constants";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 import { cn } from "@/lib/utils";
@@ -28,13 +28,13 @@ const contactMethods = [
     action: "Call now",
   },
   {
-    icon: Mail,
-    label: "Email",
-    value: EMAIL,
-    href: `mailto:${EMAIL}`,
+    icon: Send,
+    label: "Send enquiry",
+    value: "Share your condition in a short form",
+    href: ENQUIRY_HREF,
     external: false,
     primary: false,
-    action: "Send email",
+    action: "Open enquiry form",
   },
   {
     icon: MapPin,
@@ -93,7 +93,7 @@ function DesktopFlowGrid() {
 }
 
 function MobileContactActions() {
-  const secondary = contactMethods.filter((m) => m.label === "Email" || m.label === "Location");
+  const secondary = contactMethods.filter((m) => m.label === "Send enquiry" || m.label === "Location");
 
   return (
     <div className="space-y-3 md:hidden">
@@ -217,6 +217,10 @@ export function ContactPage() {
             <WhatsAppIcon className="h-5 w-5" />
             Message on WhatsApp
           </a>
+          <a href={ENQUIRY_HREF} className="btn-secondary motion-btn w-full justify-center sm:w-auto">
+            <Send className="h-4 w-4" />
+            Send enquiry
+          </a>
           <a href={`tel:${PHONE}`} className="btn-secondary motion-btn w-full justify-center sm:w-auto">
             <Phone className="h-4 w-4" />
             Call +91 {PHONE}
@@ -235,9 +239,9 @@ export function ContactPage() {
             After you <span className="italic text-brand">reach out</span>
           </h2>
           <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[var(--body-text)] sm:mt-4 sm:text-base">
-            <span className="md:hidden">No forms or call centres - just Dr. Deepali, personally.</span>
+            <span className="md:hidden">No call centres - just Dr. Deepali, personally.</span>
             <span className="hidden md:inline">
-              No forms, no call centres, no sales scripts. Just a direct line to Dr. Deepali.
+              No call centres, no sales scripts. Just a direct line to Dr. Deepali.
             </span>
           </p>
         </Reveal>
@@ -251,13 +255,13 @@ export function ContactPage() {
         <Reveal variant="fadeUp">
           <span className="section-label">Reach Dr. Deepali</span>
           <h2 className="heading-display mt-3 text-[1.65rem] sm:mt-4 sm:text-3xl">
-            <span className="md:hidden">Email & </span>
+            <span className="md:hidden">Enquiry & </span>
             <span className="italic text-brand">location</span>
             <span className="hidden md:inline">Choose how you&apos;d like to </span>
             <span className="hidden italic text-brand md:inline">connect</span>
           </h2>
           <p className="mt-2 text-[14px] text-muted-foreground sm:mt-3 sm:text-base md:hidden">
-            WhatsApp and call are in the banner above - use these for email or clinic details.
+            WhatsApp and call are in the banner above - send an enquiry or see clinic details here.
           </p>
         </Reveal>
         <div className="mt-5 sm:mt-10">

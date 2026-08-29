@@ -24,6 +24,13 @@ export const WHATSAPP_OFFERS = `https://wa.me/91${PHONE}?text=${encodeURICompone
 
 export const CLINIC_ADDRESS = "PulseBreath Physiotherapy, Noida, Uttar Pradesh, India";
 
+/** Public Formspree endpoint for the contact / free-assessment enquiry form. */
+export const FORMSPREE_ENDPOINT =
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ?? "https://formspree.io/f/xbgjlzvy";
+
+/** Opens the enquiry popup from any Send enquiry button (`#enquiry`). */
+export const ENQUIRY_HREF = "#enquiry";
+
 export const MEDICAL_DISCLAIMER =
   "PulseBreath Physiotherapy is not an emergency service. Always consult your cardiologist or pulmonologist before starting any rehabilitation program.";
 

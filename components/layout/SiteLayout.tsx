@@ -2,6 +2,7 @@ import { Header } from "@/components/pulse-landing/Header";
 import { Footer } from "@/components/pulse-landing/Footer";
 import { MobileBottomNav } from "@/components/pulse-landing/MobileBottomNav";
 import { WhatsAppFab } from "@/components/pulse-landing/WhatsAppFab";
+import { EnquiryDialog } from "@/components/pages/EnquiryDialog";
 
 type SiteLayoutProps = {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       <Footer />
       <MobileBottomNav />
       <WhatsAppFab />
+      <EnquiryDialog />
     </div>
   );
 }

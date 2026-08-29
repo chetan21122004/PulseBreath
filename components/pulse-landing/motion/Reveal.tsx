@@ -10,7 +10,7 @@ type RevealProps = HTMLMotionProps<"div"> & {
   variant?: RevealVariant;
   delay?: number;
   once?: boolean;
-  amount?: number;
+  amount?: number | "some" | "all";
   as?: "div" | "section" | "article" | "header" | "footer" | "li" | "span";
 };
 

@@ -20,10 +20,11 @@ import {
   Star,
   Stethoscope,
   Video,
+  Send,
 } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
-import { WHATSAPP, PROGRAM_ROUTES, PHONE, type ProgramSlug } from "@/components/pulse-landing/constants";
+import { ENQUIRY_HREF, WHATSAPP, PROGRAM_ROUTES, PHONE, type ProgramSlug } from "@/components/pulse-landing/constants";
 import {
   buildProgramFaqs,
   programDurationParts,
@@ -438,6 +439,10 @@ export function ServiceProgramPage({
             Book Free Assessment
             <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
           </a>
+          <Link href={ENQUIRY_HREF} className="btn-secondary inline-flex items-center gap-2">
+            <Send className="h-4 w-4" />
+            Send enquiry
+          </Link>
           <Link href={PROGRAM_ROUTES[catSlug]} className="btn-secondary">
             All {categoryHeading.toLowerCase()}
           </Link>
@@ -736,6 +741,13 @@ export function ServiceProgramPage({
                 >
                   Book Free Assessment
                 </a>
+                <Link
+                  href={ENQUIRY_HREF}
+                  className="btn-secondary motion-btn mt-2 flex w-full items-center justify-center gap-2"
+                >
+                  <Send className="h-4 w-4" />
+                  Send enquiry
+                </Link>
                 <a
                   href={`tel:+91${PHONE}`}
                   className="mt-2 block text-[12px] text-navy/50 hover:text-navy transition-colors"
@@ -851,6 +863,10 @@ export function ServiceProgramPage({
                   <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
                 </a>
               </motion.div>
+              <Link href={ENQUIRY_HREF} className="btn-secondary inline-flex items-center gap-2">
+                <Send className="h-4 w-4" />
+                Send enquiry
+              </Link>
               <Link href="/services" className="btn-secondary">
                 All programmes
               </Link>

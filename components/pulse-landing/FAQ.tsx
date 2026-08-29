@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import { Phone } from "lucide-react";
+import { Phone, Send } from "lucide-react";
 import { BackgroundBlob } from "./BackgroundBlob";
-import { PHONE, WHATSAPP } from "./constants";
+import { ENQUIRY_HREF, PHONE, WHATSAPP } from "./constants";
 import { HOMEPAGE_FAQS, FAQ_REASSURANCE } from "./faq-data";
 import { FaqAccordionItem } from "@/components/pages/FaqAccordion";
 import { Reveal } from "./motion";
@@ -67,6 +67,13 @@ export function FAQ() {
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp
+                </a>
+                <a
+                  href={ENQUIRY_HREF}
+                  className="motion-btn inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-[13px] font-semibold text-navy transition-colors hover:bg-soft/40"
+                >
+                  <Send className="h-4 w-4 text-brand" strokeWidth={2.25} />
+                  Send enquiry
                 </a>
                 <a
                   href={`tel:${PHONE}`}

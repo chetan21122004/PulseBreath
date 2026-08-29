@@ -3,7 +3,8 @@ export type BlogCategory = "Cardiac" | "Pulmonary" | "Tele-Rehab" | "General";
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
-  | { type: "ul"; items: string[] };
+  | { type: "ul"; items: string[] }
+  | { type: "img"; src: string; alt: string; caption?: string };
 
 export type BlogPost = {
   slug: string;
@@ -28,6 +29,287 @@ export const BLOG_OVERVIEW =
   "Evidence-led articles on cardiac and pulmonary rehabilitation - written by Dr. Deepali Shah to help patients and families understand supervised exercise, breathlessness, and recovery at home.";
 
 export const BLOG_POSTS = [
+  {
+    slug: "how-smartwatch-measures-pulse-rate",
+    title: "How Does Your Smartwatch Measure Your Pulse Rate?",
+    excerpt:
+      "You look at your smartwatch and see 72 bpm. Behind that number is light, blood flow and clever signal processing - and knowing how it works helps you trust the reading wisely.",
+    overview:
+      "How PPG sensors turn light into a pulse rate, why readings are imperfect during movement, how PPG differs from ECG, and how to interpret other wearable metrics.",
+    publishedAt: "2026-08-21",
+    category: "General",
+    readMinutes: 6,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "You look at your smartwatch and see 72 bpm. But have you ever wondered how a small device sitting on your wrist actually knows your pulse rate? The answer involves light, blood flow and some fairly clever signal processing.",
+      },
+      {
+        type: "h2",
+        text: "It starts with light",
+      },
+      {
+        type: "p",
+        text: "Most smartwatches use a technology called Photoplethysmography (PPG) to measure your pulse. The sensors on the back of the watch shine light into your skin. As your heart pumps blood, the amount of blood in the tiny blood vessels under your skin changes slightly with every pulse. These changes affect how much light is absorbed and reflected back to the watch. The sensor detects these tiny changes and creates a signal that follows the pattern of your pulse.",
+      },
+      {
+        type: "h2",
+        text: "From a signal to a number",
+      },
+      {
+        type: "p",
+        text: "Your watch doesn't simply \"count\" your pulse. It first receives a continuously changing signal from your wrist. The device then uses algorithms to identify the repeated peaks in that signal and measures the time between them. From this information, it calculates your pulse rate in beats per minute (bpm).",
+      },
+      {
+        type: "p",
+        text: "So the number you see on your screen is actually the final result of several steps: Light → PPG signal → Signal processing → Pulse detection → Pulse rate.",
+      },
+      {
+        type: "h2",
+        text: "Why isn't the reading always perfect?",
+      },
+      {
+        type: "p",
+        text: "Your body isn't a laboratory - and your wrist certainly isn't perfectly still. When you're exercising, your arm is moving while blood flow is changing at the same time. This can introduce additional signals into the measurement, known as motion artefacts. Other factors can also affect the quality of the signal, including:",
+      },
+      {
+        type: "ul",
+        items: [
+          "How tightly the watch fits",
+          "Movement of the wrist",
+          "Skin contact with the sensor",
+          "Cold hands or reduced peripheral blood flow",
+          "Sweat and moisture",
+          "Position of the watch",
+        ],
+      },
+      {
+        type: "p",
+        text: "Modern devices use algorithms to identify and reduce some of this noise, but no sensor can produce a perfect signal under every condition.",
+      },
+      {
+        type: "h2",
+        text: "PPG and ECG are not the same thing",
+      },
+      {
+        type: "p",
+        text: "This is an important distinction. PPG uses light to detect changes associated with blood volume in the peripheral circulation and can be used to estimate your pulse rate. ECG (electrocardiography) records the electrical activity of the heart using electrodes.",
+      },
+      {
+        type: "p",
+        text: "So although both can tell us something about cardiac activity, they are measuring different physiological signals. Some smartwatches can perform an ECG when the appropriate sensors and features are available - but the ECG function should not be confused with the optical PPG sensor used for routine pulse-rate tracking.",
+      },
+      {
+        type: "h2",
+        text: "And what about all the other numbers?",
+      },
+      {
+        type: "p",
+        text: "Your smartwatch may show you much more than pulse rate - such as SpO₂, HRV, sleep metrics, calories, VO₂ max and activity levels. But here's something worth remembering: not every number on your smartwatch is a direct measurement.",
+      },
+      {
+        type: "p",
+        text: "Some values come directly from a sensor, while others are calculated or estimated using algorithms, sometimes combining several signals and your personal information. The accuracy can therefore vary depending on the measurement, the device and the conditions in which it is being recorded.",
+      },
+      {
+        type: "h2",
+        text: "So, should you trust your smartwatch?",
+      },
+      {
+        type: "p",
+        text: "Smartwatches can be very useful tools for tracking patterns and trends. A change that repeatedly appears over days or weeks may be much more informative than one isolated reading. But a smartwatch reading should always be understood in context. If your watch shows an unusual number, consider:",
+      },
+      {
+        type: "ul",
+        items: [
+          "What was being measured?",
+          "How was it measured?",
+          "Were you moving?",
+          "Was the sensor making good contact?",
+          "Is this a measurement or an estimate?",
+          "And most importantly - how do you actually feel?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The bigger picture",
+      },
+      {
+        type: "p",
+        text: "Wearable technology is becoming an increasingly useful part of health and fitness monitoring. But understanding the technology makes it even more useful. Don't just look at the number on your wrist. Understand the signal behind it.",
+      },
+    ],
+  },
+  {
+    slug: "diaphragmatic-breathing-how-it-works",
+    title: "Diaphragmatic Breathing: How It Works, Potential Benefits and When It May Help",
+    excerpt:
+      "\"Breathe from your belly\" is common advice - but diaphragmatic breathing is not a universal exercise. When it may help, what the evidence shows, and when it may not.",
+    overview:
+      "How the diaphragm contributes to breathing, what research says about breathlessness and quality of life, and why technique should match the person - not a one-size-fits-all prescription.",
+    publishedAt: "2026-08-21",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "\"Breathe from your belly.\" It is one of the most common instructions given to people who feel breathless, anxious or uncomfortable with their breathing. But diaphragmatic breathing is more than simply making the abdomen move during inhalation - and it is not a universal exercise that everyone with a respiratory condition needs.",
+      },
+      {
+        type: "h2",
+        text: "What is diaphragmatic breathing?",
+      },
+      {
+        type: "p",
+        text: "The diaphragm is a dome-shaped muscle separating the chest from the abdomen. When it contracts, it moves downward, increasing chest volume so air can flow into the lungs. During quiet breathing, it does much of the work of inspiration. Diaphragmatic breathing trains awareness of this contribution and more coordinated movement of the lower ribs and abdomen.",
+      },
+      {
+        type: "p",
+        text: "A useful distinction: a deep breath describes the size of a breath. Diaphragmatic breathing describes how the respiratory system is being used to produce that breath. The goal is not \"take the biggest breath possible\" - it is to find a pattern that is appropriate and efficient for you.",
+      },
+      {
+        type: "h2",
+        text: "Why the diaphragm matters",
+      },
+      {
+        type: "p",
+        text: "Breathing is muscular work. In COPD, air trapping and hyperinflation can flatten the diaphragm and place it at a mechanical disadvantage, increasing the work of breathing. That is why respiratory muscle mechanics matter when considering breathing retraining - and why forcing a large abdominal breathing pattern does not help everyone.",
+      },
+      {
+        type: "h2",
+        text: "What it may help - and what the evidence shows",
+      },
+      {
+        type: "p",
+        text: "The goal is not to \"strengthen the lungs.\" Diaphragmatic breathing aims to influence breathing pattern and mechanics. Depending on the individual, it may help improve coordination, awareness and control of breathing, and potentially reduce the sensation of breathlessness.",
+      },
+      {
+        type: "p",
+        text: "Evidence suggests breathing techniques - including diaphragmatic and pursed-lip breathing - can help some people with COPD and asthma, particularly for quality of life and symptom management. The European Respiratory Society has issued a conditional recommendation for breathing techniques in serious respiratory illness, while noting that certainty of evidence remains limited. A statistically measurable change is not automatically a meaningful change for every patient.",
+      },
+      {
+        type: "p",
+        text: "So the evidence does not support \"everyone should practise diaphragmatic breathing.\" It supports a careful conclusion: breathing techniques can be useful for selected patients when the technique matches their symptoms and breathing pattern.",
+      },
+      {
+        type: "h2",
+        text: "Does everyone with COPD benefit?",
+      },
+      {
+        type: "p",
+        text: "No. Hyperinflation may flatten and shorten the diaphragm. Some people also have abnormal chest–abdomen coordination. In those situations, forcing abdominal breathing may not make breathing more efficient. The better clinical question is not \"Does diaphragmatic breathing work?\" but \"Does this strategy improve this person's breathing?\"",
+      },
+      {
+        type: "h2",
+        text: "What it cannot do",
+      },
+      {
+        type: "ul",
+        items: [
+          "Cure asthma or reverse COPD",
+          "Replace inhaled medication",
+          "Permanently increase lung capacity simply through practice",
+          "Guarantee higher oxygen saturation or eliminate all breathlessness",
+        ],
+      },
+      {
+        type: "p",
+        text: "Breathing techniques are one possible component of pulmonary rehabilitation - used alongside exercise training, not instead of it. At PulseBreath, they are assessment-guided interventions, not universal prescriptions. The right technique is the one that works best for the person in front of you.",
+      },
+    ],
+  },
+  {
+    slug: "pulmonary-rehabilitation-for-asthma",
+    title:
+      "Pulmonary Rehabilitation for Asthma: Can It Improve Exercise Capacity and Quality of Life?",
+    excerpt:
+      "Asthma medication manages the airways. Pulmonary rehab can help with fitness, confidence, and daily activity - without replacing your medical plan.",
+    overview:
+      "Why exercise can feel hard with asthma, what Cochrane and GINA evidence show about rehab, and how individualised programmes build capacity safely.",
+    publishedAt: "2026-08-21",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "Asthma is often thought of mainly as wheezing, coughing and breathing difficulty. But for some people it also makes exercise uncomfortable, so activity is avoided. Over time, reduced activity leads to deconditioning - and everyday tasks feel more demanding.",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation does not replace asthma medication. It can complement medical management by addressing exercise capacity, fitness, breathing-related symptoms and confidence with physical activity.",
+      },
+      {
+        type: "h2",
+        text: "What is pulmonary rehabilitation?",
+      },
+      {
+        type: "p",
+        text: "It is a structured, assessment-based programme that combines individualised exercise training, education and behavioural support. For asthma, that may include aerobic and strengthening work, education about exercise and triggers, breathing strategies when appropriate, pacing, and guidance on returning to activity safely - tailored to symptoms, asthma control, capacity and goals.",
+      },
+      {
+        type: "h2",
+        text: "Why can exercise be difficult with asthma?",
+      },
+      {
+        type: "p",
+        text: "Exercise can trigger coughing, wheezing, chest tightness or unusual breathlessness. That does not mean people with asthma should avoid exercise. GINA encourages regular physical activity for cardiovascular health and quality of life. Simply saying \"exercise more\" is often not enough - the useful question is how this person can exercise safely, comfortably and consistently.",
+      },
+      {
+        type: "h2",
+        text: "What does the research say?",
+      },
+      {
+        type: "p",
+        text: "A 2022 Cochrane review of supervised pulmonary rehabilitation in adults with asthma found a clinically meaningful improvement in functional exercise capacity - about 80 metres farther on a six-minute walk test - and improved health-related quality of life. Effects on asthma control were smaller and less certain, with insufficient evidence on attacks or hospitalisations.",
+      },
+      {
+        type: "p",
+        text: "An earlier Cochrane review of physical training found improved cardiorespiratory fitness (including VO₂max) without significant changes in FEV₁ or FVC. In simple terms: better fitness does not necessarily mean better spirometry. Rehab outcomes should not be judged by lung function alone.",
+      },
+      {
+        type: "h2",
+        text: "What might a programme focus on?",
+      },
+      {
+        type: "ul",
+        items: [
+          "Aerobic exercise - to improve how the body delivers and uses oxygen",
+          "Strength training - so everyday tasks take less relative effort",
+          "Breathing retraining - only when dysfunctional breathing contributes to symptoms",
+          "Education - to separate expected exercise responses from warning signs, and reduce fear of activity",
+          "Progressive loading - enough challenge to adapt, without exceeding current capacity",
+        ],
+      },
+      {
+        type: "p",
+        text: "Some people experience exercise-induced bronchoconstriction (EIB). That does not mean exercise should be avoided. Medication before exercise should follow the person's asthma plan with their clinician; a physiotherapist works within that plan, not outside it.",
+      },
+      {
+        type: "h2",
+        text: "Who might benefit?",
+      },
+      {
+        type: "ul",
+        items: [
+          "Reduced exercise tolerance or avoidance of activity",
+          "Deconditioning or breathlessness in daily tasks",
+          "Difficulty returning to exercise or low confidence with activity",
+          "Functional limits despite appropriate medical care",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The bottom line",
+      },
+      {
+        type: "p",
+        text: "Asthma should not automatically mean avoiding exercise. Structured rehab can improve exercise capacity and quality of life, while its effect on asthma control itself is smaller and less certain. It works best as a complement to good medical management - not a replacement. The question is not simply \"Can I exercise with asthma?\" but \"How can I exercise safely and progressively with the asthma I have?\"",
+      },
+    ],
+  },
   {
     slug: "why-do-i-cough-more-in-the-morning",
     title: "Why Do I Cough More in the Morning?",

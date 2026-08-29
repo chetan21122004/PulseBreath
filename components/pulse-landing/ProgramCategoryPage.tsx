@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Send } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { Reveal } from "@/components/pulse-landing/motion";
-import { WHATSAPP, type ProgramSlug } from "./constants";
+import { ENQUIRY_HREF, WHATSAPP, type ProgramSlug } from "./constants";
 import { getCategoryBySlug, CategoryChapter } from "./ProgramCatalog";
 import { SectionIllustration } from "./SectionIllustration";
 import { WhatsAppIcon } from "./WhatsAppIcon";
@@ -208,6 +208,10 @@ export function ProgramCategoryPage({ slug }: ProgramCategoryPageProps) {
             <WhatsAppIcon className="h-5 w-5" />
             Book Free Assessment
           </a>
+          <Link href={ENQUIRY_HREF} className="btn-secondary inline-flex shrink-0 items-center gap-2">
+            <Send className="h-4 w-4" />
+            Send enquiry
+          </Link>
         </div>
       </PageSection>
     </>

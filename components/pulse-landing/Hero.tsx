@@ -10,11 +10,12 @@ import {
   Stethoscope,
   HeartPulse,
   Phone,
+  Send,
 } from "lucide-react";
 import {
   DR_DEEPALI_HERO_PORTRAIT,
 } from "./dr-deepali-assets";
-import { HERO_BG_CLIPS, HERO_BG_PLAYBACK_RATE, PHONE, WHATSAPP } from "./constants";
+import { ENQUIRY_HREF, HERO_BG_CLIPS, HERO_BG_PLAYBACK_RATE, PHONE, WHATSAPP } from "./constants";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 import { heroItem } from "./motion";
 import { SectionPageLink } from "./SectionPageLink";
@@ -225,28 +226,32 @@ export function Hero() {
                       </div>
                     </header>
 
-                    <div className="mt-4 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+                    <div className="mt-4 space-y-2.5">
                       <a
                         href={WHATSAPP}
                         target="_blank"
                         rel="noopener"
-                        className="btn-primary motion-btn !min-h-[48px] flex flex-1 items-center justify-center gap-2 px-4 py-2.5 text-[0.8125rem] shadow-[0_12px_40px_rgba(176,64,96,0.45)] transition-[transform,box-shadow] hover:scale-[1.01] hover:shadow-[0_16px_48px_rgba(176,64,96,0.52)] motion-reduce:hover:scale-100 sm:py-3"
+                        className="btn-primary motion-btn flex min-h-[52px] w-full items-center justify-center gap-2 px-4 text-[0.8125rem] shadow-[0_12px_40px_rgba(176,64,96,0.45)] transition-[transform,box-shadow] hover:scale-[1.01] hover:shadow-[0_16px_48px_rgba(176,64,96,0.52)] motion-reduce:hover:scale-100"
                       >
-                        <WhatsAppIcon className="h-4 w-4" />
+                        <WhatsAppIcon className="h-4 w-4 shrink-0" />
                         Book free assessment
                       </a>
-                      <a
-                        href={`tel:${PHONE}`}
-                        className="inline-flex min-h-[48px] flex-1 flex-col items-center justify-center gap-0.5 rounded-md border border-white/35 bg-white/[0.06] px-4 py-2.5 text-white backdrop-blur-sm transition-[background-color,border-color] hover:border-white/50 hover:bg-white/[0.1] sm:py-2.5"
-                      >
-                        <span className="flex items-center gap-2 text-[0.8125rem] font-semibold tracking-wide">
-                          <Phone className="h-4 w-4 text-[var(--brand-teal-soft)]" strokeWidth={2.25} />
-                          +91 {PHONE}
-                        </span>
-                        <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-white/50">
-                          Or call directly
-                        </span>
-                      </a>
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <a
+                          href={ENQUIRY_HREF}
+                          className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-md border border-white/35 bg-white/[0.06] px-3 text-[0.8125rem] font-semibold text-white backdrop-blur-sm transition-[background-color,border-color] hover:border-white/50 hover:bg-white/[0.1]"
+                        >
+                          <Send className="h-4 w-4 shrink-0 text-[var(--brand-teal-soft)]" strokeWidth={2.25} />
+                          Send enquiry
+                        </a>
+                        <a
+                          href={`tel:${PHONE}`}
+                          className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-md border border-white/35 bg-white/[0.06] px-3 text-[0.8125rem] font-semibold text-white backdrop-blur-sm transition-[background-color,border-color] hover:border-white/50 hover:bg-white/[0.1]"
+                        >
+                          <Phone className="h-4 w-4 shrink-0 text-[var(--brand-teal-soft)]" strokeWidth={2.25} />
+                          <span className="whitespace-nowrap">+91 {PHONE}</span>
+                        </a>
+                      </div>
                     </div>
 
                     <footer

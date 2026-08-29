@@ -6,8 +6,9 @@ import {
   PieChart,
   Heart,
   Phone,
+  Send,
 } from "lucide-react";
-import { PHONE, WHATSAPP } from "./constants";
+import { ENQUIRY_HREF, PHONE, WHATSAPP } from "./constants";
 import {
   DR_DEEPALI_FEATURED_VIDEO,
   DR_DEEPALI_SESSION_POSTER,
@@ -141,6 +142,12 @@ export function TeleRehab() {
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Book Your Free Rehab Call
+                  </a>
+                  <a
+                    href={ENQUIRY_HREF}
+                    className="motion-btn inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-6 py-4 font-semibold text-navy backdrop-blur transition-colors hover:border-[#C0516A]/40 hover:text-[#C0516A]"
+                  >
+                    <Send className="h-4 w-4" /> Send enquiry
                   </a>
                   <a
                     href={`tel:${PHONE}`}

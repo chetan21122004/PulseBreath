@@ -1,5 +1,5 @@
-import { Phone, Mail, MapPin } from "lucide-react";
-import { CLINIC_ADDRESS, PHONE, WHATSAPP, EMAIL } from "./constants";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { CLINIC_ADDRESS, ENQUIRY_HREF, PHONE, WHATSAPP, EMAIL } from "./constants";
 import { Reveal, StaggerItem, StaggerReveal } from "./motion";
 import { SectionIllustration } from "./SectionIllustration";
 import { SectionPageLink } from "./SectionPageLink";
@@ -34,6 +34,12 @@ export function CTASection() {
                 className="btn-whatsapp motion-btn w-full justify-center sm:w-auto"
               >
                 <WhatsAppIcon className="h-5 w-5" /> Book on WhatsApp
+              </a>
+              <a
+                href={ENQUIRY_HREF}
+                className="btn-secondary motion-btn w-full justify-center sm:w-auto"
+              >
+                <Send className="mr-2 h-4 w-4" /> Send enquiry
               </a>
               <a
                 href={`tel:${PHONE}`}

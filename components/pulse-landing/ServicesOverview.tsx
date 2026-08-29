@@ -17,7 +17,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { type ProgramSlug } from "./constants";
+import { ENQUIRY_HREF, type ProgramSlug } from "./constants";
 import { categorySlug, getProgramHref } from "./ProgramCatalog";
 import {
   programCategories,
@@ -656,7 +656,7 @@ export function ServicesOverview() {
               Unsure which service applies to you? Dr. Deepali will guide you during your free
               assessment - no obligation to enrol.
             </p>
-            <SectionPageLink href="/contact" className="shrink-0 justify-center sm:justify-start">
+            <SectionPageLink href={ENQUIRY_HREF} className="shrink-0 justify-center sm:justify-start">
               Book free assessment
             </SectionPageLink>
           </div>

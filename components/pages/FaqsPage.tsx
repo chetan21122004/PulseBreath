@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { Phone } from "lucide-react";
+import { Phone, Send } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { FaqAccordion } from "@/components/pages/FaqAccordion";
@@ -10,7 +10,7 @@ import {
   getFaqsByCategory,
   type FaqCategory,
 } from "@/components/pulse-landing/faq-data";
-import { PHONE, WHATSAPP } from "@/components/pulse-landing/constants";
+import { ENQUIRY_HREF, PHONE, WHATSAPP } from "@/components/pulse-landing/constants";
 import { Reveal } from "@/components/pulse-landing/motion";
 import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 import { cn } from "@/lib/utils";
@@ -78,6 +78,13 @@ export function FaqsPage() {
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp
+                </a>
+                <a
+                  href={ENQUIRY_HREF}
+                  className="motion-btn inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-[13px] font-semibold text-navy transition-colors hover:bg-soft/40"
+                >
+                  <Send className="h-4 w-4 text-brand" strokeWidth={2.25} />
+                  Send enquiry
                 </a>
                 <a
                   href={`tel:${PHONE}`}

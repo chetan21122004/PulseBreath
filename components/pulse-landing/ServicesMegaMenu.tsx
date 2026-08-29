@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PROGRAM_ROUTES } from "./constants";
+import { ENQUIRY_HREF, PROGRAM_ROUTES } from "./constants";
 import { programCategories, type ProgramCategoryTone } from "./conditions-data";
 import { categorySlug, getProgramHref } from "./ProgramCatalog";
 import { categoryProgramsHeading } from "./ProgramPreview";
@@ -217,7 +217,7 @@ export function ServicesMegaMenuDesktop({ isActive }: ServicesMegaMenuDesktopPro
               Every program is live-supervised by Dr. Deepali Shah (PT).
             </p>
             <Link
-              href="/contact"
+              href={ENQUIRY_HREF}
               role="menuitem"
               className="inline-flex shrink-0 items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-brand hover:underline"
             >
@@ -363,7 +363,7 @@ export function ServicesMobileSheetContent({ onNavigate }: { onNavigate: () => v
             Live-supervised by Dr. Deepali Shah (PT)
           </p>
           <Link
-            href="/contact"
+            href={ENQUIRY_HREF}
             onClick={onNavigate}
             className="inline-flex shrink-0 items-center gap-1 font-sans-brand text-[10px] font-bold uppercase tracking-[0.08em] text-brand"
           >

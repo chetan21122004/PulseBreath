@@ -18,7 +18,7 @@ const sections = [
   {
     title: "Information you choose to share",
     body: [
-      "This website does not currently provide account registration or an on-site medical intake form. If you contact PulseBreath through WhatsApp, telephone, email, or LinkedIn, you choose what personal and health-related information to share through that service.",
+      "You may contact PulseBreath through the website enquiry form, WhatsApp, telephone, email, or LinkedIn. You choose what personal and health-related information to share. The enquiry form is for arranging an assessment - it is not a medical intake or emergency channel.",
       "Please do not send emergency information through these channels. PulseBreath is not an emergency service.",
     ],
   },
@@ -32,7 +32,7 @@ const sections = [
   {
     title: "Third-party communication services",
     body: [
-      "WhatsApp, email, telephone networks, LinkedIn, and the website hosting provider process information under their own privacy and security terms. Review those providers' policies before sharing sensitive information.",
+      "WhatsApp, email, telephone networks, LinkedIn, Formspree (the enquiry-form processor), and the website hosting provider process information under their own privacy and security terms. Review those providers' policies before sharing sensitive information.",
     ],
   },
   {

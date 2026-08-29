@@ -1,9 +1,9 @@
 'use client';
 
-import { CheckCircle2, ClipboardCheck, Phone, Video } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, Phone, Video, Send } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
-import { PHONE, WHATSAPP_OFFERS } from "@/components/pulse-landing/constants";
+import { ENQUIRY_HREF, PHONE, WHATSAPP_OFFERS } from "@/components/pulse-landing/constants";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import {
   FREE_ASSESSMENT,
@@ -68,15 +68,21 @@ export function NewBatchPage() {
           <p className="mt-4 text-base leading-relaxed text-[var(--body-text)] sm:text-lg">
             {FREE_ASSESSMENT.description}
           </p>
-          <a
-            href={WHATSAPP_OFFERS}
-            target="_blank"
-            rel="noopener"
-            className="btn-whatsapp motion-btn mt-8 inline-flex w-full max-w-sm justify-center sm:w-auto"
-          >
-            <WhatsAppIcon className="h-5 w-5" />
-            {FREE_ASSESSMENT.cta}
-          </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={WHATSAPP_OFFERS}
+              target="_blank"
+              rel="noopener"
+              className="btn-whatsapp motion-btn inline-flex w-full max-w-sm justify-center sm:w-auto"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              {FREE_ASSESSMENT.cta}
+            </a>
+            <a href={ENQUIRY_HREF} className="btn-secondary motion-btn inline-flex w-full max-w-sm justify-center sm:w-auto">
+              <Send className="h-4 w-4" />
+              Send enquiry
+            </a>
+          </div>
         </Reveal>
       </PageSection>
 
@@ -159,6 +165,13 @@ export function NewBatchPage() {
                 >
                   <WhatsAppIcon className="h-5 w-5" />
                   {FREE_ASSESSMENT.cta}
+                </a>
+                <a
+                  href={ENQUIRY_HREF}
+                  className="btn-secondary motion-btn justify-center !border-white/20 !bg-white/10 !text-white hover:!border-white/35 hover:!bg-white/15"
+                >
+                  <Send className="h-4 w-4" />
+                  Send enquiry
                 </a>
                 <a
                   href={`tel:${PHONE}`}

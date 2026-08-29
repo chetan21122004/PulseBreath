@@ -12,6 +12,7 @@ import {
 } from "@/components/pulse-landing/blog-data";
 import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/motion";
 import { SectionPageLink } from "@/components/pulse-landing/SectionPageLink";
+import { ENQUIRY_HREF } from "@/components/pulse-landing/constants";
 
 export function BlogsPage() {
   const posts = getAllPosts();
@@ -55,7 +56,7 @@ export function BlogsPage() {
             Want personalised guidance for your condition? Dr. Deepali offers a free assessment —
             no obligation.
           </p>
-          <SectionPageLink href="/contact" className="mt-4 shrink-0 sm:mt-0">
+          <SectionPageLink href={ENQUIRY_HREF} className="mt-4 shrink-0 sm:mt-0">
             Book free assessment
           </SectionPageLink>
         </Reveal>
@@ -93,6 +94,26 @@ export function BlogArticleBody({ post }: { post: BlogPost }) {
                 </li>
               ))}
             </ul>
+          );
+        }
+        if (block.type === "img") {
+          return (
+            <figure
+              key={index}
+              className="mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-border/70 bg-white sm:max-w-lg"
+            >
+              <img
+                src={block.src}
+                alt={block.alt}
+                loading="lazy"
+                className="mx-auto h-auto max-h-[280px] w-full object-contain p-3 sm:max-h-[320px]"
+              />
+              {block.caption ? (
+                <figcaption className="border-t border-border/60 px-4 py-3 font-sans-brand text-sm leading-relaxed text-navy/65">
+                  {block.caption}
+                </figcaption>
+              ) : null}
+            </figure>
           );
         }
         return (
@@ -193,7 +214,7 @@ export function BlogArticlePage({ post }: { post: BlogPost }) {
       </PageHero>
 
       <PageSection variant="background" className="pt-0">
-        <Reveal variant="fadeUp">
+        <Reveal variant="fadeUp" amount="some">
           <BlogArticleBody post={post} />
         </Reveal>
       </PageSection>
