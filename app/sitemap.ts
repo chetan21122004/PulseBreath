@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { programCategories } from "@/components/pulse-landing/conditions-data";
 import { categorySlug } from "@/components/pulse-landing/ProgramCatalog";
-import { BLOG_POSTS } from "@/components/pulse-landing/blog-data";
+import { getAllPosts } from "@/components/pulse-landing/blog-data";
 import { getIndexableSeoManifests } from "@/lib/programmatic-seo/catalog";
 import { SITE_URL } from "@/lib/seo";
 
@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   /* ── Blog article pages ── */
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) =>
+  const blogPages: MetadataRoute.Sitemap = getAllPosts().map((post) =>
     url(`/blog/${post.slug}`, {
       lastModified: new Date(post.updatedAt ?? post.publishedAt),
     }),
