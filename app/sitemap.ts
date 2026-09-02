@@ -5,7 +5,7 @@ import { getAllPosts } from "@/components/pulse-landing/blog-data";
 import { getIndexableSeoManifests } from "@/lib/programmatic-seo/catalog";
 import { SITE_URL } from "@/lib/seo";
 
-const SITE_CONTENT_UPDATED = new Date("2026-08-26");
+const SITE_CONTENT_UPDATED = new Date("2026-09-02");
 
 function url(path: string, extra?: Omit<MetadataRoute.Sitemap[number], "url">): MetadataRoute.Sitemap[number] {
   return { url: `${SITE_URL}${path}`, ...extra };
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     url("/", { lastModified: SITE_CONTENT_UPDATED }),
     url("/services", { lastModified: SITE_CONTENT_UPDATED }),
-    url("/new-batch", { lastModified: SITE_CONTENT_UPDATED }),
+    url("/sessions", { lastModified: SITE_CONTENT_UPDATED }),
     url("/about", { lastModified: SITE_CONTENT_UPDATED }),
     url("/contact", { lastModified: SITE_CONTENT_UPDATED }),
     url("/how-it-works", { lastModified: SITE_CONTENT_UPDATED }),

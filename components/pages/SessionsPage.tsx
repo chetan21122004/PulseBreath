@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, ClipboardCheck, Phone, Video, Send } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, Phone, Send, Video } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { PageSection } from "@/components/pages/PageSection";
 import { ENQUIRY_HREF, PHONE, WHATSAPP_OFFERS } from "@/components/pulse-landing/constants";
@@ -8,52 +8,53 @@ import { Reveal, StaggerItem, StaggerReveal } from "@/components/pulse-landing/m
 import {
   FREE_ASSESSMENT,
   PROGRAM_HIGHLIGHTS,
-  PULMONARY_PROGRAM,
   SESSION_FEATURES,
+  SESSIONS_INTRO,
   TARGET_CONDITIONS,
-  UPCOMING_BATCH,
-} from "@/components/pulse-landing/new-batch-data";
-import { UpcomingBatchRow } from "@/components/pulse-landing/UpcomingBatchCard";
+} from "@/components/pulse-landing/sessions-data";
+import { SessionFormatRow } from "@/components/pulse-landing/SessionFormatCards";
 import { WhatsAppIcon } from "@/components/pulse-landing/WhatsAppIcon";
 
-export function NewBatchPage() {
+export function SessionsPage() {
   return (
     <>
       <PageHero
-        pill="Upcoming Batches"
+        pill={SESSIONS_INTRO.pill}
         title={
           <>
-            New group sessions{" "}
-            <span className="font-display italic text-brand">starting soon</span>
+            {SESSIONS_INTRO.titleLead}{" "}
+            <span className="font-display italic text-brand">{SESSIONS_INTRO.titleAccent}</span>
           </>
         }
-        description={`${PULMONARY_PROGRAM.tagline} ${PULMONARY_PROGRAM.subtitle} Enrolment is now open for our next pulmonary rehabilitation batch.`}
+        description={SESSIONS_INTRO.description}
       >
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-[var(--primary-soft)] px-4 py-2 text-sm font-semibold text-navy">
             <span className="h-2 w-2 animate-pulse rounded-full bg-brand" aria-hidden />
-            {UPCOMING_BATCH.status}
+            1-on-1 and small-group
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/80 px-4 py-2 text-sm font-medium text-navy/80">
             <Video className="h-4 w-4 text-brand" />
-            {PULMONARY_PROGRAM.teleRehab}
+            {SESSIONS_INTRO.teleRehab}
           </span>
         </div>
       </PageHero>
 
       <PageSection variant="section">
         <Reveal variant="fadeUp" className="text-center">
-          <span className="section-label">Open for Enrolment</span>
+          <span className="section-label">Choose Your Format</span>
           <h2 className="heading-display mt-4 text-2xl sm:text-4xl">
-            Choose your <span className="italic text-brand">upcoming batch</span>
+            Personalised 1-on-1 or{" "}
+            <span className="italic text-brand">small-group sessions</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[var(--body-text)]">
-            Two supervised tracks for the upcoming group session. Pick the pace that suits your recovery goals.
+            Live, clinician-guided rehabilitation from home. Choose individual attention, or
+            progress alongside people with a similar clinical and functional profile.
           </p>
         </Reveal>
 
         <div className="mt-10">
-          <UpcomingBatchRow variant="page" />
+          <SessionFormatRow variant="page" />
         </div>
       </PageSection>
 
@@ -147,10 +148,10 @@ export function NewBatchPage() {
           <div className="overflow-hidden rounded-3xl border border-border/70 bg-[var(--brand-dark)] px-5 py-10 text-white sm:px-10 sm:py-14">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand sm:text-sm">
-                {PULMONARY_PROGRAM.motto}
+                {SESSIONS_INTRO.motto}
               </p>
               <h2 className="heading-display mt-5 text-2xl text-white sm:text-4xl">
-                Reserve your place in the upcoming batch
+                Find the session format that fits you
               </h2>
               <p className="mt-4 text-base leading-relaxed text-white/75">
                 {FREE_ASSESSMENT.support}

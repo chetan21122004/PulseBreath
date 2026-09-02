@@ -4,7 +4,7 @@ export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
   | { type: "ul"; items: string[] }
-  | { type: "img"; src: string; alt: string; caption?: string };
+  | { type: "img"; src: string; alt: string; caption?: string; layout?: "wide" };
 
 export type BlogPost = {
   slug: string;
@@ -29,6 +29,444 @@ export const BLOG_OVERVIEW =
   "Evidence-led articles on cardiac and pulmonary rehabilitation - written by Dr. Deepali Shah to help patients and families understand supervised exercise, breathlessness, and recovery at home.";
 
 export const BLOG_POSTS = [
+  {
+    slug: "medicines-alone-arent-the-whole-story",
+    title: "Why Medicines Alone Aren't the Whole Story",
+    excerpt:
+      "Medicines help you breathe easier. Pulmonary rehabilitation helps you live easier. Why inhalers alone cannot reverse deconditioning in COPD.",
+    overview:
+      "Why everyday tasks still feel hard even when inhalers are taken correctly — and how pulmonary rehabilitation restores the function medicines cannot fully rebuild.",
+    publishedAt: "2026-09-02",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "\"Managing COPD isn't just about improving how you breathe. It's about improving what your breathing allows you to do.\"",
+      },
+      {
+        type: "p",
+        text: "For many people living with COPD, the daily routine is familiar. Wake up. Take your inhalers. Feel a little better. Then climb a flight of stairs and become breathless again.",
+      },
+      {
+        type: "p",
+        text: "Naturally, a question follows. \"If I'm taking all my medicines correctly, why do I still struggle to do everyday activities?\" The answer lies in understanding what COPD changes inside the body.",
+      },
+      {
+        type: "h2",
+        text: "What medicines do — and what they cannot",
+      },
+      {
+        type: "p",
+        text: "Medicines play a vital role in COPD management. They help open the airways, reduce inflammation, relieve symptoms and lower the risk of exacerbations. For millions of people, they are an essential part of staying well.",
+      },
+      {
+        type: "p",
+        text: "But breathing comfortably is only one part of living well.",
+      },
+      {
+        type: "p",
+        text: "Over time, COPD often changes how people move. Breathlessness makes activity uncomfortable, so many people begin avoiding it without even realising. Gradually, muscles lose strength, endurance declines, and everyday tasks begin demanding more effort than they once did.",
+      },
+      {
+        type: "p",
+        text: "This is why climbing stairs feels harder. Why shopping becomes tiring. Why even walking across a room can leave someone exhausted.",
+      },
+      {
+        type: "p",
+        text: "These changes are not always caused by worsening lung function alone. They are also the result of physical deconditioning — a change that medicines alone cannot fully reverse.",
+      },
+      {
+        type: "h2",
+        text: "Pulmonary rehabilitation as a partner, not a replacement",
+      },
+      {
+        type: "p",
+        text: "This is where pulmonary rehabilitation becomes an essential partner in recovery. Rather than replacing medicines, it complements them.",
+      },
+      {
+        type: "p",
+        text: "While medicines help improve airflow, pulmonary rehabilitation helps your body use that improved airflow more effectively. Through carefully prescribed exercise, education and structured progression, it trains the heart, muscles and circulation to work together more efficiently.",
+      },
+      {
+        type: "p",
+        text: "In simple terms: medicines help you breathe easier. Pulmonary rehabilitation helps you live easier.",
+      },
+      {
+        type: "h2",
+        text: "What the guidelines recommend",
+      },
+      {
+        type: "p",
+        text: "That is why international organisations such as the Global Initiative for Chronic Obstructive Lung Disease (GOLD) and the American Thoracic Society/European Respiratory Society (ATS/ERS) recommend pulmonary rehabilitation alongside optimal medical therapy. These recommendations are based on decades of evidence showing that medicines and rehabilitation address different — but equally important — aspects of COPD management.",
+      },
+      {
+        type: "ul",
+        items: [
+          "One helps manage the disease.",
+          "The other helps restore function.",
+          "Together, they offer the best opportunity to move with greater confidence, participate more fully in everyday life and regain independence.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "A thought to take home",
+      },
+      {
+        type: "p",
+        text: "Every inhaler opens a door. Pulmonary rehabilitation teaches your body how to walk through it.",
+      },
+    ],
+  },
+  {
+    slug: "why-asthma-isnt-just-about-your-inhaler",
+    title: "Why Asthma Isn't Just About Your Inhaler",
+    excerpt:
+      "Medication is the foundation of asthma control — but it isn't the whole story. Why inhalers don't retrain your breathing, rebuild fitness, or restore confidence with movement.",
+    overview:
+      "What inhalers cannot fix — deconditioning, shallow breathing, exercise fear, and panic around chest tightness — and how structured asthma rehabilitation works alongside medication.",
+    publishedAt: "2026-09-02",
+    category: "Pulmonary",
+    readMinutes: 5,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "If you live with asthma, you already know the drill: carry your inhaler, avoid your triggers, and hope the wheezing stays away. Medication is the foundation of asthma control — but for many patients, it isn't the whole story.",
+      },
+      {
+        type: "h2",
+        text: "The Gap Medicines Don't Close",
+      },
+      {
+        type: "p",
+        text: "Inhalers reduce airway inflammation and open your airways. What they don't do is retrain how you breathe, rebuild the fitness you may have lost from years of avoiding exertion, or teach your body to handle triggers like exercise, cold air, or stress without spiraling into a flare-up.",
+      },
+      {
+        type: "p",
+        text: "This is where many people get stuck. Their asthma is \"medically controlled\" on paper, but they still:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Get breathless climbing a single flight of stairs",
+          "Avoid exercise altogether, out of fear it will trigger an attack",
+          "Breathe shallow, upper-chest breaths most of the day without realizing it",
+          "Feel anxious the moment their chest feels tight",
+        ],
+      },
+      {
+        type: "p",
+        text: "None of these are things an inhaler alone can fix.",
+      },
+      {
+        type: "h2",
+        text: "What Pulmonary Rehab Adds",
+      },
+      {
+        type: "p",
+        text: "A structured asthma rehabilitation program works alongside your medication, not instead of it. It typically focuses on:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Breathing retraining — many people with asthma unconsciously develop fast, shallow, upper-chest breathing patterns, sometimes even between flare-ups. Techniques like diaphragmatic breathing and pursed-lip breathing help restore an efficient breathing pattern, which can reduce the sensation of breathlessness.",
+          "Graded exercise — exercise-induced bronchospasm is real, but the answer isn't to avoid movement forever. It's to reintroduce it in a controlled, supervised way, at an intensity your airways can handle, so you rebuild tolerance safely instead of by trial and error.",
+          "Trigger and symptom awareness — learning to recognize early warning signs of a flare, and what to do in the moment, so a tight chest doesn't automatically mean panic or a hospital visit.",
+          "Confidence — this one is underrated. A lot of asthma-related avoidance isn't physical anymore — it's learned fear. Supervised, monitored sessions let you test your limits safely and relearn that movement is safe.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Is It Safe to Exercise With Asthma?",
+      },
+      {
+        type: "p",
+        text: "Yes — for the vast majority of people with stable, well-managed asthma, structured exercise is not only safe but beneficial. The key word is structured. Exercise done with monitoring (watching for symptoms, pacing intensity, having a clear stop-and-recover plan) looks very different from pushing through breathlessness on your own.",
+      },
+      {
+        type: "p",
+        text: "If your asthma is poorly controlled, has recent frequent flare-ups, or you're unsure about your triggers, that's exactly why a supervised assessment — rather than a generic workout — matters.",
+      },
+      {
+        type: "h2",
+        text: "The Takeaway",
+      },
+      {
+        type: "p",
+        text: "Your inhaler manages the inflammation. Rehabilitation rebuilds the capacity, breathing pattern, and confidence that asthma often takes away over time. Used together, they address both sides of the problem — the medical and the functional.",
+      },
+      {
+        type: "p",
+        text: "If you've been managing asthma for years but still feel limited by it, that's usually a sign it's time to look beyond medication alone.",
+      },
+    ],
+  },
+  {
+    slug: "pulmonary-rehabilitation-for-ild",
+    title:
+      "Pulmonary Rehabilitation for Interstitial Lung Disease (ILD): Improving Breathlessness, Endurance and Quality of Life",
+    excerpt:
+      "Medicines can slow some types of ILD, but they often cannot restore fitness or ease day-to-day breathlessness. Pulmonary rehabilitation is one of the most effective non-drug treatments for walking further and living more confidently.",
+    overview:
+      "Why ILD makes everyday tasks exhausting, what pulmonary rehab includes, how it improves walking, breathlessness, strength and confidence, and why supervised programmes — including online options — are considered safe and effective.",
+    publishedAt: "2026-09-02",
+    category: "Pulmonary",
+    readMinutes: 8,
+    author: "Dr. Deepali Shah (PT)",
+    blocks: [
+      {
+        type: "p",
+        text: "Living with Interstitial Lung Disease (ILD) can be physically and emotionally challenging. Many people with ILD continue to feel short of breath, tired, and less able to stay active, even with treatment. Simple daily tasks like climbing stairs, walking to the market, taking a shower, or doing household chores may start to feel difficult.",
+      },
+      {
+        type: "p",
+        text: "While medicines are important and can help slow the progression of certain types of ILD, they often cannot completely improve these day-to-day symptoms or restore physical fitness. This is why many people continue to struggle with their breathing and activity levels despite taking their prescribed medications.",
+      },
+      {
+        type: "p",
+        text: "This is where pulmonary rehabilitation (PR) has emerged as one of the most effective non-pharmacological treatments for people living with ILD. International respiratory guidelines consistently recommend pulmonary rehabilitation to improve exercise capacity, reduce symptoms and enhance quality of life.",
+      },
+      {
+        type: "h2",
+        text: "What is Interstitial Lung Disease (ILD)?",
+      },
+      {
+        type: "p",
+        text: "Interstitial Lung Disease (ILD) is not a single disease — it is a group of lung conditions that cause inflammation and, in many cases, scarring (fibrosis) of the lungs.",
+      },
+      {
+        type: "p",
+        text: "As the lungs become scarred, they lose their flexibility and become stiffer. This makes it harder for them to expand with each breath, so everyday activities that once felt effortless — like walking, climbing stairs, getting dressed, or even having a conversation — can gradually become exhausting.",
+      },
+      {
+        type: "p",
+        text: "There are many different types of ILD, including:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Idiopathic Pulmonary Fibrosis (IPF)",
+          "Hypersensitivity Pneumonitis",
+          "Connective Tissue Disease-associated ILD",
+          "Sarcoidosis",
+          "Occupational Lung Diseases",
+          "Drug-induced ILD",
+        ],
+      },
+      {
+        type: "p",
+        text: "Although the causes and progression vary, many people with ILD experience similar challenges, such as:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Feeling breathless during everyday activities",
+          "A persistent dry cough",
+          "Constant tiredness or low energy",
+          "Reduced ability to exercise or stay active",
+          "Difficulty climbing stairs or walking longer distances",
+        ],
+      },
+      {
+        type: "p",
+        text: "Living with ILD can feel overwhelming, but there are ways to help you breathe better, move more comfortably, and regain confidence in your daily life.",
+      },
+      {
+        type: "h2",
+        text: "What is Pulmonary Rehabilitation?",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation is a structured programme that combines exercise training, breathing techniques, education, and self-management strategies to help people with chronic lung diseases live better.",
+      },
+      {
+        type: "p",
+        text: "While medicines are important and may help slow the progression of certain types of ILD, they often cannot fully relieve breathlessness or restore physical strength and endurance. Pulmonary rehabilitation helps bridge this gap by improving fitness, reducing breathlessness, making everyday activities easier, and helping you feel more confident and in control of your condition.",
+      },
+      {
+        type: "p",
+        text: "According to the American Thoracic Society (ATS) and the European Respiratory Society (ERS), pulmonary rehabilitation combines:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Individually prescribed exercise training",
+          "Breathing retraining techniques",
+          "Education about lung disease",
+          "Energy conservation strategies",
+          "Psychological support",
+          "Self-management education",
+        ],
+      },
+      {
+        type: "p",
+        text: "The goal is not simply to strengthen the lungs, but to improve the body's ability to function despite reduced lung capacity.",
+      },
+      {
+        type: "h2",
+        text: "How Does Pulmonary Rehabilitation Help People with ILD?",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation cannot remove the scarring in your lungs, but it can help you breathe more comfortably, stay active for longer, and make everyday tasks easier. Many people notice they become less breathless during daily activities and feel more confident moving around.",
+      },
+      {
+        type: "img",
+        src: "/assets/blog/ild-pulmonary-rehabilitation.png",
+        alt: "Infographic showing how interstitial lung disease scars the lungs, the breathlessness cycle of avoiding activity and weaker muscles, and how pulmonary rehabilitation breaks that cycle.",
+        caption:
+          "ILD makes the lungs stiffer and everyday activity more tiring. Pulmonary rehabilitation cannot reverse scarring, but it can break the breathlessness cycle and help you live better.",
+        layout: "wide",
+      },
+      {
+        type: "h2",
+        text: "1. Helps you walk further and stay active",
+      },
+      {
+        type: "p",
+        text: "Many people with ILD stop being active because they become breathless. Over time, this weakens the muscles, making even small activities feel harder.",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation uses safe, supervised exercises to gradually improve your fitness. This can make everyday activities like walking, shopping, climbing stairs, or doing household chores feel easier.",
+      },
+      {
+        type: "h2",
+        text: "2. Helps reduce breathlessness",
+      },
+      {
+        type: "p",
+        text: "Feeling breathless can be frightening, but avoiding activity often makes it worse.",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation teaches breathing techniques and exercises that help your body use oxygen more efficiently. As your muscles become stronger, many daily activities require less effort, helping you feel less breathless.",
+      },
+      {
+        type: "h2",
+        text: "3. Builds strength and reduces fatigue",
+      },
+      {
+        type: "p",
+        text: "ILD doesn't only affect the lungs. Because many people become less active, the muscles throughout the body can become weaker.",
+      },
+      {
+        type: "p",
+        text: "Strength and endurance exercises help improve muscle fitness, making everyday activities less tiring and helping you stay independent for longer.",
+      },
+      {
+        type: "h2",
+        text: "4. Improves confidence and quality of life",
+      },
+      {
+        type: "p",
+        text: "Living with ILD can affect your confidence, mood, and social life.",
+      },
+      {
+        type: "p",
+        text: "As breathing becomes easier and physical fitness improves, many people feel more confident leaving the house, spending time with family, and doing the activities they enjoy.",
+      },
+      {
+        type: "h2",
+        text: "What Happens During Pulmonary Rehabilitation?",
+      },
+      {
+        type: "p",
+        text: "Pulmonary rehabilitation is not just an exercise programme. It is a personalised treatment plan designed specifically for your symptoms, fitness level, and oxygen needs.",
+      },
+      {
+        type: "p",
+        text: "Your programme may include:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Walking or cycling exercises",
+          "Strength training for your arms and legs",
+          "Breathing exercises",
+          "Stretching and flexibility exercises",
+          "Balance and mobility training",
+          "Oxygen level monitoring during exercise",
+          "Energy conservation techniques to make daily activities easier",
+          "A personalised home exercise programme",
+        ],
+      },
+      {
+        type: "p",
+        text: "Most programmes run for 6 to 12 weeks, with exercises becoming gradually progressive through the course and according to each individual's improvement.",
+      },
+      {
+        type: "h2",
+        text: "Is Pulmonary Rehabilitation Safe for ILD?",
+      },
+      {
+        type: "p",
+        text: "Yes. Pulmonary rehabilitation is considered safe when it is supervised by healthcare professionals trained in lung rehabilitation.",
+      },
+      {
+        type: "p",
+        text: "Some people with ILD experience a drop in oxygen levels during exercise. For this reason, your oxygen saturation (SpO₂), heart rate, and symptoms should be monitored throughout your programme. Your exercises should always be tailored to your individual needs.",
+      },
+      {
+        type: "h2",
+        text: "Can Pulmonary Rehabilitation Be Done at Home or Online?",
+      },
+      {
+        type: "p",
+        text: "Yes. Many people with ILD can safely complete pulmonary rehabilitation from home through a structured online programme.",
+      },
+      {
+        type: "p",
+        text: "Online pulmonary rehabilitation can be especially helpful if you:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Live far from a rehabilitation centre",
+          "Find travelling tiring because of breathlessness",
+          "Have mobility difficulties",
+          "Need ongoing supervised exercise after completing a hospital-based programme",
+        ],
+      },
+      {
+        type: "p",
+        text: "A good online programme should always include an assessment, a personalised exercise plan, regular monitoring, and progression based on your improvement.",
+      },
+      {
+        type: "h2",
+        text: "Does Pulmonary Rehabilitation Really Work?",
+      },
+      {
+        type: "p",
+        text: "Yes. Research from around the world has consistently shown that pulmonary rehabilitation helps many people living with ILD.",
+      },
+      {
+        type: "p",
+        text: "Studies have found that pulmonary rehabilitation can:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Help you walk further",
+          "Reduce breathlessness",
+          "Improve strength and fitness",
+          "Make everyday activities easier",
+          "Improve quality of life",
+          "Increase confidence in managing your condition",
+        ],
+      },
+      {
+        type: "p",
+        text: "While pulmonary rehabilitation cannot cure ILD or reverse lung scarring, it can help many people stay active, remain independent, and enjoy a better quality of life.",
+      },
+      {
+        type: "p",
+        text: "If you or a loved one has been diagnosed with Interstitial Lung Disease, early referral to a specialist pulmonary rehabilitation programme can make a meaningful difference to day-to-day life.",
+      },
+    ],
+  },
   {
     slug: "how-smartwatch-measures-pulse-rate",
     title: "How Does Your Smartwatch Measure Your Pulse Rate?",
@@ -465,81 +903,6 @@ export const BLOG_POSTS = [
     ],
   },
   {
-    slug: "medicines-alone-arent-the-whole-story",
-    title: "Why Medicines Alone Aren't the Whole Story",
-    excerpt:
-      "Medicines help you breathe easier. Pulmonary rehabilitation helps you live easier. Why inhalers alone cannot reverse deconditioning in COPD.",
-    overview:
-      "Why everyday tasks still feel hard on correct inhalers - and how pulmonary rehab restores the function medicines cannot fully rebuild.",
-    publishedAt: "2026-07-24",
-    updatedAt: "2026-08-26",
-    category: "Pulmonary",
-    readMinutes: 5,
-    author: "Dr. Deepali Shah (PT)",
-    blocks: [
-      {
-        type: "p",
-        text: "\"Managing COPD isn't just about improving how you breathe. It's about improving what your breathing allows you to do.\"",
-      },
-      {
-        type: "p",
-        text: "For many people living with COPD, the daily routine is familiar. Wake up. Take your inhalers. Feel a little better. Then climb a flight of stairs and become breathless again. Naturally, a question follows. \"If I'm taking all my medicines correctly, why do I still struggle to do everyday activities?\" The answer lies in understanding what COPD changes inside the body.",
-      },
-      {
-        type: "h2",
-        text: "What medicines do - and what they cannot",
-      },
-      {
-        type: "p",
-        text: "Medicines play a vital role in COPD management. They help open the airways, reduce inflammation, relieve symptoms and lower the risk of exacerbations. For millions of people, they are an essential part of staying well. But breathing comfortably is only one part of living well.",
-      },
-      {
-        type: "p",
-        text: "Over time, COPD often changes how people move. Breathlessness makes activity uncomfortable, so many people begin avoiding it without even realising. Gradually, muscles lose strength, endurance declines, and everyday tasks begin demanding more effort than they once did. This is why climbing stairs feels harder. Why shopping becomes tiring. Why even walking across a room can leave someone exhausted.",
-      },
-      {
-        type: "p",
-        text: "These changes are not always caused by worsening lung function alone. They are also the result of physical deconditioning - a change that medicines alone cannot fully reverse.",
-      },
-      {
-        type: "h2",
-        text: "Pulmonary rehabilitation as a partner, not a replacement",
-      },
-      {
-        type: "p",
-        text: "This is where pulmonary rehabilitation becomes an essential partner in recovery. Rather than replacing medicines, it complements them. While medicines help improve airflow, pulmonary rehabilitation helps your body use that improved airflow more effectively. Through carefully prescribed exercise, education and structured progression, it trains the heart, muscles and circulation to work together more efficiently.",
-      },
-      {
-        type: "p",
-        text: "In simple terms: medicines help you breathe easier. Pulmonary rehabilitation helps you live easier.",
-      },
-      {
-        type: "h2",
-        text: "What the guidelines recommend",
-      },
-      {
-        type: "p",
-        text: "That is why international organisations such as the Global Initiative for Chronic Obstructive Lung Disease (GOLD) and the American Thoracic Society/European Respiratory Society (ATS/ERS) recommend pulmonary rehabilitation alongside optimal medical therapy. These recommendations are based on decades of evidence showing that medicines and rehabilitation address different - but equally important - aspects of COPD management.",
-      },
-      {
-        type: "ul",
-        items: [
-          "Medicines help manage the disease",
-          "Pulmonary rehabilitation helps restore function",
-          "Together, they offer the best opportunity to move with greater confidence, participate more fully in everyday life and regain independence",
-        ],
-      },
-      {
-        type: "h2",
-        text: "A thought to take home",
-      },
-      {
-        type: "p",
-        text: "Every inhaler opens a door. Pulmonary rehabilitation teaches your body how to walk through it.",
-      },
-    ],
-  },
-  {
     slug: "cardiac-rehab-after-surgery",
     title: "Why Cardiac Rehabilitation Matters After Heart Surgery",
     excerpt:
@@ -736,7 +1099,54 @@ const TELE_REHAB_REFERENCES: readonly BlogReference[] = [
   CARDIAC_REFERENCES[1],
 ];
 
+const ILD_PR_REFERENCES: readonly BlogReference[] = [
+  {
+    title:
+      "An Official American Thoracic Society/European Respiratory Society Statement: Key Concepts and Advances in Pulmonary Rehabilitation",
+    publisher: "American Thoracic Society / European Respiratory Society",
+    url: "https://www.atsjournals.org/doi/10.1164/rccm.201309-1634ST",
+  },
+  {
+    title:
+      "Pulmonary Rehabilitation for Adults with Chronic Respiratory Disease: An Official American Thoracic Society Clinical Practice Guideline",
+    publisher: "American Thoracic Society",
+    url: "https://www.atsjournals.org/doi/10.1164/rccm.202306-1066ST",
+  },
+  {
+    title: "Pulmonary rehabilitation for interstitial lung disease",
+    publisher: "Cochrane Database of Systematic Reviews",
+    url: "https://www.cochrane.org/evidence/CD006322_pulmonary-rehabilitation-interstitial-lung-disease",
+  },
+  {
+    title:
+      "Diagnosis of Idiopathic Pulmonary Fibrosis: An Official ATS/ERS/JRS/ALAT Clinical Practice Guideline",
+    publisher: "American Thoracic Society / European Respiratory Society",
+    url: "https://www.atsjournals.org/doi/10.1164/rccm.201807-1255ST",
+  },
+];
+
+const ASTHMA_PR_REFERENCES: readonly BlogReference[] = [
+  {
+    title: "Global Strategy for Asthma Management and Prevention",
+    publisher: "Global Initiative for Asthma (GINA)",
+    url: "https://ginasthma.org/gina-reports/",
+  },
+  {
+    title: "Pulmonary rehabilitation for adults with asthma",
+    publisher: "Cochrane Database of Systematic Reviews",
+    url: "https://www.cochrane.org/evidence/CD013485_pulmonary-rehabilitation-adults-asthma",
+  },
+  {
+    title:
+      "Pulmonary Rehabilitation for Adults with Chronic Respiratory Disease: An Official American Thoracic Society Clinical Practice Guideline",
+    publisher: "American Thoracic Society",
+    url: "https://www.atsjournals.org/doi/10.1164/rccm.202306-1066ST",
+  },
+];
+
 export function getPostReferences(post: BlogPost): readonly BlogReference[] {
+  if (post.slug === "pulmonary-rehabilitation-for-ild") return ILD_PR_REFERENCES;
+  if (post.slug === "why-asthma-isnt-just-about-your-inhaler") return ASTHMA_PR_REFERENCES;
   if (post.category === "Cardiac") return CARDIAC_REFERENCES;
   if (post.category === "Tele-Rehab") return TELE_REHAB_REFERENCES;
   return PULMONARY_REFERENCES;

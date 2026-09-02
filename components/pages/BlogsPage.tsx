@@ -97,16 +97,25 @@ export function BlogArticleBody({ post }: { post: BlogPost }) {
           );
         }
         if (block.type === "img") {
+          const wide = block.layout === "wide";
           return (
             <figure
               key={index}
-              className="mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-border/70 bg-white sm:max-w-lg"
+              className={
+                wide
+                  ? "mx-auto mt-8 w-full overflow-hidden rounded-2xl border border-border/70 bg-white"
+                  : "mx-auto mt-8 max-w-md overflow-hidden rounded-2xl border border-border/70 bg-white sm:max-w-lg"
+              }
             >
               <img
                 src={block.src}
                 alt={block.alt}
                 loading="lazy"
-                className="mx-auto h-auto max-h-[280px] w-full object-contain p-3 sm:max-h-[320px]"
+                className={
+                  wide
+                    ? "mx-auto h-auto w-full object-contain p-2 sm:p-3"
+                    : "mx-auto h-auto max-h-[280px] w-full object-contain p-3 sm:max-h-[320px]"
+                }
               />
               {block.caption ? (
                 <figcaption className="border-t border-border/60 px-4 py-3 font-sans-brand text-sm leading-relaxed text-navy/65">

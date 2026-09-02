@@ -58,11 +58,11 @@ const MOBILE_LINK_ITEMS: MobileNavItem[] = [
 
 const MOBILE_MORE_ITEMS: MobileNavItem[] = [
   {
-    label: "New Batch",
-    href: "/new-batch",
+    label: "Sessions",
+    href: "/sessions",
     icon: Sparkles,
-    description: "New group sessions starting 27 July",
-    isActive: (pathname) => pathname === "/new-batch",
+    description: "1-on-1 and small-group rehabilitation",
+    isActive: (pathname) => pathname === "/sessions",
   },
   {
     label: "How It Works",

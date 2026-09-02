@@ -5,7 +5,7 @@ import { Journey } from "./Journey";
 import { Conditions } from "./Conditions";
 import { ServicesOverview } from "./ServicesOverview";
 import { Testimonials } from "./Testimonials";
-import { NewBatchSection } from "./NewBatchSection";
+import { SessionsSection } from "./SessionsSection";
 import { TeleRehab } from "./TeleRehab";
 import { RehabExpertise } from "./RehabExpertise";
 import { BlogTeaser } from "./BlogTeaser";
@@ -20,7 +20,7 @@ export function PulseLandingPage() {
       <Conditions />
       <ServicesOverview />
       <TeleRehab />
-      <NewBatchSection />
+      <SessionsSection />
       <RehabExpertise />
       <Doctor />
       <Journey />

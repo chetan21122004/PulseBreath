@@ -10,7 +10,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/offers",
-        destination: "/new-batch",
+        destination: "/sessions",
+        permanent: true,
+      },
+      {
+        source: "/new-batch",
+        destination: "/sessions",
         permanent: true,
       },
       {

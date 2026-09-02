@@ -142,7 +142,7 @@ export const FAQS: FaqItem[] = [
     id: "one-on-one-or-group",
     category: "sessions",
     q: "Are sessions one-on-one or in a group?",
-    a: "Both formats are available. Small group sessions (typically 5–8 patients grouped by condition) offer focused supervision with peer support. One-on-one sessions are recommended when your goals or medical complexity need closer individual attention. Dr. Deepali will recommend the right format during your assessment.",
+    a: "Both formats are available. Personalised 1-on-1 sessions are tailored to your assessment findings, goals, symptoms and exercise capacity. Small-group sessions are conducted in batches of 5–7 participants, grouped by diagnosis, functional capacity and rehabilitation needs. Your assessment helps determine which format is most appropriate for you.",
   },
   {
     id: "missed-sessions",
